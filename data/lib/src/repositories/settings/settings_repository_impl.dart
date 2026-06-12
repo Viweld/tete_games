@@ -2,24 +2,12 @@ part of '../repositories.dart';
 
 @LazySingleton(as: SettingsRepository)
 class SettingsRepositoryImpl implements SettingsRepository {
-  final LocalDataProvider _localDataProvider;
-
   SettingsRepositoryImpl(this._localDataProvider);
 
-  static const String _isInvitationDialogShownKey = 'is_invitation_dialog_shown';
+  final LocalDataProvider _localDataProvider;
+
   static const String _languageCodeKey = 'language_code';
-  static const String _currencyCodeKey = 'currency_code';
-
-  @override
-  Future<bool> isInvitationDialogShown() async {
-    final Object? result = await _localDataProvider.getValue(key: _isInvitationDialogShownKey);
-    return result is bool ? result : false;
-  }
-
-  @override
-  Future<void> setInvitationDialogShown() async {
-    await _localDataProvider.setValue(key: _isInvitationDialogShownKey, value: true);
-  }
+  static const String _pushNotificationsEnabledKey = 'push_notifications_enabled';
 
   @override
   Future<String?> getSavedLanguageCode() async {
@@ -33,13 +21,13 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<String?> getSavedCurrencyCode() async {
-    final Object? result = await _localDataProvider.getValue(key: _currencyCodeKey);
-    return result is String ? result : null;
+  Future<bool> isPushNotificationsEnabled() async {
+    final Object? result = await _localDataProvider.getValue(key: _pushNotificationsEnabledKey);
+    return result is bool ? result : true;
   }
 
   @override
-  Future<void> saveCurrencyCode(String currencyCode) async {
-    await _localDataProvider.setValue(key: _currencyCodeKey, value: currencyCode);
+  Future<void> setPushNotificationsEnabled(bool enabled) async {
+    await _localDataProvider.setValue(key: _pushNotificationsEnabledKey, value: enabled);
   }
 }

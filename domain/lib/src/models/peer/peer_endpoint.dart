@@ -1,11 +1,10 @@
 import 'package:domain/src/models/peer/peer_device.dart';
 import 'package:domain/src/models/peer/peer_identity.dart';
+import 'package:flutter/foundation.dart';
 
+@immutable
 final class PeerEndpoint {
-  const PeerEndpoint({
-    required this.identity,
-    required this.device,
-  });
+  const PeerEndpoint({required this.identity, required this.device});
 
   final PeerIdentity identity;
   final PeerDevice device;

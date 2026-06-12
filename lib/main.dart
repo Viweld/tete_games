@@ -17,6 +17,8 @@ Future<void> main() async {
     rethrow;
   }
 
+  await FirebaseBootstrap.initialize();
+
   final AppRuntimeMode runtimeMode = await AppRuntimeModeStorage.read();
 
   await configureDependencies(runtimeMode: runtimeMode);

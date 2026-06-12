@@ -9,48 +9,49 @@ A mobile app for offline two-player games over Bluetooth Low Energy (BLE).
 
 Two devices discover each other over BLE, establish a connection, and exchange game messages — no internet required. Supports Android↔Android, iOS↔iOS, and Android↔iOS pairs.
 
-From the predecessor **ble_games** (BaTuGa), the following will be ported:
+From the predecessor **ble_games** (BaTuGa), the following are ported or in progress:
 
-- BLE transport layer (`ble_peer_session`): server/client roles, authorization, connection teardown, bidirectional standardized messaging;
-- screens and features: splash, home, games list, tic-tac-toe, and more;
-- game logic and peer message codecs.
+- BLE transport (`ble_peer_session`): server/client roles, peer discovery, connection flow;
+- app shell: splash, home (host/client), games list stub;
+- game logic and peer message codecs — planned (tic-tac-toe and more).
 
 In the new codebase:
 
 - **architecture** — feature packages in `features/`, layers `domain` / `data` / `core` / `navigation`;
 - **state** — `flutter_bloc` + effect-based navigation and UI effects;
 - **DI** — `injectable` + `get_it` (`appLocator`);
-- **UI** — theme, colors, and components from `core_ui` (`AppTheme`, `AppColors`, `ui_kit`: buttons, inputs, dialogs, `AppScaffold`, etc.).
+- **UI** — theme, colors, and components from `core_ui` (`AppScaffold`, `ui_kit`: buttons, inputs, `AppTextField`, etc.).
 
 ## Status
 
-The project is in the initialization phase: Flutterozavr skeleton is set up and `core_ui` with ui_kit is wired in. Game features and the BLE module are planned for porting from **ble_games**.
-
 | Area | Status |
 |------|--------|
-| Workspace & DI | done (skeleton) |
-| Theme & ui_kit (`core_ui`) | done |
-| BLE transport | port from ble_games |
-| Splash / Home / Games list | planned |
+| Workspace & DI | done |
+| Theme & ui_kit (`core_ui`) | done (subset in use) |
+| BLE transport (`data/peer`, `ble_peer_session`) | done |
+| Splash / Home / Games list | done |
+| Firebase bootstrap (FCM + Crashlytics hooks) | done (native config + Dart init) |
 | Games (tic-tac-toe, etc.) | planned |
+| `core_ui` travel widgets cleanup | planned |
 
 ## Workspace packages
 
 | Package | Purpose |
 |---------|---------|
-| `core/` | DI, BLoC helpers, localization, utilities |
+| `core/` | DI, BLoC helpers, localization, Firebase bootstrap, utilities |
 | `core_ui/` | theme (`AppTheme`, `AppColors`), `AppScaffold`, `ui_kit` |
-| `domain/` | freezed models, repository interfaces |
-| `data/` | DTOs, Dio, repository implementations |
+| `domain/` | peer models, settings/push repository interfaces |
+| `data/` | BLE peer layer, local settings, FCM `FirebaseMessaging` DI |
 | `navigation/` | `AppRouter`, routes |
-| `features/main/` | app shell: splash (initial route), home, games list, BLE connection dialogs |
+| `features/main/` | splash, home, games list, BLE connection dialogs |
 
 ## Tech stack
 
-- Flutter 3.44+ / Dart 3.12+
-- Bluetooth Low Energy (BLE)
+- Flutter 3.41+ / Dart 3.11+
+- Bluetooth Low Energy (BLE) via `ble_peer_session`
 - `flutter_bloc` + `bloc_concurrency`
-- `freezed`, `injectable`, `auto_route`, `dio` + `retrofit`
+- `freezed`, `injectable`, `auto_route`
+- `firebase_core`, `firebase_messaging`, `firebase_crashlytics`
 - FVM for SDK version pinning
 
 ## Getting started
@@ -63,7 +64,7 @@ fvm flutter run
 
 ## Env
 
-Copy `.env.example` → `.env`, or use the committed placeholder.
+Copy `.env.example` → `.env` if needed. BLE does not require a backend URL.
 
 ## Build
 

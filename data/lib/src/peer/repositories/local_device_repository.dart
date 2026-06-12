@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:core/core.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:domain/domain.dart';
-import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ILocalDeviceRepository)
 final class LocalDeviceRepository implements ILocalDeviceRepository {

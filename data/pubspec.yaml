@@ -15,24 +15,16 @@ dependencies:
     path: ../core
   domain:
     path: ../domain
-  # fz:network-deps
 
-  connectivity_plus: ^7.0.0
   shared_preferences: ^2.5.3
-  retrofit: ^4.9.2
-  dio: ^5.9.0
-  pretty_dio_logger: ^1.4.0
-  json_annotation: ^4.11.0
-  flutter_secure_storage: ^10.0.0
   ble_peer_session: ^0.1.0
   device_info_plus: ^12.4.0
   permission_handler: ^12.0.3
+  firebase_messaging: ^16.2.0
+  injectable: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^2.7.1
   injectable_generator: ^3.0.2
-  json_serializable: ^6.13.1
-  retrofit_generator: ^10.2.5
-

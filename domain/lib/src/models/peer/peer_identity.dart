@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
 final class PeerIdentity {
-  const PeerIdentity({
-    required this.id,
-    required this.displayName,
-  });
+  const PeerIdentity({required this.id, required this.displayName});
 
   final String id;
   final String displayName;

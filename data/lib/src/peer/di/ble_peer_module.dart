@@ -1,7 +1,6 @@
 import 'package:ble_peer_session/ble_peer_session.dart';
 import 'package:core/core.dart';
 import 'package:data/src/peer/ble_peer_logger.dart';
-import 'package:injectable/injectable.dart';
 
 @module
 abstract class BlePeerModule {

@@ -10,9 +10,6 @@ final GetIt appLocator = GetIt.instance;
 /// Incremented after a soft restart: new tree root with a different [ValueKey].
 final ValueNotifier<int> appRestartGeneration = ValueNotifier<int>(0);
 
-const String unauthScope = 'unauthScope';
-const String authScope = 'authScope';
-
 @InjectableInit(
   preferRelativeImports: true,
   externalPackageModulesAfter: <ExternalModule>[
@@ -29,9 +26,6 @@ Future<void> configureDependencies({required AppRuntimeMode runtimeMode}) async 
 
   appLocator.registerLazySingleton<LocaleController>(
     () => LocaleController(initial: AppLocalizationConfig.fallbackLocale),
-  );
-  appLocator.registerLazySingleton<CurrencyController>(
-    () => CurrencyController(initialCurrencyCode: CurrencyController.defaultCurrencyCode),
   );
   appLocator.registerLazySingleton<AppEventBus>(AppEventBus.new);
   appLocator.registerLazySingleton<AppToastBus>(AppToastBus.new);

@@ -1,4 +1,4 @@
-enum PeerRole {
-  server,
-  client,
-}
+import 'package:flutter/foundation.dart';
+
+@immutable
+enum PeerRole { server, client }

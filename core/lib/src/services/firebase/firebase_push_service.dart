@@ -4,13 +4,21 @@ import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+/// FCM wrapper for foreground messages, token access, and deep-link navigation events.
+/// Backend token registration and Crashlytics wiring are added when push goes live.
 @lazySingleton
 class FirebasePushService {
   static const Duration _apnsPollInterval = Duration(milliseconds: 500);
   static const Duration _apnsWaitTimeout = Duration(seconds: 10);
 
+  FirebasePushService({
+    required PushEventsRepository eventsRepository,
+    required SettingsRepository settingsRepository,
+  }) : _eventsRepository = eventsRepository,
+       _settingsRepository = settingsRepository;
+
   final PushEventsRepository _eventsRepository;
-  final NotificationsRepository _notificationsRepository;
+  final SettingsRepository _settingsRepository;
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
 
   final StreamController<String> _tokenController = StreamController<String>.broadcast();
@@ -21,12 +29,6 @@ class FirebasePushService {
   StreamSubscription<RemoteMessage>? _onMessageSub;
   StreamSubscription<RemoteMessage>? _onOpenedAppSub;
   StreamSubscription<String>? _onTokenRefreshSub;
-
-  FirebasePushService({
-    required PushEventsRepository eventsRepository,
-    required NotificationsRepository notificationsRepository,
-  }) : _eventsRepository = eventsRepository,
-       _notificationsRepository = notificationsRepository;
 
   Future<void> initialize() async {
     if (_initialized) return;
@@ -117,33 +119,39 @@ class FirebasePushService {
   }
 
   Future<void> _onMessage(RemoteMessage message) async {
-    final bool isEnabled = await _notificationsRepository.isPushNotificationsEnabled();
+    final bool isEnabled = await _settingsRepository.isPushNotificationsEnabled();
     if (!isEnabled) return;
 
     final Map<String, dynamic> data = message.data;
     final RemoteNotification? notification = message.notification;
 
-    final String title = notification?.title ?? data['title'] ?? '';
-    final String body = notification?.body ?? data['body'] ?? '';
+    final String title = notification?.title ?? data['title']?.toString() ?? '';
+    final String body = notification?.body ?? data['body']?.toString() ?? '';
 
     if (title.isEmpty && body.isEmpty) return;
 
-    final UserNotification incoming = UserNotification(
-      id: int.tryParse(data['id']?.toString() ?? '') ?? DateTime.now().millisecondsSinceEpoch,
-      title: title,
-      body: body,
-      payload: Map<String, dynamic>.from(data),
-      createdAt: DateTime.now(),
+    _eventsRepository.emitNotification(
+      UserNotification(
+        id: int.tryParse(data['id']?.toString() ?? '') ?? DateTime.now().millisecondsSinceEpoch,
+        title: title,
+        body: body,
+        payload: Map<String, dynamic>.from(data),
+        createdAt: DateTime.now(),
+      ),
     );
-
-    await _notificationsRepository.addNotification(incoming);
   }
 
   void _handleNavigation(RemoteMessage message) {
-    final String? orderId = message.data['order_id']?.toString();
+    final Map<String, dynamic> data = message.data;
+    final String? route = data['route']?.toString();
+    if (route == null || route.isEmpty) return;
 
-    if (orderId != null) {
-      _eventsRepository.emitNavigation(PushNavigationEvent(orderId: orderId));
+    final Map<String, String> params = <String, String>{};
+    for (final MapEntry<String, dynamic> entry in data.entries) {
+      if (entry.key == 'route') continue;
+      params[entry.key] = entry.value.toString();
     }
+
+    _eventsRepository.emitNavigation(PushNavigationEvent(route: route, params: params));
   }
 }

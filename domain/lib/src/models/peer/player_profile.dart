@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
 final class PlayerProfile {
-  const PlayerProfile({
-    required this.id,
-    required this.displayName,
-  });
+  const PlayerProfile({required this.id, required this.displayName});
 
   final String id;
   final String displayName;

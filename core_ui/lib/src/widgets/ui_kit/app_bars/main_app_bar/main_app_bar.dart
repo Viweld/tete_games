@@ -2,17 +2,16 @@ import 'package:core/core.dart';
 import 'package:core_ui/src/widgets/ui_kit/app_bars/main_app_bar/widgets/secret_mode_dialogs.dart';
 import 'package:navigation/navigation.dart';
 
-export 'bloc/main_app_bar_bloc.dart';
 export 'widgets/app_back_button.dart';
 
 class MainAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const MainAppBar({super.key, this.bottom, this.canPop = true, this.hasSecretMode = false});
+
   final bool canPop;
   final PreferredSizeWidget? bottom;
 
-  /// Enables secret mode: test API after 10 logo taps; exit with 1 tap in test mode.
+  /// Enables secret mode: test runtime after 10 logo taps; exit with 1 tap in test mode.
   final bool hasSecretMode;
-
-  const MainAppBar({super.key, this.bottom, this.canPop = true, this.hasSecretMode = false});
 
   static const double height = 68;
 
@@ -64,60 +63,25 @@ class _MainAppBarState extends State<MainAppBar> {
   @override
   Widget build(BuildContext context) {
     final AppColorsTheme colors = context.colors;
-    final AppRouter router = appLocator<AppRouter>();
 
     final double appBarHeight = MainAppBar.height + (widget.bottom?.preferredSize.height ?? 0);
-
     final double fullHeight = appBarHeight + MediaQuery.of(context).padding.top;
 
-    return BlocProvider<MainAppBarBloc>(
-      create: (_) => appLocator<MainAppBarBloc>(),
-      child: BlocBuilder<MainAppBarBloc, MainAppBarState>(
-        builder: (BuildContext context, MainAppBarState state) {
-          return AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            titleSpacing: 0,
-            actionsPadding: EdgeInsets.zero,
-            toolbarHeight: fullHeight,
-            backgroundColor: colors.appBar.background,
-            surfaceTintColor: colors.appBar.background,
-            bottom: widget.bottom ?? (widget.canPop ? const AppBackButton() : null),
-            title: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultHorizontalPadding),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: _MainAppBarLeading(
-                        hasSecretMode: widget.hasSecretMode,
-                        onLogoTap: _onLogoTap,
-                      ),
-                    ),
-                  ),
-                  SizedBox.square(
-                    dimension: 40,
-                    child: Center(
-                      child: AppIcons.appBarBubble.call(
-                        size: 24,
-                        color: colors.appBar.icon,
-                        onTap: router.navigateSupport,
-                      ),
-                    ),
-                  ),
-                  if (state.profile != null)
-                    AppUserAvatar.mini(
-                      email: state.profile?.email ?? '',
-                      avatarUrl: state.profile?.avatar?.small,
-                      name: state.profile?.userName,
-                      onTap: router.navigatePersonalData,
-                    ),
-                ],
-              ),
-            ),
-          );
-        },
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0,
+      titleSpacing: 0,
+      actionsPadding: EdgeInsets.zero,
+      toolbarHeight: fullHeight,
+      backgroundColor: colors.appBar.background,
+      surfaceTintColor: colors.appBar.background,
+      bottom: widget.bottom ?? (widget.canPop ? const AppBackButton() : null),
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultHorizontalPadding),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: _MainAppBarLeading(hasSecretMode: widget.hasSecretMode, onLogoTap: _onLogoTap),
+        ),
       ),
     );
   }
@@ -160,8 +124,6 @@ class _MainAppBarLeading extends StatelessWidget {
     if (!strip) return logoCore;
 
     return Row(
-      // alignment: Alignment.bottomLeft,
-      // clipBehavior: Clip.none,
       children: <Widget>[
         logoCore,
         Expanded(
@@ -177,18 +139,11 @@ class _MainAppBarLeading extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    '! ! !  TEST API   ! ! !',
+                    '! ! !  TEST MODE   ! ! !',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: AppFonts.label.copyWith(color: Colors.black),
-                  ),
-                  Text(
-                    'some services unavailable',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: AppFonts.caption.copyWith(color: Colors.black),
                   ),
                 ],
               ),

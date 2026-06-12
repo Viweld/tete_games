@@ -1,219 +1,48 @@
 {
   "@@locale": "en",
-  "something_went_wrong": "Something went wrong",
+  "citizenship_search_placeholder": "Search by country name",
+  "core_back_button": "Back",
+  "description_validator_overflow_message": "Description length should not exceed 300 characters",
+  "email_validator_invalid_message": "Invalid email format",
+  "email_validator_overflow_message": "Email should not exceed 50 characters",
+  "expandable_text_expand_label": "more",
+  "expandable_text_fold_label": "fold",
   "name_validator_empty_message": "Cannot be empty",
   "name_validator_invalid_message": "Invalid name format",
   "name_validator_overflow_message": "Name should not exceed 30 characters",
-  "email_validator_invalid_message": "Invalid email format",
-  "email_validator_overflow_message": "Email should not exceed 50 characters",
-  "description_validator_overflow_message": "Description length should not exceed 300 characters",
-  "expandable_text_fold_label": "fold",
-  "expandable_text_expand_label": "more",
-  "service_category_airport_title": "Airport Services",
-  "service_category_transfer_title": "Transfer",
-  "main_search_button": "Find",
-  "citizenship_search_placeholder": "Search by country name",
-  "stepped_header_step_label": "Step {current}/{total}",
-  "@stepped_header_step_label": {
-    "placeholders": {
-      "current": {
-        "type": "int"
-      },
-      "total": {
-        "type": "int"
-      }
-    }
-  },
-  "airport_detail_tariff_adults": "Adults",
-  "airport_detail_tariff_per_person": " per person",
-  "airport_detail_tariff_children": "Children",
-  "airport_detail_tariff_per_child": " per child",
-  "airport_detail_tariff_infants": "Infants under 2 years old",
-  "airport_detail_free": "Free",
-  "airport_detail_price_from": "Price from",
-  "airport_detail_price_transfer_from": "Price depends on the route",
-  "airport_detail_from": "from ",
-  "core_back_button": "Back",
-  "vip_lounge_card_price_label": "Price",
-  "vip_lounge_card_price_prefix": "from",
-  "vip_lounge_card_watch_all_photos": "View all photos",
-  "vip_lounge_card_select_button": "Select {name}",
-  "@vip_lounge_card_select_button": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "summary_flight_info_title": "Flight Information",
-  "summary_companions_title": "Companions",
-  "order_details_cancellation_rules_title": "Cancellation rules",
-  "order_details_cancellation_rule_1": "Cancellation of service less than 48 hours before start time - 100% of the cost.",
-  "order_details_cancellation_rule_2": "Passenger no-show - 100% of the cost.",
-  "order_details_cancellation_rule_3": "Changes in the booking are possible by agreement with the manager and depend on the availability of the service.",
-  "order_details_flight_info": "Flight information",
-  "order_details_price_details": "Price details",
-  "order_details_additional_conditions": "Additional conditions",
-  "order_details_endpoint_departure": "Departure",
-  "order_details_endpoint_arrival": "Arrival",
-  "order_details_endpoint_transit": "Transit",
-  "order_details_endpoint_transit_arrival": "Transit (arrival)",
-  "order_details_endpoint_transit_departure": "Transit (departure)",
-  "order_details_travelers_title": "Travelers",
-  "order_details_companions_title": "Companions",
-  "transfer_car_category_label": "Car category",
-  "transfer_departure_address_label": "Departure address",
-  "transfer_arrival_address_label": "Arrival address",
-  "transaction_card_parameter_accrued_bonuses": "Accrued bonuses",
-  "receipt_payment_method": "Payment Method",
-  "loyalty_rules_title": "Using points",
-  "loyalty_rules_main_text": "Bonus points can be used to pay for any part of the service cost - in full or in part. If there are not enough points, the remaining amount is paid in cash.",
-  "loyalty_rules_rate_text": "1 point = $0.1",
-  "loyalty_rules_additional_conditions_title": "Additional conditions",
-  "loyalty_rules_condition_1": "Points cannot be exchanged for cash",
-  "loyalty_rules_condition_2": "Points are not awarded for payment with points",
-  "loyalty_rules_condition_3": "When a service is returned, the points earned for it are deducted",
-  "loyalty_rules_important_title": "Important",
-  "loyalty_rules_important_text": "If payment is made in another currency, points are calculated in USD at the current exchange rate.",
-  "receipt_pdf_transaction_title": "Receipt",
-  "receipt_pdf_date_external": "from {date} year: {externalId}",
-  "@receipt_pdf_date_external": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      },
-      "externalId": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_pdf_order_number": "Order No. {orderRef}",
-  "@receipt_pdf_order_number": {
-    "placeholders": {
-      "orderRef": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_transfer_data_title": "Transfer Data",
-  "receipt_transfer_stop_point": "Stop Point",
-  "receipt_total_label": "TOTAL: {amount}",
-  "@receipt_total_label": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_flight_entry": "{index}. Flight: {flightNumber}, {dateTime}",
-  "@receipt_flight_entry": {
-    "placeholders": {
-      "index": {
-        "type": "int"
-      },
-      "flightNumber": {
-        "type": "String"
-      },
-      "dateTime": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_label_status_colon": "Status:",
-  "receipt_label_date_colon": "Date:",
-  "receipt_label_currency_colon": "Currency:",
-  "receipt_label_points_colon": "Points:",
-  "receipt_points_accrued_line": "+{amount} ({accruedLabel})",
-  "@receipt_points_accrued_line": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      },
-      "accruedLabel": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_payment_status_awaiting": "Awaiting payment",
-  "receipt_payment_status_paid": "Paid",
-  "receipt_payment_status_declined": "Payment declined",
-  "receipt_payment_status_unknown_long": "Unknown status",
-  "receipt_pdf_company_footer": "LLC 'Example App'\nEmail for contact: support@example.com\n\nDetailed information on terms of service provision and personal data processing is available at the following links:\nTerms of Use and Privacy Policy",
-  "receipt_pdf_bonus_title": "Bonus Operation Details",
-  "receipt_bonus_breakdown_title": "Bonus Breakdown",
-  "receipt_bonus_paid_service_label": "Amount of paid service",
-  "receipt_bonus_user_level_label": "User status",
-  "receipt_bonus_coefficient_label": "Bonus coefficient",
-  "receipt_bonus_percent_of_order": "{percent}% of order amount",
-  "@receipt_bonus_percent_of_order": {
-    "placeholders": {
-      "percent": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_bonus_accrued_label": "Accrued bonuses",
-  "receipt_bonus_points_short": "{count, plural, one{{count} point} few{{count} points} many{{count} points} other{{count} points}}",
-  "@receipt_bonus_points_short": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "receipt_bonus_section_status": "Bonus Status",
-  "receipt_bonus_points_status_label": "Points Status",
-  "receipt_bonus_accrual_date_label": "Accrual Date",
-  "receipt_bonus_expiry_title": "Expiration Date",
-  "receipt_bonus_valid_until": "valid until {date}",
-  "@receipt_bonus_valid_until": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "receipt_bonus_twelve_months_note": "Points are valid for 12 months from the date of accrual",
-  "receipt_bonus_balance_title": "Bonus Balance",
-  "receipt_bonus_balance_current": "Current",
-  "receipt_bonus_balance_spendable": "Available for spending",
-  "receipt_bonus_program_line_1": " • Bonus points are accrued within the Example App loyalty program.",
-  "receipt_bonus_program_line_2": " • The conditions for accrual, use, and validity period of points are regulated by the loyalty program rules.",
-  "receipt_bonus_rules_body": " • Points can be used for full or partial payment of the following Example App services.\n • Points cannot be exchanged for cash\n • Points are not accrued when paying with points\n • In case of service return, the accrued points will be deducted",
-  "rating_badge_terrible": "Terrible",
-  "rating_badge_bad": "Bad",
-  "rating_badge_normal": "Okay",
-  "rating_badge_good": "Good",
-  "rating_badge_excellent": "Excellent",
-  "secret_mode_production_mode_title": "Production mode",
-  "secret_mode_return_to_production_message": "Return to production mode?",
-  "secret_mode_yes": "Yes",
-  "secret_mode_no": "No",
-  "secret_mode_wrong_password": "Wrong password",
-  "secret_mode_test_api_title": "Test API",
-  "secret_mode_version_label": "Version",
-  "secret_mode_password_hint": "Password",
-  "secret_mode_ok": "OK",
-  "service_category_private_jet_title": "Private jet",
-  "peer_home_title": "Welcome to tete games",
-  "peer_home_mode_prompt": "Choose a connection mode",
-  "peer_home_start_server_button": "Wait for a player",
-  "peer_home_start_client_button": "Find and connect",
-  "peer_home_retry_button": "Retry",
+  "peer_client_devices_title": "Nearby devices",
+  "peer_client_error_connection": "Failed to connect to the device",
+  "peer_client_error_discovery": "Failed to start device discovery",
+  "peer_client_invitation_rejected_body": "The host declined your invitation",
+  "peer_client_invitation_rejected_button": "Close",
+  "peer_client_invitation_rejected_title": "Invitation declined",
+  "peer_client_invitation_sent_title": "Invitation sent",
+  "peer_client_invite_button": "Invite",
+  "peer_client_loading": "Loading...",
+  "peer_client_our_app_badge": "tete games app",
+  "peer_client_searching": "Searching...",
+  "peer_client_unknown_device": "Unknown device",
+  "peer_client_wait_confirmation": "Waiting for confirmation",
+  "peer_client_waiting_hosts_title": "Waiting for hosts:",
   "peer_dialog_cancel": "Cancel",
   "peer_dialog_error_title": "Error",
   "peer_error_bluetooth_unavailable": "Bluetooth is turned off or unavailable",
+  "peer_games_list_stub": "Games list coming soon",
+  "peer_games_list_title": "Games",
+  "peer_home_mode_prompt": "Choose a connection mode",
+  "peer_home_retry_button": "Retry",
+  "peer_home_start_client_button": "Find and connect",
+  "peer_home_start_server_button": "Wait for a player",
+  "peer_home_title": "Welcome to tete games",
   "peer_nickname_dialog_title": "Choose a nickname",
-  "peer_nickname_field_label": "Nickname",
   "peer_nickname_field_hint": "Enter a nickname",
+  "peer_nickname_field_label": "Nickname",
   "peer_nickname_save_button": "Save",
   "peer_nickname_save_failed": "Failed to save nickname",
   "peer_nickname_validation_empty": "Nickname cannot be empty",
   "peer_nickname_validation_too_long": "Nickname must be 20 characters or fewer",
   "peer_nickname_validation_wrong_format": "Spaces are not allowed",
-  "peer_server_waiting_title": "Waiting for connection...",
-  "peer_server_waiting_body": "Your device is visible to nearby players",
-  "peer_server_invitation_title": "Invitation received",
+  "peer_server_accept_button": "Accept",
   "peer_server_invitation_device": "Invitation from device {deviceName}",
   "@peer_server_invitation_device": {
     "placeholders": {
@@ -231,22 +60,18 @@
     }
   },
   "peer_server_invitation_prompt": "Make your decision",
-  "peer_server_accept_button": "Accept",
+  "peer_server_invitation_title": "Invitation received",
   "peer_server_reject_button": "Decline",
-  "peer_client_devices_title": "Nearby devices",
-  "peer_client_loading": "Loading...",
-  "peer_client_waiting_hosts_title": "Waiting for hosts:",
-  "peer_client_searching": "Searching...",
-  "peer_client_unknown_device": "Unknown device",
-  "peer_client_our_app_badge": "tete games app",
-  "peer_client_invite_button": "Invite",
-  "peer_client_invitation_sent_title": "Invitation sent",
-  "peer_client_wait_confirmation": "Waiting for confirmation",
-  "peer_client_invitation_rejected_title": "Invitation declined",
-  "peer_client_invitation_rejected_body": "The host declined your invitation",
-  "peer_client_invitation_rejected_button": "Close",
-  "peer_client_error_discovery": "Failed to start device discovery",
-  "peer_client_error_connection": "Failed to connect to the device",
-  "peer_games_list_title": "Games",
-  "peer_games_list_stub": "Games list coming soon"
+  "peer_server_waiting_body": "Your device is visible to nearby players",
+  "peer_server_waiting_title": "Waiting for connection...",
+  "secret_mode_no": "No",
+  "secret_mode_ok": "OK",
+  "secret_mode_password_hint": "Password",
+  "secret_mode_production_mode_title": "Production mode",
+  "secret_mode_return_to_production_message": "Return to production mode?",
+  "secret_mode_test_api_title": "Test API",
+  "secret_mode_version_label": "Version",
+  "secret_mode_wrong_password": "Wrong password",
+  "secret_mode_yes": "Yes",
+  "something_went_wrong": "Something went wrong"
 }

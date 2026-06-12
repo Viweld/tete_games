@@ -11,11 +11,7 @@ class ClientSessionDialog extends StatelessWidget {
   static const double _heightFraction = 0.4;
 
   static Future<void> show(BuildContext context) {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (_) => const ClientSessionDialog._(),
-    );
+    return showDialog<void>(context: context, builder: (_) => const ClientSessionDialog._());
   }
 
   @override

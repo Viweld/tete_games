@@ -27,7 +27,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i982.FirebasePushService>(
       () => _i982.FirebasePushService(
         eventsRepository: gh<_i494.PushEventsRepository>(),
-        notificationsRepository: gh<_i494.NotificationsRepository>(),
+        settingsRepository: gh<_i494.SettingsRepository>(),
       ),
       dispose: (i) => i.dispose(),
     );

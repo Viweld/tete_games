@@ -17,7 +17,6 @@ export 'indicators/app_shimmer.dart';
 export 'indicators/indicators.dart';
 export 'inputs/inputs.dart';
 // fz:component-ui-kit-exports
-export 'paginated_sliver_list.dart';
 export 'pickers/pickers.dart';
 export 'tabs/tabs.dart';
 export 'texts/expandable_text.dart';

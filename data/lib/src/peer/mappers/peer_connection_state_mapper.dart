@@ -8,7 +8,7 @@ abstract final class PeerConnectionStateMapper {
       pckg.TransportSessionDisconnected() => const PeerDisconnected(),
       pckg.TransportSessionAwaitingUserDecision() ||
       pckg.TransportSessionAwaitingRemoteDecision() => const PeerConnecting(),
-      pckg.TransportSessionConnected(:final remotePeer) => PeerConnected(
+      pckg.TransportSessionConnected(:final pckg.PeerEndpoint remotePeer) => PeerConnected(
         remoteEndpoint: PeerEndpointMapper.toDomain(remotePeer),
       ),
     };

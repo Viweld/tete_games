@@ -26,18 +26,14 @@ class MainPackageModule extends _i526.MicroPackageModule {
         gh<_i494.IPeerTransportRepository>(),
       ),
     );
-    gh.factory<_i517.SplashBloc>(
-      () => _i517.SplashBloc(
-        gh<_i494.AuthRepository>(),
-        gh<_i494.SettingsRepository>(),
-        gh<_i494.LocaleController>(),
-      ),
-    );
     gh.factory<_i623.ClientSessionBloc>(
       () => _i623.ClientSessionBloc(
         gh<_i494.IPeerClientSessionRepository>(),
         gh<_i494.IPeerTransportRepository>(),
       ),
+    );
+    gh.factory<_i517.SplashBloc>(
+      () => _i517.SplashBloc(gh<_i494.SettingsRepository>(), gh<_i494.LocaleController>()),
     );
     gh.factory<_i355.NicknameBloc>(() => _i355.NicknameBloc(gh<_i494.IPlayerProfileRepository>()));
     gh.factory<_i1007.HomeBloc>(

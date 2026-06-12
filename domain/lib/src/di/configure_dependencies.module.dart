@@ -5,13 +5,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i687;
 
-import 'package:domain/src/managers/managers.dart' as _i626;
 import 'package:injectable/injectable.dart' as _i526;
 
 class DomainPackageModule extends _i526.MicroPackageModule {
   // initializes the registration of main-scope dependencies inside of GetIt
   @override
-  _i687.FutureOr<void> init(_i526.GetItHelper gh) {
-    gh.lazySingleton<_i626.TabsNavigationManager>(() => _i626.TabsNavigationManagerImpl());
-  }
+  _i687.FutureOr<void> init(_i526.GetItHelper gh) {}
 }

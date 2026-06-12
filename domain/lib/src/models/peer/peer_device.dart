@@ -1,9 +1,8 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
 final class PeerDevice {
-  const PeerDevice({
-    required this.id,
-    required this.name,
-    required this.isOurApp,
-  });
+  const PeerDevice({required this.id, required this.name, required this.isOurApp});
 
   final String id;
   final String name;
@@ -12,10 +11,7 @@ final class PeerDevice {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        other is PeerDevice &&
-            other.id == id &&
-            other.name == name &&
-            other.isOurApp == isOurApp;
+        other is PeerDevice && other.id == id && other.name == name && other.isOurApp == isOurApp;
   }
 
   @override

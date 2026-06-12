@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 /// Launches the system phone dialer (`tel:`).
 ///
-/// Separate from [MessengerLaunchService]: telephony and messengers use different
-/// flows and URI schemes; extend this service for SMS, FaceTime, etc.
+/// Separate from messenger launch flows: telephony and messengers use different
+/// URI schemes; extend this service for SMS, FaceTime, etc.
 abstract class PhoneLaunchService {
   static Future<void> launchDialer(String phoneNumber) async {
     final String normalized = phoneNumber.replaceAll(RegExp(r'[^\d+#*]'), '');
