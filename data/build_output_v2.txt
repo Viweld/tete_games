@@ -1,0 +1,27 @@
+  0s injectable_generator:injectable_builder on 334 inputs; domain|lib/domain.dart
+  0s retrofit_generator on 131 inputs; lib/data.dart
+  7s retrofit_generator on 131 inputs: 3 skipped, 1 no-op; spent 5s analyzing, 1s resolving; lib/src/di/configure_dependencies.dart
+  7s retrofit_generator on 131 inputs: 100 skipped, 9 same, 22 no-op; spent 5s analyzing, 1s resolving
+  0s json_serializable on 131 inputs; lib/data.dart
+E json_serializable on lib/src/dtos/ordering/ordering_dtos.dart:
+  Could not generate `toJson` code for `terminal`.
+  To support the type `SimpleTerminalDto` you can:
+  * Use `JsonConverter`
+    https://pub.dev/documentation/json_annotation/latest/json_annotation/JsonConverter-class.html
+  * Use `JsonKey` fields `fromJson` and `toJson`
+    https://pub.dev/documentation/json_annotation/latest/json_annotation/JsonKey/fromJson.html
+    https://pub.dev/documentation/json_annotation/latest/json_annotation/JsonKey/toJson.html
+  package:data/src/dtos/ordering/response/order_transfer_dto.dart:37:28
+     ╷
+  37 │   final SimpleTerminalDto? terminal;
+     │                            ^^^^^^^^
+     ╵
+  0s json_serializable on 131 inputs: 83 skipped, 1 output, 5 same, 42 no-op
+  0s source_gen:combining_builder on 131 inputs; lib/data.dart
+  0s source_gen:combining_builder on 131 inputs: 116 skipped, 1 output, 14 same
+  1s injectable_generator:injectable_builder on 334 inputs: 277 skipped, 14 same, 34 no-op; lib/src/repositories/repositories.g.dart
+  1s injectable_generator:injectable_builder on 334 inputs: 285 skipped, 15 same, 34 no-op
+  0s injectable_generator:injectable_config_builder on 262 inputs; lib/data.dart
+  0s injectable_generator:injectable_config_builder on 262 inputs: 230 skipped, 1 same, 31 no-op
+  Failed to build with build_runner/jit in 9s; wrote 46 outputs.
+Failed to update packages.

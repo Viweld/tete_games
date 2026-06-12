@@ -1,0 +1,7 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.profile-prod.xcconfig"
+#include "Generated.xcconfig"
+FLUTTER_BUILD_MODE=profile
+GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.662069881435-2irsp8qflm34ldvaovocko71sl3af58k
+
+#include? "Secrets.xcconfig"
+

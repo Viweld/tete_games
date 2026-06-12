@@ -1,0 +1,46 @@
+  0s injectable_generator:injectable_builder on 334 inputs; domain|lib/domain.dart
+  0s retrofit_generator on 131 inputs; lib/data.dart
+  0s retrofit_generator on 131 inputs: 131 skipped
+  0s json_serializable on 131 inputs; lib/data.dart
+  0s json_serializable on 131 inputs: 131 skipped
+  0s source_gen:combining_builder on 131 inputs; lib/data.dart
+  0s source_gen:combining_builder on 131 inputs: 131 skipped
+  0s injectable_generator:injectable_builder on 334 inputs: 334 skipped
+  0s injectable_generator:injectable_config_builder on 262 inputs; lib/data.dart
+  0s injectable_generator:injectable_config_builder on 262 inputs: 262 skipped
+E json_serializable on lib/src/dtos/ordering/ordering_dtos.dart:
+  UnimplementedError: (InvalidTypeImpl) InvalidType
+  #0      typeToCode (package:json_serializable/src/utils.dart:226:3)
+  #1      createInvalidGenerationError (package:json_serializable/src/helper_core.dart:80:44)
+  #2      DecodeHelper._deserializeForField (package:json_serializable/src/decode_helper.dart:250:13)
+  #3      DecodeHelper.createFactory.deserializeFun (package:json_serializable/src/decode_helper.dart:59:11)
+  #4      _writeConstructorInvocation.<anonymous closure> (package:json_serializable/src/decode_helper.dart:345:42)
+  #5      MappedListIterable.elementAt (dart:_internal/iterable.dart:442:31)
+  #6      ListIterator.moveNext (dart:_internal/iterable.dart:371:26)
+  #7      StringBuffer.writeAll (dart:core-patch/string_buffer_patch.dart:106:25)
+  #8      _writeConstructorInvocation (package:json_serializable/src/decode_helper.dart:343:7)
+  #9      DecodeHelper.createFactory (package:json_serializable/src/decode_helper.dart:64:18)
+  #10     GeneratorHelper.generate (package:json_serializable/src/generator_helper.dart:84:28)
+  #11     _SyncStarIterator.moveNext (dart:async-patch/async_patch.dart:595:13)
+  #12     WhereIterator.moveNext (dart:_internal/iterable.dart:467:22)
+  #13     MappedIterator.moveNext (dart:_internal/iterable.dart:419:19)
+  #14     WhereIterator.moveNext (dart:_internal/iterable.dart:467:22)
+  #15     _UnifiedGenerator.generate (package:json_serializable/src/json_part_builder.dart:70:27)
+  <asynchronous suspension>
+  #16     _generate (package:source_gen/src/builder.dart:370:23)
+  <asynchronous suspension>
+  #17     Stream.toList.<anonymous closure> (dart:async/stream.dart:1417:7)
+  <asynchronous suspension>
+  #18     _Builder._generateForLibrary (package:source_gen/src/builder.dart:116:9)
+  <asynchronous suspension>
+  #19     _Builder.build (package:source_gen/src/builder.dart:108:5)
+  <asynchronous suspension>
+  #20     runBuilder.buildForInput (package:build_runner/src/build/run_builder.dart:85:7)
+  <asynchronous suspension>
+  #21     Future.wait.<anonymous closure> (dart:async/future.dart:546:21)
+  <asynchronous suspension>
+  #22     BuildLogLogger.scopeLogAsync.<anonymous closure> (package:build_runner/src/logging/build_log_logger.dart:58:13)
+  <asynchronous suspension>
+  
+  Failed to build with build_runner/jit in 1s; wrote 0 outputs.
+Failed to update packages.

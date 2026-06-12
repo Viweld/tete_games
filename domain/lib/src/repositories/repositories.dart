@@ -1,0 +1,33 @@
+import 'dart:io';
+
+import 'package:domain/src/models/models.dart';
+
+part 'airport_detail_repository.dart';
+part 'airport_terminals_repository.dart';
+part 'airports_repository.dart';
+part 'auth_repository.dart';
+part 'countries_repository.dart';
+part 'currencies_repository.dart';
+part 'flights_repository.dart';
+part 'languages_repository.dart';
+part 'paginated_data_repository.dart';
+part 'private_jets_repository.dart';
+part 'private_jets_ordering_repository.dart';
+part 'services_repository.dart';
+part 'profile_repository.dart';
+part 'services_ordering_repository.dart';
+part 'orders_repository.dart';
+part 'transfers_ordering_repository.dart';
+part 'timers_repository.dart';
+part 'transfers_types_repository.dart';
+part 'settings_repository.dart';
+part 'conditions_repository.dart';
+part 'travelers_repository.dart';
+part 'documents_repository.dart';
+part 'article_repository.dart';
+part 'notifications_repository.dart';
+part 'support_repository.dart';
+part 'transactions_repository.dart';
+part 'loyalty_repository.dart';
+part 'push_events_repository.dart';
+part 'cancellation_repository.dart';

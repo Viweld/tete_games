@@ -1,0 +1,73 @@
+name: app
+description: tete games — offline BLE multiplayer games (Flutterozavr workspace)
+publish_to: none
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.11.0 <4.0.0'
+  flutter: '>=3.41.0 <4.0.0'
+
+workspace:
+  - core
+  - core_ui
+  - data
+  - domain
+  - navigation
+  # fz:workspace-features
+  - features/main
+  - features/example
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ./core
+  core_ui:
+    path: ./core_ui
+  data:
+    path: ./data
+  domain:
+    path: ./domain
+  navigation:
+    path: ./navigation
+  # fz:feature-deps
+  main:
+    path: ./features/main
+  example:
+    path: ./features/example
+
+  get_it: ^9.2.1
+  injectable: ^3.0.0
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.7.1
+  injectable_generator: ^3.0.2
+  flutter_native_splash: ^2.4.7
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+  color: "#FBFCFF"
+  color_dark: "#FBFCFF"
+  image: assets/logo.png
+  image_dark: assets/logo.png
+  android_12:
+    color: "#FBFCFF"
+    color_dark: "#FBFCFF"
+    image: assets/logo.png
+    image_dark: assets/logo.png
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/logo.png
+    - .env.dev
+    - .env.prod
+    - data/resources/mocks/

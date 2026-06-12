@@ -1,0 +1,1263 @@
+{
+  "@@locale": "ru",
+  "all_documents_title": "Все документы",
+  "core_error_unknown": "Что-то пошло не так...",
+  "something_went_wrong": "Что-то пошло не так",
+  "name_validator_empty_message": "Не может быть пустым",
+  "name_validator_invalid_message": "Некорректный формат имени",
+  "name_validator_invalid_detailed_message": "Неверный формат имени. Используйте только латинские буквы, пробелы, дефисы или апострофы.",
+  "name_validator_overflow_message": "Имя не должно превышать 30 символов",
+  "email_validator_invalid_message": "Некорректный формат email",
+  "email_validator_overflow_message": "Email не должен превышать 50 символов",
+  "description_validator_overflow_message": "Длина описания не должна превышать 300 символов",
+  "expandable_text_fold_label": "свернуть",
+  "expandable_text_expand_label": "больше",
+  "service_category_airport_title": "Сервисы аэропорта",
+  "service_category_transfer_title": "Трансфер",
+  "service_category_private_jet_title": "Частный джет",
+  "service_category_promo_title": "Промо",
+  "nav_bar_main_title": "Главная",
+  "nav_bar_ordering_title": "Оформить",
+  "nav_bar_my_trips_title": "Мои поездки",
+  "nav_bar_profile_title": "Профиль",
+  "auth_login_title": "Войдите или создайте аккаунт",
+  "auth_login_subtitle": "Мы отправим код для входа на указанную почту",
+  "auth_email_hint": "Введите электронный адрес",
+  "auth_email_label": "Введите почту",
+  "auth_email_invalid_error": "Проверьте правильность ввода",
+  "auth_continue_button": "Продолжить",
+  "auth_terms_prefix": "Входя в аккаунт или создавая новый, вы соглашаетесь с нашими ",
+  "auth_terms_link": "Правилами и условиями",
+  "auth_terms_separator": " и ",
+  "auth_privacy_link": "Положением о конфиденциальности",
+  "auth_copyright": "2026. Все права защищены",
+  "auth_code_title": "Проверьте электронную почту",
+  "auth_code_sent_prefix": "Мы отправили код подтверждения на адрес ",
+  "auth_code_sent_suffix": ". Введите его, чтобы продолжить вход",
+  "auth_code_resend_prefix": "Письмо не пришло? Проверьте папку «Спам» или запросите новый код через ",
+  "auth_code_resend_button": "Отправить повторно",
+  "auth_code_expired_error": "Срок действия кода истёк. Запросите новый и попробуйте ещё раз",
+  "main_screen_title": "Главная",
+  "my_trips_screen_title": "Мои путешествия",
+  "profile_screen_title": "Профиль",
+  "example_action_navigateExample_title": "Пример навигации",
+  "estimate_seconds": "{seconds, plural, one{{seconds} секунда} few{{seconds} секунды} many{{seconds} секунд} other{{seconds} секунд}}",
+  "@estimate_seconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_welcome_anon_title": "Добро пожаловать!",
+  "profile_welcome_title": "Добро пожаловать, {name}!",
+  "@profile_welcome_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_level_status": "У вас базовый уровень — {level}",
+  "@profile_level_status": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_level_remaining": "До уровня {nextLevel} осталось: {amountRemaining, plural, =0{0 баллов} one{{amountRemaining} балл} few{{amountRemaining} балла} many{{amountRemaining} баллов} other{{amountRemaining} балла}}",
+  "@profile_level_remaining": {
+    "placeholders": {
+      "nextLevel": {
+        "type": "String"
+      },
+      "amountRemaining": {
+        "type": "num"
+      }
+    }
+  },
+  "profile_details_button": "Подробнее",
+  "profile_header_current_status_title": "ВАШ ТЕКУЩИЙ СТАТУС",
+  "profile_header_spent_for_period": "Потрачено за период",
+  "profile_header_to_level": "До уровня {levelName}",
+  "@profile_header_to_level": {
+    "placeholders": {
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "@profile_header_amount_remaining": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@profile_header_percent_to_next_level": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@profile_header_bonus_usd_equivalent": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@profile_header_cashback_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@profile_header_cashback_at_level": {
+    "placeholders": {
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_header_amount_remaining": "{amount} осталось",
+  "profile_header_percent_to_next_level": "{percent}% до следующего уровня",
+  "profile_header_bonus_usd_equivalent": "≈ {amount} к оплате",
+  "profile_header_cashback_percent": "{percent}% кэшбек",
+  "profile_header_cashback_description": " — вы получаете баллы с каждой покупки",
+  "profile_header_cashback_at_level": " на уровне {levelName}",
+  "profile_header_your_bonuses": "Ваши бонусы",
+  "profile_header_points": "баллов",
+  "profile_section_my_travels": "Мои путешествия",
+  "profile_item_bookings": "Бронирования",
+  "profile_item_my_reviews": "Мои отзывы",
+  "profile_section_account_management": "Управление аккаунтом",
+  "profile_item_personal_data": "Персональные данные",
+  "profile_item_other_travelers": "Другие путешественники",
+  "profile_section_help": "Помощь",
+  "profile_item_contact_support": "Связаться со службой поддержки",
+  "profile_item_articles": "Наш блог",
+  "profile_item_our_blog": "Наш блог",
+  "profile_item_security_center": "Центр знаний по безопасности",
+  "profile_section_payment_info": "Платежная информация",
+  "profile_item_rewards_wallet": "Вознаграждения и кошелек",
+  "profile_item_transactions": "Транзакции",
+  "profile_section_legal": "Юридические данные",
+  "profile_item_privacy": "Конфиденциальность",
+  "profile_item_terms": "Условия использования",
+  "profile_item_all_documents": "Все документы",
+  "profile_section_settings": "Настройки",
+  "profile_item_personalization": "Настройки персонализации",
+  "profile_item_mailing": "Настройки рассылки",
+  "personalization_screen_title": "Настройки персонализации",
+  "personalization_language_label": "Язык",
+  "personalization_language_search_hint": "Поиск по названию",
+  "personalization_currency_label": "Валюта",
+  "personalization_currency_search_hint": "Поиск по названию",
+  "personalization_region_label": "Регион/Страна",
+  "profile_logout_button": "Выйти",
+  "profile_delete_account_button": "Удалить аккаунт",
+  "auth_or_divider": "или",
+  "auth_and": "и",
+  "profile_not_auth_title": "Войдите в аккаунт",
+  "profile_not_auth_subtitle": "Сохраняйте поездки, маршруты и избранные места. Копите баллы и экономьте на заказах",
+  "profile_login_button": "Войти",
+  "auth_plug_title": "Ещё несколько секунд…",
+  "auth_plug_comment": "Мы завершаем вход в аккаунт",
+  "main_hero_title": "VIP-сервисы в аэропортах\nпо всему миру",
+  "main_search_hint": "Аэропорт, город или номер рейса...",
+  "main_search_date_hint": "Дата рейса...",
+  "main_search_button": "Найти",
+  "main_search_button_continue": "Продолжить",
+  "main_search_subtitle": "Бронирование за пару минут • Поддержка 24/7",
+  "main_services_title": "Услуги",
+  "main_loyalty_title": "Программа лояльности",
+  "main_loyalty_description": "Возвращаем часть стоимости поездок в бонусных баллах",
+  "main_loyalty_link": "Подробнее",
+  "main_airports_title": "Популярные аэропорты",
+  "main_airports_all": "Все",
+  "all_airports_screen_title": "Аэропорты с лучшими предложениями",
+  "all_airports_section_title": "Выбор аэропорта",
+  "all_airports_book_button": "Оформить",
+  "all_airports_empty": "Нет результатов",
+  "all_airports_search_hint": "Аэропорт или город",
+  "search_services_search_title": "Поиск аэропорта",
+  "search_services_all_airports_button": "Все аэропорты",
+  "empty_search_title": "Ничего не найдено",
+  "empty_search_subtitle": "Попробуйте изменить запрос\nили повторить позже",
+  "main_transfer_placeholder": "Раздел трансфера в разработке",
+  "personal_data_screen_title": "Персональные данные",
+  "personal_data_name_label": "Имя",
+  "personal_data_name_placeholder": "Укажите ваше имя",
+  "personal_data_email_label": "Адрес электронной почты",
+  "personal_data_phone_label": "Номер телефона",
+  "personal_data_phone_placeholder": "Укажите ваш номер телефона",
+  "personal_data_birthdate_label": "Дата рождения",
+  "personal_data_birthdate_placeholder": "Укажите вашу дату рождения",
+  "personal_data_gender_label": "Пол",
+  "personal_data_gender_male": "Мужской",
+  "personal_data_gender_female": "Женский",
+  "personal_data_citizenship_label": "Гражданство",
+  "personal_data_citizenship_placeholder": "Укажите ваше гражданство",
+  "personal_data_delete_account": "Удалить аккаунт",
+  "main_transfer_title": "Трансфер по всему миру",
+  "main_transfer_subtitle": "Без привязки к рейсу\nРаботает как персональный трансфер из любой точки",
+  "main_transfer_types_title": "Типы трансфера",
+  "main_search_transfer_date_title": "Дата поездки",
+  "main_search_transfer_date_hint": "Дата поездки",
+  "main_search_transfer_from_title": "Адрес отправления",
+  "main_search_transfer_from_hint": "Адрес отправления",
+  "main_search_transfer_to_title": "Адрес прибытия",
+  "main_search_transfer_to_hint": "Адрес прибытия",
+  "edit_name_title": "Укажите ваше имя",
+  "edit_name_avatar_changed_message": "Аватар профиля изменен",
+  "edit_name_photo_recommendation": "Для корректной работы сервиса Example App рекомендуем загрузить ваше реальное фото в профиль. Это позволит сотрудникам аэропорта легко вас идентифицировать и сопровождать без задержек.",
+  "personal_data_firstname_label": "Имя",
+  "personal_data_firstname_hint": "Имя (латиницей, например, Ivan)",
+  "personal_data_lastname_label": "Фамилия",
+  "personal_data_lastname_hint": "Фамилия (латиницей, например, Ivanov)",
+  "personal_data_photo_label": "Фотография профиля",
+  "personal_data_upload": "Загрузить",
+  "personal_data_save": "Сохранить",
+  "change_email_confirm_button": "Подтвердить",
+  "confirm_email_title": "Проверьте электронную почту",
+  "confirm_email_sent_prefix": "Мы отправили код подтверждения на адрес ",
+  "confirm_email_sent_suffix": ". Введите его, для подтверждения электронной почты",
+  "confirm_email_resend_prefix": "Письмо не пришло? Проверьте папку «Спам» или запросите новый код через ",
+  "confirm_email_resend_button": "Отправить повторно",
+  "confirm_email_submit_button": "Подтвердить",
+  "confirm_email_plug_title": "Ещё несколько секунд…",
+  "confirm_email_plug_comment": "Идет смена электронной почты",
+  "confirm_delete_account_title": "Удаление аккаунта",
+  "confirm_delete_account_sent_prefix": "Мы отправили код подтверждения на адрес ",
+  "confirm_delete_account_sent_suffix": ". Введите его, чтобы безвозвратно удалить аккаунт",
+  "confirm_delete_account_submit_button": "Удалить аккаунт",
+  "confirm_delete_account_plug_title": "Ещё несколько секунд…",
+  "confirm_delete_account_plug_comment": "Удаление аккаунта",
+  "birthday_screen_title": "Дата рождения",
+  "birthday_field_label": "Дата рождения",
+  "save_button": "Сохранить",
+  "invalid_date_error": "Введите корректную дату",
+  "citizenship_screen_title": "Гражданство",
+  "citizenship_search_placeholder": "Поиск по названию страны",
+  "main_transfer_date_modal_title": "Выбор даты поездки",
+  "main_flight_date_modal_title": "Выбор даты рейса",
+  "invitation_dialog_title": "Войти в аккаунт",
+  "invitation_dialog_message": "Войдите в профиль, чтобы сохранять данные пассажиров и историю поездок",
+  "invitation_dialog_button": "Войти",
+  "welcome_screen_title": "Добро пожаловать!",
+  "welcome_screen_message": "🎉 вы успешно зарегистрировались\nи вам навсегда доступны вознаграждения\nв программе лояльности. Ваш текущий уровень:",
+  "welcome_screen_level": "Start",
+  "welcome_screen_description": "За каждую оплату вам возвращаются бонусные\nбаллы. Чем больше поездок, тем выше статус\nи больше выгода!",
+  "welcome_screen_got_it": "Понятно",
+  "welcome_screen_details": "Подробнее о программе",
+  "welcome_screen_footer": "Повышайте уровень — получайте больше бонусов,\nподробнее можно прочитать на странице программы\nлояльности",
+  "flights_input_title": "Введите свои данные",
+  "stepped_header_step_label": "Шаг {current}/{total}",
+  "@stepped_header_step_label": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "flights_input_description": "Пожалуйста, укажите свои данные латинскими буквами, чтобы сотрудники аэропорта смогли их понять",
+  "flights_input_flight_data_title": "Данные рейса",
+  "flights_input_with_transfer": "С пересадкой",
+  "flights_input_second_flight_data_title": "Данные второго рейса",
+  "flights_input_remove_flight": "Удалить",
+  "flights_input_flight_number_label": "Номер",
+  "flights_input_flight_number_hint": "Номер рейса, например, CU 6456",
+  "flights_input_flight_date_label": "Дата",
+  "flights_input_flight_date_hint": "Дата рейса, ДД.ММ.ГГГГ",
+  "flights_input_footer_text": "Введите номер рейса — аэропорт подгрузится автоматически, и вы сможете выбрать услугу",
+  "flights_input_continue_button": "Продолжить",
+  "flight_not_found_title": "Рейс не найден.",
+  "flight_not_found_message": "Проверьте номер рейса и дату, если всё указано верно, то заполните время вылета вручную. Информация по рейсу может обновиться позже.",
+  "departure_time_label": "Время вылета",
+  "airport_header_departure_title": "Аэропорт вылета",
+  "airport_header_arrival_title": "Аэропорт прилета",
+  "airport_header_transit_title": "Транзитный пункт",
+  "airport_header_transit_arrival_title": "Транзитный пункт (Прилет)",
+  "airport_header_transit_departure_title": "Транзитный пункт (Вылет)",
+  "flights_input_step_2": "Шаг 2/6",
+  "flights_input_conditions_title": "Дополнительные условия",
+  "flights_input_next_step_hint": "Следующим шагом вы сможете выбрать услуги",
+  "flight_details_first_flight": "Первый рейс",
+  "flight_details_second_flight": "Второй рейс",
+  "flight_details_auto_filled_hint": "Данные рейса заполнены автоматически\nПроверьте корректность",
+  "flight_details_transit_exit": "Выход в город",
+  "flight_details_terminal_hint": "Укажите терминал",
+  "flight_details_terminal_label": "Терминал",
+  "flight_details_airport_name_hint": "Название аэропорта",
+  "flight_details_single_terminal_name": "Единый терминал",
+  "info_card_tariffs_description": "Тарифы зависят от аэропорта, услуги и возраста пассажира. Нажми сюда, чтобы посмотреть подробности",
+  "select_services_title": "Выберите услуги",
+  "select_services_airport_prompt": "На основе данных рейса выберите услугу для этого аэропорта: {airportName}",
+  "@select_services_airport_prompt": {
+    "placeholders": {
+      "airportName": {
+        "type": "String"
+      }
+    }
+  },
+  "select_services_main_services_hint": "Выберите основные услуги — дополнительные параметры появятся ниже",
+  "select_services_no_service_needed": "Не нужна услуга в этом аэропорту",
+  "select_services_fast_track_notice": "В этом аэропорту доступно несколько услуг Fast Track. Стоимость и условия могут отличаться в зависимости от выбранной услуги.",
+  "select_services_vip_lounge_notice": "В этом аэропорту доступно несколько VIP-залов. Стоимость и условия могут отличаться в зависимости от выбранного зала.",
+  "select_services_transfer_notice": "Стоимость трансфера рассчитывается индивидуально. Менеджер свяжется с вами и согласует финальную цену. Сейчас оплата не требуется. Укажите данные, чтобы зафиксировать заказ.",
+  "select_services_accompaniment_notice": "В этом аэропорту доступно несколько услуг сопровождения. Стоимость и условия могут отличаться в зависимости от выбранной услуги.",
+  "select_services_at_least_one_required_toast": "Для оформления заказа нужно выбрать хотя бы одну услугу в любом из аэропортов по вашему маршруту",
+  "auth_choice_title": "Сохранить бронирование в личном кабинете?",
+  "auth_choice_subtitle": "Если у вас уже есть аккаунт — просто войдите.\nЕсли нет, мы можем создать аккаунт и сохранить бронирование в «Моих путешествиях»",
+  "auth_choice_login_button": "Войти в аккаунт",
+  "auth_choice_create_account_label": "Создать аккаунт и сохранить бронь",
+  "auth_choice_create_account_hint": "Мы отправим код на почту. После подтверждения все данные сохранятся.",
+  "auth_choice_without_auth_label": "Продолжить без регистрации",
+  "auth_choice_without_auth_hint": "Бронирование не появится в «Моих путешествиях».\nДля управления заказом потребуется код бронирования — сохраните его.",
+  "auth_choice_continue_button": "Продолжить",
+  "flight_input_time_hint": "ЧЧ:ММ",
+  "select_services_vip_lounge": "VIP-зал",
+  "transfer_field_required_error": "Поле не может быть пустым",
+  "transfer_route_title": "Маршрут трансфера",
+  "transfer_departure_address_hint": "Адрес отправления",
+  "transfer_intermediate_point_hint": "Промежуточная точка",
+  "transfer_arrival_address_hint": "Адрес назначения",
+  "transfer_car_category_hint": "Категория автомобиля",
+  "transfer_add_stop_button": "Добавить остановку",
+  "flight_details_flight_label": "Рейс",
+  "airport_detail_terminals_subtitle": "Терминалы {names}",
+  "@airport_detail_terminals_subtitle": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "airport_detail_tariffs_title": "Тарифы",
+  "airport_detail_terminal_hint": "Терминал",
+  "airport_detail_all_terminals": "Все терминалы",
+  "airport_detail_terminal_option": "Терминал {name}",
+  "@airport_detail_terminal_option": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "airport_detail_book_button": "Забронировать",
+  "airport_detail_what_included_title": "Что входит в услугу",
+  "airport_detail_photos_title": "Фотографии",
+  "airport_detail_important_to_know": "Важно знать",
+  "airport_detail_checkout_button": "Оформить",
+  "airport_detail_price_depends_on_tariff": "Цена зависит от выбранного тарифа",
+  "airport_detail_tariff_description": "Описание",
+  "airport_detail_tariff_adults": "Взрослые",
+  "airport_detail_tariff_per_person": " за пассажира",
+  "airport_detail_tariff_children": "Дети",
+  "airport_detail_tariff_per_child": " за ребёнка",
+  "airport_detail_tariff_infants": "Дети до 2х лет",
+  "airport_detail_free": "Бесплатно",
+  "airport_detail_price_from": "Цена от",
+  "airport_detail_price_transfer_from": "Стоимость зависит от маршрута",
+  "airport_detail_from": "от ",
+  "airport_detail_price_label": "Цена",
+  "airport_detail_price_on_request": "По запросу",
+  "airport_detail_overview_available_services_title": "Доступные услуги",
+  "airport_detail_overview_customer_reviews_title": "Отзывы клиентов",
+  "airport_detail_overview_about_airport_title": "Об аэропорте",
+  "airport_detail_overview_faq_title": "Вопросы и ответы",
+  "airport_detail_general_information_title": "Общая информация",
+  "airport_detail_info_iata_label": "Код IATA",
+  "airport_detail_info_city_label": "Город",
+  "airport_detail_info_terminals_label": "Терминалы",
+  "airport_detail_info_gates_label": "Выходы (гейты)",
+  "airport_detail_info_hours_label": "Режим работы",
+  "airport_detail_info_passengers_label": "Пассажиропоток в год",
+  "airport_detail_info_airlines_label": "Авиакомпании",
+  "airport_detail_info_address_label": "Адрес",
+  "airport_detail_info_distance_to_city_label": "Расстояние до города",
+  "airport_detail_info_public_transport_label": "Общественный транспорт",
+  "airport_detail_getting_there_title": "Как добраться",
+  "airport_detail_getting_there_address_label": "Адрес",
+  "airport_detail_getting_there_distance_label": "Расстояние",
+  "airport_detail_getting_there_transport_label": "Транспорт",
+  "airport_detail_getting_there_need_transfer_title": "Нужен трансфер?",
+  "airport_detail_getting_there_book_premium_transfer_button": "Заказать премиум-трансфер",
+  "airport_detail_service_details_title": "Детали услуг",
+  "airport_detail_how_it_works_title": "Как это работает",
+  "airport_detail_not_included_title": "Не включено",
+  "airport_detail_about_service_title": "Об услуге",
+  "airport_detail_important_information_title": "Важная информация",
+  "airport_detail_order_transfer_button": "Заказать трансфер",
+  "airport_detail_order_service_button": "Заказать услугу",
+  "airport_detail_benefit_instant_confirmation": "Мгновенное подтверждение",
+  "airport_detail_benefit_free_cancellation_24h": "Бесплатная отмена до 24 ч до услуги",
+  "airport_detail_benefit_e_ticket_email": "Электронный билет на email",
+  "airport_detail_stat_airlines_label": "Авиакомпании",
+  "airport_detail_stat_annual_passengers_label": "Пассажиров в год",
+  "airport_detail_stat_working_hours_label": "Режим работы",
+  "airport_detail_stat_free_cancellation_label": "Бесплатная отмена",
+  "airport_detail_reviews_count": "{count, plural, one{{count} отзыв} few{{count} отзыва} many{{count} отзывов} other{{count} отзывов}}",
+  "@airport_detail_reviews_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "airport_detail_services_available": "{count, plural, one{Доступен {count} вид услуг} few{Доступно {count} вида услуг} many{Доступно {count} видов услуг} other{Доступно {count} видов услуг}}",
+  "@airport_detail_services_available": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "airport_detail_view_photos": "Посмотреть фото",
+  "airport_detail_retry_button": "Повторить",
+  "airport_detail_empty_title": "Услуги скоро появятся",
+  "airport_detail_empty_description": "К сожалению, сейчас мы не предоставляем услуги в этом аэропорту. Но мы уже работаем над подключением новых сервисов и расширением покрытия. \n\nВы можете оставить свою электронную почту — мы уведомим вас сразу, как услуги станут доступны.",
+  "airport_detail_empty_subscribe_button": "Подписаться на обновление",
+  "airport_detail_subscribe_title": "Получайте уведомления",
+  "airport_detail_subscribe_description": "Оставьте email — мы сообщим, когда услуги в этом аэропорту станут доступны",
+  "airport_detail_receive_news": "Получать новости и обновления сервиса Example App",
+  "airport_detail_subscribe_submit_button": "Подписаться",
+  "airport_detail_agreement_text": "Подписываясь, вы соглашаетесь с нашими",
+  "airport_detail_info_tarif_bottom_sheet_title": "Цена услуги зависит от терминала",
+  "airport_detail_info_tarif_bottom_sheet_description": "Вы можете посмотреть все варианты. При оформлении укажите номер рейса — мы определим терминал автоматически. Если терминал ещё неизвестен, мы рассчитаем ориентировочную стоимость и свяжемся с вами для уточнения.",
+  "core_delete_button": "Удалить",
+  "core_cancel_button": "Отменить",
+  "core_cancel_short_button": "Отмена",
+  "core_back_button": "Назад",
+  "core_male": "Мужской",
+  "core_female": "Женский",
+  "core_not_specified": "Не указан",
+  "auth_invalid_code": "Неправильный код",
+  "profile_traveler_card_default_name": "Путешественник",
+  "profile_traveler_card_gender_label": "Пол:",
+  "profile_traveler_card_dob_label": "Дата рождения:",
+  "profile_traveler_card_dob_not_specified": "Не указана",
+  "profile_traveler_card_edit_button": "Редактировать данные",
+  "profile_traveler_card_badge_passenger": "Пассажир",
+  "profile_logout_message": "Вы уверены, что хотите выйти из аккаунта?",
+  "profile_travelers_title": "Другие путешественники",
+  "profile_travelers_empty_text": "Вы ещё не добавили других путешественников. Сохраните данные семьи, коллег или тех, с кем вы ездите чаще всего — и они будут автоматически подставляться в бронирования. Это сэкономит время и избавит от повторного заполнения документов",
+  "profile_travelers_delete_dialog_title": "Удаление пассажира",
+  "profile_travelers_delete_dialog_message": "Вы действительно хотите удалить пассажира из списка? Это действие нельзя будет отменить",
+  "profile_travelers_add_button": "Добавить путешественников",
+  "profile_delete_account_message": "Вы уверены, что хотите удалить аккаунт?",
+  "profile_birthday_hint_format": "ДД.ММ.ГГГГ",
+  "services_endpoints_tariffs_title": "Тарифы",
+  "core_logout_button": "Выйти",
+  "edit_traveler_add_title": "Добавление путешественника",
+  "edit_traveler_edit_title": "Редактирование данных",
+  "edit_traveler_add_button": "Добавить",
+  "edit_traveler_consent_text": "Я подтверждаю, что указанное лицо согласно на передачу персональных данных",
+  "select_travelers_title": "Данные пассажира",
+  "select_travelers_subtitle": "Данные указываются строго латинскими буквами, как в паспорте",
+  "select_travelers_passengers_title": "Мои данные",
+  "select_travelers_i_am_flying": "Лечу я",
+  "select_travelers_adults": "Взрослые",
+  "select_travelers_children": "Дети (2–12 лет)",
+  "select_travelers_infants": "Дети (до 2 лет)",
+  "select_travelers_prm": "Есть пассажир с ограниченной мобильностью (PRM)",
+  "select_travelers_add_passenger": "Добавить пассажира",
+  "select_travelers_add_companion": "Добавить сопровождающего",
+  "select_travelers_form_select_from_list": "Выбрать из своего списка",
+  "select_travelers_form_traveler_label": "Путешественник #{id}",
+  "@select_travelers_form_traveler_label": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "select_travelers_form_first_name_label": "Имя",
+  "select_travelers_form_first_name_hint": "Имя (латиницей, например, Ivan)",
+  "select_travelers_form_last_name_label": "Фамилия",
+  "select_travelers_form_last_name_hint": "Фамилия (латиницей, например, Ivanov)",
+  "select_travelers_form_citizenship_label": "Гражданство",
+  "select_travelers_form_citizenship_hint": "Не выбрано",
+  "select_travelers_form_birthdate_label": "Дата рождения",
+  "select_travelers_form_birthdate_hint": "ДД.ММ.ГГГГ",
+  "select_travelers_form_phone_label": "Контактный телефон",
+  "select_travelers_form_email_label": "Адрес электронной почты",
+  "select_travelers_form_email_hint": "example@example.com",
+  "select_travelers_form_delete": "Удалить",
+  "select_travelers_passenger_header": "Данные {index, select, 2{второго} 3{третьего} 4{четвёртого} 5{пятого} 6{шестого} 7{седьмого} 8{восьмого} 9{девятого} 10{десятого} other{{index}-го  пассажира}}",
+  "@select_travelers_passenger_header": {
+    "placeholders": {
+      "index": {
+        "type": "String"
+      }
+    }
+  },
+  "select_travelers_first_companion_header": "Данные сопровождающего",
+  "select_travelers_first_companion_subtitle": "Данные указываются строго латинскими буквами, как в паспорте",
+  "select_travelers_companion_header": "Данные {index, select, 1{первого} 2{второго} 3{третьего} 4{четвёртого} 5{пятого} 6{шестого} 7{седьмого} 8{восьмого} 9{девятого} 10{десятого} other{{index}-го  сопровождающего}}",
+  "@select_travelers_companion_header": {
+    "placeholders": {
+      "index": {
+        "type": "String"
+      }
+    }
+  },
+  "select_travelers_confirm_email_title": "Подтвердите почту",
+  "select_travelers_confirm_email_create_account_message": "Подтвердите почту, чтобы завершить создание аккаунта и получить детали бронирования.",
+  "select_travelers_confirm_email_guest_message": "Вы можете оформить заказ без регистрации, но нам нужно подтвердить вашу почту. Это необходимо, чтобы отправить подтверждение и детали услуги.",
+  "select_travelers_confirm_email_continue_button": "Продолжить",
+  "ordering_contact_person_minimum_age_error": "Контактное лицо должно быть не младше 12 лет.",
+  "transfers_tariffs_car_categories_title": "Категории автомобиля",
+  "lounge_tariffs_car_categories_title": "VIP-залы",
+  "vip_lounge_card_price_label": "Стоимость",
+  "vip_lounge_card_price_prefix": "от",
+  "vip_lounge_card_watch_all_photos": "Посмотреть все фото",
+  "vip_lounge_card_select_button": "Выбрать {name}",
+  "@vip_lounge_card_select_button": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "send_code_terms_agreement": "Вы соглашаетесь с нашими ",
+  "tariffs_title": "Тарифы",
+  "edit_traveler_name_hint": "Укажите имя в точности, как оно написано в паспорте или другом официальном документе",
+  "payment_screen_title": "Выберите способ оплаты",
+  "payment_methods_card": "Банковской картой",
+  "payment_methods_apple_google_pay": "Apple Pay / Google Pay",
+  "payment_methods_soon": "(скоро)",
+  "payment_bonus_points_auth_hint": "Доступно после входа/создания аккаунта",
+  "payment_bonus_points_use": "Использовать баллы",
+  "payment_bonus_points_available": "Доступно {available}",
+  "@payment_bonus_points_available": {
+    "placeholders": {
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+  "payment_bonus_points_use_all": "Использовать все",
+  "payment_total_title": "Итоговая стоимость:",
+  "payment_total_bonus_prefix": "После оплаты вы получите",
+  "payment_total_bonus_points": "+{points} баллов",
+  "@payment_total_bonus_points": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "payment_total_bonus_suffix": "Они автоматически появятся на вашем счёте",
+  "payment_terms_prefix": "Продолжая я соглашаюсь с ",
+  "payment_terms_link": "Условиями использования",
+  "payment_terms_and": " и ",
+  "payment_privacy_link": "Политикой конфиденциальности",
+  "payment_pay_button": "Оплатить",
+  "payment_free_checkout_screen_title": "Оформление заявки",
+  "payment_free_checkout_payment_manual_hint": "Стоимость трансфера рассчитывается менеджером вручную. После отправки заявки мы свяжемся с вами в течение часа, чтобы уточнить детали и согласовать стоимость. Пожалуйста, дождитесь звонка.\n\nПосле согласования стоимости вы сможете оплатить услугу в личном кабинете — во вкладке «Мои путешествия» → «Бронирования».",
+  "payment_free_checkout_submit_button": "Отправить заявку",
+  "summary_screen_title": "Сводка",
+  "summary_flight_info_title": "Информация о рейсе",
+  "summary_services_not_required": "Услуги в этом аэропорту не требуются",
+  "summary_transfer_price_not_included": "Стоимость трансфера не включена. Менеджер свяжется с вами для уточнения цены.",
+  "summary_transfer_route_title": "Маршрут трансфера",
+  "summary_transfer_pickup_address_label": "Адрес отправления:",
+  "summary_transfer_stop_label": "Остановка:",
+  "summary_transfer_dropoff_address_label": "Адрес назначения:",
+  "summary_transfer_car_category_label": "Категория автомобиля:",
+  "summary_transfer_car_standard": "Стандарт",
+  "summary_additional_conditions_title": "Дополнительные условия",
+  "summary_travelers_title": "Путешественники",
+  "summary_companions_title": "Сопровождающие",
+  "summary_agreements_title": "Согласие",
+  "summary_agreement_data_correctness": "Я подтверждаю корректность данных",
+  "summary_agreement_terms_of_use": "Я согласен(на), с политикой конфиденциальности и условиями использования",
+  "summary_submit_button": "К оплате",
+  "summary_total_label": "ИТОГО:",
+  "summary_terminal_label": "Терминал {name}",
+  "@summary_terminal_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "summary_flight_number_label": "Рейс: {number}",
+  "@summary_flight_number_label": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "order_status_paid": "Оплачен",
+  "order_status_waiting_payment": "Ждёт оплату",
+  "order_status_draft": "Черновик",
+  "order_status_processing": "Обработка",
+  "order_ref_number": "Номер заказа: {ref}",
+  "@order_ref_number": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "my_trips_tab_drafts": "Черновики",
+  "my_trips_tab_upcoming": "Предстоящие",
+  "my_trips_tab_completed": "Завершённые",
+  "my_trips_tab_cancelled": "Отменённые",
+  "order_details_id_label": "Заказ #{id}",
+  "@order_details_id_label": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "my_trips_not_auth_title": "Ваши путешествия — здесь",
+  "my_trips_not_auth_subtitle": "Войдите в аккаунт, чтобы сохранить и просматривать свои поездки",
+  "my_trips_empty_state_title": "У вас пока нет бронирований",
+  "my_trips_empty_state_subtitle": "Оформите первую услугу и все поездки появятся здесь",
+  "my_trips_empty_state_find_booking_button": "Не могу найти бронирование",
+  "my_trips_empty_state_select_airport_button": "Перейти к выбору аэропорта",
+  "my_trips_empty_state_book_service_button": "Забронировать услугу",
+  "order_flight_number_label": "Рейс: {number}",
+  "@order_flight_number_label": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "order_details_cancellation_rules_title": "Правила отмены",
+  "order_details_cancellation_rule_1": "Отмена услуги менее чем за 48 часов до времени начала — 100% стоимости.",
+  "order_details_cancellation_rule_2": "Неявка пассажира — 100% стоимости.",
+  "order_details_cancellation_rule_3": "Изменения в бронировании возможны по согласованию с менеджером и зависят от доступности услуги.",
+  "order_details_my_order_title": "Мой заказ",
+  "order_details_booking_number": "Номер бронирования",
+  "order_details_flight_info": "Информация о рейсе",
+  "order_details_show_to_employee": "Показать сотруднику",
+  "order_details_download_receipt": "Скачать квитанцию",
+  "order_details_what_next": "Что дальше?",
+  "order_details_price_details": "Детали цены",
+  "order_details_additional_conditions": "Дополнительные условия",
+  "order_details_travelers_companions": "Путешественники/Сопровождающие",
+  "order_details_our_recommendations": "Наши рекомендации",
+  "order_details_add_to_calendar": "Добавить в календарь",
+  "order_details_support_text": "Если вам нужно внести изменения, пожалуйста, обратитесь в поддержку",
+  "order_details_cancel_order": "Отменить заявку",
+  "order_details_order_new_service": "Заказать новую услугу",
+  "order_details_endpoint_departure": "Вылет",
+  "order_details_endpoint_arrival": "Прилет",
+  "order_details_endpoint_transit": "Транзит",
+  "order_details_endpoint_transit_arrival": "Транзит (прилет)",
+  "order_details_endpoint_transit_departure": "Транзит (вылет)",
+  "order_details_travelers_title": "Путешественники",
+  "order_details_companions_title": "Сопровождающие",
+  "order_status_requires_surcharge": "Требует доплаты",
+  "order_details_whats_next_text": "Мы позаботимся о том, чтобы ваш путь прошёл спокойно и без лишних вопросов.\n\n1. Сохраните QR-код/номер бронирования, он нужен, чтобы быстро идентифицировать вас\n  • Он нужен, чтобы сотрудник Example App быстро идентифицировал вас\n  • Вы сможете открыть его в любой момент в разделе Мои поездки\n\n2. Ожидайте сообщение от нас\n  • Мы заранее пришлём напоминание с временем, терминалом и точкой встречи\n  • Если понадобится дополнительная информация — менеджер свяжется с вами лично\n\n3. Как найти сотрудника в день поездки\n  • Приходите в указанное место встречи: стойка Fast Track, VIP-вход или зона прилёта\n  • Сотрудник будет ждать вас\n  • Если вдруг вы не видите его сразу — просто ответьте на уведомление или позвоните по номеру из письма, мы всегда на связи.\n\n4. Что иметь при себе\n  • Паспорт\n  • QR-код\n\nИ обязательно не переживайте, в аэропорту вы не останетесь одни — мы всегда на связи!",
+  "order_details_our_recommendations_text": "• Прибывайте заранее\nДля международных рейсов рекомендуем приезжать за 2–2,5 часа, для внутренних — за 1,5 часа, чтобы комфортно пройти все этапы с Fast Track или сопровождением.\n\n• Где находится стойка услуги\nСтойка Fast Track / Meet & Assist расположена в зоне вылета, рядом с контролем безопасности. Следуйте указателям \"Fast Track / Priority\" или покажите свой код сотруднику у входа.\n\n• Как добраться до регистрации\nОт входа до стойки регистрации — примерно 3–7 минут ходьбы. Если вы забронировали сопровождение, сотрудник встретит вас у входа или в согласованной точке и проведёт весь путь за вас.\n\n• Сколько времени занимает прохождение\nС Fast Track время прохождения формальностей обычно составляет от 5 до 15 минут, в зависимости от загруженности терминала.\n\n• Если вы путешествуете с багажом\nАгент поможет перенести багаж и проведёт к приоритетной стойке регистрации, если она доступна в этом терминале.",
+  "transfer_input_title": "Введите свои данные",
+  "transfer_input_description": "Пожалуйста, укажите свои данные латинскими буквами, чтобы сотрудники смогли их понять",
+  "transfer_order_info_message": "Трансфер можно оформить отдельно или вместе с другими сервисами аэропорта. Чтобы выбрать несколько услуг, включая трансфер, перейдите в основную форму здесь.",
+  "transfer_order_info_button": "Оформить услуги аэропорта",
+  "transfer_trip_data_title": "Данные поездки",
+  "transfer_date_label": "Дата",
+  "transfer_time_label": "Время",
+  "transfer_car_category_label": "Категория автомобиля",
+  "transfer_trip_route_title": "Маршрут поездки",
+  "transfer_departure_address_label": "Адрес отправления",
+  "transfer_arrival_address_label": "Адрес назначения",
+  "transfer_intermediate_point_label": "Промежуточная точка",
+  "transfer_auth_choice_title": "Сохранить бронирование в личном кабинете?",
+  "transfer_auth_choice_subtitle": "Если у вас уже есть аккаунт — просто войдите.\nЕсли нет, мы можем создать аккаунт и сохранить бронирование в «Моих путешествиях»",
+  "transfer_auth_choice_login_button": "Войти в аккаунт",
+  "transfer_auth_choice_create_account_label": "Создать аккаунт и сохранить бронь",
+  "transfer_auth_choice_create_account_hint": "Мы отправим код на почту. После подтверждения все данные сохранятся.",
+  "transfer_auth_choice_without_auth_label": "Продолжить без регистрации",
+  "transfer_auth_choice_without_auth_hint": "Бронирование не появится в «Моих путешествиях».\nДля управления заказом потребуется код бронирования — сохраните его.",
+  "transfer_auth_choice_continue_button": "Продолжить",
+  "transfer_select_travelers_title": "Данные пассажира",
+  "transfer_select_travelers_subtitle": "Данные указываются строго латинскими буквами, как в паспорте",
+  "transfer_select_travelers_passengers_title": "Мои данные",
+  "transfer_select_travelers_i_am_traveling": "Я поеду",
+  "transfer_select_travelers_adults": "Взрослые",
+  "transfer_select_travelers_children": "Дети (2–12 лет)",
+  "transfer_select_travelers_infants": "Дети (до 2 лет)",
+  "transfer_select_travelers_prm": "Есть пассажир с ограниченной мобильностью (PRM)",
+  "transfer_select_travelers_add_passenger": "Добавить пассажира",
+  "transfer_select_travelers_add_companion": "Добавить сопровождающего",
+  "transfer_select_travelers_form_select_from_list": "Выбрать из своего списка",
+  "transfer_select_travelers_form_traveler_label": "Путешественник #{id}",
+  "transfer_select_travelers_form_first_name_label": "Имя",
+  "transfer_select_travelers_form_first_name_hint": "Имя (латиницей, например, Ivan)",
+  "transfer_select_travelers_form_last_name_label": "Фамилия",
+  "transfer_select_travelers_form_last_name_hint": "Фамилия (латиницей, например, Ivanov)",
+  "transfer_select_travelers_form_citizenship_label": "Гражданство",
+  "transfer_select_travelers_form_citizenship_hint": "Не выбрано",
+  "transfer_select_travelers_form_birthdate_label": "Дата рождения",
+  "transfer_select_travelers_form_birthdate_hint": "ДД.ММ.ГГГГ",
+  "transfer_select_travelers_form_phone_label": "Контактный телефон",
+  "transfer_select_travelers_form_email_label": "Адрес электронной почты",
+  "transfer_select_travelers_form_email_hint": "example@example.com",
+  "transfer_select_travelers_form_delete": "Удалить",
+  "transfer_select_travelers_passenger_header": "Данные {index, select, 2{второго} 3{третьего} 4{четвёртого} 5{пятого} 6{шестого} 7{седьмого} 8{восьмого} 9{девятого} 10{десятого} other{{index}-го  пассажира}}",
+  "transfer_select_travelers_first_companion_header": "Данные сопровождающего",
+  "transfer_select_travelers_first_companion_subtitle": "Данные указываются строго латинскими буквами, как в паспорте",
+  "transfer_select_travelers_companion_header": "Данные {index, select, 1{первого} 2{второго} 3{третьего} 4{четвёртого} 5{пятого} 6{шестого} 7{седьмого} 8{восьмого} 9{девятого} 10{десятого} other{{index}-го  сопровождающего}}",
+  "transfer_select_travelers_confirm_email_title": "Подтвердите почту",
+  "transfer_select_travelers_confirm_email_create_account_message": "Подтвердите почту, чтобы завершить создание аккаунта и получить детали бронирования.",
+  "transfer_select_travelers_confirm_email_guest_message": "Вы можете оформить заказ без регистрации, но нам нужно подтвердить вашу почту. Это необходимо, чтобы отправить подтверждение и детали услуги.",
+  "transfer_select_travelers_confirm_email_continue_button": "Продолжить",
+  "transfer_auth_code_title": "Введите код",
+  "transfer_auth_code_sent_prefix": "Мы отправили письмо с кодом подтверждения на ",
+  "transfer_auth_code_sent_suffix": ". Пожалуйста, введите его.",
+  "transfer_auth_code_resend_prefix": "Вы сможете отправить код повторно через ",
+  "transfer_auth_code_resend_button": "Отправить повторно",
+  "transfer_send_code_terms_agreement": "Нажимая на кнопку «Продолжить», вы соглашаетесь с ",
+  "transfer_auth_terms_link": "Условиями использования",
+  "transfer_auth_and": "и",
+  "transfer_auth_privacy_link": "Политикой конфиденциальности",
+  "transfer_auth_copyright": "© Example App 2024",
+  "transfer_auth_continue_button": "Продолжить",
+  "transfer_checkout_screen_title": "Оформление заявки",
+  "transfer_checkout_transfer_route_title": "Маршрут трансфера",
+  "transfer_checkout_transfer_pickup_address_label": "Адрес подачи",
+  "transfer_checkout_transfer_dropoff_address_label": "Адрес назначения",
+  "transfer_checkout_transfer_stop_label": "Остановка",
+  "transfer_checkout_transfer_car_category_label": "Класс автомобиля",
+  "transfer_checkout_transfer_car_standard": "Стандарт",
+  "transfer_checkout_total_label": "Итого",
+  "transfer_checkout_additional_conditions_title": "Дополнительные условия",
+  "transfer_checkout_travelers_title": "Данные о пассажирах",
+  "transfer_checkout_companions_title": "Данные о сопровождающих",
+  "transfer_checkout_agreements_title": "Соглашения",
+  "transfer_checkout_agreement_data_correctness": "Я подтверждаю корректность данных",
+  "transfer_checkout_agreement_terms_of_use": "Я согласен(на), с политикой конфиденциальности и условиями использования",
+  "transfer_checkout_submit_button": "Отправить заявку",
+  "transfer_checkout_payment_manual_hint": "Стоимость трансфера рассчитывается менеджером вручную. После отправки заявки мы свяжемся с вами в течение часа, чтобы уточнить детали и согласовать стоимость. Пожалуйста, дождитесь звонка.\n\nПосле согласования стоимости вы сможете оплатить услугу в личном кабинете — во вкладке «Мои путешествия» → «Бронирования».",
+  "transfer_auth_invalid_code_error": "Неверный код",
+  "payment_success_dialog_title": "Оплата прошла успешно",
+  "payment_success_dialog_message": "Не забудьте сохранить идентификатор бронирования",
+  "payment_success_dialog_button": "Окей",
+  "transfer_checkout_success_dialog_title": "Заявка принята",
+  "transfer_checkout_success_dialog_message": "Спасибо! Мы получили ваш запрос на трансфер. В ближайшее время менеджер свяжется с вами, чтобы уточнить детали и подтвердить поездку.",
+  "transfer_checkout_success_dialog_button": "Окей",
+  "support_help_screen": "Помощь",
+  "support_chat": "Чат поддержки",
+  "support_assistent": "Ассистент",
+  "support_faq": "FAQ",
+  "support_tickets": "Обращения",
+  "support_new_ticket": "Новое обращение",
+  "support_cancel_booking": "Отменить бронирование",
+  "support_booking_number": "Номер бронирования",
+  "support_not_booking_number": "Нет номера бронирования",
+  "support_suggestions_question_label": "О чем хотите спросить?",
+  "support_input_hint": "Введите текст...",
+  "support_bot_request_ref_number": "Пожалуйста, укажите номер бронирования",
+  "support_bot_ticket_created": "Спасибо за обращение! Наш специалист уже рассматривает ваш запрос.",
+  "support_bot_chat_end": "Чат завершён, если проблема не решена, пожалуйста, откройте новое обращение",
+  "support_bot_no_ref_fallback": "Напишите, что произошло. Мы подключаем специалиста и скоро ответим вам!",
+  "support_category_fast_track": "Fast Track",
+  "support_category_vip_lounge": "VIP-зал",
+  "support_category_transfer": "Transfer",
+  "support_category_meet_assist": "Meet & Assist",
+  "support_category_other": "Другое",
+  "transactions_screen_title": "Транзакции",
+  "transactions_tab_all": "Все",
+  "transactions_tab_payments": "Платежи",
+  "transactions_tab_refunds": "Возвраты",
+  "transactions_tab_bonuses": "Бонусы",
+  "transactions_all_empty_state": "История пока пуста.\nЗдесь будут отображаться ваши оплаты, возвраты и начисления бонусных баллов после первой транзакции.",
+  "transactions_payments_empty_state": "История пока пуста.\nЗдесь будут отображаться ваши оплаты после первой транзакции.",
+  "transactions_refunds_empty_state": "История пока пуста.\nЗдесь будут отображаться ваши возвраты.",
+  "transactions_bonuses_empty_state": "История пока пуста.\nЗдесь будут отображаться начисления бонусных баллов.",
+  "transaction_card_details_button": "Подробнее",
+  "transaction_card_parameter_accrued_bonuses": "Начислено бонусов",
+  "transaction_card_parameter_order": "Заказ:",
+  "transaction_card_parameter_date": "Дата:",
+  "transaction_card_parameter_amount": "Сумма:",
+  "transaction_status_success": "Успешно",
+  "transaction_status_refunded": "Возвращено",
+  "transaction_status_accrued": "Начислено",
+  "transaction_status_pending": "В процессе",
+  "transaction_status_failed": "Ошибка",
+  "transaction_status_unknown": "Неизвестно",
+  "receipt_title": "Квитанция об операции",
+  "receipt_transaction_id": "ID транзакции",
+  "receipt_date": "Дата и время",
+  "receipt_amount": "Сумма",
+  "receipt_status": "Статус",
+  "receipt_payment_method": "Способ оплаты",
+  "receipt_payer": "Плательщик",
+  "receipt_merchant": "Мерчант",
+  "receipt_merchant_name": "Example App",
+  "receipt_merchant_address": "г. Москва, ул. Арбат, д. 1",
+  "receipt_transaction_type": "Тип транзакции",
+  "receipt_transaction_type_deposit": "Пополнение",
+  "receipt_transaction_type_adjustment": "Корректировка",
+  "receipt_payment_method_manual": "Вручную",
+  "receipt_external_id": "Внешний ID",
+  "receipt_order_number": "Номер заказа",
+  "receipt_description": "Описание",
+  "receipt_loading_title": "Формирование квитанции",
+  "receipt_loading_comment": "Пожалуйста, подождите, мы готовим документ...",
+  "receipt_footer_text": "Квитанция сформирована автоматически в приложении Example App.\nЭто официальный документ, подтверждающий совершение транзакции.",
+  "privacy_update_date": "Обновлено: {date} года",
+  "@privacy_update_date": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_title": "Программа лояльности",
+  "loyalty_bonus_badge": "{points, plural, =0{Ваши бонусы: 0 баллов} one{Ваши бонусы: {points} балл} few{Ваши бонусы: {points} балла} many{Ваши бонусы: {points} баллов} other{Ваши бонусы: {points} балла}}",
+  "@loyalty_bonus_badge": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "loyalty_bonus_description": "Каждая оплаченная услуга приближает вас к следующему уровню программы. Чем выше статус, тем больше баллов возвращается на ваш счёт.",
+  "loyalty_bonus_details_link": "Подробнее о бонусных баллах",
+  "loyalty_current_level_title": "Вы на базовом уровне",
+  "loyalty_current_level_cashback": "{percents}% баллами с каждой покупки",
+  "@loyalty_current_level_cashback": {
+    "placeholders": {
+      "percents": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_points_to_next_level": "До следующего уровня вам не хватает {points} баллов",
+  "@loyalty_points_to_next_level": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "loyalty_about_levels_title": "Экономьте на будущих поездках",
+  "loyalty_about_levels_card_1_title": "Переходите на новый уровень быстрее",
+  "loyalty_about_levels_card_1_description": "Мы учитываем каждое ваше бронирование — и повышать статус становится легко",
+  "loyalty_about_levels_card_2_title": "Всегда получаете больше",
+  "loyalty_about_levels_card_2_description": "Чем выше ваш уровень, тем больше баллов возвращается на счёт при каждой поездке",
+  "loyalty_about_levels_card_3_title": "Оплачивайте поездки выгоднее",
+  "loyalty_about_levels_card_3_description": "Используйте накопленные баллы, чтобы платить меньше уже в следующем аэропорту",
+  "loyalty_bonus_description_new": "При каждой оплате услуг вы получаете бонусные баллы. Их количество зависит от вашего статуса.\nСтатус определяется суммарной стоимостью оплаченных услуг и закрепляется навсегда.",
+  "loyalty_current_level_description": "До следующего уровня вам не хватает {points} баллов, и тогда скидки и вознаграждения уровня {nextLevel} станут вашими.\nУчитываются все бронирования!",
+  "loyalty_progress_caption": "{percent}% до следующего уровня. Прогресс считается автоматически по вашим бронированиям",
+  "loyalty_level_at_registration": "Начисляется при регистрации в сервисе",
+  "loyalty_level_accrued_from": "Начисляется при заказе от {amount}",
+  "@loyalty_level_accrued_from": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_conditions_link": "Условия программы",
+  "loyalty_not_auth_message": "Войдите в аккаунт, чтобы накапливать баллы и участвовать в программе лояльности",
+  "loyalty_login_button": "Войти",
+  "loyalty_rules_title": "Использование баллов",
+  "loyalty_rules_main_text": "Бонусными баллами можно оплатить любую часть стоимости услуг — полностью или частично. Если баллов недостаточно, оставшаяся сумма оплачивается деньгами.",
+  "loyalty_rules_rate_text": "1 балл = 0,1 $",
+  "loyalty_rules_additional_conditions_title": "Дополнительные условия",
+  "loyalty_rules_condition_1": "Баллы нельзя обменять на наличные средства",
+  "loyalty_rules_condition_2": "Баллы не начисляются за оплату баллами",
+  "loyalty_rules_condition_3": "При возврате услуги баллы, начисленные за неё, списываются",
+  "loyalty_rules_important_title": "Важно",
+  "loyalty_rules_important_text": "Если оплата производится в другой валюте, расчёт баллов осуществляется с пересчётом в USD по актуальному курсу.",
+  "loyalty_current_level_user": "Вы на уровне {levelName}!",
+  "@loyalty_current_level_user": {
+    "placeholders": {
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_level_status_1": "это базовый уровень",
+  "loyalty_level_status_2": "второй уровень",
+  "loyalty_level_status_3": "третий уровень",
+  "loyalty_level_status_4": "четвертый уровень",
+  "loyalty_level_status_5": "пятый уровень",
+  "loyalty_level_status_6": "шестой уровень",
+  "loyalty_level_status_other": "{rank}-й уровень",
+  "@loyalty_level_status_other": {
+    "placeholders": {
+      "rank": {
+        "type": "int"
+      }
+    }
+  },
+  "loyalty_level_cashback_percent": "{percents}%",
+  "@loyalty_level_cashback_percent": {
+    "placeholders": {
+      "percents": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_level_cashback_suffix": " баллами с каждой покупки",
+  "loyalty_level_threshold_base": "Базовый уровень",
+  "loyalty_level_threshold_from_amount": "При сумме от {amount}",
+  "@loyalty_level_threshold_from_amount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_level_privilege_1_1": "Накопление баллов",
+  "loyalty_level_privilege_1_2": "Базовая поддержка",
+  "loyalty_level_privilege_1_3": "Доступ к акциям",
+  "loyalty_level_privilege_2_1": "Приоритетная поддержка",
+  "loyalty_level_privilege_2_2": "Ранний доступ к скидкам",
+  "loyalty_level_privilege_2_3": "Бонус на день рождения",
+  "loyalty_level_privilege_3_1": "Персональный менеджер",
+  "loyalty_level_privilege_3_2": "Бесплатный апгрейд",
+  "loyalty_level_privilege_3_3": "Эксклюзивные предложения",
+  "loyalty_level_privilege_4_1": "Консьерж-сервис 24/7",
+  "loyalty_level_privilege_4_2": "Бесплатные услуги",
+  "loyalty_level_privilege_4_3": "VIP-события",
+  "loyalty_status_metric_current_level": "Текущий уровень",
+  "loyalty_status_metric_cashback": "Возврат с покупок",
+  "loyalty_bonus_accrual_history": "История начислений",
+  "loyalty_progress_next_level_points": "{nextLevelName} · {pointsText}",
+  "@loyalty_progress_next_level_points": {
+    "placeholders": {
+      "nextLevelName": {
+        "type": "String"
+      },
+      "pointsText": {
+        "type": "String"
+      }
+    }
+  },
+  "loyalty_current_level_user_greeting": "{userName}, вы на уровне {levelName}!",
+  "@loyalty_current_level_user_greeting": {
+    "placeholders": {
+      "userName": {
+        "type": "String"
+      },
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "article_update_date": "Обновлено: {date}",
+  "@article_update_date": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "article_read_full": "Читать полностью",
+  "article_help_instruction_travelers": "Помощь и инструкции для путешественников",
+  "article_go_to_service": "Перейти к услугам",
+  "article_select": "Выбор статьи",
+  "article_share": "Поделиться статьей",
+  "article_book_service": "Забронировать услуги",
+  "article_search_title": "Поиск статьи",
+  "notifications_title": "Мои уведомления",
+  "notifications_text_empty": "Уведомлений пока нет. \nЗдесь будут отображаться важные сообщения о ваших бронированиях, оплатах и изменениях услуг. Как только появится активность — мы сразу сообщим.",
+  "notifications_toggle_title": "Рассылки",
+  "notifications_turn_on": "Включить уведомления",
+  "notifications_turn_off": "Выключить уведомления",
+  "notifications_book_service": "Забронировать услуги",
+  "notifications_new": "Новые",
+  "notifications_no_new": "Новых уведомлений нет",
+  "notifications_read": "Прочитанные",
+  "notifications_read_all": "Прочитать все",
+  "notifications_detail": "Подробнее",
+  "receipt_pdf_transaction_title": "Квитанция",
+  "receipt_pdf_date_external": "от {date} года: {externalId}",
+  "@receipt_pdf_date_external": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "externalId": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_pdf_order_number": "Заказ № {orderRef}",
+  "@receipt_pdf_order_number": {
+    "placeholders": {
+      "orderRef": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_transfer_data_title": "Данные трансфера",
+  "receipt_transfer_stop_point": "Точка остановки",
+  "receipt_total_label": "ИТОГО: {amount}",
+  "@receipt_total_label": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_flight_entry": "{index}. Рейс: {flightNumber}, {dateTime}",
+  "@receipt_flight_entry": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "flightNumber": {
+        "type": "String"
+      },
+      "dateTime": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_label_status_colon": "Статус:",
+  "receipt_label_date_colon": "Дата:",
+  "receipt_label_currency_colon": "Валюта:",
+  "receipt_label_points_colon": "Баллы:",
+  "receipt_points_accrued_line": "+{amount} ({accruedLabel})",
+  "@receipt_points_accrued_line": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "accruedLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_payment_status_awaiting": "Ожидает оплату",
+  "receipt_payment_status_paid": "Оплачено",
+  "receipt_payment_status_declined": "Платеж не прошел",
+  "receipt_payment_status_unknown_long": "Неизвестный статус",
+  "receipt_pdf_company_footer": "ООО «Example App»\nEmail для связи: support@example.com\n\nПодробная информация об условиях предоставления услуг и обработке персональных данных доступна по ссылкам:\nУсловия использования и Политика конфиденциальности",
+  "receipt_pdf_bonus_title": "Детали бонусной операции",
+  "receipt_bonus_breakdown_title": "Расчет бонусов",
+  "receipt_bonus_paid_service_label": "Сумма оплаченной услуги",
+  "receipt_bonus_user_level_label": "Статус пользователя",
+  "receipt_bonus_coefficient_label": "Бонусный коэффициент",
+  "receipt_bonus_percent_of_order": "{percent}% от суммы заказа",
+  "@receipt_bonus_percent_of_order": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_bonus_accrued_label": "Начислено бонусов",
+  "receipt_bonus_points_short": "{count, plural, one{{count} балл} few{{count} балла} many{{count} баллов} other{{count} балла}}",
+  "@receipt_bonus_points_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "receipt_bonus_section_status": "Статус бонусов",
+  "receipt_bonus_points_status_label": "Статус баллов",
+  "receipt_bonus_accrual_date_label": "Дата начисления",
+  "receipt_bonus_expiry_title": "Срок действия",
+  "receipt_bonus_valid_until": "до {date}",
+  "@receipt_bonus_valid_until": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "receipt_bonus_twelve_months_note": "Баллы действуют 12 месяцев с момента начисления",
+  "receipt_bonus_balance_title": "Баланс бонусов",
+  "receipt_bonus_balance_current": "Текущий",
+  "receipt_bonus_balance_spendable": "Доступно для использования",
+  "receipt_bonus_program_line_1": " • Бонусные баллы начисляются в рамках программы лояльности Example App.",
+  "receipt_bonus_program_line_2": " • Условия начисления, использования и срока действия баллов регулируются правилами программы лояльности.",
+  "receipt_bonus_rules_body": " • Баллы можно использовать для полной или частичной оплаты следующих услуг Example App.\n • Баллы не обмениваются на денежные средства\n • Баллы не начисляются при оплате услуг баллами\n • При возврате услуги начисленные за неё баллы будут списаны",
+  "receipt_header_id": "ID: {id}",
+  "@receipt_header_id": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "my_trips_delete_draft_dialog_title": "Удалить черновик?",
+  "my_trips_delete_draft_dialog_message": "Черновик заказа будет удален безвозвратно.",
+  "my_trips_draft_continue_ordering": "Продолжить оформление",
+  "calendar_event_flight_title": "Рейс {flightNumber}",
+  "@calendar_event_flight_title": {
+    "placeholders": {
+      "flightNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "calendar_event_flight_description": "Полет с {airline} ({departure} → {arrival})",
+  "@calendar_event_flight_description": {
+    "placeholders": {
+      "airline": {
+        "type": "String"
+      },
+      "departure": {
+        "type": "String"
+      },
+      "arrival": {
+        "type": "String"
+      }
+    }
+  },
+  "cancellation_screen_title": "Отмена бронирования",
+  "cancellation_search_subtitle": "Введите данные бронирования, чтобы проверить возможность отмены",
+  "cancellation_email_at_checkout_label": "Электронная почта при оформлении",
+  "cancellation_email_short_hint": "Электронная почта",
+  "cancellation_find_booking_button": "Найти бронирование",
+  "cancellation_field_required_error": "Обязательно для ввода",
+  "cancellation_order_not_found_title": "Бронирование не найдено",
+  "cancellation_order_not_found_write_support": "Написать в поддержку",
+  "cancellation_order_not_found_body": "Проверьте номер бронирования и адрес электронной почты. Если проблема сохраняется, свяжитесь со службой поддержки",
+  "cancellation_order_not_found_details": "Номер бронирования:\n{orderNumber}\n\nЭлектронная почта:\n{email}",
+  "@cancellation_order_not_found_details": {
+    "placeholders": {
+      "orderNumber": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "cancellation_cancelled_title": "Бронирование отменено",
+  "cancellation_cancelled_message": "Информация об отмене и возврате появится в разделе «Мои путешествия».\n\nПодтверждение также отправлено на вашу электронную почту.",
+  "cancellation_auth_manage_bookings_title": "Хотите управлять бронированиями удобнее?",
+  "cancellation_auth_skip": "Пропустить",
+  "cancellation_auth_invite_body": "Создайте или войдите в аккаунт, чтобы видеть все поездки, статусы и уведомления в одном месте",
+  "cancellation_confirm_title": "Вы уверены, что хотите отменить бронирование?",
+  "cancellation_confirm_message": "Это действие нельзя будет отменить",
+  "cancellation_confirm_primary": "Подтверждаю",
+  "core_order_number_copied_to_clipboard": "Номер заказа скопирован в буфер обмена",
+  "cancellation_status_available": "Отмена доступна",
+  "cancellation_status_unavailable": "Отмена недоступна",
+  "cancellation_available_hint": "Вы можете отменить бронирование и получить возврат средств.",
+  "cancellation_unavailable_hint": "Срок бесплатной отмены истёк, поэтому отменить заказ нельзя. Возврат средств не предусмотрен. Подробнее — в правилах ниже.",
+  "cancellation_support_hint": "Если вам нужно внести изменения, пожалуйста, обратитесь в поддержку, не отменяйте заказ",
+  "order_status_cancelled": "Отменён",
+  "order_refund_status_processing": "Ожидается возврат средств",
+  "order_refund_status_refunded": "Средства возвращены",
+  "order_refund_status_error": "Ошибка возврата средств",
+  "order_status_payment_error": "Ошибка оплаты",
+  "order_status_cancel_requested": "Отмена",
+  "order_status_waiting_processing": "В очереди",
+  "order_status_waiting_partner": "У партнёра",
+  "order_status_partner_confirmed": "Подтверждён",
+  "order_status_in_progress": "Выполняется",
+  "order_status_pending_pre_flight": "До вылета",
+  "order_status_in_flight": "В полёте",
+  "order_status_pending_post_flight": "После",
+  "order_status_completed": "Завершён",
+  "order_status_partner_rejected": "Отклонён",
+  "order_status_refund_error": "Сбой возврата",
+  "order_status_refund_processing": "Возврат",
+  "order_status_refunded": "Возвращён",
+  "search_services_initial_title": "Начните вводить аэропорт или рейс",
+  "search_services_initial_subtitle": "Найдите аэропорт по названию или городу, либо введите номер рейса для оформления услуг в аэропорту прилета или вылета",
+  "rating_badge_terrible": "Ужасно",
+  "rating_badge_bad": "Плохо",
+  "rating_badge_normal": "Нормально",
+  "rating_badge_good": "Хорошо",
+  "rating_badge_excellent": "Превосходно",
+  "secret_mode_production_mode_title": "Production mode",
+  "secret_mode_return_to_production_message": "Return to production mode?",
+  "secret_mode_yes": "Yes",
+  "secret_mode_no": "No",
+  "secret_mode_wrong_password": "Wrong password",
+  "secret_mode_test_api_title": "Test API",
+  "secret_mode_version_label": "Version",
+  "secret_mode_password_hint": "Password",
+  "secret_mode_ok": "OK",
+  "private_jet_charter_title": "Чартер частного самолёта",
+  "private_jet_charter_subtitle": "Летайте по своему расписанию. Без очередей, задержек и компромиссов. Доступ к 5000+ бортам по всему миру.",
+  "main_search_private_jet_departure_title": "Откуда",
+  "main_search_private_jet_departure_hint": "Откуда (город или аэропорт)",
+  "main_search_private_jet_arrival_title": "Куда",
+  "main_search_private_jet_arrival_hint": "Куда (город или аэропорт)",
+  "main_search_private_jet_date_title": "Дата",
+  "main_search_private_jet_date_hint": "Дата",
+  "main_search_private_jet_date_picker_title": "Выбор даты",
+  "main_search_private_jet_passengers_title": "Пассажиры",
+  "main_search_private_jet_passengers_hint": "Пассажиры",
+  "main_search_private_jet_passengers_more_than_20": "> 20 пассажиров",
+  "private_jet_benefit_fleet_title": "5000+ бортов",
+  "private_jet_benefit_fleet_subtitle": "Доступ к крупнейшему в мире парку частных самолётов",
+  "private_jet_benefit_booking_title": "За 2 часа",
+  "private_jet_benefit_booking_subtitle": "Бронирование с уведомлением всего за 2 часа",
+  "private_jet_benefit_safety_title": "Сертификация безопасности",
+  "private_jet_benefit_safety_subtitle": "Все борта соответствуют стандартам ARGUS/Wyvern",
+  "private_jet_benefit_destinations_title": "Летайте куда угодно",
+  "private_jet_benefit_destinations_subtitle": "Доступ к 40 000+ аэропортов по всему миру — даже к удалённым полосам",
+  "private_jet_popular_types_title": "Популярные типы самолётов",
+  "private_jet_passengers_up_to": "до {count} чел.",
+  "@private_jet_passengers_up_to": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "private_jet_price_from": "От",
+  "private_jet_per_hour": "/ час",
+  "private_jet_concierge_title": "Персональный консьерж 24/7",
+  "private_jet_concierge_description": "Не хотите заполнять формы? Мы всё понимаем. Наша команда консьержей доступна круглосуточно: подберём борт, организуем трансфер, кейтеринг и изменения в последний момент.",
+  "private_jet_concierge_feature_fast_reply": "Быстрый ответ — в среднем менее 2 минут",
+  "private_jet_concierge_feature_multilingual": "Мультиязычная команда — английский, арабский, русский, французский",
+  "private_jet_concierge_feature_full_service": "Полный сервис — перелёты, отели, трансферы, мероприятия",
+  "private_jet_concierge_feature_personal_manager": "Персональный менеджер на весь трип",
+  "private_jet_concierge_whatsapp_button": "Написать в WhatsApp",
+  "private_jet_concierge_online_status": "НА СВЯЗИ СЕЙЧАС",
+  "private_jet_details_range_label": "Дальность",
+  "private_jet_details_speed_label": "Скорость",
+  "private_jet_details_baggage_label": "Багаж",
+  "private_jet_details_cabin_dimensions_title": "Размеры салона",
+  "private_jet_details_cabin_height_label": "Высота",
+  "private_jet_details_cabin_width_label": "Ширина",
+  "private_jet_details_cabin_length_label": "Длина",
+  "private_jet_details_send_request_button": "Отправить заявку",
+  "private_jet_details_call_button": "Позвонить",
+  "private_jet_ordering_placeholder": "Оформление заявки на частный джет — в разработке",
+  "units_km": "{value} км",
+  "units_kmh": "{value} км/ч",
+  "units_kg": "{value} кг",
+  "@units_km": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "@units_kmh": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "@units_kg": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  }
+}

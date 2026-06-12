@@ -1,0 +1,28 @@
+name: example
+publish_to: none
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+  flutter: '>=3.38.0 <4.0.0'
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  core:
+    path: ../../core
+  domain:
+    path: ../../domain
+  core_ui:
+    path: ../../core_ui
+  navigation:
+    path: ../../navigation
+
+  freezed: ^3.2.3
+
+dev_dependencies:
+  auto_route_generator: ^10.5.0
+  build_runner: ^2.7.1
+  injectable_generator: ^3.0.2

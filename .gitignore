@@ -1,0 +1,73 @@
+
+# FVM Version Cache
+.fvm/
+
+# Development-only (not required to build or run the app)
+
+# AI assistant rules and agent docs
+.cursor/
+.cursorrules
+AGENTS.md
+
+# Mason / Flutterozavr kit scaffolding
+.mason/
+mason.yaml
+mason-lock.json
+.fz/
+
+# Flutter DevTools
+**/devtools_options.yaml
+
+# Static analysis
+analysis_options.yaml
+
+# Localization maintenance scripts
+core/resources/lang/scan_ru.dart
+core/resources/lang/translate_arb.dart
+
+# Tests
+**/test/
+
+# IDE
+.vscode/
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release

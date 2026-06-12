@@ -1,0 +1,38 @@
+name: data
+publish_to: none
+description: Project data module
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+  flutter: '>=3.38.0 <4.0.0'
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../core
+  domain:
+    path: ../domain
+  # fz:network-deps
+
+  connectivity_plus: ^7.0.0
+  shared_preferences: ^2.5.3
+  retrofit: ^4.9.2
+  dio: ^5.9.0
+  pretty_dio_logger: ^1.4.0
+  json_annotation: ^4.11.0
+  flutter_secure_storage: ^10.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.7.1
+  injectable_generator: ^3.0.2
+  json_serializable: ^6.13.1
+  retrofit_generator: ^10.2.5
+
+flutter:
+  assets:
+    - resources/mocks/

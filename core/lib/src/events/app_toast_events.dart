@@ -1,0 +1,34 @@
+import 'package:flutter/foundation.dart';
+
+// enum ToastType { error, success, warning, info }
+
+@immutable
+sealed class AppToastEvent {
+  const AppToastEvent._([this.message]);
+
+  final String? message;
+
+  const factory AppToastEvent.error([String? message]) = ErrorToastEvent;
+
+  const factory AppToastEvent.success([String? message]) = SuccessToastEvent;
+
+  const factory AppToastEvent.warning([String? message]) = WarningToastEvent;
+
+  const factory AppToastEvent.info([String? message]) = InfoToastEvent;
+}
+
+final class ErrorToastEvent extends AppToastEvent {
+  const ErrorToastEvent([super.message]) : super._();
+}
+
+final class SuccessToastEvent extends AppToastEvent {
+  const SuccessToastEvent([super.message]) : super._();
+}
+
+final class WarningToastEvent extends AppToastEvent {
+  const WarningToastEvent([super.message]) : super._();
+}
+
+final class InfoToastEvent extends AppToastEvent {
+  const InfoToastEvent([super.message]) : super._();
+}
