@@ -1,3 +1,4 @@
+export 'peer/peer_models.dart';
 export 'airports/airport.dart';
 export 'airports/airport_detail.dart';
 export 'airports/airport_important_info.dart';

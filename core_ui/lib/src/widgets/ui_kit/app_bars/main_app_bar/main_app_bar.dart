@@ -1,6 +1,5 @@
 import 'package:core/core.dart';
 import 'package:core_ui/src/widgets/ui_kit/app_bars/main_app_bar/widgets/secret_mode_dialogs.dart';
-import 'package:core_ui/src/widgets/ui_kit/app_bars/main_app_bar_notifications/main_app_bar_notification.dart';
 import 'package:navigation/navigation.dart';
 
 export 'bloc/main_app_bar_bloc.dart';
@@ -107,7 +106,6 @@ class _MainAppBarState extends State<MainAppBar> {
                       ),
                     ),
                   ),
-                  const AppBarBellButton(),
                   if (state.profile != null)
                     AppUserAvatar.mini(
                       email: state.profile?.email ?? '',
@@ -131,8 +129,7 @@ class _MainAppBarLeading extends StatelessWidget {
   final bool hasSecretMode;
   final VoidCallback onLogoTap;
 
-  static bool _stripVisible(AppConfig config) =>
-      config.flavor == Flavor.prod && config.runtimeMode == AppRuntimeMode.test;
+  static bool _stripVisible(AppConfig config) => config.runtimeMode == AppRuntimeMode.test;
 
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ abstract class ApiModule {
   @Named('BaseUrl')
   @singleton
   String baseUrl(AppConfig config) {
-    if (config.flavor == Flavor.prod && config.runtimeMode == AppRuntimeMode.test) {
+    if (config.runtimeMode == AppRuntimeMode.test) {
       return AppConstants.runtimeTestApiBaseUrl;
     }
     return dotenv.env['BASE_URL'] ?? '';

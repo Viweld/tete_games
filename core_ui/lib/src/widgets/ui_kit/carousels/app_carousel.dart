@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class AppCarousel extends StatefulWidget {
   final int itemCount;
@@ -163,7 +164,7 @@ class _AppCarouselState extends State<AppCarousel> {
           padding: padding,
           itemCount: widget.itemCount,
           addAutomaticKeepAlives: false,
-          cacheExtent: _itemWidth,
+          scrollCacheExtent: ScrollCacheExtent.pixels(_itemWidth),
           separatorBuilder: (BuildContext context, int index) => SizedBox(width: widget.gap),
           itemBuilder: (BuildContext context, int index) {
             return _CarouselItemPeekTapWrapper(

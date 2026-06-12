@@ -16,8 +16,6 @@ dependencies:
     path: ../core
   core_ui:
     path: ../core_ui
-  example:
-    path: ../features/example
   # fz:navigation-features
   main:
     path: ../features/main

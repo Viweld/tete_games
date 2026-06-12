@@ -10,18 +10,17 @@ class AppRouter extends RootStackRouter {
     // fz:routes
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: SplashRoute.page, initial: true),
-    AutoRoute(page: ExampleRoute.page),
+    AutoRoute(page: GamesListRoute.page),
   ];
 
   Future<void> navigateBack([Object? result]) => maybePop(result);
 
-  /// Post-splash entry; replace with home when the main home screen is added.
-  Future<void> navigateRoot() => replaceAll(<PageRouteInfo<Object?>>[const ExampleRoute()]);
-
-  Future<void> navigateExample() => push(const ExampleRoute());
+  Future<void> navigateRoot() => replaceAll(<PageRouteInfo<Object?>>[const HomeRoute()]);
 
   // fz:navigate-methods
   Future<void> navigateHome() => push(const HomeRoute());
+
+  Future<void> navigateGamesList() => push(const GamesListRoute());
 
   /// Stubs for `core_ui` MainAppBar until modules are connected via `fz add`.
   Future<void> navigateSupport() async {}

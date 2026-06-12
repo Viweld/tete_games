@@ -36,7 +36,7 @@ abstract class AppConstants {
 
   static String promoMobileUrl(String languageCode) => '$basePath$languageCode/$promoMobileSegment';
 
-  // TODO(Skeleton): Replace with your dev/staging API base URL or rely on `.env.dev` only.
+  // TODO(Skeleton): Replace with your staging API base URL or rely on `.env` only.
   static const String runtimeTestApiBaseUrl = 'https://api.example.com/api/';
 
   // TODO(Skeleton): Remove or replace before production — debug-only API unlock password.

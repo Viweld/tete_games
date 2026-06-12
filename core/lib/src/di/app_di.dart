@@ -2,9 +2,8 @@ import 'package:core/core.dart';
 import 'package:core/src/di/app_di.config.dart';
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
-import 'package:navigation/navigation.dart';
 // fz:kit-imports
-import 'package:main/main.dart';
+import 'package:navigation/navigation.dart';
 
 final GetIt appLocator = GetIt.instance;
 
@@ -23,16 +22,10 @@ const String authScope = 'authScope';
     ExternalModule(DomainPackageModule),
     // fz:external-modules
     ExternalModule(MainPackageModule),
-    ExternalModule(ExamplePackageModule),
   ],
 )
-Future<void> configureDependencies({
-  required Flavor flavor,
-  required AppRuntimeMode runtimeMode,
-}) async {
-  appLocator.registerLazySingleton<AppConfig>(
-    () => AppConfig.fromFlavor(flavor, runtimeMode: runtimeMode),
-  );
+Future<void> configureDependencies({required AppRuntimeMode runtimeMode}) async {
+  appLocator.registerLazySingleton<AppConfig>(() => AppConfig.create(runtimeMode: runtimeMode));
 
   appLocator.registerLazySingleton<LocaleController>(
     () => LocaleController(initial: AppLocalizationConfig.fallbackLocale),
@@ -47,21 +40,17 @@ Future<void> configureDependencies({
     () => BlocErrorHandler(appLocator<AppToastBus>(), appLocator<ErrorHandlingPolicy>()),
   );
 
-  appLocator.registerLazySingleton<AppRestarter>(() => AppRestarter(flavor));
+  appLocator.registerLazySingleton<AppRestarter>(AppRestarter.new);
 
-  await appLocator.init(environment: flavor.title);
+  await appLocator.init();
 }
 
 /// Soft restart: resets DI and re-initializes with the current [AppRuntimeMode] from storage.
 final class AppRestarter {
-  AppRestarter(this._flavor);
-
-  final Flavor _flavor;
-
   Future<void> restart() async {
     await appLocator.reset();
     final AppRuntimeMode mode = await AppRuntimeModeStorage.read();
-    await configureDependencies(flavor: _flavor, runtimeMode: mode);
+    await configureDependencies(runtimeMode: mode);
     appRestartGeneration.value++;
   }
 }

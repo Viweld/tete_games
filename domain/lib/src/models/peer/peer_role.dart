@@ -1,0 +1,4 @@
+enum PeerRole {
+  server,
+  client,
+}

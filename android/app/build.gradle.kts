@@ -51,16 +51,6 @@ android {
         versionName = flutter.versionName
     }
 
-    flavorDimensions += "app"
-    productFlavors {
-        create("dev") {
-            dimension = "app"
-        }
-        create("prod") {
-            dimension = "app"
-        }
-    }
-
     buildTypes {
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")

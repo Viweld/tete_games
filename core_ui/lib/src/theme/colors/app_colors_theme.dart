@@ -53,8 +53,6 @@ abstract class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
 
   AppOrderStatusLabelTheme get orderStatus;
 
-  AppRatingBadgeTheme get ratingBadge;
-
   @override
   ThemeExtension<AppColorsTheme> copyWith() => this;
 
@@ -377,14 +375,5 @@ class LightColorTheme extends AppColorsTheme {
     refundProcessing: AppColors.actAccent,
     refunded: AppColors.addAccent,
     fallback: AppColors.actNeutral,
-  );
-
-  @override
-  AppRatingBadgeTheme get ratingBadge => const AppRatingBadgeTheme(
-    terrible: AppColors.ratingTerrible,
-    bad: AppColors.ratingBad,
-    normal: AppColors.ratingNormal,
-    good: AppColors.ratingGood,
-    excellent: AppColors.ratingExcellent,
   );
 }

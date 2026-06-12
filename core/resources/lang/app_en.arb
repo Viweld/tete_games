@@ -1,11 +1,8 @@
 {
   "@@locale": "en",
-  "all_documents_title": "All documents",
-  "core_error_unknown": "Something went wrong...",
   "something_went_wrong": "Something went wrong",
   "name_validator_empty_message": "Cannot be empty",
   "name_validator_invalid_message": "Invalid name format",
-  "name_validator_invalid_detailed_message": "Invalid name format. Use only Latin letters, spaces, hyphens, or apostrophes.",
   "name_validator_overflow_message": "Name should not exceed 30 characters",
   "email_validator_invalid_message": "Invalid email format",
   "email_validator_overflow_message": "Email should not exceed 50 characters",
@@ -14,247 +11,8 @@
   "expandable_text_expand_label": "more",
   "service_category_airport_title": "Airport Services",
   "service_category_transfer_title": "Transfer",
-  "service_category_promo_title": "Promo",
-  "nav_bar_main_title": "Main",
-  "nav_bar_ordering_title": "Ordering",
-  "nav_bar_my_trips_title": "My Trips",
-  "nav_bar_profile_title": "Profile",
-  "auth_login_title": "Log in or create an account",
-  "auth_login_subtitle": "We will send a login code to the provided email",
-  "auth_email_hint": "Enter email address",
-  "auth_email_label": "Enter email",
-  "auth_email_invalid_error": "Check the correctness of input",
-  "auth_continue_button": "Continue",
-  "auth_terms_prefix": "By logging into your account or creating a new one, you agree to our ",
-  "auth_terms_link": "Terms and Conditions",
-  "auth_terms_separator": " and ",
-  "auth_privacy_link": "Privacy Policy",
-  "auth_copyright": "2026. All rights reserved",
-  "auth_code_title": "Check your email",
-  "auth_code_sent_prefix": "We have sent a confirmation code to the address ",
-  "auth_code_sent_suffix": ". Enter it to continue logging in",
-  "auth_code_resend_prefix": "Did not receive the email? Check the 'Spam' folder or request a new code through ",
-  "auth_code_resend_button": "Resend",
-  "auth_code_expired_error": "The code has expired. Request a new one and try again",
-  "main_screen_title": "Home",
-  "my_trips_screen_title": "My Trips",
-  "profile_screen_title": "Profile",
-  "example_action_navigateExample_title": "Example navigation",
-  "estimate_seconds": "{seconds, plural, one{{seconds} second} few{{seconds} seconds} many{{seconds} seconds} other{{seconds} seconds}}",
-  "@estimate_seconds": {
-    "placeholders": {
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "profile_welcome_anon_title": "Welcome!",
-  "profile_welcome_title": "Welcome, {name}!",
-  "@profile_welcome_title": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "profile_level_status": "You have a basic level - {level}",
-  "@profile_level_status": {
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
-  "profile_level_remaining": "Remaining until level {nextLevel}: {amountRemaining, plural, =0{0 points} one{{amountRemaining} point} few{{amountRemaining} points} many{{amountRemaining} points} other{{amountRemaining} points}}",
-  "@profile_level_remaining": {
-    "placeholders": {
-      "nextLevel": {
-        "type": "String"
-      },
-      "amountRemaining": {
-        "type": "num"
-      }
-    }
-  },
-  "profile_details_button": "More details",
-  "profile_header_current_status_title": "YOUR CURRENT STATUS",
-  "profile_header_spent_for_period": "Spent for the period",
-  "profile_header_to_level": "To {levelName} level",
-  "@profile_header_to_level": {
-    "placeholders": {
-      "levelName": {
-        "type": "String"
-      }
-    }
-  },
-  "@profile_header_amount_remaining": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      }
-    }
-  },
-  "@profile_header_percent_to_next_level": {
-    "placeholders": {
-      "percent": {
-        "type": "String"
-      }
-    }
-  },
-  "@profile_header_bonus_usd_equivalent": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      }
-    }
-  },
-  "@profile_header_cashback_percent": {
-    "placeholders": {
-      "percent": {
-        "type": "String"
-      }
-    }
-  },
-  "@profile_header_cashback_at_level": {
-    "placeholders": {
-      "levelName": {
-        "type": "String"
-      }
-    }
-  },
-  "profile_header_amount_remaining": "{amount} left",
-  "profile_header_percent_to_next_level": "{percent}% to the next level",
-  "profile_header_bonus_usd_equivalent": "≈ {amount} toward payment",
-  "profile_header_cashback_percent": "{percent}% cashback",
-  "profile_header_cashback_description": " — you earn points with every purchase",
-  "profile_header_cashback_at_level": " at {levelName} level",
-  "profile_header_your_bonuses": "Your bonuses",
-  "profile_header_points": "points",
-  "profile_section_my_travels": "My travels",
-  "profile_item_bookings": "Bookings",
-  "profile_item_my_reviews": "My reviews",
-  "profile_section_account_management": "Account management",
-  "profile_item_personal_data": "Personal data",
-  "profile_item_other_travelers": "Other travelers",
-  "profile_section_help": "Help",
-  "profile_item_contact_support": "Contact support",
-  "profile_item_articles": "Travel Info",
-  "profile_item_our_blog": "Our blog",
-  "profile_item_security_center": "Security center",
-  "profile_section_payment_info": "Payment information",
-  "profile_item_rewards_wallet": "Rewards and wallet",
-  "profile_item_transactions": "Transactions",
-  "profile_section_legal": "Legal information",
-  "profile_item_privacy": "Privacy",
-  "profile_item_terms": "Terms of use",
-  "profile_item_all_documents": "All documents",
-  "profile_section_settings": "Settings",
-  "profile_item_personalization": "Personalization Settings",
-  "profile_item_mailing": "Mailing Settings",
-  "personalization_screen_title": "Personalization Settings",
-  "personalization_language_label": "Language",
-  "personalization_language_search_hint": "Search by name",
-  "personalization_currency_label": "Currency",
-  "personalization_currency_search_hint": "Search by name",
-  "personalization_region_label": "Region/Country",
-  "profile_logout_button": "Log out",
-  "profile_delete_account_button": "Delete account",
-  "auth_or_divider": "or",
-  "auth_and": "and",
-  "profile_not_auth_title": "Log in to your account",
-  "profile_not_auth_subtitle": "Save trips, routes, and favorite places. Earn points and save on orders",
-  "profile_login_button": "Log in",
-  "auth_plug_title": "Just a few more seconds...",
-  "auth_plug_comment": "We are finishing the account login process",
-  "main_hero_title": "VIP services at airports\naround the world",
-  "main_search_hint": "Airport, city, or flight number...",
-  "main_search_date_hint": "Flight date...",
   "main_search_button": "Find",
-  "main_search_button_continue": "Continue",
-  "main_search_subtitle": "Booking in a couple of minutes • 24/7 support",
-  "main_services_title": "Services",
-  "main_loyalty_title": "Loyalty Program",
-  "main_loyalty_description": "Get back part of the trip cost in bonus points",
-  "main_loyalty_link": "Learn more",
-  "main_airports_title": "Popular Airports",
-  "main_airports_all": "All",
-  "all_airports_screen_title": "Airports with the best offers",
-  "all_airports_section_title": "Airport selection",
-  "all_airports_book_button": "Book",
-  "all_airports_empty": "No results",
-  "all_airports_search_hint": "Airport or city",
-  "search_services_search_title": "Airport Search",
-  "search_services_all_airports_button": "All Airports",
-  "empty_search_title": "Nothing found",
-  "empty_search_subtitle": "Try changing the query\nor try again later",
-  "main_transfer_placeholder": "Transfer section is under development",
-  "personal_data_screen_title": "Personal Data",
-  "personal_data_name_label": "Name",
-  "personal_data_name_placeholder": "Enter your name",
-  "personal_data_email_label": "Email address",
-  "personal_data_phone_label": "Phone number",
-  "personal_data_phone_placeholder": "Enter your phone number",
-  "personal_data_birthdate_label": "Date of birth",
-  "personal_data_birthdate_placeholder": "Enter your date of birth",
-  "personal_data_gender_label": "Gender",
-  "personal_data_gender_male": "Male",
-  "personal_data_gender_female": "Female",
-  "personal_data_citizenship_label": "Citizenship",
-  "personal_data_citizenship_placeholder": "Enter your citizenship",
-  "personal_data_delete_account": "Delete account",
-  "main_transfer_title": "Worldwide Transfer",
-  "main_transfer_subtitle": "No flight connection\nWorks as a personal transfer from any point",
-  "main_transfer_types_title": "Transfer Types",
-  "main_search_transfer_date_title": "Trip Date",
-  "main_search_transfer_date_hint": "Trip Date",
-  "main_search_transfer_from_title": "Departure Address",
-  "main_search_transfer_from_hint": "Departure Address",
-  "main_search_transfer_to_title": "Arrival address",
-  "main_search_transfer_to_hint": "Arrival address",
-  "edit_name_title": "Enter your name",
-  "edit_name_avatar_changed_message": "Profile photo updated",
-  "edit_name_photo_recommendation": "For Example App to work as intended, we recommend uploading your real photo to your profile. This helps airport staff identify and assist you quickly without delays.",
-  "personal_data_firstname_label": "First name",
-  "personal_data_firstname_hint": "First name (in Latin, for example, Ivan)",
-  "personal_data_lastname_label": "Last name",
-  "personal_data_lastname_hint": "Last name (in Latin, for example, Ivanov)",
-  "personal_data_photo_label": "Profile photo",
-  "personal_data_upload": "Upload",
-  "personal_data_save": "Save",
-  "change_email_confirm_button": "Confirm",
-  "confirm_email_title": "Check your email",
-  "confirm_email_sent_prefix": "We have sent a confirmation code to the address ",
-  "confirm_email_sent_suffix": ". Enter it to confirm your email",
-  "confirm_email_resend_prefix": "Didn't receive the email? Check your 'Spam' folder or request a new code through ",
-  "confirm_email_resend_button": "Resend",
-  "confirm_email_submit_button": "Confirm",
-  "confirm_email_plug_title": "Just a few more seconds...",
-  "confirm_email_plug_comment": "Changing email address",
-  "confirm_delete_account_title": "Confirm account deletion",
-  "confirm_delete_account_sent_prefix": "We sent a confirmation code to ",
-  "confirm_delete_account_sent_suffix": ". Enter it to permanently delete your account",
-  "confirm_delete_account_submit_button": "Delete account",
-  "confirm_delete_account_plug_title": "Just a few more seconds…",
-  "confirm_delete_account_plug_comment": "Deleting your account",
-  "birthday_screen_title": "Date of birth",
-  "birthday_field_label": "Date of Birth",
-  "save_button": "Save",
-  "invalid_date_error": "Enter a valid date",
-  "citizenship_screen_title": "Citizenship",
   "citizenship_search_placeholder": "Search by country name",
-  "main_transfer_date_modal_title": "Select Trip Date",
-  "main_flight_date_modal_title": "Select Flight Date",
-  "invitation_dialog_title": "Log in to your account",
-  "invitation_dialog_message": "Log in to your profile to save passenger data and trip history",
-  "invitation_dialog_button": "Log in",
-  "welcome_screen_title": "Welcome!",
-  "welcome_screen_message": "🎉 You have successfully registered and now have access to rewards in the loyalty program. Your current level:",
-  "welcome_screen_level": "Start",
-  "welcome_screen_description": "Earn bonus points for each payment. The more trips you take, the higher your status and the greater your benefits!",
-  "welcome_screen_got_it": "Got it",
-  "welcome_screen_details": "More about the program",
-  "welcome_screen_footer": "Increase your level - get more bonuses, read more on the loyalty program page",
-  "flights_input_title": "Enter Your Details",
   "stepped_header_step_label": "Step {current}/{total}",
   "@stepped_header_step_label": {
     "placeholders": {
@@ -266,97 +24,6 @@
       }
     }
   },
-  "flights_input_description": "Please provide your details in Latin letters so that airport staff can understand them",
-  "flights_input_flight_data_title": "Flight Data",
-  "flights_input_with_transfer": "With Transfer",
-  "flights_input_second_flight_data_title": "Second Flight Data",
-  "flights_input_remove_flight": "Remove",
-  "flights_input_flight_number_label": "Number",
-  "flights_input_flight_number_hint": "Flight number, for example, CU 6456",
-  "flights_input_flight_date_label": "Date",
-  "flights_input_flight_date_hint": "Flight date, DD.MM.YYYY",
-  "flights_input_footer_text": "Enter the flight number - the airport will be loaded automatically, and you will be able to choose a service",
-  "flights_input_continue_button": "Continue",
-  "flight_not_found_title": "Flight not found.",
-  "flight_not_found_message": "Check the flight number and date, if everything is correct, then fill in the departure time manually. Flight information may be updated later.",
-  "departure_time_label": "Departure Time",
-  "airport_header_departure_title": "Departure Airport",
-  "airport_header_arrival_title": "Arrival Airport",
-  "airport_header_transit_title": "Transit Point",
-  "airport_header_transit_arrival_title": "Transit Point (Arrival)",
-  "airport_header_transit_departure_title": "Transit Point (Departure)",
-  "flights_input_step_2": "Step 2/6",
-  "flights_input_conditions_title": "Additional Conditions",
-  "flights_input_next_step_hint": "Next, you will be able to select services",
-  "flight_details_first_flight": "First flight",
-  "flight_details_second_flight": "Second flight",
-  "flight_details_auto_filled_hint": "Flight details are filled in automatically\nPlease check for accuracy",
-  "flight_details_transit_exit": "City exit",
-  "flight_details_terminal_hint": "Specify terminal",
-  "flight_details_terminal_label": "Terminal",
-  "flight_details_airport_name_hint": "Airport name",
-  "flight_details_single_terminal_name": "Single terminal",
-  "info_card_tariffs_description": "Tariffs depend on the airport, services, and passenger's age. Click here to see details",
-  "select_services_title": "Select services",
-  "select_services_airport_prompt": "Based on the flight data, select a service for this airport: {airportName}",
-  "@select_services_airport_prompt": {
-    "placeholders": {
-      "airportName": {
-        "type": "String"
-      }
-    }
-  },
-  "select_services_main_services_hint": "Select main services — additional options will appear below",
-  "select_services_no_service_needed": "No service needed at this airport",
-  "select_services_fast_track_notice": "There are several Fast Track services available at this airport. The cost and conditions may vary depending on the selected service.",
-  "select_services_vip_lounge_notice": "There are several VIP lounges available at this airport. The cost and conditions may vary depending on the selected lounge.",
-  "select_services_transfer_notice": "The cost of the transfer is calculated individually. A manager will contact you to agree on the final price. Payment is not required at this time. Provide the details to confirm the order.",
-  "select_services_accompaniment_notice": "There are several accompaniment services available at this airport. The cost and conditions may vary depending on the selected service.",
-  "select_services_at_least_one_required_toast": "To complete your order, select at least one service at any airport on your route.",
-  "auth_choice_title": "Save booking in your account?",
-  "auth_choice_subtitle": "If you already have an account — simply log in.\nIf not, we can create an account and save the booking in 'My Trips'",
-  "auth_choice_login_button": "Log in to account",
-  "auth_choice_create_account_label": "Create account and save booking",
-  "auth_choice_create_account_hint": "We will send a code to your email. After confirmation, all data will be saved.",
-  "auth_choice_without_auth_label": "Continue without registration",
-  "auth_choice_without_auth_hint": "The booking will not appear in 'My trips'.\nTo manage the order, you will need the booking code - save it.",
-  "auth_choice_continue_button": "Continue",
-  "flight_input_time_hint": "HH:MM",
-  "select_services_vip_lounge": "VIP Lounge",
-  "transfer_field_required_error": "Field cannot be empty",
-  "transfer_route_title": "Transfer route",
-  "transfer_departure_address_hint": "Departure address",
-  "transfer_intermediate_point_hint": "Intermediate point",
-  "transfer_arrival_address_hint": "Arrival address",
-  "transfer_car_category_hint": "Car category",
-  "transfer_add_stop_button": "Add stop",
-  "flight_details_flight_label": "Flight",
-  "airport_detail_terminals_subtitle": "Terminals {names}",
-  "@airport_detail_terminals_subtitle": {
-    "placeholders": {
-      "names": {
-        "type": "String"
-      }
-    }
-  },
-  "airport_detail_tariffs_title": "Tariffs",
-  "airport_detail_terminal_hint": "Terminal",
-  "airport_detail_all_terminals": "All terminals",
-  "airport_detail_terminal_option": "Terminal {name}",
-  "@airport_detail_terminal_option": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "airport_detail_book_button": "Book",
-  "airport_detail_what_included_title": "What's included",
-  "airport_detail_photos_title": "Photos",
-  "airport_detail_important_to_know": "Important to know",
-  "airport_detail_checkout_button": "Checkout",
-  "airport_detail_price_depends_on_tariff": "Price depends on selected tariff",
-  "airport_detail_tariff_description": "Description",
   "airport_detail_tariff_adults": "Adults",
   "airport_detail_tariff_per_person": " per person",
   "airport_detail_tariff_children": "Children",
@@ -366,155 +33,7 @@
   "airport_detail_price_from": "Price from",
   "airport_detail_price_transfer_from": "Price depends on the route",
   "airport_detail_from": "from ",
-  "airport_detail_price_label": "Price",
-  "airport_detail_price_on_request": "Price on request",
-  "airport_detail_overview_available_services_title": "Available services",
-  "airport_detail_overview_customer_reviews_title": "Customer reviews",
-  "airport_detail_overview_about_airport_title": "About the airport",
-  "airport_detail_overview_faq_title": "Questions & answers",
-  "airport_detail_general_information_title": "General information",
-  "airport_detail_info_iata_label": "IATA code",
-  "airport_detail_info_city_label": "City",
-  "airport_detail_info_terminals_label": "Terminals",
-  "airport_detail_info_gates_label": "Gates",
-  "airport_detail_info_hours_label": "Opening hours",
-  "airport_detail_info_passengers_label": "Annual passengers",
-  "airport_detail_info_airlines_label": "Airlines",
-  "airport_detail_info_address_label": "Address",
-  "airport_detail_info_distance_to_city_label": "Distance to city",
-  "airport_detail_info_public_transport_label": "Public transport",
-  "airport_detail_getting_there_title": "Getting there",
-  "airport_detail_getting_there_address_label": "Address",
-  "airport_detail_getting_there_distance_label": "Distance",
-  "airport_detail_getting_there_transport_label": "Transport",
-  "airport_detail_getting_there_need_transfer_title": "Need a transfer?",
-  "airport_detail_getting_there_book_premium_transfer_button": "Book premium transfer",
-  "airport_detail_service_details_title": "Service details",
-  "airport_detail_how_it_works_title": "How it works",
-  "airport_detail_not_included_title": "Not included",
-  "airport_detail_about_service_title": "About the service",
-  "airport_detail_important_information_title": "Important information",
-  "airport_detail_order_transfer_button": "Order transfer",
-  "airport_detail_order_service_button": "Order service",
-  "airport_detail_benefit_instant_confirmation": "Instant confirmation",
-  "airport_detail_benefit_free_cancellation_24h": "Free cancellation up to 24 hours before the service",
-  "airport_detail_benefit_e_ticket_email": "E-ticket to email",
-  "airport_detail_stat_airlines_label": "Airlines",
-  "airport_detail_stat_annual_passengers_label": "Passengers per year",
-  "airport_detail_stat_working_hours_label": "Opening hours",
-  "airport_detail_stat_free_cancellation_label": "Free cancellation",
-  "airport_detail_reviews_count": "{count, plural, one{{count} review} other{{count} reviews}}",
-  "@airport_detail_reviews_count": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "airport_detail_services_available": "{count, plural, one{Available {count} service type} other{Available {count} service types}}",
-  "@airport_detail_services_available": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "airport_detail_view_photos": "View photos",
-  "airport_detail_retry_button": "Retry",
-  "airport_detail_empty_title": "Services Coming Soon",
-  "airport_detail_empty_description": "Unfortunately, we do not currently offer services at this airport. But we are working on connecting new services and expanding coverage. You can leave your email - we will notify you as soon as the services become available.",
-  "airport_detail_empty_subscribe_button": "Subscribe for Updates",
-  "airport_detail_subscribe_title": "Get Notifications",
-  "airport_detail_subscribe_description": "Leave your email - we will inform you when services at this airport become available",
-  "airport_detail_receive_news": "Receive news and updates from Example App service",
-  "airport_detail_subscribe_submit_button": "Subscribe",
-  "airport_detail_agreement_text": "By subscribing, you agree to our",
-  "airport_detail_info_tarif_bottom_sheet_title": "Service price depends on the terminal",
-  "airport_detail_info_tarif_bottom_sheet_description": "You can view all options. When ordering, specify the flight number - we will automatically determine the terminal. If the terminal is not yet known, we will calculate the approximate cost and contact you for clarification.",
-  "core_delete_button": "Delete",
-  "core_cancel_button": "Cancel",
-  "core_cancel_short_button": "Cancel",
   "core_back_button": "Back",
-  "core_male": "Male",
-  "core_female": "Female",
-  "core_not_specified": "Not Specified",
-  "auth_invalid_code": "Invalid Code",
-  "profile_traveler_card_default_name": "Traveler",
-  "profile_traveler_card_gender_label": "Gender:",
-  "profile_traveler_card_dob_label": "Date of Birth:",
-  "profile_traveler_card_dob_not_specified": "Not specified",
-  "profile_traveler_card_edit_button": "Edit data",
-  "profile_traveler_card_badge_passenger": "Passenger",
-  "profile_logout_message": "Are you sure you want to log out of your account?",
-  "profile_travelers_title": "Other Travelers",
-  "profile_travelers_empty_text": "You have not added any other travelers yet. Save the data of your family, colleagues, or those you travel with most often - and they will be automatically filled in for bookings. This will save time and eliminate the need for re-entering information",
-  "profile_travelers_delete_dialog_title": "Delete Passenger",
-  "profile_travelers_delete_dialog_message": "Are you sure you want to delete the passenger from the list? This action cannot be undone",
-  "profile_travelers_add_button": "Add Travelers",
-  "profile_delete_account_message": "Are you sure you want to delete your account?",
-  "profile_birthday_hint_format": "DD.MM.YYYY",
-  "services_endpoints_tariffs_title": "Tariffs",
-  "core_logout_button": "Log out",
-  "edit_traveler_add_title": "Add Traveler",
-  "edit_traveler_edit_title": "Edit Data",
-  "edit_traveler_add_button": "Add",
-  "edit_traveler_consent_text": "I confirm that the specified person agrees to the transfer of personal data",
-  "select_travelers_title": "Passenger Data",
-  "select_travelers_subtitle": "Data must be entered strictly in Latin letters, as in the passport",
-  "select_travelers_passengers_title": "My data",
-  "select_travelers_i_am_flying": "I am flying",
-  "select_travelers_adults": "Adults",
-  "select_travelers_children": "Children (2-12 years)",
-  "select_travelers_infants": "Infants (up to 2 years)",
-  "select_travelers_prm": "Passenger with reduced mobility (PRM)",
-  "select_travelers_add_passenger": "Add passenger",
-  "select_travelers_add_companion": "Add companion",
-  "select_travelers_form_select_from_list": "Select from your list",
-  "select_travelers_form_traveler_label": "Traveler #{id}",
-  "@select_travelers_form_traveler_label": {
-    "placeholders": {
-      "id": {
-        "type": "int"
-      }
-    }
-  },
-  "select_travelers_form_first_name_label": "First name",
-  "select_travelers_form_first_name_hint": "First name (in Latin, e.g. Ivan)",
-  "select_travelers_form_last_name_label": "Last name",
-  "select_travelers_form_last_name_hint": "Last name (in Latin, e.g. Ivanov)",
-  "select_travelers_form_citizenship_label": "Citizenship",
-  "select_travelers_form_citizenship_hint": "Not selected",
-  "select_travelers_form_birthdate_label": "Date of birth",
-  "select_travelers_form_birthdate_hint": "DD.MM.YYYY",
-  "select_travelers_form_phone_label": "Contact phone",
-  "select_travelers_form_email_label": "Email address",
-  "select_travelers_form_email_hint": "example@example.com",
-  "select_travelers_form_delete": "Delete",
-  "select_travelers_passenger_header": "Data {index, select, 2{second} 3{third} 4{fourth} 5{fifth} 6{sixth} 7{seventh} 8{eighth} 9{ninth} 10{tenth} other{{index} passenger}}",
-  "@select_travelers_passenger_header": {
-    "placeholders": {
-      "index": {
-        "type": "String"
-      }
-    }
-  },
-  "select_travelers_first_companion_header": "Data of companion",
-  "select_travelers_first_companion_subtitle": "Data should be entered in Latin letters exactly as in the passport",
-  "select_travelers_companion_header": "Data {index, select, 1{first} 2{second} 3{third} 4{fourth} 5{fifth} 6{sixth} 7{seventh} 8{eighth} 9{ninth} 10{tenth} other{{index}-th  companion}}",
-  "@select_travelers_companion_header": {
-    "placeholders": {
-      "index": {
-        "type": "String"
-      }
-    }
-  },
-  "select_travelers_confirm_email_title": "Confirm Email",
-  "select_travelers_confirm_email_create_account_message": "Confirm your email to complete account creation and receive booking details.",
-  "select_travelers_confirm_email_guest_message": "You can place an order without registration, but we need to confirm your email. This is necessary to send confirmation and service details.",
-  "select_travelers_confirm_email_continue_button": "Continue",
-  "ordering_contact_person_minimum_age_error": "The contact person must be at least 12 years old.",
-  "transfers_tariffs_car_categories_title": "Car Categories",
-  "lounge_tariffs_car_categories_title": "VIP Lounges",
   "vip_lounge_card_price_label": "Price",
   "vip_lounge_card_price_prefix": "from",
   "vip_lounge_card_watch_all_photos": "View all photos",
@@ -526,134 +45,15 @@
       }
     }
   },
-  "send_code_terms_agreement": "By proceeding you agree to our ",
-  "tariffs_title": "Tariffs",
-  "edit_traveler_name_hint": "Enter the name exactly as it appears in the passport or other official document",
-  "payment_screen_title": "Select Payment Method",
-  "payment_methods_card": "By bank card",
-  "payment_methods_apple_google_pay": "Apple Pay / Google Pay",
-  "payment_methods_soon": "(coming soon)",
-  "payment_bonus_points_auth_hint": "Available after logging in/creating an account",
-  "payment_bonus_points_use": "Use points",
-  "payment_bonus_points_available": "Available {available}",
-  "@payment_bonus_points_available": {
-    "placeholders": {
-      "available": {
-        "type": "String"
-      }
-    }
-  },
-  "payment_bonus_points_use_all": "Use all",
-  "payment_total_title": "Total cost:",
-  "payment_total_bonus_prefix": "After payment you will receive",
-  "payment_total_bonus_points": "+{points} points",
-  "@payment_total_bonus_points": {
-    "placeholders": {
-      "points": {
-        "type": "String"
-      }
-    }
-  },
-  "payment_total_bonus_suffix": "They will automatically appear in your account",
-  "payment_terms_prefix": "By continuing I agree with ",
-  "payment_terms_link": "Terms of Use",
-  "payment_terms_and": " and ",
-  "payment_privacy_link": "Privacy Policy",
-  "payment_pay_button": "Pay",
-  "payment_free_checkout_screen_title": "Order processing",
-  "payment_free_checkout_payment_manual_hint": "The transfer cost is calculated manually by the manager. After submitting the application, we will contact you within an hour to clarify the details and agree on the cost. Please wait for the call.\n\nAfter agreeing on the cost, you will be able to pay for the service in your personal account - in the 'My Trips' → 'Bookings' tab.",
-  "payment_free_checkout_submit_button": "Submit application",
-  "summary_screen_title": "Summary",
   "summary_flight_info_title": "Flight Information",
-  "summary_services_not_required": "Services are not required at this airport",
-  "summary_transfer_price_not_included": "Transfer price is not included. A manager will contact you to confirm the price.",
-  "summary_transfer_route_title": "Transfer Route",
-  "summary_transfer_pickup_address_label": "Pickup Address:",
-  "summary_transfer_stop_label": "Stop:",
-  "summary_transfer_dropoff_address_label": "Dropoff Address:",
-  "summary_transfer_car_category_label": "Car Category:",
-  "summary_transfer_car_standard": "Standard",
-  "summary_additional_conditions_title": "Additional Conditions",
-  "summary_travelers_title": "Travelers",
   "summary_companions_title": "Companions",
-  "summary_agreements_title": "Agreements",
-  "summary_agreement_data_correctness": "I confirm the correctness of the data",
-  "summary_agreement_terms_of_use": "I agree to the privacy policy and terms of use",
-  "summary_submit_button": "Proceed to Payment",
-  "summary_total_label": "TOTAL:",
-  "summary_terminal_label": "Terminal {name}",
-  "@summary_terminal_label": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "summary_flight_number_label": "Flight: {number}",
-  "@summary_flight_number_label": {
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "order_status_paid": "Paid",
-  "order_status_waiting_payment": "Awaiting payment",
-  "order_status_draft": "Draft",
-  "order_status_processing": "Processing",
-  "order_ref_number": "Order number: {ref}",
-  "@order_ref_number": {
-    "placeholders": {
-      "ref": {
-        "type": "String"
-      }
-    }
-  },
-  "my_trips_tab_drafts": "Drafts",
-  "my_trips_tab_upcoming": "Upcoming",
-  "my_trips_tab_completed": "Completed",
-  "my_trips_tab_cancelled": "Cancelled",
-  "order_details_id_label": "Order #{id}",
-  "@order_details_id_label": {
-    "placeholders": {
-      "id": {
-        "type": "String"
-      }
-    }
-  },
-  "my_trips_not_auth_title": "Your trips are here",
-  "my_trips_not_auth_subtitle": "Sign in to save and view your trips",
-  "my_trips_empty_state_title": "You have no bookings yet",
-  "my_trips_empty_state_subtitle": "Make your first booking and all trips will appear here",
-  "my_trips_empty_state_find_booking_button": "Can't find booking",
-  "my_trips_empty_state_select_airport_button": "Go to airport selection",
-  "my_trips_empty_state_book_service_button": "Book a service",
-  "order_flight_number_label": "Flight: {number}",
-  "@order_flight_number_label": {
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
   "order_details_cancellation_rules_title": "Cancellation rules",
   "order_details_cancellation_rule_1": "Cancellation of service less than 48 hours before start time - 100% of the cost.",
   "order_details_cancellation_rule_2": "Passenger no-show - 100% of the cost.",
   "order_details_cancellation_rule_3": "Changes in the booking are possible by agreement with the manager and depend on the availability of the service.",
-  "order_details_my_order_title": "My order",
-  "order_details_booking_number": "Booking number",
   "order_details_flight_info": "Flight information",
-  "order_details_show_to_employee": "Show to employee",
-  "order_details_download_receipt": "Download receipt",
-  "order_details_what_next": "What's next?",
   "order_details_price_details": "Price details",
   "order_details_additional_conditions": "Additional conditions",
-  "order_details_travelers_companions": "Travelers/Companions",
-  "order_details_our_recommendations": "Our recommendations",
-  "order_details_add_to_calendar": "Add to calendar",
-  "order_details_support_text": "If you need to make changes, please contact support",
-  "order_details_cancel_order": "Cancel order",
-  "order_details_order_new_service": "Order new service",
   "order_details_endpoint_departure": "Departure",
   "order_details_endpoint_arrival": "Arrival",
   "order_details_endpoint_transit": "Transit",
@@ -661,213 +61,11 @@
   "order_details_endpoint_transit_departure": "Transit (departure)",
   "order_details_travelers_title": "Travelers",
   "order_details_companions_title": "Companions",
-  "order_status_requires_surcharge": "Requires surcharge",
-  "order_details_whats_next_text": "We will take care to ensure that your journey goes smoothly and without any extra questions.\n\n1. Save the QR code/booking number, it is needed to quickly identify you\n  • It is needed for a Example App employee to quickly identify you\n  • You can open it at any time in the My trips section\n\n2. Wait for a message from us\n  • We will send a reminder in advance with the time, terminal, and meeting point\n  • If additional information is needed, a manager will contact you personally\n\n3. How to find an employee on the day of the trip\n  • Come to the specified meeting point: Fast Track counter, VIP entrance, or arrival zone\n  • The employee will be waiting for you\n  • If you don't see them right away, simply respond to the notification or call the number from the email, we are always available.\n\n4. What to have with you\n  • Passport\n  • QR code\n\nAnd be sure not to worry, you won't be alone at the airport — we are always available!",
-  "order_details_our_recommendations_text": "• Arrive early\nFor international flights, we recommend arriving 2–2.5 hours in advance, for domestic flights — 1.5 hours, to comfortably go through all the stages with Fast Track or assistance.\n\n• Where is the service counter located\nThe Fast Track / Meet & Assist counter is located in the departure area, near the security checkpoint. Follow the signs for \"Fast Track / Priority\" or show your code to the employee at the entrance.\n\n• How to get to check-in\nFrom the entrance to the check-in counter is approximately a 3–7 minute walk. If you have booked assistance, an employee will meet you at the entrance or at an agreed point and will guide you through the entire process.\n\n• How long does the process take\nWith Fast Track, the processing time usually ranges from 5 to 15 minutes, depending on the terminal's busyness.\n\n• If you are traveling with luggage\nAn agent will help you carry your luggage and will take you to the priority check-in counter, if available in that terminal.",
-  "transfer_input_title": "Enter your details",
-  "transfer_input_description": "Please provide your details in Latin letters so that the staff can understand them",
-  "transfer_order_info_message": "Transfer can be arranged separately or together with other airport services. To select multiple services, including transfer, go to the main form here.",
-  "transfer_order_info_button": "Order airport services",
-  "transfer_trip_data_title": "Trip data",
-  "transfer_date_label": "Date",
-  "transfer_time_label": "Time",
   "transfer_car_category_label": "Car category",
-  "transfer_trip_route_title": "Trip route",
   "transfer_departure_address_label": "Departure address",
   "transfer_arrival_address_label": "Arrival address",
-  "transfer_intermediate_point_label": "Intermediate point",
-  "transfer_auth_choice_title": "Save booking in your account?",
-  "transfer_auth_choice_subtitle": "If you already have an account — simply log in.\nIf not, we can create an account and save the booking in 'My trips'",
-  "transfer_auth_choice_login_button": "Log in",
-  "transfer_auth_choice_create_account_label": "Create an account and save the booking",
-  "transfer_auth_choice_create_account_hint": "We will send a code to your email. After confirmation, all data will be saved.",
-  "transfer_auth_choice_without_auth_label": "Continue without registration",
-  "transfer_auth_choice_without_auth_hint": "The booking will not appear in 'My trips'.\nTo manage the order, you will need the booking code - save it.",
-  "transfer_auth_choice_continue_button": "Continue",
-  "transfer_select_travelers_title": "Passenger details",
-  "transfer_select_travelers_subtitle": "Details must be entered strictly in Latin letters, as in the passport",
-  "transfer_select_travelers_passengers_title": "My details",
-  "transfer_select_travelers_i_am_traveling": "I am traveling",
-  "transfer_select_travelers_adults": "Adults",
-  "transfer_select_travelers_children": "Children (2-12 years)",
-  "transfer_select_travelers_infants": "Infants (up to 2 years)",
-  "transfer_select_travelers_prm": "Passenger with reduced mobility (PRM)",
-  "transfer_select_travelers_add_passenger": "Add passenger",
-  "transfer_select_travelers_add_companion": "Add companion",
-  "transfer_select_travelers_form_select_from_list": "Select from your list",
-  "transfer_select_travelers_form_traveler_label": "Traveler #{id}",
-  "transfer_select_travelers_form_first_name_label": "First name",
-  "transfer_select_travelers_form_first_name_hint": "First name (in Latin letters, for example, Ivan)",
-  "transfer_select_travelers_form_last_name_label": "Last Name",
-  "transfer_select_travelers_form_last_name_hint": "Last Name (in Latin, e.g. Ivanov)",
-  "transfer_select_travelers_form_citizenship_label": "Citizenship",
-  "transfer_select_travelers_form_citizenship_hint": "Not selected",
-  "transfer_select_travelers_form_birthdate_label": "Date of Birth",
-  "transfer_select_travelers_form_birthdate_hint": "DD.MM.YYYY",
-  "transfer_select_travelers_form_phone_label": "Contact Phone",
-  "transfer_select_travelers_form_email_label": "Email Address",
-  "transfer_select_travelers_form_email_hint": "example@example.com",
-  "transfer_select_travelers_form_delete": "Delete",
-  "transfer_select_travelers_passenger_header": "Data of {index, select, 2{second} 3{third} 4{fourth} 5{fifth} 6{sixth} 7{seventh} 8{eighth} 9{ninth} 10{tenth} other{{index}-th  passenger}}",
-  "transfer_select_travelers_first_companion_header": "Data of Companion",
-  "transfer_select_travelers_first_companion_subtitle": "Data should be entered strictly in Latin letters, as in the passport",
-  "transfer_select_travelers_companion_header": "Data of {index, select, 1{first} 2{second} 3{third} 4{fourth} 5{fifth} 6{sixth} 7{seventh} 8{eighth} 9{ninth} 10{tenth} other{{index}-th  companion}}",
-  "transfer_select_travelers_confirm_email_title": "Confirm Email",
-  "transfer_select_travelers_confirm_email_create_account_message": "Confirm your email to complete account creation and receive booking details.",
-  "transfer_select_travelers_confirm_email_guest_message": "You can place an order without registration, but we need to confirm your email. This is necessary to send confirmation and service details.",
-  "transfer_select_travelers_confirm_email_continue_button": "Continue",
-  "transfer_auth_code_title": "Enter Code",
-  "transfer_auth_code_sent_prefix": "We have sent an email with a confirmation code to ",
-  "transfer_auth_code_sent_suffix": ". Please enter it.",
-  "transfer_auth_code_resend_prefix": "You can resend the code in ",
-  "transfer_auth_code_resend_button": "Resend",
-  "transfer_send_code_terms_agreement": "By clicking on the \"Continue\" button, you agree to the ",
-  "transfer_auth_terms_link": "Terms of Use",
-  "transfer_auth_and": "and",
-  "transfer_auth_privacy_link": "Privacy Policy",
-  "transfer_auth_copyright": "© Example App 2024",
-  "transfer_auth_continue_button": "Continue",
-  "transfer_checkout_screen_title": "Order Checkout",
-  "transfer_checkout_transfer_route_title": "Transfer Route",
-  "transfer_checkout_transfer_pickup_address_label": "Pickup Address",
-  "transfer_checkout_transfer_dropoff_address_label": "Dropoff Address",
-  "transfer_checkout_transfer_stop_label": "Stop",
-  "transfer_checkout_transfer_car_category_label": "Car Category",
-  "transfer_checkout_transfer_car_standard": "Standard",
-  "transfer_checkout_total_label": "Total",
-  "transfer_checkout_additional_conditions_title": "Additional Conditions",
-  "transfer_checkout_travelers_title": "Passenger Information",
-  "transfer_checkout_companions_title": "Companion Information",
-  "transfer_checkout_agreements_title": "Agreements",
-  "transfer_checkout_agreement_data_correctness": "I confirm the correctness of the data",
-  "transfer_checkout_agreement_terms_of_use": "I agree to the privacy policy and terms of use",
-  "transfer_checkout_submit_button": "Submit application",
-  "transfer_checkout_payment_manual_hint": "The transfer cost is calculated manually by the manager. After submitting the application, we will contact you within an hour to clarify the details and agree on the cost. Please wait for the call.\n\nAfter agreeing on the cost, you will be able to pay for the service in your personal account - in the 'My trips' → 'Bookings' tab.",
-  "transfer_auth_invalid_code_error": "Invalid code",
-  "payment_success_dialog_title": "Payment successful",
-  "payment_success_dialog_message": "Don't forget to save the booking ID",
-  "payment_success_dialog_button": "Okay",
-  "transfer_checkout_success_dialog_title": "Application accepted",
-  "transfer_checkout_success_dialog_message": "Thank you! We have received your transfer request. A manager will contact you shortly to clarify the details and confirm the trip.",
-  "transfer_checkout_success_dialog_button": "Okay",
-  "support_help_screen": "Help",
-  "support_chat": "Support chat",
-  "support_assistent": "Assistant",
-  "support_faq": "FAQ",
-  "support_tickets": "Tickets",
-  "support_new_ticket": "New ticket",
-  "support_cancel_booking": "Cancel booking",
-  "support_booking_number": "Booking number",
-  "support_not_booking_number": "No booking number",
-  "support_suggestions_question_label": "What would you like to ask about?",
-  "support_input_hint": "Enter text...",
-  "support_bot_request_ref_number": "Please provide the booking number",
-  "support_bot_ticket_created": "Thank you for reaching out! Our specialist is already reviewing your request.",
-  "support_bot_chat_end": "Chat ended, if the issue is not resolved, please open a new request",
-  "support_bot_no_ref_fallback": "Write what happened. We are connecting a specialist and will respond to you soon!",
-  "support_category_fast_track": "Fast Track",
-  "support_category_vip_lounge": "VIP Lounge",
-  "support_category_transfer": "Transfer",
-  "support_category_meet_assist": "Meet & Assist",
-  "support_category_other": "Other",
-  "transactions_screen_title": "Transactions",
-  "transactions_tab_all": "All",
-  "transactions_tab_payments": "Payments",
-  "transactions_tab_refunds": "Refunds",
-  "transactions_tab_bonuses": "Bonuses",
-  "transactions_all_empty_state": "History is empty.\nYour payments, refunds, and bonus points will be displayed here after the first transaction.",
-  "transactions_payments_empty_state": "History is empty.\nYour payments will be displayed here after the first transaction.",
-  "transactions_refunds_empty_state": "History is empty.\nRefunds will be displayed here.",
-  "transactions_bonuses_empty_state": "History is empty.\nBonus points will be displayed here.",
-  "transaction_card_details_button": "Details",
   "transaction_card_parameter_accrued_bonuses": "Accrued bonuses",
-  "transaction_card_parameter_order": "Order:",
-  "transaction_card_parameter_date": "Date:",
-  "transaction_card_parameter_amount": "Amount:",
-  "transaction_status_success": "Success",
-  "transaction_status_refunded": "Refunded",
-  "transaction_status_accrued": "Accrued",
-  "transaction_status_pending": "Pending",
-  "transaction_status_failed": "Failed",
-  "transaction_status_unknown": "Unknown",
-  "receipt_title": "Transaction Receipt",
-  "receipt_transaction_id": "Transaction ID",
-  "receipt_date": "Date and Time",
-  "receipt_amount": "Amount",
-  "receipt_status": "Status",
   "receipt_payment_method": "Payment Method",
-  "receipt_payer": "Payer",
-  "receipt_merchant": "Merchant",
-  "receipt_merchant_name": "Example App",
-  "receipt_merchant_address": "Moscow, Arbat Street, 1",
-  "receipt_transaction_type": "Transaction Type",
-  "receipt_transaction_type_deposit": "Deposit",
-  "receipt_transaction_type_adjustment": "Adjustment",
-  "receipt_payment_method_manual": "Manual",
-  "receipt_external_id": "External ID",
-  "receipt_order_number": "Order Number",
-  "receipt_description": "Description",
-  "receipt_loading_title": "Generating Receipt",
-  "receipt_loading_comment": "Please wait, we are preparing the document...",
-  "receipt_footer_text": "The receipt is automatically generated in the Example App app.\nThis is an official document confirming the transaction.",
-  "privacy_update_date": "Updated: {date}",
-  "@privacy_update_date": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_title": "Loyalty Program",
-  "loyalty_bonus_badge": "{points, plural, =0{Your bonuses: 0 points} one{Your bonuses: {points} point} few{Your bonuses: {points} points} many{Your bonuses: {points} points} other{Your bonuses: {points} points}}",
-  "@loyalty_bonus_badge": {
-    "placeholders": {
-      "points": {
-        "type": "int"
-      }
-    }
-  },
-  "loyalty_bonus_description": "Each paid service brings you closer to the next level of the program. The higher the status, the more points are returned to your account.",
-  "loyalty_bonus_details_link": "More about bonus points",
-  "loyalty_current_level_title": "You are at the base level",
-  "loyalty_current_level_cashback": "{percents}% in points with each purchase",
-  "@loyalty_current_level_cashback": {
-    "placeholders": {
-      "percents": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_points_to_next_level": "You need {points} more points to reach the next level",
-  "@loyalty_points_to_next_level": {
-    "placeholders": {
-      "points": {
-        "type": "int"
-      }
-    }
-  },
-  "loyalty_about_levels_title": "Save on future trips",
-  "loyalty_about_levels_card_1_title": "Move to a new level faster",
-  "loyalty_about_levels_card_1_description": "We take into account every booking of yours - and upgrading your status becomes easy",
-  "loyalty_about_levels_card_2_title": "Always get more",
-  "loyalty_about_levels_card_2_description": "The higher your level, the more points are credited back to your account with each trip",
-  "loyalty_about_levels_card_3_title": "Pay for trips more profitably",
-  "loyalty_about_levels_card_3_description": "Use accumulated points to pay less at the next airport",
-  "loyalty_bonus_description_new": "With each payment for services, you receive bonus points. The amount depends on your status.\nStatus is determined by the total cost of paid services and is fixed forever.",
-  "loyalty_current_level_description": "You need {points} more points to reach the next level, and then the discounts and rewards of level {nextLevel} will be yours.\nAll bookings are taken into account!",
-  "loyalty_progress_caption": "{percent}% to the next level. Progress is automatically calculated based on your bookings",
-  "loyalty_level_at_registration": "Accrued upon registration in the service",
-  "loyalty_level_accrued_from": "Accrued when ordering from {amount}",
-  "@loyalty_level_accrued_from": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_conditions_link": "Program terms",
-  "loyalty_not_auth_message": "Log in to accumulate points and participate in the loyalty program",
-  "loyalty_login_button": "Log in",
   "loyalty_rules_title": "Using points",
   "loyalty_rules_main_text": "Bonus points can be used to pay for any part of the service cost - in full or in part. If there are not enough points, the remaining amount is paid in cash.",
   "loyalty_rules_rate_text": "1 point = $0.1",
@@ -877,109 +75,6 @@
   "loyalty_rules_condition_3": "When a service is returned, the points earned for it are deducted",
   "loyalty_rules_important_title": "Important",
   "loyalty_rules_important_text": "If payment is made in another currency, points are calculated in USD at the current exchange rate.",
-  "loyalty_current_level_user": "You are at level {levelName}!",
-  "@loyalty_current_level_user": {
-    "placeholders": {
-      "levelName": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_level_status_1": "this is the base level",
-  "loyalty_level_status_2": "second level",
-  "loyalty_level_status_3": "third level",
-  "loyalty_level_status_4": "fourth level",
-  "loyalty_level_status_5": "fifth level",
-  "loyalty_level_status_6": "sixth level",
-  "loyalty_level_status_other": "{rank}th level",
-  "@loyalty_level_status_other": {
-    "placeholders": {
-      "rank": {
-        "type": "int"
-      }
-    }
-  },
-  "loyalty_level_cashback_percent": "{percents}%",
-  "@loyalty_level_cashback_percent": {
-    "placeholders": {
-      "percents": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_level_cashback_suffix": " in points with each purchase",
-  "loyalty_level_threshold_base": "Base level",
-  "loyalty_level_threshold_from_amount": "When total reaches {amount}",
-  "@loyalty_level_threshold_from_amount": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_level_privilege_1_1": "Points accumulation",
-  "loyalty_level_privilege_1_2": "Basic support",
-  "loyalty_level_privilege_1_3": "Access to promotions",
-  "loyalty_level_privilege_2_1": "Priority support",
-  "loyalty_level_privilege_2_2": "Early access to discounts",
-  "loyalty_level_privilege_2_3": "Birthday bonus",
-  "loyalty_level_privilege_3_1": "Personal manager",
-  "loyalty_level_privilege_3_2": "Free upgrade",
-  "loyalty_level_privilege_3_3": "Exclusive offers",
-  "loyalty_level_privilege_4_1": "24/7 concierge service",
-  "loyalty_level_privilege_4_2": "Free services",
-  "loyalty_level_privilege_4_3": "VIP events",
-  "loyalty_status_metric_current_level": "Current level",
-  "loyalty_status_metric_cashback": "Cashback on purchases",
-  "loyalty_bonus_accrual_history": "Accrual history",
-  "loyalty_progress_next_level_points": "{nextLevelName} · {pointsText}",
-  "@loyalty_progress_next_level_points": {
-    "placeholders": {
-      "nextLevelName": {
-        "type": "String"
-      },
-      "pointsText": {
-        "type": "String"
-      }
-    }
-  },
-  "loyalty_current_level_user_greeting": "{userName}, you are at level {levelName}!",
-  "@loyalty_current_level_user_greeting": {
-    "placeholders": {
-      "userName": {
-        "type": "String"
-      },
-      "levelName": {
-        "type": "String"
-      }
-    }
-  },
-  "article_update_date": "Updated: {date}",
-  "@article_update_date": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "article_read_full": "Read full article",
-  "article_help_instruction_travelers": "Help and instructions for travelers",
-  "article_go_to_service": "Go to services",
-  "article_select": "Select article",
-  "article_share": "Share article",
-  "article_book_service": "Book services",
-  "article_search_title": "Article Search",
-  "notifications_title": "My Notifications",
-  "notifications_text_empty": "No notifications yet. \nImportant messages about your bookings, payments, and service changes will be displayed here. As soon as there is activity, we will notify you.",
-  "notifications_toggle_title": "Subscriptions",
-  "notifications_turn_on": "Turn on notifications",
-  "notifications_turn_off": "Turn off notifications",
-  "notifications_book_service": "Book Services",
-  "notifications_new": "New",
-  "notifications_no_new": "No new notifications",
-  "notifications_read": "Read",
-  "notifications_read_all": "Read All",
-  "notifications_detail": "Details",
   "receipt_pdf_transaction_title": "Receipt",
   "receipt_pdf_date_external": "from {date} year: {externalId}",
   "@receipt_pdf_date_external": {
@@ -1085,93 +180,6 @@
   "receipt_bonus_program_line_1": " • Bonus points are accrued within the Example App loyalty program.",
   "receipt_bonus_program_line_2": " • The conditions for accrual, use, and validity period of points are regulated by the loyalty program rules.",
   "receipt_bonus_rules_body": " • Points can be used for full or partial payment of the following Example App services.\n • Points cannot be exchanged for cash\n • Points are not accrued when paying with points\n • In case of service return, the accrued points will be deducted",
-  "receipt_header_id": "ID: {id}",
-  "@receipt_header_id": {
-    "placeholders": {
-      "id": {
-        "type": "String"
-      }
-    }
-  },
-  "my_trips_delete_draft_dialog_title": "Delete Draft?",
-  "my_trips_delete_draft_dialog_message": "The order draft will be permanently deleted.",
-  "my_trips_draft_continue_ordering": "Continue Ordering",
-  "calendar_event_flight_title": "Flight {flightNumber}",
-  "@calendar_event_flight_title": {
-    "placeholders": {
-      "flightNumber": {
-        "type": "String"
-      }
-    }
-  },
-  "calendar_event_flight_description": "Flight with {airline} ({departure} → {arrival})",
-  "@calendar_event_flight_description": {
-    "placeholders": {
-      "airline": {
-        "type": "String"
-      },
-      "departure": {
-        "type": "String"
-      },
-      "arrival": {
-        "type": "String"
-      }
-    }
-  },
-  "cancellation_screen_title": "Booking Cancellation",
-  "cancellation_search_subtitle": "Enter booking details to check cancellation possibility",
-  "cancellation_email_at_checkout_label": "Email at Checkout",
-  "cancellation_email_short_hint": "Email",
-  "cancellation_find_booking_button": "Find Booking",
-  "cancellation_field_required_error": "Required field",
-  "cancellation_order_not_found_title": "Booking not found",
-  "cancellation_order_not_found_write_support": "Contact support",
-  "cancellation_order_not_found_body": "Please check the booking number and email address. If the issue persists, contact support.",
-  "cancellation_order_not_found_details": "Booking number:\n{orderNumber}\n\nEmail:\n{email}",
-  "@cancellation_order_not_found_details": {
-    "placeholders": {
-      "orderNumber": {
-        "type": "String"
-      },
-      "email": {
-        "type": "String"
-      }
-    }
-  },
-  "cancellation_cancelled_title": "Booking cancelled",
-  "cancellation_cancelled_message": "Cancellation and refund information will appear in 'My Trips'.\n\nConfirmation has also been sent to your email.",
-  "cancellation_auth_manage_bookings_title": "Want to manage bookings more conveniently?",
-  "cancellation_auth_skip": "Skip",
-  "cancellation_auth_invite_body": "Create or log in to your account to see all trips, statuses, and notifications in one place.",
-  "cancellation_confirm_title": "Are you sure you want to cancel the booking?",
-  "cancellation_confirm_message": "This action cannot be undone",
-  "cancellation_confirm_primary": "Confirm",
-  "core_order_number_copied_to_clipboard": "Order number copied to clipboard",
-  "cancellation_status_available": "Cancellation available",
-  "cancellation_status_unavailable": "Cancellation unavailable",
-  "cancellation_available_hint": "You can cancel the booking and receive a refund.",
-  "cancellation_unavailable_hint": "The free cancellation period has expired, so the order cannot be cancelled. Refund is not available. More details in the rules below.",
-  "cancellation_support_hint": "If you need to make changes, please contact support instead of cancelling the order",
-  "order_status_cancelled": "Cancelled",
-  "order_refund_status_processing": "Refund is processing",
-  "order_refund_status_refunded": "Funds refunded",
-  "order_refund_status_error": "Refund error",
-  "order_status_payment_error": "Payment error",
-  "order_status_cancel_requested": "Cancellation",
-  "order_status_waiting_processing": "In queue",
-  "order_status_waiting_partner": "At partner",
-  "order_status_partner_confirmed": "Confirmed",
-  "order_status_in_progress": "In progress",
-  "order_status_pending_pre_flight": "Before flight",
-  "order_status_in_flight": "In flight",
-  "order_status_pending_post_flight": "After flight",
-  "order_status_completed": "Completed",
-  "order_status_partner_rejected": "Rejected",
-  "order_status_refund_error": "Refund error",
-  "order_status_refund_processing": "Refunding",
-  "order_status_refunded": "Refunded",
-  "search_services_initial_title": "Start typing airport or flight",
-  "search_services_initial_subtitle": "Find airport by name or city, or enter flight number to book services at arrival or departure airport",
   "rating_badge_terrible": "Terrible",
   "rating_badge_bad": "Bad",
   "rating_badge_normal": "Okay",
@@ -1187,49 +195,58 @@
   "secret_mode_password_hint": "Password",
   "secret_mode_ok": "OK",
   "service_category_private_jet_title": "Private jet",
-  "private_jet_charter_title": "Private aircraft charter",
-  "private_jet_charter_subtitle": "Fly on your schedule. No queues, delays, or compromises. Access to 5,000+ aircraft worldwide.",
-  "main_search_private_jet_departure_title": "From",
-  "main_search_private_jet_departure_hint": "From (city or airport)",
-  "main_search_private_jet_arrival_title": "To",
-  "main_search_private_jet_arrival_hint": "To (city or airport)",
-  "main_search_private_jet_date_title": "Date",
-  "main_search_private_jet_date_hint": "Date",
-  "main_search_private_jet_date_picker_title": "Select date",
-  "main_search_private_jet_passengers_title": "Passengers",
-  "main_search_private_jet_passengers_hint": "Passengers",
-  "main_search_private_jet_passengers_more_than_20": "> 20 passengers",
-  "private_jet_benefit_fleet_title": "5,000+ aircraft",
-  "private_jet_benefit_fleet_subtitle": "Access to the world's largest private jet fleet",
-  "private_jet_benefit_booking_title": "In 2 hours",
-  "private_jet_benefit_booking_subtitle": "Book with as little as 2 hours' notice",
-  "private_jet_benefit_safety_title": "Safety certification",
-  "private_jet_benefit_safety_subtitle": "All aircraft meet ARGUS/Wyvern standards",
-  "private_jet_benefit_destinations_title": "Fly anywhere",
-  "private_jet_benefit_destinations_subtitle": "Access to 40,000+ airports worldwide — including remote runways",
-  "private_jet_popular_types_title": "Popular aircraft types",
-  "private_jet_passengers_up_to": "Up to {count} pax",
-  "private_jet_price_from": "From",
-  "private_jet_per_hour": "/ hour",
-  "private_jet_concierge_title": "Personal concierge 24/7",
-  "private_jet_concierge_description": "Don't want to fill out forms? We get it. Our concierge team is available around the clock to select your aircraft, arrange transfers, catering, and last-minute changes.",
-  "private_jet_concierge_feature_fast_reply": "Fast response — under 2 minutes on average",
-  "private_jet_concierge_feature_multilingual": "Multilingual team — English, Arabic, Russian, French",
-  "private_jet_concierge_feature_full_service": "Full service — flights, hotels, transfers, events",
-  "private_jet_concierge_feature_personal_manager": "Personal manager for your entire trip",
-  "private_jet_concierge_whatsapp_button": "Message on WhatsApp",
-  "private_jet_concierge_online_status": "ONLINE NOW",
-  "private_jet_details_range_label": "Range",
-  "private_jet_details_speed_label": "Speed",
-  "private_jet_details_baggage_label": "Baggage",
-  "private_jet_details_cabin_dimensions_title": "Cabin dimensions",
-  "private_jet_details_cabin_height_label": "Height",
-  "private_jet_details_cabin_width_label": "Width",
-  "private_jet_details_cabin_length_label": "Length",
-  "private_jet_details_send_request_button": "Submit request",
-  "private_jet_details_call_button": "Call",
-  "private_jet_ordering_placeholder": "Private jet request booking — coming soon",
-  "units_km": "{value} km",
-  "units_kmh": "{value} km/h",
-  "units_kg": "{value} kg"
+  "peer_home_title": "Welcome to tete games",
+  "peer_home_mode_prompt": "Choose a connection mode",
+  "peer_home_start_server_button": "Wait for a player",
+  "peer_home_start_client_button": "Find and connect",
+  "peer_home_retry_button": "Retry",
+  "peer_dialog_cancel": "Cancel",
+  "peer_dialog_error_title": "Error",
+  "peer_error_bluetooth_unavailable": "Bluetooth is turned off or unavailable",
+  "peer_nickname_dialog_title": "Choose a nickname",
+  "peer_nickname_field_label": "Nickname",
+  "peer_nickname_field_hint": "Enter a nickname",
+  "peer_nickname_save_button": "Save",
+  "peer_nickname_save_failed": "Failed to save nickname",
+  "peer_nickname_validation_empty": "Nickname cannot be empty",
+  "peer_nickname_validation_too_long": "Nickname must be 20 characters or fewer",
+  "peer_nickname_validation_wrong_format": "Spaces are not allowed",
+  "peer_server_waiting_title": "Waiting for connection...",
+  "peer_server_waiting_body": "Your device is visible to nearby players",
+  "peer_server_invitation_title": "Invitation received",
+  "peer_server_invitation_device": "Invitation from device {deviceName}",
+  "@peer_server_invitation_device": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_server_invitation_player": "Player name: {playerName}",
+  "@peer_server_invitation_player": {
+    "placeholders": {
+      "playerName": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_server_invitation_prompt": "Make your decision",
+  "peer_server_accept_button": "Accept",
+  "peer_server_reject_button": "Decline",
+  "peer_client_devices_title": "Nearby devices",
+  "peer_client_loading": "Loading...",
+  "peer_client_waiting_hosts_title": "Waiting for hosts:",
+  "peer_client_searching": "Searching...",
+  "peer_client_unknown_device": "Unknown device",
+  "peer_client_our_app_badge": "tete games app",
+  "peer_client_invite_button": "Invite",
+  "peer_client_invitation_sent_title": "Invitation sent",
+  "peer_client_wait_confirmation": "Waiting for confirmation",
+  "peer_client_invitation_rejected_title": "Invitation declined",
+  "peer_client_invitation_rejected_body": "The host declined your invitation",
+  "peer_client_invitation_rejected_button": "Close",
+  "peer_client_error_discovery": "Failed to start device discovery",
+  "peer_client_error_connection": "Failed to connect to the device",
+  "peer_games_list_title": "Games",
+  "peer_games_list_stub": "Games list coming soon"
 }

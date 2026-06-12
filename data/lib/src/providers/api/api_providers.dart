@@ -3,7 +3,6 @@ export 'api_provider.dart';
 export 'auth/auth_api_provider.dart';
 export 'conditions/conditions_api_provider.dart';
 export 'documents/documents_api_provider.dart';
-export 'example/example_api_provider.dart';
 export 'flights/flights_api_provider.dart';
 export 'loyalty/loyalty_api_provider.dart';
 export 'notifications/notifications_api_provider.dart';

@@ -13,7 +13,6 @@ export 'colors/app_components_themes/app_nav_bar_theme.dart';
 export 'colors/app_components_themes/app_outlined_button_theme.dart';
 export 'colors/app_components_themes/app_pin_field_theme.dart';
 export 'colors/app_components_themes/app_radio_theme.dart';
-export 'colors/app_components_themes/app_rating_badge_theme.dart';
 export 'colors/app_components_themes/app_selection_theme.dart';
 export 'colors/app_components_themes/app_text_button_theme.dart';
 export 'colors/app_components_themes/app_text_field_theme.dart';

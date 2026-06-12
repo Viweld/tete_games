@@ -1,6 +1,8 @@
 import 'package:navigation/navigation.dart';
 
 export 'main.gr.dart';
+export 'main/games_list_screen/games_list_screen.dart';
+export 'main/home_screen/home_screen.dart';
 export 'main/splash_screen/splash_screen.dart';
 export 'src/di/configure_dependencies.module.dart';
 
@@ -11,5 +13,6 @@ class MainRouter extends RootStackRouter {
     // fz:feature-routes
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: SplashRoute.page),
+    AutoRoute(page: GamesListRoute.page),
   ];
 }

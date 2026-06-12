@@ -43,12 +43,11 @@ The project is in the initialization phase: Flutterozavr skeleton is set up and 
 | `domain/` | freezed models, repository interfaces |
 | `data/` | DTOs, Dio, repository implementations |
 | `navigation/` | `AppRouter`, routes |
-| `features/example/` | reference feature package (Screen + Content + BLoC + Effect) |
-| `features/main/` | app shell: splash (initial route), home, games list, BLE connection dialogs (planned) |
+| `features/main/` | app shell: splash (initial route), home, games list, BLE connection dialogs |
 
 ## Tech stack
 
-- Flutter 3.41+ / Dart 3.11+
+- Flutter 3.44+ / Dart 3.12+
 - Bluetooth Low Energy (BLE)
 - `flutter_bloc` + `bloc_concurrency`
 - `freezed`, `injectable`, `auto_route`, `dio` + `retrofit`
@@ -59,12 +58,12 @@ The project is in the initialization phase: Flutterozavr skeleton is set up and 
 ```bash
 fvm flutter pub get
 fvm dart run build_runner build --delete-conflicting-outputs
-fvm flutter run -t lib/main_dev.dart
+fvm flutter run
 ```
 
 ## Env
 
-Copy `.env.example.dev` → `.env.dev`, or use the committed placeholders.
+Copy `.env.example` → `.env`, or use the committed placeholder.
 
 ## Build
 

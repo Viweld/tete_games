@@ -2,40 +2,29 @@ import 'package:core/src/config/app_runtime_mode.dart';
 
 export 'package:core/src/config/app_runtime_mode.dart';
 
-enum Flavor {
-  prod,
-  dev,
-  devMock;
-
-  String get title => switch (this) {
-    Flavor.prod => prodTitle,
-    Flavor.dev => devTitle,
-    Flavor.devMock => devMockTitle,
-  };
-
-  static const String prodTitle = 'prod';
-  static const String devTitle = 'dev';
-  static const String devMockTitle = 'devMock';
-}
-
 class AppConfig {
-  final Flavor flavor;
+  AppConfig({
+    required this.runtimeMode,
+    required this.bleAppName,
+    required this.bleServiceUuid,
+    required this.bleCharacteristicUuid,
+  });
+
   final AppRuntimeMode runtimeMode;
+  final String bleAppName;
+  final String bleServiceUuid;
+  final String bleCharacteristicUuid;
 
-  AppConfig({required this.flavor, required this.runtimeMode});
+  static const String defaultBleAppName = 'tete games';
+  static const String defaultBleServiceUuid = '0000a7c0-0000-1000-8000-00805f9b34fb';
+  static const String defaultBleCharacteristicUuid = '0000a7c1-0000-1000-8000-00805f9b34fb';
 
-  factory AppConfig.fromFlavor(Flavor flavor, {required AppRuntimeMode runtimeMode}) {
-    switch (flavor) {
-      case Flavor.prod:
-        break;
-
-      case Flavor.dev:
-        break;
-
-      case Flavor.devMock:
-        break;
-    }
-
-    return AppConfig(flavor: flavor, runtimeMode: runtimeMode);
+  factory AppConfig.create({required AppRuntimeMode runtimeMode}) {
+    return AppConfig(
+      runtimeMode: runtimeMode,
+      bleAppName: defaultBleAppName,
+      bleServiceUuid: defaultBleServiceUuid,
+      bleCharacteristicUuid: defaultBleCharacteristicUuid,
+    );
   }
 }
