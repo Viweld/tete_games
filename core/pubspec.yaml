@@ -26,24 +26,17 @@ dependencies:
   intl: ^0.20.2
   permission_handler: ^12.0.1
   injectable: ^3.0.0
-  dev: ^1.0.0
   flutter_dotenv: ^6.0.0
   collection: ^1.19.1
-  image_picker: ^1.2.1
   url_launcher: ^6.3.2
-  webview_flutter: ^4.13.1
-  flutter_native_splash: ^2.4.7
-  add_2_calendar: ^3.0.1
-  path_provider: ^2.1.5
-  open_filex: ^4.5.1
+  flutter_native_splash: ^2.4.8
   shared_preferences: ^2.5.3
 
-  firebase_core: ^4.7.0
-  firebase_messaging: ^16.2.0
-  firebase_crashlytics: ^5.0.7
+  firebase_core: ^4.10.0
+  firebase_messaging: ^16.3.0
+  firebase_crashlytics: ^5.2.3
 
-  package_info_plus: ^9.0.1
-  sealed_countries: ^3.1.0
+  sealed_countries: ^3.2.0
   flutter_libphonenumber: ^2.7.0
 
 dev_dependencies:

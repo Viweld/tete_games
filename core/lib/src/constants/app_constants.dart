@@ -2,10 +2,10 @@ import 'dart:core';
 
 abstract class AppConstants {
   // TODO(Skeleton): Replace with your Apple Sign In Service ID from Apple Developer portal.
-  static const String appleSignInClientId = 'com.example.skeleton';
+  static const String appleSignInClientId = 'games.tete.app';
 
   // TODO(Skeleton): Replace with your Apple Sign In web client ID if you use the web flow.
-  static const String appleSignInWebClientId = 'com.example.skeleton.web';
+  static const String appleSignInWebClientId = 'games.tete.app.web';
 
   static const String supportLink = 'https://t.me/supportBot';
   static const String authCodeTimerKey = 'confirm_code';

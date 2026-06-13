@@ -53,6 +53,6 @@ class DefaultFirebaseOptions {
     projectId: 'example-app',
     storageBucket: 'example-app.firebasestorage.app',
     iosClientId: '000000000000-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com',
-    iosBundleId: 'com.example.skeleton',
+    iosBundleId: 'games.tete.app',
   );
 }

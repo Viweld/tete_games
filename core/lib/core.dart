@@ -16,7 +16,6 @@ export 'package:get_it/get_it.dart';
 export 'package:injectable/injectable.dart';
 export 'package:intl/intl.dart' hide TextDirection;
 export 'package:json_annotation/json_annotation.dart';
-export 'package:webview_flutter/webview_flutter.dart' hide X509Certificate;
 
 export 'src/config/app_config.dart';
 export 'src/constants/constants.dart';

@@ -3,8 +3,7 @@ import java.util.Properties
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    // Flutter Gradle Plugin must be applied after Android and Kotlin plugins
+    // Flutter Gradle Plugin must be applied after the Android Gradle plugin.
     id("dev.flutter.flutter-gradle-plugin")
     // START: FlutterFire Configuration
     id("com.google.gms.google-services")
@@ -12,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.skeleton"
+    namespace = "games.tete.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -27,10 +26,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-
     signingConfigs {
         create("release") {
             keyAlias = keystoreProperties.getProperty("keyAlias")
@@ -41,8 +36,7 @@ android {
     }
 
     defaultConfig {
-        // TODO(Skeleton): Replace applicationId with your Android package name (Play Console / Firebase).
-        applicationId = "com.example.skeleton"
+        applicationId = "games.tete.app"
 
         minSdk = maxOf(flutter.minSdkVersion, 21)
         targetSdk = flutter.targetSdkVersion
@@ -59,6 +53,12 @@ android {
                 "proguard-rules.pro",
             )
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 

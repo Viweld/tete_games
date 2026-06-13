@@ -26,7 +26,7 @@
         android:name="android.permission.READ_MEDIA_AUDIO"
         tools:node="remove" />
     <application
-            android:label="Example App"
+            android:label="tete game"
             android:icon="@mipmap/ic_launcher"
             android:networkSecurityConfig="@xml/network_security_config">
 
@@ -54,7 +54,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="exampleapp"/>
+                <data android:scheme="tetegame"/>
             </intent-filter>
 
             <!-- <meta-data
@@ -85,6 +85,10 @@
         <meta-data
                 android:name="flutterEmbedding"
                 android:value="2" />
+
+        <meta-data
+                android:name="firebase_core_auto_init_enabled"
+                android:value="false" />
 
         <meta-data
                 android:name="firebase_crashlytics_collection_enabled"

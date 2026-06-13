@@ -18,7 +18,7 @@ dependencies:
     path: ../../core_ui
   navigation:
     path: ../../navigation
-  freezed: ^3.2.3
+  freezed: ^3.2.5
   uuid: ^4.5.1
 
 dev_dependencies:

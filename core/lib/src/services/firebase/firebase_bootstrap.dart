@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 abstract final class FirebaseBootstrap {
   static Future<void> initialize() async {
     try {
-      await Firebase.initializeApp(options: FirebaseConfig.firebaseOptions);
+      await _ensureDefaultApp();
 
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
       PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
@@ -23,6 +23,25 @@ abstract final class FirebaseBootstrap {
         error: error,
         stackTrace: stackTrace,
       );
+    }
+  }
+
+  /// Ensures the default Firebase app exists for Dart plugins.
+  ///
+  /// On Android, [google-services] may auto-initialize Firebase natively before
+  /// Dart runs while [Firebase.apps] is still empty — handle [duplicate-app].
+  static Future<FirebaseApp> _ensureDefaultApp() async {
+    if (Firebase.apps.isNotEmpty) {
+      return Firebase.app();
+    }
+
+    try {
+      return await Firebase.initializeApp(options: FirebaseConfig.firebaseOptions);
+    } on FirebaseException catch (error) {
+      if (error.code == 'duplicate-app') {
+        return Firebase.app();
+      }
+      rethrow;
     }
   }
 }
