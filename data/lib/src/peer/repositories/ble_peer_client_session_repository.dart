@@ -7,38 +7,58 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: IPeerClientSessionRepository)
 final class BlePeerClientSessionRepository implements IPeerClientSessionRepository {
   BlePeerClientSessionRepository(
-    this._transportFacade,
-    this._clientSession,
+    this._peer,
     this._playerProfileRepository,
     this._localDeviceRepository,
   );
 
-  final pckg.TransportFacade _transportFacade;
-  final pckg.TransportSessionClient _clientSession;
+  final pckg.Peer _peer;
   final IPlayerProfileRepository _playerProfileRepository;
   final ILocalDeviceRepository _localDeviceRepository;
 
+  pckg.PeerClient? _client;
+
+  Future<pckg.PeerClient> _clientSession() async {
+    return _client ??= await _peer.createClient();
+  }
+
   @override
-  Stream<List<PeerDevice>> get discoveredDevices => _clientSession.discoveredDevicesStream.map(
-    (List<pckg.Device> devices) => devices.map(PeerDeviceMapper.toDomain).toList(growable: false),
-  );
+  Stream<List<PeerDevice>> get discoveredDevices {
+    final pckg.PeerClient? client = _client;
+    if (client == null) {
+      return const Stream<List<PeerDevice>>.empty();
+    }
+
+    return client.discoveredDevicesStream.map(
+      (List<pckg.Device> devices) => devices.map(PeerDeviceMapper.toDomain).toList(growable: false),
+    );
+  }
 
   @override
   Future<void> startDiscovery() async {
     final PeerEndpoint localEndpoint = await _buildLocalEndpoint();
-    await _transportFacade.startClientTransportSession();
-    await _clientSession.startDiscovery(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
+    final pckg.PeerClient client = await _clientSession();
+    await client.startDiscovery(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
   }
 
   @override
-  Future<void> stopDiscovery() => _clientSession.stopDiscovery();
+  Future<void> stopDiscovery() async {
+    final pckg.PeerClient? client = _client;
+    if (client == null) return;
+    await client.stopDiscovery();
+  }
 
   @override
-  Future<void> refreshDiscovery() => _clientSession.refreshDiscovery();
+  Future<void> refreshDiscovery() async {
+    final pckg.PeerClient client = await _clientSession();
+    await client.refreshDiscovery();
+  }
 
   @override
-  Future<void> connectToDevice(PeerDevice device) =>
-      _clientSession.connectToDevice(PeerDeviceMapper.toPackage(device));
+  Future<void> connectToDevice(PeerDevice device) async {
+    final pckg.PeerClient client = await _clientSession();
+    await client.connect(PeerDeviceMapper.toPackage(device));
+  }
 
   Future<PeerEndpoint> _buildLocalEndpoint() async {
     final PlayerProfile? profile = await _playerProfileRepository.getCurrentPlayer();

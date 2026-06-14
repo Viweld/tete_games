@@ -8,8 +8,8 @@ abstract class BlePeerModule {
   BlePeerLogger blePeerLogger() => BlePeerLogger();
 
   @lazySingleton
-  BlePeerSessionModule blePeerSessionModule(AppConfig config, BlePeerLogger logger) {
-    return BlePeerSessionModule.create(
+  Peer peer(AppConfig config, BlePeerLogger logger) {
+    return Peer.create(
       config: BlePeerConfig(
         appName: config.bleAppName,
         serviceUuid: config.bleServiceUuid,
@@ -18,15 +18,4 @@ abstract class BlePeerModule {
       logger: logger,
     );
   }
-
-  @lazySingleton
-  TransportFacade transportFacade(BlePeerSessionModule module) => module.transportFacade;
-
-  @lazySingleton
-  TransportSessionClient transportSessionClient(BlePeerSessionModule module) =>
-      module.transportSessionClient;
-
-  @lazySingleton
-  TransportSessionServer transportSessionServer(BlePeerSessionModule module) =>
-      module.transportSessionServer;
 }

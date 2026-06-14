@@ -3,15 +3,15 @@ import 'package:data/src/peer/mappers/peer_endpoint_mapper.dart';
 import 'package:domain/domain.dart';
 
 abstract final class PeerSessionMessageMapper {
-  static PeerSessionMessage toDomain(pckg.TransportMessage message) {
-    final PeerEndpoint remoteEndpoint = PeerEndpointMapper.toDomain(message.peerEndpoint);
+  static PeerSessionMessage toDomain(pckg.PeerMessage message) {
+    final PeerEndpoint remoteEndpoint = PeerEndpointMapper.toDomain(message.sender);
 
-    return switch (message) {
-      pckg.InvitationMessage() => PeerInvitation(remoteEndpoint: remoteEndpoint),
-      pckg.AcceptanceMessage() => PeerAcceptance(remoteEndpoint: remoteEndpoint),
-      pckg.RejectionMessage() => PeerRejection(remoteEndpoint: remoteEndpoint),
-      pckg.DisconnectionMessage() => PeerDisconnection(remoteEndpoint: remoteEndpoint),
-      pckg.PeerMessage() => throw UnsupportedError('PeerMessage is not a session message'),
+    return switch (message.type) {
+      pckg.PeerMessageTypes.sessionInvite => PeerInvitation(remoteEndpoint: remoteEndpoint),
+      pckg.PeerMessageTypes.sessionAccept => PeerAcceptance(remoteEndpoint: remoteEndpoint),
+      pckg.PeerMessageTypes.sessionReject => PeerRejection(remoteEndpoint: remoteEndpoint),
+      pckg.PeerMessageTypes.sessionDisconnect => PeerDisconnection(remoteEndpoint: remoteEndpoint),
+      _ => throw UnsupportedError('Not a session message type: ${message.type}'),
     };
   }
 }

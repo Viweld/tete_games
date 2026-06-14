@@ -6,6 +6,11 @@ final class BlePeerLogger implements Logger {
   static const String _name = 'ble_peer';
 
   @override
+  void i(String message) {
+    developer.log(message, name: _name, level: 800);
+  }
+
+  @override
   void d(String message) {
     developer.log(message, name: _name);
   }

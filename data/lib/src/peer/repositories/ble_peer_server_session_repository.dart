@@ -6,32 +6,46 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: IPeerServerSessionRepository)
 final class BlePeerServerSessionRepository implements IPeerServerSessionRepository {
   BlePeerServerSessionRepository(
-    this._transportFacade,
-    this._serverSession,
+    this._peer,
     this._playerProfileRepository,
     this._localDeviceRepository,
   );
 
-  final pckg.TransportFacade _transportFacade;
-  final pckg.TransportSessionServer _serverSession;
+  final pckg.Peer _peer;
   final IPlayerProfileRepository _playerProfileRepository;
   final ILocalDeviceRepository _localDeviceRepository;
+
+  pckg.PeerHost? _host;
+
+  Future<pckg.PeerHost> _hostSession() async {
+    return _host ??= await _peer.createHost();
+  }
 
   @override
   Future<void> startAdvertising() async {
     final PeerEndpoint localEndpoint = await _buildLocalEndpoint();
-    await _transportFacade.startServerTransportSession();
-    await _serverSession.startAdvertising(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
+    final pckg.PeerHost host = await _hostSession();
+    await host.start(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
   }
 
   @override
-  Future<void> acceptInvitation() => _serverSession.acceptInvitation();
+  Future<void> acceptInvitation() async {
+    final pckg.PeerHost host = await _hostSession();
+    await host.accept();
+  }
 
   @override
-  Future<void> rejectInvitation() => _serverSession.rejectInvitation();
+  Future<void> rejectInvitation() async {
+    final pckg.PeerHost host = await _hostSession();
+    await host.reject();
+  }
 
   @override
-  Future<void> stopAdvertising() => _serverSession.stopAdvertising();
+  Future<void> stopAdvertising() async {
+    final pckg.PeerHost? host = _host;
+    if (host == null) return;
+    await host.stop();
+  }
 
   Future<PeerEndpoint> _buildLocalEndpoint() async {
     final PlayerProfile? profile = await _playerProfileRepository.getCurrentPlayer();
