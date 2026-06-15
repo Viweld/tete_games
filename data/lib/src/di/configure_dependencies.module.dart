@@ -11,6 +11,7 @@ import 'package:data/src/di/firebase_module.dart' as _i650;
 import 'package:data/src/di/local_module.dart' as _i993;
 import 'package:data/src/peer/ble_peer_logger.dart' as _i561;
 import 'package:data/src/peer/di/ble_peer_module.dart' as _i68;
+import 'package:data/src/peer/peer_connection_service_impl.dart' as _i547;
 import 'package:data/src/peer/repositories/ble_peer_client_session_repository.dart'
     as _i846;
 import 'package:data/src/peer/repositories/ble_peer_server_session_repository.dart'
@@ -68,6 +69,13 @@ class DataPackageModule extends _i526.MicroPackageModule {
               gh<_i286.Peer>(),
               gh<_i494.IPlayerProfileRepository>(),
               gh<_i494.ILocalDeviceRepository>(),
+            ));
+    gh.lazySingleton<_i494.PeerConnectionService>(
+        () => _i547.PeerConnectionServiceImpl(
+              gh<_i494.IPeerServerSessionRepository>(),
+              gh<_i494.IPeerClientSessionRepository>(),
+              gh<_i494.IPeerTransportRepository>(),
+              gh<_i494.IPlayerProfileRepository>(),
             ));
   }
 }

@@ -1,15 +1,16 @@
 part of 'home_bloc.dart';
 
-enum HomePhase { initializing, ready, connected }
-
-enum HomeErrorKind { initializationFailed }
-
 @freezed
 abstract class HomeState with _$HomeState {
   const factory HomeState({
-    required HomePhase phase,
-    @Default(false) bool isLoading,
-    HomeErrorKind? errorKind,
+    @Default(false) bool isConnected,
+    String? remoteDisplayName,
+    String? remotePlayerId,
+    @Default(OverlayRenderViewState()) OverlayRenderViewState overlay,
+    @Default(false) bool isGamesEnabled,
+    @Default(FrameProjectionInput()) FrameProjectionInput projection,
+    @Default(0) int lastHandledFrameId,
+    @Default(false) bool isOverlayVisible,
     HomeEffect? effect,
   }) = _HomeState;
 }

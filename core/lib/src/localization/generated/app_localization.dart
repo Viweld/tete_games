@@ -291,6 +291,24 @@ abstract class AppLocalization {
   /// **'Ожидать присоединения'**
   String get peer_home_start_server_button;
 
+  /// No description provided for @peer_home_menu_connect.
+  ///
+  /// In ru, this message translates to:
+  /// **'Соединиться'**
+  String get peer_home_menu_connect;
+
+  /// No description provided for @peer_home_menu_disconnect.
+  ///
+  /// In ru, this message translates to:
+  /// **'Отключиться'**
+  String get peer_home_menu_disconnect;
+
+  /// No description provided for @peer_home_menu_profile.
+  ///
+  /// In ru, this message translates to:
+  /// **'Профиль'**
+  String get peer_home_menu_profile;
+
   /// No description provided for @peer_home_title.
   ///
   /// In ru, this message translates to:

@@ -10,7 +10,6 @@ class AppRouter extends RootStackRouter {
     // fz:routes
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: SplashRoute.page, initial: true),
-    AutoRoute(page: GamesListRoute.page),
   ];
 
   Future<void> navigateBack([Object? result]) => maybePop(result);
@@ -19,8 +18,6 @@ class AppRouter extends RootStackRouter {
 
   // fz:navigate-methods
   Future<void> navigateHome() => push(const HomeRoute());
-
-  Future<void> navigateGamesList() => push(const GamesListRoute());
 
   /// Stubs for `core_ui` MainAppBar until modules are connected via `fz add`.
   Future<void> navigateSupport() async {}

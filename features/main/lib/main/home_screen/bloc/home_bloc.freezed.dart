@@ -55,14 +55,24 @@ extension HomeEventPatterns on HomeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _StartServerSessionTapped value)?  startServerSessionTapped,TResult Function( _StartClientSessionTapped value)?  startClientSessionTapped,TResult Function( _TransportConnected value)?  transportConnected,TResult Function( _EffectHandled value)?  effectHandled,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _FrameReceived value)?  frameReceived,TResult Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult Function( _HostTapped value)?  hostTapped,TResult Function( _ClientTapped value)?  clientTapped,TResult Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult Function( _OverlayOpened value)?  overlayOpened,TResult Function( _OverlayClosed value)?  overlayClosed,TResult Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult Function( _EffectHandled value)?  effectHandled,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
-return init(_that);case _StartServerSessionTapped() when startServerSessionTapped != null:
-return startServerSessionTapped(_that);case _StartClientSessionTapped() when startClientSessionTapped != null:
-return startClientSessionTapped(_that);case _TransportConnected() when transportConnected != null:
-return transportConnected(_that);case _EffectHandled() when effectHandled != null:
+return init(_that);case _FrameReceived() when frameReceived != null:
+return frameReceived(_that);case _ConnectMenuTapped() when connectMenuTapped != null:
+return connectMenuTapped(_that);case _HostTapped() when hostTapped != null:
+return hostTapped(_that);case _ClientTapped() when clientTapped != null:
+return clientTapped(_that);case _DisconnectMenuTapped() when disconnectMenuTapped != null:
+return disconnectMenuTapped(_that);case _ProfileMenuTapped() when profileMenuTapped != null:
+return profileMenuTapped(_that);case _DeviceHighlightChanged() when deviceHighlightChanged != null:
+return deviceHighlightChanged(_that);case _InviteDeviceTapped() when inviteDeviceTapped != null:
+return inviteDeviceTapped(_that);case _AcceptInvitationTapped() when acceptInvitationTapped != null:
+return acceptInvitationTapped(_that);case _RejectInvitationTapped() when rejectInvitationTapped != null:
+return rejectInvitationTapped(_that);case _OverlayOpened() when overlayOpened != null:
+return overlayOpened(_that);case _OverlayClosed() when overlayClosed != null:
+return overlayClosed(_that);case _OverlayDismissTapped() when overlayDismissTapped != null:
+return overlayDismissTapped(_that);case _EffectHandled() when effectHandled != null:
 return effectHandled(_that);case _:
   return orElse();
 
@@ -81,14 +91,24 @@ return effectHandled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _StartServerSessionTapped value)  startServerSessionTapped,required TResult Function( _StartClientSessionTapped value)  startClientSessionTapped,required TResult Function( _TransportConnected value)  transportConnected,required TResult Function( _EffectHandled value)  effectHandled,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _FrameReceived value)  frameReceived,required TResult Function( _ConnectMenuTapped value)  connectMenuTapped,required TResult Function( _HostTapped value)  hostTapped,required TResult Function( _ClientTapped value)  clientTapped,required TResult Function( _DisconnectMenuTapped value)  disconnectMenuTapped,required TResult Function( _ProfileMenuTapped value)  profileMenuTapped,required TResult Function( _DeviceHighlightChanged value)  deviceHighlightChanged,required TResult Function( _InviteDeviceTapped value)  inviteDeviceTapped,required TResult Function( _AcceptInvitationTapped value)  acceptInvitationTapped,required TResult Function( _RejectInvitationTapped value)  rejectInvitationTapped,required TResult Function( _OverlayOpened value)  overlayOpened,required TResult Function( _OverlayClosed value)  overlayClosed,required TResult Function( _OverlayDismissTapped value)  overlayDismissTapped,required TResult Function( _EffectHandled value)  effectHandled,}){
 final _that = this;
 switch (_that) {
 case _Init():
-return init(_that);case _StartServerSessionTapped():
-return startServerSessionTapped(_that);case _StartClientSessionTapped():
-return startClientSessionTapped(_that);case _TransportConnected():
-return transportConnected(_that);case _EffectHandled():
+return init(_that);case _FrameReceived():
+return frameReceived(_that);case _ConnectMenuTapped():
+return connectMenuTapped(_that);case _HostTapped():
+return hostTapped(_that);case _ClientTapped():
+return clientTapped(_that);case _DisconnectMenuTapped():
+return disconnectMenuTapped(_that);case _ProfileMenuTapped():
+return profileMenuTapped(_that);case _DeviceHighlightChanged():
+return deviceHighlightChanged(_that);case _InviteDeviceTapped():
+return inviteDeviceTapped(_that);case _AcceptInvitationTapped():
+return acceptInvitationTapped(_that);case _RejectInvitationTapped():
+return rejectInvitationTapped(_that);case _OverlayOpened():
+return overlayOpened(_that);case _OverlayClosed():
+return overlayClosed(_that);case _OverlayDismissTapped():
+return overlayDismissTapped(_that);case _EffectHandled():
 return effectHandled(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -103,14 +123,24 @@ return effectHandled(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _StartServerSessionTapped value)?  startServerSessionTapped,TResult? Function( _StartClientSessionTapped value)?  startClientSessionTapped,TResult? Function( _TransportConnected value)?  transportConnected,TResult? Function( _EffectHandled value)?  effectHandled,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _FrameReceived value)?  frameReceived,TResult? Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult? Function( _HostTapped value)?  hostTapped,TResult? Function( _ClientTapped value)?  clientTapped,TResult? Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult? Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult? Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult? Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult? Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult? Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult? Function( _OverlayOpened value)?  overlayOpened,TResult? Function( _OverlayClosed value)?  overlayClosed,TResult? Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult? Function( _EffectHandled value)?  effectHandled,}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
-return init(_that);case _StartServerSessionTapped() when startServerSessionTapped != null:
-return startServerSessionTapped(_that);case _StartClientSessionTapped() when startClientSessionTapped != null:
-return startClientSessionTapped(_that);case _TransportConnected() when transportConnected != null:
-return transportConnected(_that);case _EffectHandled() when effectHandled != null:
+return init(_that);case _FrameReceived() when frameReceived != null:
+return frameReceived(_that);case _ConnectMenuTapped() when connectMenuTapped != null:
+return connectMenuTapped(_that);case _HostTapped() when hostTapped != null:
+return hostTapped(_that);case _ClientTapped() when clientTapped != null:
+return clientTapped(_that);case _DisconnectMenuTapped() when disconnectMenuTapped != null:
+return disconnectMenuTapped(_that);case _ProfileMenuTapped() when profileMenuTapped != null:
+return profileMenuTapped(_that);case _DeviceHighlightChanged() when deviceHighlightChanged != null:
+return deviceHighlightChanged(_that);case _InviteDeviceTapped() when inviteDeviceTapped != null:
+return inviteDeviceTapped(_that);case _AcceptInvitationTapped() when acceptInvitationTapped != null:
+return acceptInvitationTapped(_that);case _RejectInvitationTapped() when rejectInvitationTapped != null:
+return rejectInvitationTapped(_that);case _OverlayOpened() when overlayOpened != null:
+return overlayOpened(_that);case _OverlayClosed() when overlayClosed != null:
+return overlayClosed(_that);case _OverlayDismissTapped() when overlayDismissTapped != null:
+return overlayDismissTapped(_that);case _EffectHandled() when effectHandled != null:
 return effectHandled(_that);case _:
   return null;
 
@@ -128,13 +158,23 @@ return effectHandled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function()?  startServerSessionTapped,TResult Function()?  startClientSessionTapped,TResult Function()?  transportConnected,TResult Function()?  effectHandled,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( AppConnectionFrame frame)?  frameReceived,TResult Function()?  connectMenuTapped,TResult Function()?  hostTapped,TResult Function()?  clientTapped,TResult Function()?  disconnectMenuTapped,TResult Function()?  profileMenuTapped,TResult Function( String? deviceId)?  deviceHighlightChanged,TResult Function()?  inviteDeviceTapped,TResult Function()?  acceptInvitationTapped,TResult Function()?  rejectInvitationTapped,TResult Function()?  overlayOpened,TResult Function()?  overlayClosed,TResult Function()?  overlayDismissTapped,TResult Function()?  effectHandled,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
-return init();case _StartServerSessionTapped() when startServerSessionTapped != null:
-return startServerSessionTapped();case _StartClientSessionTapped() when startClientSessionTapped != null:
-return startClientSessionTapped();case _TransportConnected() when transportConnected != null:
-return transportConnected();case _EffectHandled() when effectHandled != null:
+return init();case _FrameReceived() when frameReceived != null:
+return frameReceived(_that.frame);case _ConnectMenuTapped() when connectMenuTapped != null:
+return connectMenuTapped();case _HostTapped() when hostTapped != null:
+return hostTapped();case _ClientTapped() when clientTapped != null:
+return clientTapped();case _DisconnectMenuTapped() when disconnectMenuTapped != null:
+return disconnectMenuTapped();case _ProfileMenuTapped() when profileMenuTapped != null:
+return profileMenuTapped();case _DeviceHighlightChanged() when deviceHighlightChanged != null:
+return deviceHighlightChanged(_that.deviceId);case _InviteDeviceTapped() when inviteDeviceTapped != null:
+return inviteDeviceTapped();case _AcceptInvitationTapped() when acceptInvitationTapped != null:
+return acceptInvitationTapped();case _RejectInvitationTapped() when rejectInvitationTapped != null:
+return rejectInvitationTapped();case _OverlayOpened() when overlayOpened != null:
+return overlayOpened();case _OverlayClosed() when overlayClosed != null:
+return overlayClosed();case _OverlayDismissTapped() when overlayDismissTapped != null:
+return overlayDismissTapped();case _EffectHandled() when effectHandled != null:
 return effectHandled();case _:
   return orElse();
 
@@ -153,13 +193,23 @@ return effectHandled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function()  startServerSessionTapped,required TResult Function()  startClientSessionTapped,required TResult Function()  transportConnected,required TResult Function()  effectHandled,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( AppConnectionFrame frame)  frameReceived,required TResult Function()  connectMenuTapped,required TResult Function()  hostTapped,required TResult Function()  clientTapped,required TResult Function()  disconnectMenuTapped,required TResult Function()  profileMenuTapped,required TResult Function( String? deviceId)  deviceHighlightChanged,required TResult Function()  inviteDeviceTapped,required TResult Function()  acceptInvitationTapped,required TResult Function()  rejectInvitationTapped,required TResult Function()  overlayOpened,required TResult Function()  overlayClosed,required TResult Function()  overlayDismissTapped,required TResult Function()  effectHandled,}) {final _that = this;
 switch (_that) {
 case _Init():
-return init();case _StartServerSessionTapped():
-return startServerSessionTapped();case _StartClientSessionTapped():
-return startClientSessionTapped();case _TransportConnected():
-return transportConnected();case _EffectHandled():
+return init();case _FrameReceived():
+return frameReceived(_that.frame);case _ConnectMenuTapped():
+return connectMenuTapped();case _HostTapped():
+return hostTapped();case _ClientTapped():
+return clientTapped();case _DisconnectMenuTapped():
+return disconnectMenuTapped();case _ProfileMenuTapped():
+return profileMenuTapped();case _DeviceHighlightChanged():
+return deviceHighlightChanged(_that.deviceId);case _InviteDeviceTapped():
+return inviteDeviceTapped();case _AcceptInvitationTapped():
+return acceptInvitationTapped();case _RejectInvitationTapped():
+return rejectInvitationTapped();case _OverlayOpened():
+return overlayOpened();case _OverlayClosed():
+return overlayClosed();case _OverlayDismissTapped():
+return overlayDismissTapped();case _EffectHandled():
 return effectHandled();}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -174,13 +224,23 @@ return effectHandled();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function()?  startServerSessionTapped,TResult? Function()?  startClientSessionTapped,TResult? Function()?  transportConnected,TResult? Function()?  effectHandled,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( AppConnectionFrame frame)?  frameReceived,TResult? Function()?  connectMenuTapped,TResult? Function()?  hostTapped,TResult? Function()?  clientTapped,TResult? Function()?  disconnectMenuTapped,TResult? Function()?  profileMenuTapped,TResult? Function( String? deviceId)?  deviceHighlightChanged,TResult? Function()?  inviteDeviceTapped,TResult? Function()?  acceptInvitationTapped,TResult? Function()?  rejectInvitationTapped,TResult? Function()?  overlayOpened,TResult? Function()?  overlayClosed,TResult? Function()?  overlayDismissTapped,TResult? Function()?  effectHandled,}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
-return init();case _StartServerSessionTapped() when startServerSessionTapped != null:
-return startServerSessionTapped();case _StartClientSessionTapped() when startClientSessionTapped != null:
-return startClientSessionTapped();case _TransportConnected() when transportConnected != null:
-return transportConnected();case _EffectHandled() when effectHandled != null:
+return init();case _FrameReceived() when frameReceived != null:
+return frameReceived(_that.frame);case _ConnectMenuTapped() when connectMenuTapped != null:
+return connectMenuTapped();case _HostTapped() when hostTapped != null:
+return hostTapped();case _ClientTapped() when clientTapped != null:
+return clientTapped();case _DisconnectMenuTapped() when disconnectMenuTapped != null:
+return disconnectMenuTapped();case _ProfileMenuTapped() when profileMenuTapped != null:
+return profileMenuTapped();case _DeviceHighlightChanged() when deviceHighlightChanged != null:
+return deviceHighlightChanged(_that.deviceId);case _InviteDeviceTapped() when inviteDeviceTapped != null:
+return inviteDeviceTapped();case _AcceptInvitationTapped() when acceptInvitationTapped != null:
+return acceptInvitationTapped();case _RejectInvitationTapped() when rejectInvitationTapped != null:
+return rejectInvitationTapped();case _OverlayOpened() when overlayOpened != null:
+return overlayOpened();case _OverlayClosed() when overlayClosed != null:
+return overlayClosed();case _OverlayDismissTapped() when overlayDismissTapped != null:
+return overlayDismissTapped();case _EffectHandled() when effectHandled != null:
 return effectHandled();case _:
   return null;
 
@@ -224,8 +284,74 @@ String toString() {
 /// @nodoc
 
 
-class _StartServerSessionTapped implements HomeEvent {
-  const _StartServerSessionTapped();
+class _FrameReceived implements HomeEvent {
+  const _FrameReceived(this.frame);
+  
+
+ final  AppConnectionFrame frame;
+
+/// Create a copy of HomeEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$FrameReceivedCopyWith<_FrameReceived> get copyWith => __$FrameReceivedCopyWithImpl<_FrameReceived>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FrameReceived&&(identical(other.frame, frame) || other.frame == frame));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,frame);
+
+@override
+String toString() {
+  return 'HomeEvent.frameReceived(frame: $frame)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$FrameReceivedCopyWith<$Res> implements $HomeEventCopyWith<$Res> {
+  factory _$FrameReceivedCopyWith(_FrameReceived value, $Res Function(_FrameReceived) _then) = __$FrameReceivedCopyWithImpl;
+@useResult
+$Res call({
+ AppConnectionFrame frame
+});
+
+
+
+
+}
+/// @nodoc
+class __$FrameReceivedCopyWithImpl<$Res>
+    implements _$FrameReceivedCopyWith<$Res> {
+  __$FrameReceivedCopyWithImpl(this._self, this._then);
+
+  final _FrameReceived _self;
+  final $Res Function(_FrameReceived) _then;
+
+/// Create a copy of HomeEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? frame = null,}) {
+  return _then(_FrameReceived(
+null == frame ? _self.frame : frame // ignore: cast_nullable_to_non_nullable
+as AppConnectionFrame,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _ConnectMenuTapped implements HomeEvent {
+  const _ConnectMenuTapped();
   
 
 
@@ -235,7 +361,7 @@ class _StartServerSessionTapped implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartServerSessionTapped);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConnectMenuTapped);
 }
 
 
@@ -244,7 +370,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.startServerSessionTapped()';
+  return 'HomeEvent.connectMenuTapped()';
 }
 
 
@@ -256,8 +382,8 @@ String toString() {
 /// @nodoc
 
 
-class _StartClientSessionTapped implements HomeEvent {
-  const _StartClientSessionTapped();
+class _HostTapped implements HomeEvent {
+  const _HostTapped();
   
 
 
@@ -267,7 +393,7 @@ class _StartClientSessionTapped implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartClientSessionTapped);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HostTapped);
 }
 
 
@@ -276,7 +402,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.startClientSessionTapped()';
+  return 'HomeEvent.hostTapped()';
 }
 
 
@@ -288,8 +414,8 @@ String toString() {
 /// @nodoc
 
 
-class _TransportConnected implements HomeEvent {
-  const _TransportConnected();
+class _ClientTapped implements HomeEvent {
+  const _ClientTapped();
   
 
 
@@ -299,7 +425,7 @@ class _TransportConnected implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TransportConnected);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClientTapped);
 }
 
 
@@ -308,7 +434,329 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.transportConnected()';
+  return 'HomeEvent.clientTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _DisconnectMenuTapped implements HomeEvent {
+  const _DisconnectMenuTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DisconnectMenuTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.disconnectMenuTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _ProfileMenuTapped implements HomeEvent {
+  const _ProfileMenuTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileMenuTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.profileMenuTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _DeviceHighlightChanged implements HomeEvent {
+  const _DeviceHighlightChanged({this.deviceId});
+  
+
+ final  String? deviceId;
+
+/// Create a copy of HomeEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DeviceHighlightChangedCopyWith<_DeviceHighlightChanged> get copyWith => __$DeviceHighlightChangedCopyWithImpl<_DeviceHighlightChanged>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DeviceHighlightChanged&&(identical(other.deviceId, deviceId) || other.deviceId == deviceId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,deviceId);
+
+@override
+String toString() {
+  return 'HomeEvent.deviceHighlightChanged(deviceId: $deviceId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DeviceHighlightChangedCopyWith<$Res> implements $HomeEventCopyWith<$Res> {
+  factory _$DeviceHighlightChangedCopyWith(_DeviceHighlightChanged value, $Res Function(_DeviceHighlightChanged) _then) = __$DeviceHighlightChangedCopyWithImpl;
+@useResult
+$Res call({
+ String? deviceId
+});
+
+
+
+
+}
+/// @nodoc
+class __$DeviceHighlightChangedCopyWithImpl<$Res>
+    implements _$DeviceHighlightChangedCopyWith<$Res> {
+  __$DeviceHighlightChangedCopyWithImpl(this._self, this._then);
+
+  final _DeviceHighlightChanged _self;
+  final $Res Function(_DeviceHighlightChanged) _then;
+
+/// Create a copy of HomeEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? deviceId = freezed,}) {
+  return _then(_DeviceHighlightChanged(
+deviceId: freezed == deviceId ? _self.deviceId : deviceId // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _InviteDeviceTapped implements HomeEvent {
+  const _InviteDeviceTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InviteDeviceTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.inviteDeviceTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _AcceptInvitationTapped implements HomeEvent {
+  const _AcceptInvitationTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AcceptInvitationTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.acceptInvitationTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _RejectInvitationTapped implements HomeEvent {
+  const _RejectInvitationTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RejectInvitationTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.rejectInvitationTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _OverlayOpened implements HomeEvent {
+  const _OverlayOpened();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayOpened);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.overlayOpened()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _OverlayClosed implements HomeEvent {
+  const _OverlayClosed();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayClosed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.overlayClosed()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _OverlayDismissTapped implements HomeEvent {
+  const _OverlayDismissTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayDismissTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.overlayDismissTapped()';
 }
 
 
@@ -352,7 +800,7 @@ String toString() {
 /// @nodoc
 mixin _$HomeState {
 
- HomePhase get phase; bool get isLoading; HomeErrorKind? get errorKind; HomeEffect? get effect;
+ bool get isConnected; String? get remoteDisplayName; String? get remotePlayerId; OverlayRenderViewState get overlay; bool get isGamesEnabled; FrameProjectionInput get projection; int get lastHandledFrameId; bool get isOverlayVisible; HomeEffect? get effect;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -363,16 +811,16 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.phase, phase) || other.phase == phase)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.errorKind, errorKind) || other.errorKind == errorKind)&&(identical(other.effect, effect) || other.effect == effect));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.isConnected, isConnected) || other.isConnected == isConnected)&&(identical(other.remoteDisplayName, remoteDisplayName) || other.remoteDisplayName == remoteDisplayName)&&(identical(other.remotePlayerId, remotePlayerId) || other.remotePlayerId == remotePlayerId)&&(identical(other.overlay, overlay) || other.overlay == overlay)&&(identical(other.isGamesEnabled, isGamesEnabled) || other.isGamesEnabled == isGamesEnabled)&&(identical(other.projection, projection) || other.projection == projection)&&(identical(other.lastHandledFrameId, lastHandledFrameId) || other.lastHandledFrameId == lastHandledFrameId)&&(identical(other.isOverlayVisible, isOverlayVisible) || other.isOverlayVisible == isOverlayVisible)&&(identical(other.effect, effect) || other.effect == effect));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,phase,isLoading,errorKind,effect);
+int get hashCode => Object.hash(runtimeType,isConnected,remoteDisplayName,remotePlayerId,overlay,isGamesEnabled,projection,lastHandledFrameId,isOverlayVisible,effect);
 
 @override
 String toString() {
-  return 'HomeState(phase: $phase, isLoading: $isLoading, errorKind: $errorKind, effect: $effect)';
+  return 'HomeState(isConnected: $isConnected, remoteDisplayName: $remoteDisplayName, remotePlayerId: $remotePlayerId, overlay: $overlay, isGamesEnabled: $isGamesEnabled, projection: $projection, lastHandledFrameId: $lastHandledFrameId, isOverlayVisible: $isOverlayVisible, effect: $effect)';
 }
 
 
@@ -383,7 +831,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- HomePhase phase, bool isLoading, HomeErrorKind? errorKind, HomeEffect? effect
+ bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomeEffect? effect
 });
 
 
@@ -400,12 +848,17 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? phase = null,Object? isLoading = null,Object? errorKind = freezed,Object? effect = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isConnected = null,Object? remoteDisplayName = freezed,Object? remotePlayerId = freezed,Object? overlay = null,Object? isGamesEnabled = null,Object? projection = null,Object? lastHandledFrameId = null,Object? isOverlayVisible = null,Object? effect = freezed,}) {
   return _then(_self.copyWith(
-phase: null == phase ? _self.phase : phase // ignore: cast_nullable_to_non_nullable
-as HomePhase,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
-as bool,errorKind: freezed == errorKind ? _self.errorKind : errorKind // ignore: cast_nullable_to_non_nullable
-as HomeErrorKind?,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
+isConnected: null == isConnected ? _self.isConnected : isConnected // ignore: cast_nullable_to_non_nullable
+as bool,remoteDisplayName: freezed == remoteDisplayName ? _self.remoteDisplayName : remoteDisplayName // ignore: cast_nullable_to_non_nullable
+as String?,remotePlayerId: freezed == remotePlayerId ? _self.remotePlayerId : remotePlayerId // ignore: cast_nullable_to_non_nullable
+as String?,overlay: null == overlay ? _self.overlay : overlay // ignore: cast_nullable_to_non_nullable
+as OverlayRenderViewState,isGamesEnabled: null == isGamesEnabled ? _self.isGamesEnabled : isGamesEnabled // ignore: cast_nullable_to_non_nullable
+as bool,projection: null == projection ? _self.projection : projection // ignore: cast_nullable_to_non_nullable
+as FrameProjectionInput,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
+as int,isOverlayVisible: null == isOverlayVisible ? _self.isOverlayVisible : isOverlayVisible // ignore: cast_nullable_to_non_nullable
+as bool,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
 as HomeEffect?,
   ));
 }
@@ -503,10 +956,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( HomePhase phase,  bool isLoading,  HomeErrorKind? errorKind,  HomeEffect? effect)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomeEffect? effect)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.phase,_that.isLoading,_that.errorKind,_that.effect);case _:
+return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.effect);case _:
   return orElse();
 
 }
@@ -524,10 +977,10 @@ return $default(_that.phase,_that.isLoading,_that.errorKind,_that.effect);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( HomePhase phase,  bool isLoading,  HomeErrorKind? errorKind,  HomeEffect? effect)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomeEffect? effect)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
-return $default(_that.phase,_that.isLoading,_that.errorKind,_that.effect);case _:
+return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.effect);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -544,10 +997,10 @@ return $default(_that.phase,_that.isLoading,_that.errorKind,_that.effect);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( HomePhase phase,  bool isLoading,  HomeErrorKind? errorKind,  HomeEffect? effect)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomeEffect? effect)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.phase,_that.isLoading,_that.errorKind,_that.effect);case _:
+return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.effect);case _:
   return null;
 
 }
@@ -559,12 +1012,17 @@ return $default(_that.phase,_that.isLoading,_that.errorKind,_that.effect);case _
 
 
 class _HomeState implements HomeState {
-  const _HomeState({required this.phase, this.isLoading = false, this.errorKind, this.effect});
+  const _HomeState({this.isConnected = false, this.remoteDisplayName, this.remotePlayerId, this.overlay = const OverlayRenderViewState(), this.isGamesEnabled = false, this.projection = const FrameProjectionInput(), this.lastHandledFrameId = 0, this.isOverlayVisible = false, this.effect});
   
 
-@override final  HomePhase phase;
-@override@JsonKey() final  bool isLoading;
-@override final  HomeErrorKind? errorKind;
+@override@JsonKey() final  bool isConnected;
+@override final  String? remoteDisplayName;
+@override final  String? remotePlayerId;
+@override@JsonKey() final  OverlayRenderViewState overlay;
+@override@JsonKey() final  bool isGamesEnabled;
+@override@JsonKey() final  FrameProjectionInput projection;
+@override@JsonKey() final  int lastHandledFrameId;
+@override@JsonKey() final  bool isOverlayVisible;
 @override final  HomeEffect? effect;
 
 /// Create a copy of HomeState
@@ -577,16 +1035,16 @@ _$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.phase, phase) || other.phase == phase)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.errorKind, errorKind) || other.errorKind == errorKind)&&(identical(other.effect, effect) || other.effect == effect));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.isConnected, isConnected) || other.isConnected == isConnected)&&(identical(other.remoteDisplayName, remoteDisplayName) || other.remoteDisplayName == remoteDisplayName)&&(identical(other.remotePlayerId, remotePlayerId) || other.remotePlayerId == remotePlayerId)&&(identical(other.overlay, overlay) || other.overlay == overlay)&&(identical(other.isGamesEnabled, isGamesEnabled) || other.isGamesEnabled == isGamesEnabled)&&(identical(other.projection, projection) || other.projection == projection)&&(identical(other.lastHandledFrameId, lastHandledFrameId) || other.lastHandledFrameId == lastHandledFrameId)&&(identical(other.isOverlayVisible, isOverlayVisible) || other.isOverlayVisible == isOverlayVisible)&&(identical(other.effect, effect) || other.effect == effect));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,phase,isLoading,errorKind,effect);
+int get hashCode => Object.hash(runtimeType,isConnected,remoteDisplayName,remotePlayerId,overlay,isGamesEnabled,projection,lastHandledFrameId,isOverlayVisible,effect);
 
 @override
 String toString() {
-  return 'HomeState(phase: $phase, isLoading: $isLoading, errorKind: $errorKind, effect: $effect)';
+  return 'HomeState(isConnected: $isConnected, remoteDisplayName: $remoteDisplayName, remotePlayerId: $remotePlayerId, overlay: $overlay, isGamesEnabled: $isGamesEnabled, projection: $projection, lastHandledFrameId: $lastHandledFrameId, isOverlayVisible: $isOverlayVisible, effect: $effect)';
 }
 
 
@@ -597,7 +1055,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- HomePhase phase, bool isLoading, HomeErrorKind? errorKind, HomeEffect? effect
+ bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomeEffect? effect
 });
 
 
@@ -614,12 +1072,17 @@ class __$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? phase = null,Object? isLoading = null,Object? errorKind = freezed,Object? effect = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isConnected = null,Object? remoteDisplayName = freezed,Object? remotePlayerId = freezed,Object? overlay = null,Object? isGamesEnabled = null,Object? projection = null,Object? lastHandledFrameId = null,Object? isOverlayVisible = null,Object? effect = freezed,}) {
   return _then(_HomeState(
-phase: null == phase ? _self.phase : phase // ignore: cast_nullable_to_non_nullable
-as HomePhase,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
-as bool,errorKind: freezed == errorKind ? _self.errorKind : errorKind // ignore: cast_nullable_to_non_nullable
-as HomeErrorKind?,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
+isConnected: null == isConnected ? _self.isConnected : isConnected // ignore: cast_nullable_to_non_nullable
+as bool,remoteDisplayName: freezed == remoteDisplayName ? _self.remoteDisplayName : remoteDisplayName // ignore: cast_nullable_to_non_nullable
+as String?,remotePlayerId: freezed == remotePlayerId ? _self.remotePlayerId : remotePlayerId // ignore: cast_nullable_to_non_nullable
+as String?,overlay: null == overlay ? _self.overlay : overlay // ignore: cast_nullable_to_non_nullable
+as OverlayRenderViewState,isGamesEnabled: null == isGamesEnabled ? _self.isGamesEnabled : isGamesEnabled // ignore: cast_nullable_to_non_nullable
+as bool,projection: null == projection ? _self.projection : projection // ignore: cast_nullable_to_non_nullable
+as FrameProjectionInput,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
+as int,isOverlayVisible: null == isOverlayVisible ? _self.isOverlayVisible : isOverlayVisible // ignore: cast_nullable_to_non_nullable
+as bool,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
 as HomeEffect?,
   ));
 }
@@ -683,14 +1146,15 @@ extension HomeEffectPatterns on HomeEffect {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult Function( ShowServerSessionDialogEffect value)?  showServerSessionDialog,TResult Function( ShowClientSessionDialogEffect value)?  showClientSessionDialog,TResult Function( NavigateToGamesListEffect value)?  navigateToGamesList,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ShowConnectionOverlayEffect value)?  showConnectionOverlay,TResult Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult Function( ShowProfileDialogEffect value)?  showProfileDialog,TResult Function( ShowToastEffect value)?  showToast,TResult Function( RequestNicknameForOverlayRoleEffect value)?  requestNicknameForOverlayRole,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that);case ShowServerSessionDialogEffect() when showServerSessionDialog != null:
-return showServerSessionDialog(_that);case ShowClientSessionDialogEffect() when showClientSessionDialog != null:
-return showClientSessionDialog(_that);case NavigateToGamesListEffect() when navigateToGamesList != null:
-return navigateToGamesList(_that);case _:
+case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
+return showConnectionOverlay(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay(_that);case ShowProfileDialogEffect() when showProfileDialog != null:
+return showProfileDialog(_that);case ShowToastEffect() when showToast != null:
+return showToast(_that);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
+return requestNicknameForOverlayRole(_that);case _:
   return orElse();
 
 }
@@ -708,14 +1172,15 @@ return navigateToGamesList(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ShowNicknameDialogEffect value)  showNicknameDialog,required TResult Function( ShowServerSessionDialogEffect value)  showServerSessionDialog,required TResult Function( ShowClientSessionDialogEffect value)  showClientSessionDialog,required TResult Function( NavigateToGamesListEffect value)  navigateToGamesList,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ShowConnectionOverlayEffect value)  showConnectionOverlay,required TResult Function( CloseConnectionOverlayEffect value)  closeConnectionOverlay,required TResult Function( ShowProfileDialogEffect value)  showProfileDialog,required TResult Function( ShowToastEffect value)  showToast,required TResult Function( RequestNicknameForOverlayRoleEffect value)  requestNicknameForOverlayRole,}){
 final _that = this;
 switch (_that) {
-case ShowNicknameDialogEffect():
-return showNicknameDialog(_that);case ShowServerSessionDialogEffect():
-return showServerSessionDialog(_that);case ShowClientSessionDialogEffect():
-return showClientSessionDialog(_that);case NavigateToGamesListEffect():
-return navigateToGamesList(_that);}
+case ShowConnectionOverlayEffect():
+return showConnectionOverlay(_that);case CloseConnectionOverlayEffect():
+return closeConnectionOverlay(_that);case ShowProfileDialogEffect():
+return showProfileDialog(_that);case ShowToastEffect():
+return showToast(_that);case RequestNicknameForOverlayRoleEffect():
+return requestNicknameForOverlayRole(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -729,14 +1194,15 @@ return navigateToGamesList(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult? Function( ShowServerSessionDialogEffect value)?  showServerSessionDialog,TResult? Function( ShowClientSessionDialogEffect value)?  showClientSessionDialog,TResult? Function( NavigateToGamesListEffect value)?  navigateToGamesList,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ShowConnectionOverlayEffect value)?  showConnectionOverlay,TResult? Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult? Function( ShowProfileDialogEffect value)?  showProfileDialog,TResult? Function( ShowToastEffect value)?  showToast,TResult? Function( RequestNicknameForOverlayRoleEffect value)?  requestNicknameForOverlayRole,}){
 final _that = this;
 switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that);case ShowServerSessionDialogEffect() when showServerSessionDialog != null:
-return showServerSessionDialog(_that);case ShowClientSessionDialogEffect() when showClientSessionDialog != null:
-return showClientSessionDialog(_that);case NavigateToGamesListEffect() when navigateToGamesList != null:
-return navigateToGamesList(_that);case _:
+case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
+return showConnectionOverlay(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay(_that);case ShowProfileDialogEffect() when showProfileDialog != null:
+return showProfileDialog(_that);case ShowToastEffect() when showToast != null:
+return showToast(_that);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
+return requestNicknameForOverlayRole(_that);case _:
   return null;
 
 }
@@ -753,13 +1219,14 @@ return navigateToGamesList(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PeerRole role)?  showNicknameDialog,TResult Function()?  showServerSessionDialog,TResult Function()?  showClientSessionDialog,TResult Function()?  navigateToGamesList,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  showConnectionOverlay,TResult Function()?  closeConnectionOverlay,TResult Function()?  showProfileDialog,TResult Function( PeerToastKind kind)?  showToast,TResult Function()?  requestNicknameForOverlayRole,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that.role);case ShowServerSessionDialogEffect() when showServerSessionDialog != null:
-return showServerSessionDialog();case ShowClientSessionDialogEffect() when showClientSessionDialog != null:
-return showClientSessionDialog();case NavigateToGamesListEffect() when navigateToGamesList != null:
-return navigateToGamesList();case _:
+case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
+return showConnectionOverlay();case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay();case ShowProfileDialogEffect() when showProfileDialog != null:
+return showProfileDialog();case ShowToastEffect() when showToast != null:
+return showToast(_that.kind);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
+return requestNicknameForOverlayRole();case _:
   return orElse();
 
 }
@@ -777,13 +1244,14 @@ return navigateToGamesList();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PeerRole role)  showNicknameDialog,required TResult Function()  showServerSessionDialog,required TResult Function()  showClientSessionDialog,required TResult Function()  navigateToGamesList,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  showConnectionOverlay,required TResult Function()  closeConnectionOverlay,required TResult Function()  showProfileDialog,required TResult Function( PeerToastKind kind)  showToast,required TResult Function()  requestNicknameForOverlayRole,}) {final _that = this;
 switch (_that) {
-case ShowNicknameDialogEffect():
-return showNicknameDialog(_that.role);case ShowServerSessionDialogEffect():
-return showServerSessionDialog();case ShowClientSessionDialogEffect():
-return showClientSessionDialog();case NavigateToGamesListEffect():
-return navigateToGamesList();}
+case ShowConnectionOverlayEffect():
+return showConnectionOverlay();case CloseConnectionOverlayEffect():
+return closeConnectionOverlay();case ShowProfileDialogEffect():
+return showProfileDialog();case ShowToastEffect():
+return showToast(_that.kind);case RequestNicknameForOverlayRoleEffect():
+return requestNicknameForOverlayRole();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -797,13 +1265,14 @@ return navigateToGamesList();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PeerRole role)?  showNicknameDialog,TResult? Function()?  showServerSessionDialog,TResult? Function()?  showClientSessionDialog,TResult? Function()?  navigateToGamesList,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  showConnectionOverlay,TResult? Function()?  closeConnectionOverlay,TResult? Function()?  showProfileDialog,TResult? Function( PeerToastKind kind)?  showToast,TResult? Function()?  requestNicknameForOverlayRole,}) {final _that = this;
 switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that.role);case ShowServerSessionDialogEffect() when showServerSessionDialog != null:
-return showServerSessionDialog();case ShowClientSessionDialogEffect() when showClientSessionDialog != null:
-return showClientSessionDialog();case NavigateToGamesListEffect() when navigateToGamesList != null:
-return navigateToGamesList();case _:
+case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
+return showConnectionOverlay();case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay();case ShowProfileDialogEffect() when showProfileDialog != null:
+return showProfileDialog();case ShowToastEffect() when showToast != null:
+return showToast(_that.kind);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
+return requestNicknameForOverlayRole();case _:
   return null;
 
 }
@@ -814,43 +1283,139 @@ return navigateToGamesList();case _:
 /// @nodoc
 
 
-class ShowNicknameDialogEffect implements HomeEffect {
-  const ShowNicknameDialogEffect({required this.role});
+class ShowConnectionOverlayEffect implements HomeEffect {
+  const ShowConnectionOverlayEffect();
   
 
- final  PeerRole role;
 
-/// Create a copy of HomeEffect
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ShowNicknameDialogEffectCopyWith<ShowNicknameDialogEffect> get copyWith => _$ShowNicknameDialogEffectCopyWithImpl<ShowNicknameDialogEffect>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowNicknameDialogEffect&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowConnectionOverlayEffect);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,role);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEffect.showNicknameDialog(role: $role)';
+  return 'HomeEffect.showConnectionOverlay()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CloseConnectionOverlayEffect implements HomeEffect {
+  const CloseConnectionOverlayEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CloseConnectionOverlayEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEffect.closeConnectionOverlay()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ShowProfileDialogEffect implements HomeEffect {
+  const ShowProfileDialogEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowProfileDialogEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEffect.showProfileDialog()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ShowToastEffect implements HomeEffect {
+  const ShowToastEffect({required this.kind});
+  
+
+ final  PeerToastKind kind;
+
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ShowToastEffectCopyWith<ShowToastEffect> get copyWith => _$ShowToastEffectCopyWithImpl<ShowToastEffect>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowToastEffect&&(identical(other.kind, kind) || other.kind == kind));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,kind);
+
+@override
+String toString() {
+  return 'HomeEffect.showToast(kind: $kind)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ShowNicknameDialogEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
-  factory $ShowNicknameDialogEffectCopyWith(ShowNicknameDialogEffect value, $Res Function(ShowNicknameDialogEffect) _then) = _$ShowNicknameDialogEffectCopyWithImpl;
+abstract mixin class $ShowToastEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
+  factory $ShowToastEffectCopyWith(ShowToastEffect value, $Res Function(ShowToastEffect) _then) = _$ShowToastEffectCopyWithImpl;
 @useResult
 $Res call({
- PeerRole role
+ PeerToastKind kind
 });
 
 
@@ -858,19 +1423,19 @@ $Res call({
 
 }
 /// @nodoc
-class _$ShowNicknameDialogEffectCopyWithImpl<$Res>
-    implements $ShowNicknameDialogEffectCopyWith<$Res> {
-  _$ShowNicknameDialogEffectCopyWithImpl(this._self, this._then);
+class _$ShowToastEffectCopyWithImpl<$Res>
+    implements $ShowToastEffectCopyWith<$Res> {
+  _$ShowToastEffectCopyWithImpl(this._self, this._then);
 
-  final ShowNicknameDialogEffect _self;
-  final $Res Function(ShowNicknameDialogEffect) _then;
+  final ShowToastEffect _self;
+  final $Res Function(ShowToastEffect) _then;
 
 /// Create a copy of HomeEffect
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? role = null,}) {
-  return _then(ShowNicknameDialogEffect(
-role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
-as PeerRole,
+@pragma('vm:prefer-inline') $Res call({Object? kind = null,}) {
+  return _then(ShowToastEffect(
+kind: null == kind ? _self.kind : kind // ignore: cast_nullable_to_non_nullable
+as PeerToastKind,
   ));
 }
 
@@ -880,8 +1445,8 @@ as PeerRole,
 /// @nodoc
 
 
-class ShowServerSessionDialogEffect implements HomeEffect {
-  const ShowServerSessionDialogEffect();
+class RequestNicknameForOverlayRoleEffect implements HomeEffect {
+  const RequestNicknameForOverlayRoleEffect();
   
 
 
@@ -891,7 +1456,7 @@ class ShowServerSessionDialogEffect implements HomeEffect {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowServerSessionDialogEffect);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestNicknameForOverlayRoleEffect);
 }
 
 
@@ -900,71 +1465,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEffect.showServerSessionDialog()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class ShowClientSessionDialogEffect implements HomeEffect {
-  const ShowClientSessionDialogEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowClientSessionDialogEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeEffect.showClientSessionDialog()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class NavigateToGamesListEffect implements HomeEffect {
-  const NavigateToGamesListEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NavigateToGamesListEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeEffect.navigateToGamesList()';
+  return 'HomeEffect.requestNicknameForOverlayRole()';
 }
 
 

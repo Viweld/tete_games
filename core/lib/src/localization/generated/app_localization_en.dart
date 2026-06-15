@@ -109,6 +109,15 @@ class AppLocalizationEn extends AppLocalization {
   String get peer_home_start_server_button => 'Wait for a player';
 
   @override
+  String get peer_home_menu_connect => 'Connect';
+
+  @override
+  String get peer_home_menu_disconnect => 'Disconnect';
+
+  @override
+  String get peer_home_menu_profile => 'Profile';
+
+  @override
   String get peer_home_title => 'Welcome to tete games';
 
   @override

@@ -2,11 +2,9 @@ part of 'home_bloc.dart';
 
 @freezed
 sealed class HomeEffect with _$HomeEffect {
-  const factory HomeEffect.showNicknameDialog({required PeerRole role}) = ShowNicknameDialogEffect;
-
-  const factory HomeEffect.showServerSessionDialog() = ShowServerSessionDialogEffect;
-
-  const factory HomeEffect.showClientSessionDialog() = ShowClientSessionDialogEffect;
-
-  const factory HomeEffect.navigateToGamesList() = NavigateToGamesListEffect;
+  const factory HomeEffect.showConnectionOverlay() = ShowConnectionOverlayEffect;
+  const factory HomeEffect.closeConnectionOverlay() = CloseConnectionOverlayEffect;
+  const factory HomeEffect.showProfileDialog() = ShowProfileDialogEffect;
+  const factory HomeEffect.showToast({required PeerToastKind kind}) = ShowToastEffect;
+  const factory HomeEffect.requestNicknameForOverlayRole() = RequestNicknameForOverlayRoleEffect;
 }

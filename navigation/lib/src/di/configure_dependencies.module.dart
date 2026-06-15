@@ -10,7 +10,7 @@ import 'package:navigation/navigation.dart' as _i1058;
 import 'package:navigation/src/di/register_module.dart' as _i675;
 
 class NavigationPackageModule extends _i526.MicroPackageModule {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     final registerModule = _$RegisterModule();

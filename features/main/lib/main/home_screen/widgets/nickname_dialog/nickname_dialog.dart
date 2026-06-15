@@ -6,7 +6,11 @@ class NicknameDialog extends StatelessWidget {
   const NicknameDialog._();
 
   static Future<bool?> show(BuildContext context) {
-    return showDialog<bool>(context: context, builder: (_) => const NicknameDialog._());
+    return showDialog<bool>(
+      context: context,
+      barrierDismissible: true,
+      builder: (_) => const NicknameDialog._(),
+    );
   }
 
   @override
@@ -41,6 +45,10 @@ class NicknameDialog extends StatelessWidget {
                   context.read<NicknameBloc>().add(NicknameEvent.nicknameChanged(nickname: value)),
             ),
             actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(l10n.peer_dialog_cancel),
+              ),
               AppElevatedButton(
                 title: l10n.peer_nickname_save_button,
                 state: state.isSaveEnabled ? ElementState.enabled : ElementState.disabled,

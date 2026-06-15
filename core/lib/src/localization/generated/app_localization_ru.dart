@@ -109,6 +109,15 @@ class AppLocalizationRu extends AppLocalization {
   String get peer_home_start_server_button => 'Ожидать присоединения';
 
   @override
+  String get peer_home_menu_connect => 'Соединиться';
+
+  @override
+  String get peer_home_menu_disconnect => 'Отключиться';
+
+  @override
+  String get peer_home_menu_profile => 'Профиль';
+
+  @override
   String get peer_home_title => 'Добро пожаловать в tete games';
 
   @override
