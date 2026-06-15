@@ -25,7 +25,7 @@ final class BlePeerServerSessionRepository implements IPeerServerSessionReposito
   Future<void> startAdvertising() async {
     final PeerEndpoint localEndpoint = await _buildLocalEndpoint();
     final pckg.PeerHost host = await _hostSession();
-    await host.start(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
+    await host.startWithEndpoint(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
   }
 
   @override

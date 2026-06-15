@@ -38,7 +38,7 @@ final class BlePeerClientSessionRepository implements IPeerClientSessionReposito
   Future<void> startDiscovery() async {
     final PeerEndpoint localEndpoint = await _buildLocalEndpoint();
     final pckg.PeerClient client = await _clientSession();
-    await client.startDiscovery(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
+    await client.startDiscoveryWithEndpoint(localPeer: PeerEndpointMapper.toPackage(localEndpoint));
   }
 
   @override
