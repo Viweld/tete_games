@@ -8,8 +8,11 @@ part 'client_session_bloc.freezed.dart';
 
 @injectable
 class ClientSessionBloc extends Bloc<ClientSessionEvent, ClientSessionState> {
-  ClientSessionBloc(this._clientSessionRepository, this._peerTransportRepository)
-    : super(const ClientSessionState(phase: ClientSessionPhase.initializing)) {
+  ClientSessionBloc(
+    this._clientSessionRepository,
+    this._peerTransportRepository,
+    this._blocErrorHandler,
+  ) : super(const ClientSessionState(phase: ClientSessionPhase.initializing)) {
     on<ClientSessionEvent>(
       (ClientSessionEvent event, Emitter<ClientSessionState> emit) => event.map(
         init: (_) => _onInit(emit),
@@ -30,6 +33,7 @@ class ClientSessionBloc extends Bloc<ClientSessionEvent, ClientSessionState> {
 
   final IPeerClientSessionRepository _clientSessionRepository;
   final IPeerTransportRepository _peerTransportRepository;
+  final BlocErrorHandler _blocErrorHandler;
 
   late final StreamSubscription<List<PeerDevice>> _devicesSubscription;
   late final StreamSubscription<PeerSessionMessage> _messagesSubscription;
@@ -63,14 +67,16 @@ class ClientSessionBloc extends Bloc<ClientSessionEvent, ClientSessionState> {
     try {
       await _clientSessionRepository.startDiscovery();
       emit(state.copyWith(phase: ClientSessionPhase.browsing));
-    } on Object {
+    } on Object catch (error, stackTrace) {
+      if (_blocErrorHandler.handle(error, stackTrace: stackTrace)) {
+        rethrow;
+      }
       emit(
         state.copyWith(
           phase: ClientSessionPhase.error,
           errorKind: ClientSessionErrorKind.discoveryFailed,
         ),
       );
-      rethrow;
     }
   }
 
@@ -93,14 +99,16 @@ class ClientSessionBloc extends Bloc<ClientSessionEvent, ClientSessionState> {
 
     try {
       await _clientSessionRepository.connectToDevice(device);
-    } on Object {
+    } on Object catch (error, stackTrace) {
+      if (_blocErrorHandler.handle(error, stackTrace: stackTrace)) {
+        rethrow;
+      }
       emit(
         state.copyWith(
           phase: ClientSessionPhase.error,
           errorKind: ClientSessionErrorKind.connectionFailed,
         ),
       );
-      rethrow;
     }
   }
 

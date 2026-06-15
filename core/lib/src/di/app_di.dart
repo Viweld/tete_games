@@ -29,6 +29,9 @@ Future<void> configureDependencies({required AppRuntimeMode runtimeMode}) async 
   );
   appLocator.registerLazySingleton<AppEventBus>(AppEventBus.new);
   appLocator.registerLazySingleton<AppToastBus>(AppToastBus.new);
+  appLocator.registerLazySingleton<AppToastMessenger>(
+    () => AppToastMessenger(appLocator<AppToastBus>()),
+  );
   appLocator.registerLazySingleton<ErrorHandlingPolicy>(() => const ErrorHandlingPolicy());
   appLocator.registerLazySingleton<BlocErrorHandler>(
     () => BlocErrorHandler(appLocator<AppToastBus>(), appLocator<ErrorHandlingPolicy>()),

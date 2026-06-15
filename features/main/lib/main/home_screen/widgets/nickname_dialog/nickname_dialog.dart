@@ -24,11 +24,7 @@ class NicknameDialog extends StatelessWidget {
 
           effect.when(
             saved: () => Navigator.of(context).pop(true),
-            saveFailed: () {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(l10n.peer_nickname_save_failed)));
-            },
+            saveFailed: () => context.showErrorToast(l10n.peer_nickname_save_failed),
           );
 
           context.read<NicknameBloc>().add(const NicknameEvent.effectHandled());

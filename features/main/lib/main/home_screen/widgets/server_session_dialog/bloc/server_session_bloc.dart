@@ -8,8 +8,11 @@ part 'server_session_bloc.freezed.dart';
 
 @injectable
 class ServerSessionBloc extends Bloc<ServerSessionEvent, ServerSessionState> {
-  ServerSessionBloc(this._serverSessionRepository, this._peerTransportRepository)
-    : super(const ServerSessionState(phase: ServerSessionPhase.invitationPending)) {
+  ServerSessionBloc(
+    this._serverSessionRepository,
+    this._peerTransportRepository,
+    this._blocErrorHandler,
+  ) : super(const ServerSessionState(phase: ServerSessionPhase.invitationPending)) {
     on<ServerSessionEvent>(
       (ServerSessionEvent event, Emitter<ServerSessionState> emit) => event.map(
         init: (_) => _onInit(emit),
@@ -27,6 +30,7 @@ class ServerSessionBloc extends Bloc<ServerSessionEvent, ServerSessionState> {
 
   final IPeerServerSessionRepository _serverSessionRepository;
   final IPeerTransportRepository _peerTransportRepository;
+  final BlocErrorHandler _blocErrorHandler;
 
   late final StreamSubscription<PeerSessionMessage> _messagesSubscription;
 
@@ -47,14 +51,16 @@ class ServerSessionBloc extends Bloc<ServerSessionEvent, ServerSessionState> {
   Future<void> _onInit(Emitter<ServerSessionState> emit) async {
     try {
       await _serverSessionRepository.startAdvertising();
-    } on Object {
+    } on Object catch (error, stackTrace) {
+      if (_blocErrorHandler.handle(error, stackTrace: stackTrace)) {
+        rethrow;
+      }
       emit(
         state.copyWith(
           phase: ServerSessionPhase.error,
           errorKind: ServerSessionErrorKind.bluetoothUnavailable,
         ),
       );
-      rethrow;
     }
   }
 
