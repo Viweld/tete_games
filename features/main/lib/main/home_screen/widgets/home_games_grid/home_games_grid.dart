@@ -1,14 +1,14 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:flutter/material.dart';
 
 class HomeGamesGrid extends StatelessWidget {
-  const HomeGamesGrid({super.key, required this.isEnabled, required this.emptyLabel});
+  const HomeGamesGrid({super.key, required this.isEnabled});
 
   final bool isEnabled;
-  final String emptyLabel;
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
     final AppColorsTheme colors = context.colors;
     final double opacity = isEnabled ? 1 : 0.35;
 
@@ -32,7 +32,11 @@ class HomeGamesGrid extends StatelessWidget {
             ),
             child: Center(
               child: index == 0
-                  ? Text(emptyLabel, textAlign: TextAlign.center)
+                  ? Text(
+                      localization.peer_games_list_stub,
+                      style: AppFonts.b2.copyWith(color: colors.text.secondary),
+                      textAlign: TextAlign.center,
+                    )
                   : Icon(Icons.videogame_asset_outlined, color: colors.text.secondary, size: 32),
             ),
           );

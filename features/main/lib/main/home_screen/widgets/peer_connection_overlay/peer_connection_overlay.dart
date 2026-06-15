@@ -1,6 +1,6 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
-import 'package:flutter/material.dart';
 import 'package:main/main/home_screen/widgets/peer_device_list_item.dart';
 
 class PeerConnectionOverlay extends StatelessWidget {
@@ -15,25 +15,6 @@ class PeerConnectionOverlay extends StatelessWidget {
     required this.onInviteTap,
     required this.onAcceptTap,
     required this.onRejectTap,
-    required this.l10nHostButton,
-    required this.l10nClientButton,
-    required this.l10nModePrompt,
-    required this.l10nServerWaitingTitle,
-    required this.l10nServerWaitingBody,
-    required this.l10nInvitationTitle,
-    required this.l10nInvitationPrompt,
-    required this.l10nInvitationDevice,
-    required this.l10nInvitationPlayer,
-    required this.l10nAcceptButton,
-    required this.l10nRejectButton,
-    required this.l10nClientSearching,
-    required this.l10nClientDevicesTitle,
-    required this.l10nInviteButton,
-    required this.l10nInvitationSentTitle,
-    required this.l10nWaitConfirmation,
-    required this.l10nUnknownDevice,
-    required this.l10nOurAppBadge,
-    required this.l10nCancel,
   });
 
   final OverlayRenderViewState overlay;
@@ -45,25 +26,6 @@ class PeerConnectionOverlay extends StatelessWidget {
   final VoidCallback onInviteTap;
   final VoidCallback onAcceptTap;
   final VoidCallback onRejectTap;
-  final String l10nHostButton;
-  final String l10nClientButton;
-  final String l10nModePrompt;
-  final String l10nServerWaitingTitle;
-  final String l10nServerWaitingBody;
-  final String l10nInvitationTitle;
-  final String l10nInvitationPrompt;
-  final String Function(String deviceName) l10nInvitationDevice;
-  final String Function(String playerName) l10nInvitationPlayer;
-  final String l10nAcceptButton;
-  final String l10nRejectButton;
-  final String l10nClientSearching;
-  final String l10nClientDevicesTitle;
-  final String l10nInviteButton;
-  final String l10nInvitationSentTitle;
-  final String l10nWaitConfirmation;
-  final String l10nUnknownDevice;
-  final String l10nOurAppBadge;
-  final String l10nCancel;
 
   @override
   Widget build(BuildContext context) {
@@ -76,94 +38,67 @@ class PeerConnectionOverlay extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: IconButton(onPressed: onClose, icon: const Icon(Icons.close)),
             ),
-            Expanded(child: _buildBody(context)),
+            Expanded(
+              child: switch (overlay.phase) {
+                OverlayPhase.roleSelection => _RoleSelectionBody(
+                  onHostTap: onHostTap,
+                  onClientTap: onClientTap,
+                ),
+                OverlayPhase.hostAdvertising => const _HostAdvertisingBody(),
+                OverlayPhase.hostInvitationDecision => _HostInvitationBody(
+                  overlay: overlay,
+                  onAcceptTap: onAcceptTap,
+                  onRejectTap: onRejectTap,
+                ),
+                OverlayPhase.clientDiscovering => _ClientDiscoveringBody(
+                  overlay: overlay,
+                  projection: projection,
+                  onDeviceTap: onDeviceTap,
+                  onInviteTap: onInviteTap,
+                ),
+                OverlayPhase.clientInviting => const _ClientInvitingBody(),
+                OverlayPhase.clientInvitationRejected => const _ClientInvitingBody(),
+                OverlayPhase.error => const _OverlayErrorBody(),
+                OverlayPhase.hidden => const SizedBox.shrink(),
+              },
+            ),
           ],
         ),
       ),
     );
   }
-
-  Widget _buildBody(BuildContext context) {
-    return switch (overlay.phase) {
-      OverlayPhase.roleSelection => _RoleSelectionBody(
-        modePrompt: l10nModePrompt,
-        hostButton: l10nHostButton,
-        clientButton: l10nClientButton,
-        onHostTap: onHostTap,
-        onClientTap: onClientTap,
-      ),
-      OverlayPhase.hostAdvertising => _CenteredMessage(
-        title: l10nServerWaitingTitle,
-        body: l10nServerWaitingBody,
-      ),
-      OverlayPhase.hostInvitationDecision => _HostInvitationBody(
-        overlay: overlay,
-        invitationTitle: l10nInvitationTitle,
-        invitationPrompt: l10nInvitationPrompt,
-        invitationDevice: l10nInvitationDevice,
-        invitationPlayer: l10nInvitationPlayer,
-        acceptButton: l10nAcceptButton,
-        rejectButton: l10nRejectButton,
-        onAcceptTap: onAcceptTap,
-        onRejectTap: onRejectTap,
-      ),
-      OverlayPhase.clientDiscovering => _ClientDiscoveringBody(
-        overlay: overlay,
-        projection: projection,
-        searchingLabel: l10nClientSearching,
-        devicesTitle: l10nClientDevicesTitle,
-        inviteButton: l10nInviteButton,
-        unknownDeviceLabel: l10nUnknownDevice,
-        ourAppSubtitle: l10nOurAppBadge,
-        onDeviceTap: onDeviceTap,
-        onInviteTap: onInviteTap,
-      ),
-      OverlayPhase.clientInviting => _CenteredMessage(
-        title: l10nInvitationSentTitle,
-        body: l10nWaitConfirmation,
-      ),
-      OverlayPhase.clientInvitationRejected => _CenteredMessage(
-        title: l10nInvitationSentTitle,
-        body: l10nWaitConfirmation,
-      ),
-      OverlayPhase.error => _CenteredMessage(title: l10nInvitationTitle, body: l10nClientSearching),
-      OverlayPhase.hidden => const SizedBox.shrink(),
-    };
-  }
 }
 
 class _RoleSelectionBody extends StatelessWidget {
-  const _RoleSelectionBody({
-    required this.modePrompt,
-    required this.hostButton,
-    required this.clientButton,
-    required this.onHostTap,
-    required this.onClientTap,
-  });
+  const _RoleSelectionBody({required this.onHostTap, required this.onClientTap});
 
-  final String modePrompt;
-  final String hostButton;
-  final String clientButton;
   final VoidCallback onHostTap;
   final VoidCallback onClientTap;
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
+    final AppColorsTheme colors = context.colors;
+
     return Padding(
       padding: const EdgeInsets.all(32),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(modePrompt, textAlign: TextAlign.center),
+          Text(
+            localization.peer_home_mode_prompt,
+            style: AppFonts.b1.copyWith(color: colors.text.main),
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(height: 48),
           AppElevatedButton(
-            title: hostButton,
+            title: localization.peer_home_start_server_button,
             prefix: const Icon(Icons.visibility),
             onTap: onHostTap,
           ),
           const SizedBox(height: 16),
           AppElevatedButton(
-            title: clientButton,
+            title: localization.peer_home_start_client_button,
             style: AppElevatedButtonStyle.accent,
             prefix: const Icon(Icons.search),
             onTap: onClientTap,
@@ -174,51 +109,59 @@ class _RoleSelectionBody extends StatelessWidget {
   }
 }
 
+class _HostAdvertisingBody extends StatelessWidget {
+  const _HostAdvertisingBody();
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
+
+    return _CenteredMessage(
+      title: localization.peer_server_waiting_title,
+      body: localization.peer_server_waiting_body,
+    );
+  }
+}
+
 class _HostInvitationBody extends StatelessWidget {
   const _HostInvitationBody({
     required this.overlay,
-    required this.invitationTitle,
-    required this.invitationPrompt,
-    required this.invitationDevice,
-    required this.invitationPlayer,
-    required this.acceptButton,
-    required this.rejectButton,
     required this.onAcceptTap,
     required this.onRejectTap,
   });
 
   final OverlayRenderViewState overlay;
-  final String invitationTitle;
-  final String invitationPrompt;
-  final String Function(String deviceName) invitationDevice;
-  final String Function(String playerName) invitationPlayer;
-  final String acceptButton;
-  final String rejectButton;
   final VoidCallback onAcceptTap;
   final VoidCallback onRejectTap;
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
+    final AppColorsTheme colors = context.colors;
     final PeerEndpoint? invitation = overlay.pendingInvitation;
     final String deviceName = invitation?.device.name ?? '';
     final String playerName = invitation?.identity.displayName ?? '';
+    final TextStyle bodyStyle = AppFonts.b2.copyWith(color: colors.text.main);
 
     return Padding(
       padding: const EdgeInsets.all(32),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(invitationTitle, style: Theme.of(context).textTheme.titleLarge),
+          Text(
+            localization.peer_server_invitation_title,
+            style: AppFonts.h3.copyWith(color: colors.text.main),
+          ),
           const SizedBox(height: 16),
-          Text(invitationDevice(deviceName)),
-          Text(invitationPlayer(playerName)),
+          Text(localization.peer_server_invitation_device(deviceName), style: bodyStyle),
+          Text(localization.peer_server_invitation_player(playerName), style: bodyStyle),
           const SizedBox(height: 8),
-          Text(invitationPrompt),
+          Text(localization.peer_server_invitation_prompt, style: bodyStyle),
           const SizedBox(height: 32),
-          AppElevatedButton(title: acceptButton, onTap: onAcceptTap),
+          AppElevatedButton(title: localization.peer_server_accept_button, onTap: onAcceptTap),
           const SizedBox(height: 12),
           AppElevatedButton(
-            title: rejectButton,
+            title: localization.peer_server_reject_button,
             style: AppElevatedButtonStyle.accent,
             onTap: onRejectTap,
           ),
@@ -232,34 +175,31 @@ class _ClientDiscoveringBody extends StatelessWidget {
   const _ClientDiscoveringBody({
     required this.overlay,
     required this.projection,
-    required this.searchingLabel,
-    required this.devicesTitle,
-    required this.inviteButton,
-    required this.unknownDeviceLabel,
-    required this.ourAppSubtitle,
     required this.onDeviceTap,
     required this.onInviteTap,
   });
 
   final OverlayRenderViewState overlay;
   final FrameProjectionInput projection;
-  final String searchingLabel;
-  final String devicesTitle;
-  final String inviteButton;
-  final String unknownDeviceLabel;
-  final String ourAppSubtitle;
   final ValueChanged<String?> onDeviceTap;
   final VoidCallback onInviteTap;
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
+    final AppColorsTheme colors = context.colors;
     final bool hasSelection = projection.highlightedDeviceId != null;
 
     return Column(
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(16),
-          child: Text(overlay.devices.isEmpty ? searchingLabel : devicesTitle),
+          child: Text(
+            overlay.devices.isEmpty
+                ? localization.peer_client_searching
+                : localization.peer_client_devices_title,
+            style: AppFonts.h6.copyWith(color: colors.text.main),
+          ),
         ),
         Expanded(
           child: ListView.builder(
@@ -275,8 +215,6 @@ class _ClientDiscoveringBody extends StatelessWidget {
                       : device.id;
                   onDeviceTap(nextId);
                 },
-                unknownDeviceLabel: unknownDeviceLabel,
-                ourAppSubtitle: ourAppSubtitle,
               );
             },
           ),
@@ -284,12 +222,40 @@ class _ClientDiscoveringBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16),
           child: AppElevatedButton(
-            title: inviteButton,
+            title: localization.peer_client_invite_button,
             state: hasSelection ? ElementState.enabled : ElementState.disabled,
             onTap: onInviteTap,
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ClientInvitingBody extends StatelessWidget {
+  const _ClientInvitingBody();
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
+
+    return _CenteredMessage(
+      title: localization.peer_client_invitation_sent_title,
+      body: localization.peer_client_wait_confirmation,
+    );
+  }
+}
+
+class _OverlayErrorBody extends StatelessWidget {
+  const _OverlayErrorBody();
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
+
+    return _CenteredMessage(
+      title: localization.peer_server_invitation_title,
+      body: localization.peer_client_searching,
     );
   }
 }
@@ -302,15 +268,25 @@ class _CenteredMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppColorsTheme colors = context.colors;
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(title, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+            Text(
+              title,
+              style: AppFonts.h3.copyWith(color: colors.text.main),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 16),
-            Text(body, textAlign: TextAlign.center),
+            Text(
+              body,
+              style: AppFonts.b2.copyWith(color: colors.text.main),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 export 'app_connection_frame.dart';
 export 'app_connection_view_state.dart';
 export 'frame_projection_input.dart';
+export 'peer_disconnect_reason.dart';
 export 'peer_session_close.dart';
 export 'peer_session_command.dart';
 export 'peer_session_core_phase.dart';

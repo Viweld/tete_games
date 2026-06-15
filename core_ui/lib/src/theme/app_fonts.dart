@@ -146,4 +146,23 @@ abstract final class AppFonts {
     decoration: TextDecoration.underline,
     color: AppColors.txtMain,
   );
+
+  /// Material [TextTheme] mapped to design-system styles.
+  static const TextTheme textTheme = TextTheme(
+    displayLarge: h1,
+    displayMedium: h2,
+    displaySmall: h3,
+    headlineLarge: h3,
+    headlineMedium: h4,
+    headlineSmall: h5,
+    titleLarge: h3,
+    titleMedium: h5,
+    titleSmall: h6,
+    bodyLarge: b1,
+    bodyMedium: b2,
+    bodySmall: caption,
+    labelLarge: button,
+    labelMedium: label,
+    labelSmall: caption,
+  );
 }

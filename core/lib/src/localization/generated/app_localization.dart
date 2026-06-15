@@ -255,6 +255,24 @@ abstract class AppLocalization {
   /// **'Bluetooth выключен или недоступен'**
   String get peer_error_bluetooth_unavailable;
 
+  /// No description provided for @peer_disconnect_peer_left.
+  ///
+  /// In ru, this message translates to:
+  /// **'Соперник покинул игру'**
+  String get peer_disconnect_peer_left;
+
+  /// No description provided for @peer_disconnect_link_lost.
+  ///
+  /// In ru, this message translates to:
+  /// **'Соединение потеряно'**
+  String get peer_disconnect_link_lost;
+
+  /// No description provided for @peer_disconnect_timeout.
+  ///
+  /// In ru, this message translates to:
+  /// **'Нет ответа от соперника'**
+  String get peer_disconnect_timeout;
+
   /// No description provided for @peer_games_list_stub.
   ///
   /// In ru, this message translates to:

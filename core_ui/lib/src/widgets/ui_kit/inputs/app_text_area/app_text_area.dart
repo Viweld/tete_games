@@ -156,7 +156,7 @@ class _AppTextAreaState extends State<AppTextArea> {
                           filled: false,
                           border: InputBorder.none,
                           counterText: '',
-                          errorStyle: const TextStyle(fontSize: 0),
+                          errorStyle: AppFonts.base.copyWith(fontSize: 0, height: 0),
                           contentPadding: EdgeInsets.only(right: widget.postfix != null ? 32 : 0),
                           hintText: widget.controller.text.isEmpty ? widget.hint : null,
                           hintStyle: !shouldShowHintInside

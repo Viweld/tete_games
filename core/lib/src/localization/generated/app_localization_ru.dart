@@ -91,6 +91,15 @@ class AppLocalizationRu extends AppLocalization {
   String get peer_error_bluetooth_unavailable => 'Bluetooth выключен или недоступен';
 
   @override
+  String get peer_disconnect_peer_left => 'Соперник покинул игру';
+
+  @override
+  String get peer_disconnect_link_lost => 'Соединение потеряно';
+
+  @override
+  String get peer_disconnect_timeout => 'Нет ответа от соперника';
+
+  @override
   String get peer_games_list_stub => 'Список игр скоро появится';
 
   @override

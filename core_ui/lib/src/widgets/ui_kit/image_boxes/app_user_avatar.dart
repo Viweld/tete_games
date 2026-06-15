@@ -96,21 +96,15 @@ class LettersPlaceholder extends StatelessWidget {
         ? email.substring(0, 1).toUpperCase()
         : _getInitials(name!);
 
+    final TextStyle initialsStyle = diameter <= 36
+        ? AppFonts.caption.copyWith(color: colors.text.main, fontWeight: FontWeight.w700, height: 1)
+        : AppFonts.b4.copyWith(color: colors.text.main, height: 1);
+
     return SizedBox.square(
       dimension: diameter,
       child: ColoredBox(
         color: colors.background.main,
-        child: Center(
-          child: Text(
-            letters,
-            style: AppFonts.h1.copyWith(
-              color: colors.text.main,
-              fontSize: 10,
-              height: 1,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
+        child: Center(child: Text(letters, style: initialsStyle)),
       ),
     );
   }

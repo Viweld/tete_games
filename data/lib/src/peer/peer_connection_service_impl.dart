@@ -16,6 +16,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     _emitInitialFrame();
     _connectionSubscription = _transportRepository.connectionState.listen(_onConnectionState);
     _messagesSubscription = _transportRepository.sessionMessages.listen(_onSessionMessage);
+    _disconnectSubscription = _transportRepository.disconnectReasons.listen(_onTransportDisconnect);
   }
 
   final IPeerServerSessionRepository _serverSessionRepository;
@@ -38,6 +39,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   Future<void> _queue = Future<void>.value();
   late final StreamSubscription<PeerConnectionState> _connectionSubscription;
   late final StreamSubscription<PeerSessionMessage> _messagesSubscription;
+  late final StreamSubscription<PeerDisconnectReason> _disconnectSubscription;
   StreamSubscription<List<PeerDevice>>? _discoverySubscription;
 
   @override
@@ -80,9 +82,9 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
       await _stopServerSide();
       _discoveryRegistry.clear(_discoveredDevicesStore);
       await _dispatch(CmdStartClientSession(sessionId: sessionId), projection: projection);
-      await _startDiscoverySubscription();
       try {
         await _clientSessionRepository.startDiscovery();
+        await _startDiscoverySubscription();
       } on Object catch (error, stackTrace) {
         developer.log(
           'startDiscovery failed',
@@ -175,11 +177,18 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     required FrameProjectionInput projection,
   }) {
     return _enqueue(() async {
+      final bool wasConnected = _snapshot.isConnected;
+
+      if (wasConnected && reason == PeerSessionCloseReason.userDisconnect) {
+        await _tearDownBle();
+        return;
+      }
+
       await _dispatch(
         CmdCloseSession(origin: origin, reason: reason),
         projection: projection,
       );
-      if (reason != PeerSessionCloseReason.userDismissedOverlay || !_snapshot.isConnected) {
+      if (reason != PeerSessionCloseReason.userDismissedOverlay || !wasConnected) {
         await _tearDownBle();
       }
     });
@@ -252,17 +261,20 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
           ),
         ),
       );
-      return;
     }
+  }
 
-    if (state is PeerDisconnected) {
-      unawaited(
-        _enqueue(
-          () =>
-              _dispatch(const CmdTransportDisconnected(), projection: const FrameProjectionInput()),
-        ),
-      );
-    }
+  void _onTransportDisconnect(PeerDisconnectReason reason) {
+    unawaited(
+      _enqueue(() async {
+        if (_snapshot.phase != PeerSessionCorePhase.connected) return;
+        await _tearDownBle();
+        await _dispatch(
+          CmdTransportDisconnected(reason: reason),
+          projection: const FrameProjectionInput(),
+        );
+      }),
+    );
   }
 
   void _onSessionMessage(PeerSessionMessage message) {
@@ -291,14 +303,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
           ),
         );
       case PeerDisconnection():
-        unawaited(
-          _enqueue(
-            () => _dispatch(
-              const CmdTransportDisconnected(),
-              projection: const FrameProjectionInput(),
-            ),
-          ),
-        );
+        break;
     }
   }
 
@@ -334,6 +339,8 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   }
 
   Future<void> _tearDownBle() async {
+    await _serverSessionRepository.disconnectSession();
+    await _clientSessionRepository.disconnectSession();
     await _stopClientSide();
     await _stopServerSide();
   }

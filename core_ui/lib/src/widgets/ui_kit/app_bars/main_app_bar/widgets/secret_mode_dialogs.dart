@@ -11,13 +11,13 @@ abstract final class SecretModeDialogs {
   }
 
   static Future<void> askReturnToProd(BuildContext context) async {
-    final AppLocalization l10n = context.localization;
+    final AppLocalization localization = context.localization;
     final bool? confirmed = await AppWarningDialog.show(
       context,
-      title: l10n.secret_mode_production_mode_title,
-      message: l10n.secret_mode_return_to_production_message,
-      primaryButtonText: l10n.secret_mode_yes,
-      secondaryButtonText: l10n.secret_mode_no,
+      title: localization.secret_mode_production_mode_title,
+      message: localization.secret_mode_return_to_production_message,
+      primaryButtonText: localization.secret_mode_yes,
+      secondaryButtonText: localization.secret_mode_no,
     );
     if (confirmed != true || !context.mounted) return;
     await AppRuntimeModeStorage.write(AppRuntimeMode.prod);
@@ -88,7 +88,12 @@ class _SecretPasswordDialogState extends State<_SecretPasswordDialog> {
           }
         },
       ),
-      actions: <Widget>[TextButton(onPressed: _onOkPressed, child: Text(_okLabel(context)))],
+      actions: <Widget>[
+        TextButton(
+          onPressed: _onOkPressed,
+          child: Text(_okLabel(context), style: AppFonts.button.copyWith(color: colors.text.main)),
+        ),
+      ],
     );
   }
 }

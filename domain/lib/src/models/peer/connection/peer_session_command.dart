@@ -1,3 +1,4 @@
+import 'package:domain/src/models/peer/connection/peer_disconnect_reason.dart';
 import 'package:domain/src/models/peer/connection/peer_session_close.dart';
 import 'package:domain/src/models/peer/peer_device.dart';
 import 'package:domain/src/models/peer/peer_endpoint.dart';
@@ -85,7 +86,9 @@ final class CmdTransportConnected extends PeerSessionCommand {
 
 @immutable
 final class CmdTransportDisconnected extends PeerSessionCommand {
-  const CmdTransportDisconnected();
+  const CmdTransportDisconnected({required this.reason});
+
+  final PeerDisconnectReason reason;
 }
 
 @immutable

@@ -47,6 +47,13 @@ final class BlePeerServerSessionRepository implements IPeerServerSessionReposito
     await host.stop();
   }
 
+  @override
+  Future<void> disconnectSession() async {
+    final pckg.PeerHost? host = _host;
+    if (host == null) return;
+    await host.disconnect();
+  }
+
   Future<PeerEndpoint> _buildLocalEndpoint() async {
     final PlayerProfile? profile = await _playerProfileRepository.getCurrentPlayer();
     if (profile == null) {

@@ -26,7 +26,7 @@ final class BlePeerClientSessionRepository implements IPeerClientSessionReposito
   Stream<List<PeerDevice>> get discoveredDevices {
     final pckg.PeerClient? client = _client;
     if (client == null) {
-      return const Stream<List<PeerDevice>>.empty();
+      throw StateError('startDiscovery must be called before listening to discoveredDevices');
     }
 
     return client.discoveredDevicesStream.map(
@@ -58,6 +58,13 @@ final class BlePeerClientSessionRepository implements IPeerClientSessionReposito
   Future<void> connectToDevice(PeerDevice device) async {
     final pckg.PeerClient client = await _clientSession();
     await client.connect(PeerDeviceMapper.toPackage(device));
+  }
+
+  @override
+  Future<void> disconnectSession() async {
+    final pckg.PeerClient? client = _client;
+    if (client == null) return;
+    await client.disconnect();
   }
 
   Future<PeerEndpoint> _buildLocalEndpoint() async {

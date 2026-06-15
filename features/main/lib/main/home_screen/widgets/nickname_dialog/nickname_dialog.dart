@@ -15,7 +15,7 @@ class NicknameDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalization l10n = context.localization;
+    final AppLocalization localization = context.localization;
 
     return BlocProvider<NicknameBloc>(
       create: (_) => appLocator<NicknameBloc>(),
@@ -28,29 +28,37 @@ class NicknameDialog extends StatelessWidget {
 
           effect.when(
             saved: () => Navigator.of(context).pop(true),
-            saveFailed: () => context.showErrorToast(l10n.peer_nickname_save_failed),
+            saveFailed: () => context.showErrorToast(localization.peer_nickname_save_failed),
           );
 
           context.read<NicknameBloc>().add(const NicknameEvent.effectHandled());
         },
         builder: (BuildContext context, NicknameState state) {
+          final AppColorsTheme colors = context.colors;
+
           return AlertDialog(
-            title: Text(l10n.peer_nickname_dialog_title),
+            title: Text(
+              localization.peer_nickname_dialog_title,
+              style: AppFonts.h6.copyWith(color: colors.text.main),
+            ),
             content: AppTextField(
               initialText: state.nickname,
-              label: l10n.peer_nickname_field_label,
-              hint: l10n.peer_nickname_field_hint,
-              errorText: _validationMessage(l10n, state.validationKind),
+              label: localization.peer_nickname_field_label,
+              hint: localization.peer_nickname_field_hint,
+              errorText: _validationMessage(localization, state.validationKind),
               onChanged: (String value) =>
                   context.read<NicknameBloc>().add(NicknameEvent.nicknameChanged(nickname: value)),
             ),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: Text(l10n.peer_dialog_cancel),
+                child: Text(
+                  localization.peer_dialog_cancel,
+                  style: AppFonts.button.copyWith(color: colors.text.main),
+                ),
               ),
               AppElevatedButton(
-                title: l10n.peer_nickname_save_button,
+                title: localization.peer_nickname_save_button,
                 state: state.isSaveEnabled ? ElementState.enabled : ElementState.disabled,
                 onTap: () => context.read<NicknameBloc>().add(const NicknameEvent.saveTapped()),
               ),
@@ -61,11 +69,11 @@ class NicknameDialog extends StatelessWidget {
     );
   }
 
-  String? _validationMessage(AppLocalization l10n, NicknameValidationKind? kind) {
+  String? _validationMessage(AppLocalization localization, NicknameValidationKind? kind) {
     return switch (kind) {
-      NicknameValidationKind.empty => l10n.peer_nickname_validation_empty,
-      NicknameValidationKind.tooLong => l10n.peer_nickname_validation_too_long,
-      NicknameValidationKind.wrongFormat => l10n.peer_nickname_validation_wrong_format,
+      NicknameValidationKind.empty => localization.peer_nickname_validation_empty,
+      NicknameValidationKind.tooLong => localization.peer_nickname_validation_too_long,
+      NicknameValidationKind.wrongFormat => localization.peer_nickname_validation_wrong_format,
       null => null,
     };
   }

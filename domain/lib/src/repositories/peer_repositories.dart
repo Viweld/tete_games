@@ -1,9 +1,12 @@
+import 'package:domain/src/models/peer/connection/peer_disconnect_reason.dart';
 import 'package:domain/src/models/peer/peer_models.dart';
 
 abstract interface class IPeerTransportRepository {
   Stream<PeerConnectionState> get connectionState;
 
   Stream<PeerSessionMessage> get sessionMessages;
+
+  Stream<PeerDisconnectReason> get disconnectReasons;
 
   Future<void> dispose();
 }
@@ -16,6 +19,8 @@ abstract interface class IPeerServerSessionRepository {
   Future<void> rejectInvitation();
 
   Future<void> stopAdvertising();
+
+  Future<void> disconnectSession();
 }
 
 abstract interface class IPeerClientSessionRepository {
@@ -28,6 +33,8 @@ abstract interface class IPeerClientSessionRepository {
   Future<void> refreshDiscovery();
 
   Future<void> connectToDevice(PeerDevice device);
+
+  Future<void> disconnectSession();
 }
 
 abstract interface class IPlayerProfileRepository {

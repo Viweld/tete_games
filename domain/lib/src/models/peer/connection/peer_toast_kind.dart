@@ -6,5 +6,8 @@ enum PeerToastKind {
   bluetoothUnavailable,
   discoveryFailed,
   connectionFailed,
+  peerDisconnected,
+  linkLost,
+  timeout,
   genericError,
 }

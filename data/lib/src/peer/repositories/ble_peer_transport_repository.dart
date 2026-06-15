@@ -1,5 +1,6 @@
 import 'package:ble_peer_session/ble_peer_session.dart' as pckg;
 import 'package:data/src/peer/mappers/peer_connection_state_mapper.dart';
+import 'package:data/src/peer/mappers/peer_disconnect_reason_mapper.dart';
 import 'package:data/src/peer/mappers/peer_session_message_mapper.dart';
 import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
@@ -18,6 +19,12 @@ final class BlePeerTransportRepository implements IPeerTransportRepository {
   Stream<PeerSessionMessage> get sessionMessages => _peer.messagesStream
       .where((pckg.PeerMessage message) => pckg.PeerMessageTypes.isSessionType(message.type))
       .map(PeerSessionMessageMapper.toDomain);
+
+  @override
+  Stream<PeerDisconnectReason> get disconnectReasons =>
+      _peer.disconnectStream.map((pckg.PeerDisconnectInfo info) {
+        return PeerDisconnectReasonMapper.toDomain(info.reason);
+      });
 
   @override
   Future<void> dispose() => _peer.dispose();

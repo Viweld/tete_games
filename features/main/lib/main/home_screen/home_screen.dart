@@ -2,11 +2,11 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation/navigation.dart';
 import 'package:main/main/home_screen/bloc/home_bloc.dart';
 import 'package:main/main/home_screen/bloc/profile_bloc.dart';
 import 'package:main/main/home_screen/home_content.dart';
 import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog.dart';
+import 'package:navigation/navigation.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -19,33 +19,25 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<HomeBloc>(create: (_) => appLocator<HomeBloc>()),
         BlocProvider<ProfileBloc>(create: (_) => appLocator<ProfileBloc>()),
       ],
-      child: const _HomeScreenBody(),
-    );
-  }
-}
-
-class _HomeScreenBody extends StatelessWidget {
-  const _HomeScreenBody();
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: <BlocListener<dynamic, dynamic>>[
-        BlocListener<ProfileBloc, ProfileState>(
-          listenWhen: (ProfileState previous, ProfileState current) =>
-              previous.effect != current.effect,
-          listener: _handleProfileEffect,
+      child: MultiBlocListener(
+        listeners: <BlocListener<dynamic, dynamic>>[
+          BlocListener<ProfileBloc, ProfileState>(
+            listenWhen: (ProfileState previous, ProfileState current) =>
+                previous.effect != current.effect,
+            listener: _handleProfileEffect,
+          ),
+          BlocListener<HomeBloc, HomeState>(
+            listenWhen: (HomeState previous, HomeState current) =>
+                previous.effect != current.effect,
+            listener: _handleHomeEffect,
+          ),
+        ],
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (BuildContext context, HomeState homeState) {
+            final PlayerProfile? profile = context.watch<ProfileBloc>().state.profile;
+            return HomeContent(profile: profile, homeState: homeState);
+          },
         ),
-        BlocListener<HomeBloc, HomeState>(
-          listenWhen: (HomeState previous, HomeState current) => previous.effect != current.effect,
-          listener: _handleHomeEffect,
-        ),
-      ],
-      child: BlocBuilder<HomeBloc, HomeState>(
-        builder: (BuildContext context, HomeState homeState) {
-          final PlayerProfile? profile = context.watch<ProfileBloc>().state.profile;
-          return HomeContent(profile: profile, homeState: homeState);
-        },
       ),
     );
   }
@@ -69,7 +61,7 @@ class _HomeScreenBody extends StatelessWidget {
     final HomeEffect? effect = state.effect;
     if (effect == null) return;
 
-    final AppLocalization l10n = context.localization;
+    final AppLocalization localization = context.localization;
     final HomeBloc homeBloc = context.read<HomeBloc>();
     final ProfileBloc profileBloc = context.read<ProfileBloc>();
 
@@ -89,11 +81,14 @@ class _HomeScreenBody extends StatelessWidget {
       showProfileDialog: () => _showNicknameDialog(context, NicknameDialogContext.profileMenu),
       showToast: (PeerToastKind kind) {
         final String message = switch (kind) {
-          PeerToastKind.invitationRejected => l10n.peer_client_invitation_rejected_body,
-          PeerToastKind.bluetoothUnavailable => l10n.peer_error_bluetooth_unavailable,
-          PeerToastKind.discoveryFailed => l10n.peer_client_error_discovery,
-          PeerToastKind.connectionFailed => l10n.peer_client_error_connection,
-          PeerToastKind.genericError => l10n.something_went_wrong,
+          PeerToastKind.invitationRejected => localization.peer_client_invitation_rejected_body,
+          PeerToastKind.bluetoothUnavailable => localization.peer_error_bluetooth_unavailable,
+          PeerToastKind.discoveryFailed => localization.peer_client_error_discovery,
+          PeerToastKind.connectionFailed => localization.peer_client_error_connection,
+          PeerToastKind.peerDisconnected => localization.peer_disconnect_peer_left,
+          PeerToastKind.linkLost => localization.peer_disconnect_link_lost,
+          PeerToastKind.timeout => localization.peer_disconnect_timeout,
+          PeerToastKind.genericError => localization.something_went_wrong,
         };
         context.showErrorToast(message);
       },

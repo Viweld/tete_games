@@ -91,6 +91,15 @@ class AppLocalizationEn extends AppLocalization {
   String get peer_error_bluetooth_unavailable => 'Bluetooth is turned off or unavailable';
 
   @override
+  String get peer_disconnect_peer_left => 'Opponent left the game';
+
+  @override
+  String get peer_disconnect_link_lost => 'Connection lost';
+
+  @override
+  String get peer_disconnect_timeout => 'No response from opponent';
+
+  @override
   String get peer_games_list_stub => 'Games list coming soon';
 
   @override

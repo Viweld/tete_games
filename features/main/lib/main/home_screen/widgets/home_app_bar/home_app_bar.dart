@@ -1,4 +1,4 @@
-import 'package:core_ui/core_ui.dart';
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -10,10 +10,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onConnectTap,
     required this.onDisconnectTap,
     required this.onProfileTap,
-    required this.connectLabel,
-    required this.disconnectLabel,
-    required this.profileLabel,
-    required this.title,
   });
 
   final bool isConnected;
@@ -22,16 +18,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onConnectTap;
   final VoidCallback onDisconnectTap;
   final VoidCallback onProfileTap;
-  final String connectLabel;
-  final String disconnectLabel;
-  final String profileLabel;
-  final String title;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalization localization = context.localization;
     final AppColorsTheme colors = context.colors;
     final Color background = isConnected
         ? colors.background.successGreen
@@ -39,7 +32,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: background,
-      title: Text(title),
+      title: Text(
+        localization.peer_home_title,
+        style: AppFonts.h5.copyWith(color: colors.text.main),
+      ),
       centerTitle: true,
       actions: <Widget>[
         if (localDisplayName != null)
@@ -67,16 +63,25 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             if (!isConnected)
               PopupMenuItem<_HomeMenuAction>(
                 value: _HomeMenuAction.connect,
-                child: Text(connectLabel),
+                child: Text(
+                  localization.peer_home_menu_connect,
+                  style: AppFonts.b2.copyWith(color: colors.text.main),
+                ),
               ),
             if (isConnected)
               PopupMenuItem<_HomeMenuAction>(
                 value: _HomeMenuAction.disconnect,
-                child: Text(disconnectLabel),
+                child: Text(
+                  localization.peer_home_menu_disconnect,
+                  style: AppFonts.b2.copyWith(color: colors.text.main),
+                ),
               ),
             PopupMenuItem<_HomeMenuAction>(
               value: _HomeMenuAction.profile,
-              child: Text(profileLabel),
+              child: Text(
+                localization.peer_home_menu_profile,
+                style: AppFonts.b2.copyWith(color: colors.text.main),
+              ),
             ),
           ],
         ),
@@ -101,7 +106,7 @@ class _AvatarChip extends StatelessWidget {
     return CircleAvatar(
       radius: 16,
       backgroundColor: isRemote ? colors.text.accent : colors.text.main,
-      child: Text(initial, style: TextStyle(color: colors.text.white, fontSize: 14)),
+      child: Text(initial, style: AppFonts.b4.copyWith(color: colors.text.white)),
     );
   }
 }

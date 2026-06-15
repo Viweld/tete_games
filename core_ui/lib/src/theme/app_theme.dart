@@ -28,6 +28,9 @@ class LightTheme implements AppTheme {
   @override
   ThemeData get theme => ThemeData(
     useMaterial3: true,
+    fontFamily: AppFonts.base.fontFamily,
+    textTheme: AppFonts.textTheme,
+    appBarTheme: const AppBarTheme(titleTextStyle: AppFonts.h5, toolbarTextStyle: AppFonts.b2),
     splashColor: AppColors.bgdButtonPressedAD,
     highlightColor: AppColors.bgdButtonPressedAD,
     filledButtonTheme: FilledButtonThemeData(

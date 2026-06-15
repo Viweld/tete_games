@@ -1,3 +1,4 @@
+import 'package:domain/src/models/peer/connection/peer_disconnect_reason.dart';
 import 'package:domain/src/models/peer/connection/peer_session_close.dart';
 import 'package:domain/src/models/peer/connection/peer_session_command.dart';
 import 'package:domain/src/models/peer/connection/peer_session_core_phase.dart';
@@ -42,7 +43,7 @@ ReduceResult reduce({required PeerSessionSnapshot prev, required PeerSessionComm
     CmdInvitationAccepted() => (next: prev, rawEvents: const <RawPeerUiEvent>[]),
     CmdInvitationRejected() => _invitationRejected(prev),
     CmdTransportConnected(:final remoteEndpoint) => _transportConnected(prev, remoteEndpoint),
-    CmdTransportDisconnected() => _transportDisconnected(prev),
+    CmdTransportDisconnected(:final reason) => _transportDisconnected(prev, reason),
     CmdBleError(:final errorKind) => _bleError(prev, errorKind),
   };
 }
@@ -177,16 +178,23 @@ ReduceResult _transportConnected(PeerSessionSnapshot prev, PeerEndpoint remoteEn
   );
 }
 
-ReduceResult _transportDisconnected(PeerSessionSnapshot prev) {
+ReduceResult _transportDisconnected(PeerSessionSnapshot prev, PeerDisconnectReason reason) {
   if (prev.phase != PeerSessionCorePhase.connected) {
     return (next: prev, rawEvents: const <RawPeerUiEvent>[]);
   }
 
+  final PeerToastKind? toastKind = switch (reason) {
+    PeerDisconnectReason.userDisconnect => null,
+    PeerDisconnectReason.peerDisconnect => PeerToastKind.peerDisconnected,
+    PeerDisconnectReason.linkLost => PeerToastKind.linkLost,
+    PeerDisconnectReason.timeout => PeerToastKind.timeout,
+  };
+
   return (
     next: const PeerSessionSnapshot(),
-    rawEvents: const <RawPeerUiEvent>[
-      RawShowToastEvent(PeerToastKind.genericError),
-      RawCloseOverlayEvent(),
+    rawEvents: <RawPeerUiEvent>[
+      if (toastKind != null) RawShowToastEvent(toastKind),
+      const RawCloseOverlayEvent(),
     ],
   );
 }
