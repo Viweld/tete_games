@@ -79,6 +79,15 @@ class AppLocalizationRu extends AppLocalization {
   String get peer_client_wait_confirmation => 'Ждите подтверждения';
 
   @override
+  String get peer_peer_card_connection_request => 'запрос подключения';
+
+  @override
+  String get peer_peer_card_request_sent => 'запрос отправлен...';
+
+  @override
+  String get peer_peer_card_waiting_invitation => 'ожидает приглашения';
+
+  @override
   String get peer_client_waiting_hosts_title => 'Ждут приглашения:';
 
   @override

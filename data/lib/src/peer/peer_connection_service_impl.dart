@@ -54,7 +54,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     return _enqueue(() async {
       if (!await _hasProfile()) return;
       final String sessionId = _newSessionId();
-      await _stopClientSide();
+      await _releaseClientRole();
       await _dispatch(CmdStartHostSession(sessionId: sessionId), projection: projection);
       try {
         await _serverSessionRepository.startAdvertising();
@@ -78,7 +78,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     return _enqueue(() async {
       if (!await _hasProfile()) return;
       final String sessionId = _newSessionId();
-      await _stopServerSide();
+      await _releaseServerRole();
       _discoveryRegistry.clear(_discoveredDevicesStore);
       await _dispatch(CmdStartClientSession(sessionId: sessionId), projection: projection);
       try {
@@ -152,21 +152,49 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
       }
       if (device == null) return;
 
-      try {
-        await _clientSessionRepository.connectToDevice(device);
-      } on Object catch (error, stackTrace) {
-        developer.log(
-          'connectToDevice failed',
-          name: 'peer.session',
-          error: error,
-          stackTrace: stackTrace,
-        );
+      final bool connected = await _connectWithRetry(device: device);
+      if (!connected) {
         await _dispatch(
           const CmdBleError(errorKind: PeerSessionErrorKind.connectionFailed),
           projection: projection,
         );
       }
     });
+  }
+
+  Future<bool> _connectWithRetry({required PeerDevice device}) async {
+    const int maxAttempts = 2;
+    const Duration retryDelay = Duration(milliseconds: 800);
+
+    for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        await _clientSessionRepository.connectToDevice(device);
+        return true;
+      } on Object catch (error, stackTrace) {
+        developer.log(
+          'connectToDevice failed (attempt $attempt/$maxAttempts)',
+          name: 'peer.session',
+          error: error,
+          stackTrace: stackTrace,
+        );
+
+        await _clientSessionRepository.releaseSession();
+        await _transportRepository.resetPeerStack();
+
+        if (attempt == maxAttempts) return false;
+
+        await Future<void>.delayed(retryDelay);
+        await _restartClientDiscovery();
+        await Future<void>.delayed(const Duration(milliseconds: 1200));
+      }
+    }
+
+    return false;
+  }
+
+  Future<void> _restartClientDiscovery() async {
+    await _clientSessionRepository.startDiscovery();
+    await _startDiscoverySubscription();
   }
 
   @override
@@ -325,22 +353,26 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     });
   }
 
-  Future<void> _stopClientSide() async {
+  Future<void> _releaseClientRole() async {
     await _discoverySubscription?.cancel();
     _discoverySubscription = null;
     _discoveryRegistry.clear(_discoveredDevicesStore);
-    await _clientSessionRepository.stopDiscovery();
+    await _clientSessionRepository.releaseSession();
+    await _transportRepository.resetPeerStack();
   }
 
-  Future<void> _stopServerSide() async {
-    await _serverSessionRepository.stopAdvertising();
+  Future<void> _releaseServerRole() async {
+    await _serverSessionRepository.releaseSession();
+    await _transportRepository.resetPeerStack();
   }
 
   Future<void> _tearDownBle() async {
-    await _serverSessionRepository.disconnectSession();
-    await _clientSessionRepository.disconnectSession();
-    await _stopClientSide();
-    await _stopServerSide();
+    await _discoverySubscription?.cancel();
+    _discoverySubscription = null;
+    _discoveryRegistry.clear(_discoveredDevicesStore);
+    await _clientSessionRepository.releaseSession();
+    await _serverSessionRepository.releaseSession();
+    await _transportRepository.resetPeerStack();
   }
 
   void _validateInviteCommand(
@@ -364,6 +396,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     await _messagesSubscription.cancel();
     await _disconnectSubscription.cancel();
     await _discoverySubscription?.cancel();
+    await _transportRepository.dispose();
     await _framesController.close();
   }
 }

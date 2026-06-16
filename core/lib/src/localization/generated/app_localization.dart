@@ -231,6 +231,24 @@ abstract class AppLocalization {
   /// **'Ждите подтверждения'**
   String get peer_client_wait_confirmation;
 
+  /// No description provided for @peer_peer_card_connection_request.
+  ///
+  /// In ru, this message translates to:
+  /// **'запрос подключения'**
+  String get peer_peer_card_connection_request;
+
+  /// No description provided for @peer_peer_card_request_sent.
+  ///
+  /// In ru, this message translates to:
+  /// **'запрос отправлен...'**
+  String get peer_peer_card_request_sent;
+
+  /// No description provided for @peer_peer_card_waiting_invitation.
+  ///
+  /// In ru, this message translates to:
+  /// **'ожидает приглашения'**
+  String get peer_peer_card_waiting_invitation;
+
   /// No description provided for @peer_client_waiting_hosts_title.
   ///
   /// In ru, this message translates to:

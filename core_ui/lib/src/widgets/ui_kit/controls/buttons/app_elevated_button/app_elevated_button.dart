@@ -77,7 +77,7 @@ class AppElevatedButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 6,
             children: state == ElementState.loading
-                ? <Widget>[AppLoadingIndicator(color: contentColor)]
+                ? <Widget>[AppDotsLoadingIndicator(color: contentColor)]
                 : <Widget>[
                     ?prefix,
                     isExpanded

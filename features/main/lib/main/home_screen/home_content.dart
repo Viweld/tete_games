@@ -44,17 +44,19 @@ class HomeContent extends StatelessWidget {
           body: HomeGamesGrid(isEnabled: isGamesEnabled),
         ),
         if (isOverlayVisible)
-          PeerConnectionOverlay(
-            overlay: overlay,
-            projection: projection,
-            onClose: () => homeBloc.add(const HomeEvent.overlayDismissTapped()),
-            onHostTap: () => homeBloc.add(const HomeEvent.hostTapped()),
-            onClientTap: () => homeBloc.add(const HomeEvent.clientTapped()),
-            onDeviceTap: (String? deviceId) =>
-                homeBloc.add(HomeEvent.deviceHighlightChanged(deviceId: deviceId)),
-            onInviteTap: () => homeBloc.add(const HomeEvent.inviteDeviceTapped()),
-            onAcceptTap: () => homeBloc.add(const HomeEvent.acceptInvitationTapped()),
-            onRejectTap: () => homeBloc.add(const HomeEvent.rejectInvitationTapped()),
+          Positioned.fill(
+            child: PeerConnectionOverlay(
+              overlay: overlay,
+              projection: projection,
+              onClose: () => homeBloc.add(const HomeEvent.overlayDismissTapped()),
+              onHostTap: () => homeBloc.add(const HomeEvent.hostTapped()),
+              onClientTap: () => homeBloc.add(const HomeEvent.clientTapped()),
+              onDeviceTap: (String? deviceId) =>
+                  homeBloc.add(HomeEvent.deviceHighlightChanged(deviceId: deviceId)),
+              onInviteTap: () => homeBloc.add(const HomeEvent.inviteDeviceTapped()),
+              onAcceptTap: () => homeBloc.add(const HomeEvent.acceptInvitationTapped()),
+              onRejectTap: () => homeBloc.add(const HomeEvent.rejectInvitationTapped()),
+            ),
           ),
       ],
     );

@@ -76,7 +76,7 @@ class AppLoaderOverlay extends StatelessWidget {
                   ),
                 ],
                 const SizedBox(height: 20),
-                const SizedBox(height: 40, child: Center(child: AppLoadingIndicator())),
+                const SizedBox(height: 40, child: Center(child: AppSquareLoadingIndicator())),
               ],
             ),
           ),

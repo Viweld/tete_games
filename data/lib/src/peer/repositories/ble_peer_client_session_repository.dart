@@ -1,25 +1,28 @@
+import 'dart:developer' as developer;
+
 import 'package:ble_peer_session/ble_peer_session.dart' as pckg;
 import 'package:data/src/peer/mappers/peer_device_mapper.dart';
 import 'package:data/src/peer/mappers/peer_endpoint_mapper.dart';
+import 'package:data/src/peer/peer_lifecycle.dart';
 import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPeerClientSessionRepository)
 final class BlePeerClientSessionRepository implements IPeerClientSessionRepository {
   BlePeerClientSessionRepository(
-    this._peer,
+    this._peerLifecycle,
     this._playerProfileRepository,
     this._localDeviceRepository,
   );
 
-  final pckg.Peer _peer;
+  final PeerLifecycle _peerLifecycle;
   final IPlayerProfileRepository _playerProfileRepository;
   final ILocalDeviceRepository _localDeviceRepository;
 
   pckg.PeerClient? _client;
 
   Future<pckg.PeerClient> _clientSession() async {
-    return _client ??= await _peer.createClient();
+    return _client ??= await (await _peerLifecycle.requirePeer()).createClient();
   }
 
   @override
@@ -62,9 +65,36 @@ final class BlePeerClientSessionRepository implements IPeerClientSessionReposito
 
   @override
   Future<void> disconnectSession() async {
+    await releaseSession();
+  }
+
+  @override
+  Future<void> releaseSession() async {
     final pckg.PeerClient? client = _client;
+    _client = null;
     if (client == null) return;
-    await client.disconnect();
+
+    try {
+      await client.stopDiscovery();
+    } on Object catch (error, stackTrace) {
+      developer.log(
+        'client.stopDiscovery failed during release',
+        name: 'peer.session',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    try {
+      await client.disconnect();
+    } on Object catch (error, stackTrace) {
+      developer.log(
+        'client.disconnect failed during release',
+        name: 'peer.session',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   Future<PeerEndpoint> _buildLocalEndpoint() async {

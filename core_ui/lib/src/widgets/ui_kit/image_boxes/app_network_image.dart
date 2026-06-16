@@ -82,7 +82,7 @@ class _AppNetworkImageState extends State<AppNetworkImage> {
         height: widget.size?.height ?? 50,
         color: widget.backgroundColor ?? colors.background.main,
         child: widget.isLoading
-            ? const AppLoadingIndicator(size: 16)
+            ? const AppSquareLoadingIndicator(size: 16)
             : (url.isEmpty)
             ? plug
             : isSvg

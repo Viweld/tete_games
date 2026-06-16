@@ -79,6 +79,15 @@ class AppLocalizationEn extends AppLocalization {
   String get peer_client_wait_confirmation => 'Waiting for confirmation';
 
   @override
+  String get peer_peer_card_connection_request => 'connection request';
+
+  @override
+  String get peer_peer_card_request_sent => 'request sent...';
+
+  @override
+  String get peer_peer_card_waiting_invitation => 'waiting for invitation';
+
+  @override
   String get peer_client_waiting_hosts_title => 'Waiting for hosts:';
 
   @override

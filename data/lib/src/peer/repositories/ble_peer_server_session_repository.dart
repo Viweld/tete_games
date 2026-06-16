@@ -1,24 +1,27 @@
+import 'dart:developer' as developer;
+
 import 'package:ble_peer_session/ble_peer_session.dart' as pckg;
 import 'package:data/src/peer/mappers/peer_endpoint_mapper.dart';
+import 'package:data/src/peer/peer_lifecycle.dart';
 import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPeerServerSessionRepository)
 final class BlePeerServerSessionRepository implements IPeerServerSessionRepository {
   BlePeerServerSessionRepository(
-    this._peer,
+    this._peerLifecycle,
     this._playerProfileRepository,
     this._localDeviceRepository,
   );
 
-  final pckg.Peer _peer;
+  final PeerLifecycle _peerLifecycle;
   final IPlayerProfileRepository _playerProfileRepository;
   final ILocalDeviceRepository _localDeviceRepository;
 
   pckg.PeerHost? _host;
 
   Future<pckg.PeerHost> _hostSession() async {
-    return _host ??= await _peer.createHost();
+    return _host ??= await (await _peerLifecycle.requirePeer()).createHost();
   }
 
   @override
@@ -49,9 +52,36 @@ final class BlePeerServerSessionRepository implements IPeerServerSessionReposito
 
   @override
   Future<void> disconnectSession() async {
+    await releaseSession();
+  }
+
+  @override
+  Future<void> releaseSession() async {
     final pckg.PeerHost? host = _host;
+    _host = null;
     if (host == null) return;
-    await host.disconnect();
+
+    try {
+      await host.stop();
+    } on Object catch (error, stackTrace) {
+      developer.log(
+        'host.stop failed during release',
+        name: 'peer.session',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    try {
+      await host.disconnect();
+    } on Object catch (error, stackTrace) {
+      developer.log(
+        'host.disconnect failed during release',
+        name: 'peer.session',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   Future<PeerEndpoint> _buildLocalEndpoint() async {

@@ -37,7 +37,9 @@ class AppScaffold extends StatelessWidget {
 
     Widget child = switch (state) {
       FragmentState.active => body,
-      FragmentState.loading => Center(child: customInitIndicator ?? const AppLoadingIndicator()),
+      FragmentState.loading => Center(
+        child: customInitIndicator ?? const AppSquareLoadingIndicator(),
+      ),
       FragmentState.error => AppRetry(message: errorText, onTap: onRefresh),
     };
 

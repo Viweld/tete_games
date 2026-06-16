@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
+import 'package:main/main/home_screen/widgets/home_app_bar/widgets/users_container.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
@@ -32,22 +33,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: background,
-      title: Text(
-        localization.peer_home_title,
-        style: AppFonts.h5.copyWith(color: colors.text.main),
+      title: UsersContainer(
+        isConnected: isConnected,
+        localUserName: localDisplayName,
+        remoteUserName: remoteDisplayName,
       ),
-      centerTitle: true,
       actions: <Widget>[
-        if (localDisplayName != null)
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: _AvatarChip(label: localDisplayName!),
-          ),
-        if (isConnected && remoteDisplayName != null)
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: _AvatarChip(label: remoteDisplayName!, isRemote: true),
-          ),
         PopupMenuButton<_HomeMenuAction>(
           onSelected: (_HomeMenuAction action) {
             switch (action) {
@@ -91,22 +82,3 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 enum _HomeMenuAction { connect, disconnect, profile }
-
-class _AvatarChip extends StatelessWidget {
-  const _AvatarChip({required this.label, this.isRemote = false});
-
-  final String label;
-  final bool isRemote;
-
-  @override
-  Widget build(BuildContext context) {
-    final AppColorsTheme colors = context.colors;
-    final String initial = label.isNotEmpty ? label.characters.first.toUpperCase() : '?';
-
-    return CircleAvatar(
-      radius: 16,
-      backgroundColor: isRemote ? colors.text.accent : colors.text.main,
-      child: Text(initial, style: AppFonts.b4.copyWith(color: colors.text.white)),
-    );
-  }
-}

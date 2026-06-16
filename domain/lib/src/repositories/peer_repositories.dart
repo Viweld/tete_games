@@ -9,6 +9,9 @@ abstract interface class IPeerTransportRepository {
   Stream<PeerDisconnectReason> get disconnectReasons;
 
   Future<void> dispose();
+
+  /// Disposes the BLE peer stack and recreates client/server links.
+  Future<void> resetPeerStack();
 }
 
 abstract interface class IPeerServerSessionRepository {
@@ -21,6 +24,10 @@ abstract interface class IPeerServerSessionRepository {
   Future<void> stopAdvertising();
 
   Future<void> disconnectSession();
+
+  /// Disconnects the host role and drops the cached session so the next start
+  /// re-initializes BLE transport (required before switching to client).
+  Future<void> releaseSession();
 }
 
 abstract interface class IPeerClientSessionRepository {
@@ -35,6 +42,10 @@ abstract interface class IPeerClientSessionRepository {
   Future<void> connectToDevice(PeerDevice device);
 
   Future<void> disconnectSession();
+
+  /// Disconnects the client role and drops the cached session so the next start
+  /// re-initializes BLE transport (required before switching to host).
+  Future<void> releaseSession();
 }
 
 abstract interface class IPlayerProfileRepository {
