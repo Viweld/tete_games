@@ -34,7 +34,6 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   int _frameId = 0;
   int _eventSequence = 0;
   int _sessionCounter = 0;
-  String _activeSessionId = '';
 
   Future<void> _queue = Future<void>.value();
   late final StreamSubscription<PeerConnectionState> _connectionSubscription;
@@ -207,8 +206,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
 
   String _newSessionId() {
     _sessionCounter++;
-    _activeSessionId = 'session-$_sessionCounter';
-    return _activeSessionId;
+    return 'session-$_sessionCounter';
   }
 
   void _emitInitialFrame() {
@@ -279,7 +277,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
 
   void _onSessionMessage(PeerSessionMessage message) {
     switch (message) {
-      case PeerInvitation(:final remoteEndpoint):
+      case PeerInvitation(:final PeerEndpoint remoteEndpoint):
         unawaited(
           _enqueue(
             () => _dispatch(
@@ -357,5 +355,15 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     if (projection.highlightedDeviceId != null && projection.highlightedDeviceId != deviceId) {
       developer.log('projection/device mismatch', name: 'peer.session');
     }
+  }
+
+  @override
+  @disposeMethod
+  Future<void> dispose() async {
+    await _connectionSubscription.cancel();
+    await _messagesSubscription.cancel();
+    await _disconnectSubscription.cancel();
+    await _discoverySubscription?.cancel();
+    await _framesController.close();
   }
 }

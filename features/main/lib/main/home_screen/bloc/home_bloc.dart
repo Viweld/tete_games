@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 
@@ -10,7 +8,7 @@ part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this._peerConnectionService) : super(const HomeState()) {
+  HomeBloc(this._peerConnectionService, this._playerProfileRepository) : super(const HomeState()) {
     on<HomeEvent>(
       (HomeEvent event, Emitter<HomeState> emit) => event.map(
         init: (_) => _onInit(emit),
@@ -28,6 +26,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         overlayOpened: (_) => _onOverlayOpened(emit),
         overlayClosed: (_) => _onOverlayClosed(emit),
         overlayDismissTapped: (_) => _onOverlayDismissTapped(emit),
+        overlayRoleNicknameConfirmed: (_) => _onOverlayRoleNicknameConfirmed(emit),
+        overlayRoleNicknameCancelled: (_) => _onOverlayRoleNicknameCancelled(emit),
         effectHandled: (_) => _onEffectHandled(emit),
       ),
     );
@@ -37,6 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   final PeerConnectionService _peerConnectionService;
+  final IPlayerProfileRepository _playerProfileRepository;
 
   late final StreamSubscription<AppConnectionFrame> _framesSubscription;
 
@@ -112,15 +113,40 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     return null;
   }
 
-  void _onConnectMenuTapped(Emitter<HomeState> emit) {
-    emit(state.copyWith(effect: const HomeEffect.showConnectionOverlay()));
+  Future<void> _onConnectMenuTapped(Emitter<HomeState> emit) async {
+    if (!await _hasProfile()) {
+      emit(state.copyWith(effect: const HomeEffect.showConnectionOverlay()));
+      return;
+    }
+
+    await _openConnectionOverlay(emit);
   }
 
   Future<void> _onHostTapped(Emitter<HomeState> emit) async {
+    if (!await _hasProfile()) {
+      emit(
+        state.copyWith(
+          effect: const HomeEffect.requestNicknameForOverlayRole(),
+          pendingOverlayRole: HomePendingOverlayRole.host,
+        ),
+      );
+      return;
+    }
+
     await _peerConnectionService.startHostSession(projection: state.projection);
   }
 
   Future<void> _onClientTapped(Emitter<HomeState> emit) async {
+    if (!await _hasProfile()) {
+      emit(
+        state.copyWith(
+          effect: const HomeEffect.requestNicknameForOverlayRole(),
+          pendingOverlayRole: HomePendingOverlayRole.client,
+        ),
+      );
+      return;
+    }
+
     await _peerConnectionService.startClientSession(projection: state.projection);
   }
 
@@ -155,17 +181,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     await _peerConnectionService.rejectInvitation(projection: state.projection);
   }
 
-  void _onOverlayOpened(Emitter<HomeState> emit) {
-    emit(state.copyWith(isOverlayVisible: true));
+  Future<void> _onOverlayOpened(Emitter<HomeState> emit) async {
+    await _openConnectionOverlay(emit);
   }
 
   Future<void> _onOverlayDismissTapped(Emitter<HomeState> emit) async {
-    final bool wasConnected = state.isConnected;
     final FrameProjectionInput projection = state.projection;
 
     emit(state.copyWith(isOverlayVisible: false, projection: const FrameProjectionInput()));
-
-    if (wasConnected) return;
 
     await _peerConnectionService.closeSession(
       origin: PeerSessionCloseOrigin.user,
@@ -178,7 +201,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(isOverlayVisible: false, projection: const FrameProjectionInput()));
   }
 
+  Future<void> _onOverlayRoleNicknameConfirmed(Emitter<HomeState> emit) async {
+    final HomePendingOverlayRole? pendingRole = state.pendingOverlayRole;
+    emit(state.copyWith(pendingOverlayRole: null));
+    if (pendingRole == null) return;
+
+    switch (pendingRole) {
+      case HomePendingOverlayRole.host:
+        await _peerConnectionService.startHostSession(projection: state.projection);
+      case HomePendingOverlayRole.client:
+        await _peerConnectionService.startClientSession(projection: state.projection);
+    }
+  }
+
+  void _onOverlayRoleNicknameCancelled(Emitter<HomeState> emit) {
+    emit(state.copyWith(pendingOverlayRole: null));
+  }
+
   void _onEffectHandled(Emitter<HomeState> emit) {
     emit(state.copyWith(effect: null));
+  }
+
+  Future<void> _openConnectionOverlay(Emitter<HomeState> emit) async {
+    emit(state.copyWith(isOverlayVisible: true));
+    await _peerConnectionService.openRoleSelection(projection: state.projection);
+  }
+
+  Future<bool> _hasProfile() async {
+    final PlayerProfile? profile = await _playerProfileRepository.getCurrentPlayer();
+    return profile != null;
   }
 }

@@ -1,5 +1,5 @@
-import 'package:domain/src/models/peer/connection/peer_session_core_phase.dart';
 import 'package:domain/src/models/peer/connection/peer_session_close.dart';
+import 'package:domain/src/models/peer/connection/peer_session_core_phase.dart';
 import 'package:domain/src/models/peer/peer_device.dart';
 import 'package:domain/src/models/peer/peer_endpoint.dart';
 import 'package:domain/src/models/peer/peer_role.dart';

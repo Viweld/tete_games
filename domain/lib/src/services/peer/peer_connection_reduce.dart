@@ -32,19 +32,28 @@ typedef ReduceResult = ({PeerSessionSnapshot next, List<RawPeerUiEvent> rawEvent
 ReduceResult reduce({required PeerSessionSnapshot prev, required PeerSessionCommand command}) {
   return switch (command) {
     CmdOpenRoleSelection() => _openRoleSelection(prev),
-    CmdStartHostSession(:final sessionId) => _startHost(sessionId),
-    CmdStartClientSession(:final sessionId) => _startClient(sessionId),
+    CmdStartHostSession(:final String sessionId) => _startHost(sessionId),
+    CmdStartClientSession(:final String sessionId) => _startClient(sessionId),
     CmdAcceptInvitation() => _acceptInvitation(prev),
     CmdRejectInvitation() => _rejectInvitation(prev),
-    CmdInviteDevice(:final deviceId) => _inviteDevice(prev, deviceId),
-    CmdCloseSession(:final reason) => _closeSession(prev, reason),
-    CmdDiscoveryUpdated(:final devices) => _discoveryUpdated(prev, devices),
-    CmdInvitationReceived(:final remoteEndpoint) => _invitationReceived(prev, remoteEndpoint),
+    CmdInviteDevice(:final String deviceId) => _inviteDevice(prev, deviceId),
+    CmdCloseSession(:final PeerSessionCloseReason reason) => _closeSession(prev, reason),
+    CmdDiscoveryUpdated(:final List<PeerDevice> devices) => _discoveryUpdated(prev, devices),
+    CmdInvitationReceived(:final PeerEndpoint remoteEndpoint) => _invitationReceived(
+      prev,
+      remoteEndpoint,
+    ),
     CmdInvitationAccepted() => (next: prev, rawEvents: const <RawPeerUiEvent>[]),
     CmdInvitationRejected() => _invitationRejected(prev),
-    CmdTransportConnected(:final remoteEndpoint) => _transportConnected(prev, remoteEndpoint),
-    CmdTransportDisconnected(:final reason) => _transportDisconnected(prev, reason),
-    CmdBleError(:final errorKind) => _bleError(prev, errorKind),
+    CmdTransportConnected(:final PeerEndpoint remoteEndpoint) => _transportConnected(
+      prev,
+      remoteEndpoint,
+    ),
+    CmdTransportDisconnected(:final PeerDisconnectReason reason) => _transportDisconnected(
+      prev,
+      reason,
+    ),
+    CmdBleError(:final PeerSessionErrorKind errorKind) => _bleError(prev, errorKind),
   };
 }
 

@@ -74,6 +74,7 @@ class DataPackageModule extends _i526.MicroPackageModule {
         gh<_i494.IPeerTransportRepository>(),
         gh<_i494.IPlayerProfileRepository>(),
       ),
+      dispose: (i) => i.dispose(),
     );
   }
 }

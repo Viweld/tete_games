@@ -17,11 +17,14 @@ class MainPackageModule extends _i526.MicroPackageModule {
   // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
-    gh.factory<_i1007.HomeBloc>(() => _i1007.HomeBloc(gh<_i494.PeerConnectionService>()));
     gh.factory<_i517.SplashBloc>(
       () => _i517.SplashBloc(gh<_i494.SettingsRepository>(), gh<_i494.LocaleController>()),
     );
     gh.factory<_i814.ProfileBloc>(() => _i814.ProfileBloc(gh<_i494.IPlayerProfileRepository>()));
     gh.factory<_i355.NicknameBloc>(() => _i355.NicknameBloc(gh<_i494.IPlayerProfileRepository>()));
+    gh.factory<_i1007.HomeBloc>(
+      () =>
+          _i1007.HomeBloc(gh<_i494.PeerConnectionService>(), gh<_i494.IPlayerProfileRepository>()),
+    );
   }
 }

@@ -1,7 +1,5 @@
 import 'package:core/core.dart';
-import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
-import 'package:flutter/material.dart';
 import 'package:main/main/home_screen/bloc/home_bloc.dart';
 import 'package:main/main/home_screen/bloc/profile_bloc.dart';
 import 'package:main/main/home_screen/home_content.dart';
@@ -35,7 +33,15 @@ class HomeScreen extends StatelessWidget {
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (BuildContext context, HomeState homeState) {
             final PlayerProfile? profile = context.watch<ProfileBloc>().state.profile;
-            return HomeContent(profile: profile, homeState: homeState);
+            return HomeContent(
+              profile: profile,
+              isConnected: homeState.isConnected,
+              remoteDisplayName: homeState.remoteDisplayName,
+              isGamesEnabled: homeState.isGamesEnabled,
+              isOverlayVisible: homeState.isOverlayVisible,
+              overlay: homeState.overlay,
+              projection: homeState.projection,
+            );
           },
         ),
       ),
@@ -67,13 +73,11 @@ class HomeScreen extends StatelessWidget {
 
     await effect.when(
       showConnectionOverlay: () async {
-        final bool opened = await _ensureProfileAndOpenOverlay(
-          context,
-          profileBloc: profileBloc,
-          homeBloc: homeBloc,
-          dialogContext: NicknameDialogContext.connect,
-        );
-        if (!opened) return;
+        final bool? saved = await _showNicknameDialog(context, NicknameDialogContext.connect);
+        if (!context.mounted || saved != true) return;
+
+        profileBloc.add(const ProfileEvent.refreshRequested());
+        homeBloc.add(const HomeEvent.overlayOpened());
       },
       closeConnectionOverlay: () {
         homeBloc.add(const HomeEvent.overlayClosed());
@@ -93,39 +97,22 @@ class HomeScreen extends StatelessWidget {
         context.showErrorToast(message);
       },
       requestNicknameForOverlayRole: () async {
-        await _showNicknameDialog(context, NicknameDialogContext.overlayRole);
+        final bool? saved = await _showNicknameDialog(context, NicknameDialogContext.overlayRole);
+        if (!context.mounted) return;
+
+        if (saved != true) {
+          homeBloc.add(const HomeEvent.overlayRoleNicknameCancelled());
+          return;
+        }
+
+        profileBloc.add(const ProfileEvent.refreshRequested());
+        homeBloc.add(const HomeEvent.overlayRoleNicknameConfirmed());
       },
     );
 
     if (context.mounted) {
       homeBloc.add(const HomeEvent.effectHandled());
     }
-  }
-
-  Future<bool> _ensureProfileAndOpenOverlay(
-    BuildContext context, {
-    required ProfileBloc profileBloc,
-    required HomeBloc homeBloc,
-    required NicknameDialogContext dialogContext,
-  }) async {
-    if (profileBloc.state.profile != null) {
-      await _openOverlay(homeBloc);
-      return true;
-    }
-
-    final bool? saved = await _showNicknameDialog(context, dialogContext);
-    if (!context.mounted || saved != true) return false;
-
-    profileBloc.add(const ProfileEvent.refreshRequested());
-    await _openOverlay(homeBloc);
-    return true;
-  }
-
-  Future<void> _openOverlay(HomeBloc homeBloc) async {
-    homeBloc.add(const HomeEvent.overlayOpened());
-    await appLocator<PeerConnectionService>().openRoleSelection(
-      projection: homeBloc.state.projection,
-    );
   }
 
   Future<bool?> _showNicknameDialog(

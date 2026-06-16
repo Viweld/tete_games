@@ -1,5 +1,7 @@
 part of 'home_bloc.dart';
 
+enum HomePendingOverlayRole { host, client }
+
 @freezed
 abstract class HomeState with _$HomeState {
   const factory HomeState({
@@ -11,6 +13,7 @@ abstract class HomeState with _$HomeState {
     @Default(FrameProjectionInput()) FrameProjectionInput projection,
     @Default(0) int lastHandledFrameId,
     @Default(false) bool isOverlayVisible,
+    HomePendingOverlayRole? pendingOverlayRole,
     HomeEffect? effect,
   }) = _HomeState;
 }

@@ -6,11 +6,7 @@ class NicknameDialog extends StatelessWidget {
   const NicknameDialog._();
 
   static Future<bool?> show(BuildContext context) {
-    return showDialog<bool>(
-      context: context,
-      barrierDismissible: true,
-      builder: (_) => const NicknameDialog._(),
-    );
+    return showDialog<bool>(context: context, builder: (_) => const NicknameDialog._());
   }
 
   @override

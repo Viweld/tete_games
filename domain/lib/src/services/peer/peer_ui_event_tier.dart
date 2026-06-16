@@ -1,3 +1,4 @@
+import 'package:domain/src/models/peer/connection/peer_toast_kind.dart';
 import 'package:domain/src/models/peer/connection/peer_ui_event.dart';
 import 'package:domain/src/services/peer/peer_connection_reduce.dart';
 import 'package:flutter/foundation.dart';
@@ -27,7 +28,7 @@ TieredEvents tierEvents({
           ),
         );
         sequence++;
-      case RawShowToastEvent(:final kind):
+      case RawShowToastEvent(:final PeerToastKind kind):
         softEvents.add(
           PeerUiShowToastEvent(
             eventSequence: sequence,

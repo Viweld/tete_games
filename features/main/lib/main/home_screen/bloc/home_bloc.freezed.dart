@@ -55,7 +55,7 @@ extension HomeEventPatterns on HomeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _FrameReceived value)?  frameReceived,TResult Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult Function( _HostTapped value)?  hostTapped,TResult Function( _ClientTapped value)?  clientTapped,TResult Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult Function( _OverlayOpened value)?  overlayOpened,TResult Function( _OverlayClosed value)?  overlayClosed,TResult Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult Function( _EffectHandled value)?  effectHandled,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _FrameReceived value)?  frameReceived,TResult Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult Function( _HostTapped value)?  hostTapped,TResult Function( _ClientTapped value)?  clientTapped,TResult Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult Function( _OverlayOpened value)?  overlayOpened,TResult Function( _OverlayClosed value)?  overlayClosed,TResult Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult Function( _OverlayRoleNicknameConfirmed value)?  overlayRoleNicknameConfirmed,TResult Function( _OverlayRoleNicknameCancelled value)?  overlayRoleNicknameCancelled,TResult Function( _EffectHandled value)?  effectHandled,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
@@ -72,7 +72,9 @@ return acceptInvitationTapped(_that);case _RejectInvitationTapped() when rejectI
 return rejectInvitationTapped(_that);case _OverlayOpened() when overlayOpened != null:
 return overlayOpened(_that);case _OverlayClosed() when overlayClosed != null:
 return overlayClosed(_that);case _OverlayDismissTapped() when overlayDismissTapped != null:
-return overlayDismissTapped(_that);case _EffectHandled() when effectHandled != null:
+return overlayDismissTapped(_that);case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
+return overlayRoleNicknameConfirmed(_that);case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
+return overlayRoleNicknameCancelled(_that);case _EffectHandled() when effectHandled != null:
 return effectHandled(_that);case _:
   return orElse();
 
@@ -91,7 +93,7 @@ return effectHandled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _FrameReceived value)  frameReceived,required TResult Function( _ConnectMenuTapped value)  connectMenuTapped,required TResult Function( _HostTapped value)  hostTapped,required TResult Function( _ClientTapped value)  clientTapped,required TResult Function( _DisconnectMenuTapped value)  disconnectMenuTapped,required TResult Function( _ProfileMenuTapped value)  profileMenuTapped,required TResult Function( _DeviceHighlightChanged value)  deviceHighlightChanged,required TResult Function( _InviteDeviceTapped value)  inviteDeviceTapped,required TResult Function( _AcceptInvitationTapped value)  acceptInvitationTapped,required TResult Function( _RejectInvitationTapped value)  rejectInvitationTapped,required TResult Function( _OverlayOpened value)  overlayOpened,required TResult Function( _OverlayClosed value)  overlayClosed,required TResult Function( _OverlayDismissTapped value)  overlayDismissTapped,required TResult Function( _EffectHandled value)  effectHandled,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _FrameReceived value)  frameReceived,required TResult Function( _ConnectMenuTapped value)  connectMenuTapped,required TResult Function( _HostTapped value)  hostTapped,required TResult Function( _ClientTapped value)  clientTapped,required TResult Function( _DisconnectMenuTapped value)  disconnectMenuTapped,required TResult Function( _ProfileMenuTapped value)  profileMenuTapped,required TResult Function( _DeviceHighlightChanged value)  deviceHighlightChanged,required TResult Function( _InviteDeviceTapped value)  inviteDeviceTapped,required TResult Function( _AcceptInvitationTapped value)  acceptInvitationTapped,required TResult Function( _RejectInvitationTapped value)  rejectInvitationTapped,required TResult Function( _OverlayOpened value)  overlayOpened,required TResult Function( _OverlayClosed value)  overlayClosed,required TResult Function( _OverlayDismissTapped value)  overlayDismissTapped,required TResult Function( _OverlayRoleNicknameConfirmed value)  overlayRoleNicknameConfirmed,required TResult Function( _OverlayRoleNicknameCancelled value)  overlayRoleNicknameCancelled,required TResult Function( _EffectHandled value)  effectHandled,}){
 final _that = this;
 switch (_that) {
 case _Init():
@@ -108,7 +110,9 @@ return acceptInvitationTapped(_that);case _RejectInvitationTapped():
 return rejectInvitationTapped(_that);case _OverlayOpened():
 return overlayOpened(_that);case _OverlayClosed():
 return overlayClosed(_that);case _OverlayDismissTapped():
-return overlayDismissTapped(_that);case _EffectHandled():
+return overlayDismissTapped(_that);case _OverlayRoleNicknameConfirmed():
+return overlayRoleNicknameConfirmed(_that);case _OverlayRoleNicknameCancelled():
+return overlayRoleNicknameCancelled(_that);case _EffectHandled():
 return effectHandled(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -123,7 +127,7 @@ return effectHandled(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _FrameReceived value)?  frameReceived,TResult? Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult? Function( _HostTapped value)?  hostTapped,TResult? Function( _ClientTapped value)?  clientTapped,TResult? Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult? Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult? Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult? Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult? Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult? Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult? Function( _OverlayOpened value)?  overlayOpened,TResult? Function( _OverlayClosed value)?  overlayClosed,TResult? Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult? Function( _EffectHandled value)?  effectHandled,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _FrameReceived value)?  frameReceived,TResult? Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult? Function( _HostTapped value)?  hostTapped,TResult? Function( _ClientTapped value)?  clientTapped,TResult? Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult? Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult? Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult? Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult? Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult? Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult? Function( _OverlayOpened value)?  overlayOpened,TResult? Function( _OverlayClosed value)?  overlayClosed,TResult? Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult? Function( _OverlayRoleNicknameConfirmed value)?  overlayRoleNicknameConfirmed,TResult? Function( _OverlayRoleNicknameCancelled value)?  overlayRoleNicknameCancelled,TResult? Function( _EffectHandled value)?  effectHandled,}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
@@ -140,7 +144,9 @@ return acceptInvitationTapped(_that);case _RejectInvitationTapped() when rejectI
 return rejectInvitationTapped(_that);case _OverlayOpened() when overlayOpened != null:
 return overlayOpened(_that);case _OverlayClosed() when overlayClosed != null:
 return overlayClosed(_that);case _OverlayDismissTapped() when overlayDismissTapped != null:
-return overlayDismissTapped(_that);case _EffectHandled() when effectHandled != null:
+return overlayDismissTapped(_that);case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
+return overlayRoleNicknameConfirmed(_that);case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
+return overlayRoleNicknameCancelled(_that);case _EffectHandled() when effectHandled != null:
 return effectHandled(_that);case _:
   return null;
 
@@ -158,7 +164,7 @@ return effectHandled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( AppConnectionFrame frame)?  frameReceived,TResult Function()?  connectMenuTapped,TResult Function()?  hostTapped,TResult Function()?  clientTapped,TResult Function()?  disconnectMenuTapped,TResult Function()?  profileMenuTapped,TResult Function( String? deviceId)?  deviceHighlightChanged,TResult Function()?  inviteDeviceTapped,TResult Function()?  acceptInvitationTapped,TResult Function()?  rejectInvitationTapped,TResult Function()?  overlayOpened,TResult Function()?  overlayClosed,TResult Function()?  overlayDismissTapped,TResult Function()?  effectHandled,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( AppConnectionFrame frame)?  frameReceived,TResult Function()?  connectMenuTapped,TResult Function()?  hostTapped,TResult Function()?  clientTapped,TResult Function()?  disconnectMenuTapped,TResult Function()?  profileMenuTapped,TResult Function( String? deviceId)?  deviceHighlightChanged,TResult Function()?  inviteDeviceTapped,TResult Function()?  acceptInvitationTapped,TResult Function()?  rejectInvitationTapped,TResult Function()?  overlayOpened,TResult Function()?  overlayClosed,TResult Function()?  overlayDismissTapped,TResult Function()?  overlayRoleNicknameConfirmed,TResult Function()?  overlayRoleNicknameCancelled,TResult Function()?  effectHandled,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _FrameReceived() when frameReceived != null:
@@ -174,7 +180,9 @@ return acceptInvitationTapped();case _RejectInvitationTapped() when rejectInvita
 return rejectInvitationTapped();case _OverlayOpened() when overlayOpened != null:
 return overlayOpened();case _OverlayClosed() when overlayClosed != null:
 return overlayClosed();case _OverlayDismissTapped() when overlayDismissTapped != null:
-return overlayDismissTapped();case _EffectHandled() when effectHandled != null:
+return overlayDismissTapped();case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
+return overlayRoleNicknameConfirmed();case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
+return overlayRoleNicknameCancelled();case _EffectHandled() when effectHandled != null:
 return effectHandled();case _:
   return orElse();
 
@@ -193,7 +201,7 @@ return effectHandled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( AppConnectionFrame frame)  frameReceived,required TResult Function()  connectMenuTapped,required TResult Function()  hostTapped,required TResult Function()  clientTapped,required TResult Function()  disconnectMenuTapped,required TResult Function()  profileMenuTapped,required TResult Function( String? deviceId)  deviceHighlightChanged,required TResult Function()  inviteDeviceTapped,required TResult Function()  acceptInvitationTapped,required TResult Function()  rejectInvitationTapped,required TResult Function()  overlayOpened,required TResult Function()  overlayClosed,required TResult Function()  overlayDismissTapped,required TResult Function()  effectHandled,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( AppConnectionFrame frame)  frameReceived,required TResult Function()  connectMenuTapped,required TResult Function()  hostTapped,required TResult Function()  clientTapped,required TResult Function()  disconnectMenuTapped,required TResult Function()  profileMenuTapped,required TResult Function( String? deviceId)  deviceHighlightChanged,required TResult Function()  inviteDeviceTapped,required TResult Function()  acceptInvitationTapped,required TResult Function()  rejectInvitationTapped,required TResult Function()  overlayOpened,required TResult Function()  overlayClosed,required TResult Function()  overlayDismissTapped,required TResult Function()  overlayRoleNicknameConfirmed,required TResult Function()  overlayRoleNicknameCancelled,required TResult Function()  effectHandled,}) {final _that = this;
 switch (_that) {
 case _Init():
 return init();case _FrameReceived():
@@ -209,7 +217,9 @@ return acceptInvitationTapped();case _RejectInvitationTapped():
 return rejectInvitationTapped();case _OverlayOpened():
 return overlayOpened();case _OverlayClosed():
 return overlayClosed();case _OverlayDismissTapped():
-return overlayDismissTapped();case _EffectHandled():
+return overlayDismissTapped();case _OverlayRoleNicknameConfirmed():
+return overlayRoleNicknameConfirmed();case _OverlayRoleNicknameCancelled():
+return overlayRoleNicknameCancelled();case _EffectHandled():
 return effectHandled();}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -224,7 +234,7 @@ return effectHandled();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( AppConnectionFrame frame)?  frameReceived,TResult? Function()?  connectMenuTapped,TResult? Function()?  hostTapped,TResult? Function()?  clientTapped,TResult? Function()?  disconnectMenuTapped,TResult? Function()?  profileMenuTapped,TResult? Function( String? deviceId)?  deviceHighlightChanged,TResult? Function()?  inviteDeviceTapped,TResult? Function()?  acceptInvitationTapped,TResult? Function()?  rejectInvitationTapped,TResult? Function()?  overlayOpened,TResult? Function()?  overlayClosed,TResult? Function()?  overlayDismissTapped,TResult? Function()?  effectHandled,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( AppConnectionFrame frame)?  frameReceived,TResult? Function()?  connectMenuTapped,TResult? Function()?  hostTapped,TResult? Function()?  clientTapped,TResult? Function()?  disconnectMenuTapped,TResult? Function()?  profileMenuTapped,TResult? Function( String? deviceId)?  deviceHighlightChanged,TResult? Function()?  inviteDeviceTapped,TResult? Function()?  acceptInvitationTapped,TResult? Function()?  rejectInvitationTapped,TResult? Function()?  overlayOpened,TResult? Function()?  overlayClosed,TResult? Function()?  overlayDismissTapped,TResult? Function()?  overlayRoleNicknameConfirmed,TResult? Function()?  overlayRoleNicknameCancelled,TResult? Function()?  effectHandled,}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _FrameReceived() when frameReceived != null:
@@ -240,7 +250,9 @@ return acceptInvitationTapped();case _RejectInvitationTapped() when rejectInvita
 return rejectInvitationTapped();case _OverlayOpened() when overlayOpened != null:
 return overlayOpened();case _OverlayClosed() when overlayClosed != null:
 return overlayClosed();case _OverlayDismissTapped() when overlayDismissTapped != null:
-return overlayDismissTapped();case _EffectHandled() when effectHandled != null:
+return overlayDismissTapped();case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
+return overlayRoleNicknameConfirmed();case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
+return overlayRoleNicknameCancelled();case _EffectHandled() when effectHandled != null:
 return effectHandled();case _:
   return null;
 
@@ -768,6 +780,70 @@ String toString() {
 /// @nodoc
 
 
+class _OverlayRoleNicknameConfirmed implements HomeEvent {
+  const _OverlayRoleNicknameConfirmed();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayRoleNicknameConfirmed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.overlayRoleNicknameConfirmed()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _OverlayRoleNicknameCancelled implements HomeEvent {
+  const _OverlayRoleNicknameCancelled();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OverlayRoleNicknameCancelled);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.overlayRoleNicknameCancelled()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
 class _EffectHandled implements HomeEvent {
   const _EffectHandled();
   
@@ -800,7 +876,7 @@ String toString() {
 /// @nodoc
 mixin _$HomeState {
 
- bool get isConnected; String? get remoteDisplayName; String? get remotePlayerId; OverlayRenderViewState get overlay; bool get isGamesEnabled; FrameProjectionInput get projection; int get lastHandledFrameId; bool get isOverlayVisible; HomeEffect? get effect;
+ bool get isConnected; String? get remoteDisplayName; String? get remotePlayerId; OverlayRenderViewState get overlay; bool get isGamesEnabled; FrameProjectionInput get projection; int get lastHandledFrameId; bool get isOverlayVisible; HomePendingOverlayRole? get pendingOverlayRole; HomeEffect? get effect;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -811,16 +887,16 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.isConnected, isConnected) || other.isConnected == isConnected)&&(identical(other.remoteDisplayName, remoteDisplayName) || other.remoteDisplayName == remoteDisplayName)&&(identical(other.remotePlayerId, remotePlayerId) || other.remotePlayerId == remotePlayerId)&&(identical(other.overlay, overlay) || other.overlay == overlay)&&(identical(other.isGamesEnabled, isGamesEnabled) || other.isGamesEnabled == isGamesEnabled)&&(identical(other.projection, projection) || other.projection == projection)&&(identical(other.lastHandledFrameId, lastHandledFrameId) || other.lastHandledFrameId == lastHandledFrameId)&&(identical(other.isOverlayVisible, isOverlayVisible) || other.isOverlayVisible == isOverlayVisible)&&(identical(other.effect, effect) || other.effect == effect));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.isConnected, isConnected) || other.isConnected == isConnected)&&(identical(other.remoteDisplayName, remoteDisplayName) || other.remoteDisplayName == remoteDisplayName)&&(identical(other.remotePlayerId, remotePlayerId) || other.remotePlayerId == remotePlayerId)&&(identical(other.overlay, overlay) || other.overlay == overlay)&&(identical(other.isGamesEnabled, isGamesEnabled) || other.isGamesEnabled == isGamesEnabled)&&(identical(other.projection, projection) || other.projection == projection)&&(identical(other.lastHandledFrameId, lastHandledFrameId) || other.lastHandledFrameId == lastHandledFrameId)&&(identical(other.isOverlayVisible, isOverlayVisible) || other.isOverlayVisible == isOverlayVisible)&&(identical(other.pendingOverlayRole, pendingOverlayRole) || other.pendingOverlayRole == pendingOverlayRole)&&(identical(other.effect, effect) || other.effect == effect));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isConnected,remoteDisplayName,remotePlayerId,overlay,isGamesEnabled,projection,lastHandledFrameId,isOverlayVisible,effect);
+int get hashCode => Object.hash(runtimeType,isConnected,remoteDisplayName,remotePlayerId,overlay,isGamesEnabled,projection,lastHandledFrameId,isOverlayVisible,pendingOverlayRole,effect);
 
 @override
 String toString() {
-  return 'HomeState(isConnected: $isConnected, remoteDisplayName: $remoteDisplayName, remotePlayerId: $remotePlayerId, overlay: $overlay, isGamesEnabled: $isGamesEnabled, projection: $projection, lastHandledFrameId: $lastHandledFrameId, isOverlayVisible: $isOverlayVisible, effect: $effect)';
+  return 'HomeState(isConnected: $isConnected, remoteDisplayName: $remoteDisplayName, remotePlayerId: $remotePlayerId, overlay: $overlay, isGamesEnabled: $isGamesEnabled, projection: $projection, lastHandledFrameId: $lastHandledFrameId, isOverlayVisible: $isOverlayVisible, pendingOverlayRole: $pendingOverlayRole, effect: $effect)';
 }
 
 
@@ -831,7 +907,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomeEffect? effect
+ bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomePendingOverlayRole? pendingOverlayRole, HomeEffect? effect
 });
 
 
@@ -848,7 +924,7 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isConnected = null,Object? remoteDisplayName = freezed,Object? remotePlayerId = freezed,Object? overlay = null,Object? isGamesEnabled = null,Object? projection = null,Object? lastHandledFrameId = null,Object? isOverlayVisible = null,Object? effect = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isConnected = null,Object? remoteDisplayName = freezed,Object? remotePlayerId = freezed,Object? overlay = null,Object? isGamesEnabled = null,Object? projection = null,Object? lastHandledFrameId = null,Object? isOverlayVisible = null,Object? pendingOverlayRole = freezed,Object? effect = freezed,}) {
   return _then(_self.copyWith(
 isConnected: null == isConnected ? _self.isConnected : isConnected // ignore: cast_nullable_to_non_nullable
 as bool,remoteDisplayName: freezed == remoteDisplayName ? _self.remoteDisplayName : remoteDisplayName // ignore: cast_nullable_to_non_nullable
@@ -858,7 +934,8 @@ as OverlayRenderViewState,isGamesEnabled: null == isGamesEnabled ? _self.isGames
 as bool,projection: null == projection ? _self.projection : projection // ignore: cast_nullable_to_non_nullable
 as FrameProjectionInput,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
 as int,isOverlayVisible: null == isOverlayVisible ? _self.isOverlayVisible : isOverlayVisible // ignore: cast_nullable_to_non_nullable
-as bool,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
+as bool,pendingOverlayRole: freezed == pendingOverlayRole ? _self.pendingOverlayRole : pendingOverlayRole // ignore: cast_nullable_to_non_nullable
+as HomePendingOverlayRole?,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
 as HomeEffect?,
   ));
 }
@@ -956,10 +1033,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomeEffect? effect)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.effect);case _:
+return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.pendingOverlayRole,_that.effect);case _:
   return orElse();
 
 }
@@ -977,10 +1054,10 @@ return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomeEffect? effect)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
-return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.effect);case _:
+return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.pendingOverlayRole,_that.effect);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -997,10 +1074,10 @@ return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomeEffect? effect)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.effect);case _:
+return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.pendingOverlayRole,_that.effect);case _:
   return null;
 
 }
@@ -1012,7 +1089,7 @@ return $default(_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_
 
 
 class _HomeState implements HomeState {
-  const _HomeState({this.isConnected = false, this.remoteDisplayName, this.remotePlayerId, this.overlay = const OverlayRenderViewState(), this.isGamesEnabled = false, this.projection = const FrameProjectionInput(), this.lastHandledFrameId = 0, this.isOverlayVisible = false, this.effect});
+  const _HomeState({this.isConnected = false, this.remoteDisplayName, this.remotePlayerId, this.overlay = const OverlayRenderViewState(), this.isGamesEnabled = false, this.projection = const FrameProjectionInput(), this.lastHandledFrameId = 0, this.isOverlayVisible = false, this.pendingOverlayRole, this.effect});
   
 
 @override@JsonKey() final  bool isConnected;
@@ -1023,6 +1100,7 @@ class _HomeState implements HomeState {
 @override@JsonKey() final  FrameProjectionInput projection;
 @override@JsonKey() final  int lastHandledFrameId;
 @override@JsonKey() final  bool isOverlayVisible;
+@override final  HomePendingOverlayRole? pendingOverlayRole;
 @override final  HomeEffect? effect;
 
 /// Create a copy of HomeState
@@ -1035,16 +1113,16 @@ _$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.isConnected, isConnected) || other.isConnected == isConnected)&&(identical(other.remoteDisplayName, remoteDisplayName) || other.remoteDisplayName == remoteDisplayName)&&(identical(other.remotePlayerId, remotePlayerId) || other.remotePlayerId == remotePlayerId)&&(identical(other.overlay, overlay) || other.overlay == overlay)&&(identical(other.isGamesEnabled, isGamesEnabled) || other.isGamesEnabled == isGamesEnabled)&&(identical(other.projection, projection) || other.projection == projection)&&(identical(other.lastHandledFrameId, lastHandledFrameId) || other.lastHandledFrameId == lastHandledFrameId)&&(identical(other.isOverlayVisible, isOverlayVisible) || other.isOverlayVisible == isOverlayVisible)&&(identical(other.effect, effect) || other.effect == effect));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.isConnected, isConnected) || other.isConnected == isConnected)&&(identical(other.remoteDisplayName, remoteDisplayName) || other.remoteDisplayName == remoteDisplayName)&&(identical(other.remotePlayerId, remotePlayerId) || other.remotePlayerId == remotePlayerId)&&(identical(other.overlay, overlay) || other.overlay == overlay)&&(identical(other.isGamesEnabled, isGamesEnabled) || other.isGamesEnabled == isGamesEnabled)&&(identical(other.projection, projection) || other.projection == projection)&&(identical(other.lastHandledFrameId, lastHandledFrameId) || other.lastHandledFrameId == lastHandledFrameId)&&(identical(other.isOverlayVisible, isOverlayVisible) || other.isOverlayVisible == isOverlayVisible)&&(identical(other.pendingOverlayRole, pendingOverlayRole) || other.pendingOverlayRole == pendingOverlayRole)&&(identical(other.effect, effect) || other.effect == effect));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isConnected,remoteDisplayName,remotePlayerId,overlay,isGamesEnabled,projection,lastHandledFrameId,isOverlayVisible,effect);
+int get hashCode => Object.hash(runtimeType,isConnected,remoteDisplayName,remotePlayerId,overlay,isGamesEnabled,projection,lastHandledFrameId,isOverlayVisible,pendingOverlayRole,effect);
 
 @override
 String toString() {
-  return 'HomeState(isConnected: $isConnected, remoteDisplayName: $remoteDisplayName, remotePlayerId: $remotePlayerId, overlay: $overlay, isGamesEnabled: $isGamesEnabled, projection: $projection, lastHandledFrameId: $lastHandledFrameId, isOverlayVisible: $isOverlayVisible, effect: $effect)';
+  return 'HomeState(isConnected: $isConnected, remoteDisplayName: $remoteDisplayName, remotePlayerId: $remotePlayerId, overlay: $overlay, isGamesEnabled: $isGamesEnabled, projection: $projection, lastHandledFrameId: $lastHandledFrameId, isOverlayVisible: $isOverlayVisible, pendingOverlayRole: $pendingOverlayRole, effect: $effect)';
 }
 
 
@@ -1055,7 +1133,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomeEffect? effect
+ bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomePendingOverlayRole? pendingOverlayRole, HomeEffect? effect
 });
 
 
@@ -1072,7 +1150,7 @@ class __$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isConnected = null,Object? remoteDisplayName = freezed,Object? remotePlayerId = freezed,Object? overlay = null,Object? isGamesEnabled = null,Object? projection = null,Object? lastHandledFrameId = null,Object? isOverlayVisible = null,Object? effect = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isConnected = null,Object? remoteDisplayName = freezed,Object? remotePlayerId = freezed,Object? overlay = null,Object? isGamesEnabled = null,Object? projection = null,Object? lastHandledFrameId = null,Object? isOverlayVisible = null,Object? pendingOverlayRole = freezed,Object? effect = freezed,}) {
   return _then(_HomeState(
 isConnected: null == isConnected ? _self.isConnected : isConnected // ignore: cast_nullable_to_non_nullable
 as bool,remoteDisplayName: freezed == remoteDisplayName ? _self.remoteDisplayName : remoteDisplayName // ignore: cast_nullable_to_non_nullable
@@ -1082,7 +1160,8 @@ as OverlayRenderViewState,isGamesEnabled: null == isGamesEnabled ? _self.isGames
 as bool,projection: null == projection ? _self.projection : projection // ignore: cast_nullable_to_non_nullable
 as FrameProjectionInput,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
 as int,isOverlayVisible: null == isOverlayVisible ? _self.isOverlayVisible : isOverlayVisible // ignore: cast_nullable_to_non_nullable
-as bool,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
+as bool,pendingOverlayRole: freezed == pendingOverlayRole ? _self.pendingOverlayRole : pendingOverlayRole // ignore: cast_nullable_to_non_nullable
+as HomePendingOverlayRole?,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
 as HomeEffect?,
   ));
 }

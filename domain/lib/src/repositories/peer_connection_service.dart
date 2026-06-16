@@ -20,4 +20,6 @@ abstract interface class PeerConnectionService {
     required PeerSessionCloseReason reason,
     required FrameProjectionInput projection,
   });
+
+  Future<void> dispose();
 }
