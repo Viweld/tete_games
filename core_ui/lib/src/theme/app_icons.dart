@@ -73,6 +73,12 @@ abstract final class AppIcons {
   static const String _moreKey = '${_basePath}more.svg';
   static const AppIcon more = AppIcon.asset(_moreKey);
 
+  static const String _more2Key = '${_basePath}more_2.svg';
+  static const AppIcon more2 = AppIcon.asset(_more2Key);
+
+  static const String _editKey = '${_basePath}edit.svg';
+  static const AppIcon edit = AppIcon.asset(_editKey);
+
   static const String _personKey = '${_basePath}person.svg';
   static const AppIcon person = AppIcon.asset(_personKey);
 
@@ -84,4 +90,16 @@ abstract final class AppIcons {
 
   static const String _settingsKey = '${_basePath}settings.svg';
   static const AppIcon settings = AppIcon.asset(_settingsKey);
+
+  static const String _btControllerDisabledKey = '${_basePath}bt_controller_disabled.svg';
+  static const AppIcon btControllerDisabled = AppIcon.asset(_btControllerDisabledKey);
+
+  static const String _btControllerEnabledKey = '${_basePath}bt_controller_enabled.svg';
+  static const AppIcon btControllerEnabled = AppIcon.asset(_btControllerEnabledKey);
+
+  static const String _btPermissionDeniedKey = '${_basePath}bt_permission_denied.svg';
+  static const AppIcon btPermissionDenied = AppIcon.asset(_btPermissionDeniedKey);
+
+  static const String _btPermissionGrantedKey = '${_basePath}bt_permission_granted.svg';
+  static const AppIcon btPermissionGranted = AppIcon.asset(_btPermissionGrantedKey);
 }

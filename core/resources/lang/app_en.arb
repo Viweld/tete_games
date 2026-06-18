@@ -28,6 +28,8 @@
   "peer_peer_card_waiting_invitation": "waiting for invitation",
   "peer_client_waiting_hosts_title": "Waiting for hosts:",
   "peer_dialog_cancel": "Cancel",
+  "peer_dialog_ok": "OK",
+  "peer_dialog_open_settings": "Open settings",
   "peer_dialog_error_title": "Error",
   "peer_error_bluetooth_unavailable": "Bluetooth is turned off or unavailable",
   "peer_disconnect_peer_left": "Opponent left the game",
@@ -42,6 +44,38 @@
   "peer_home_menu_connect": "Connect",
   "peer_home_menu_disconnect": "Disconnect",
   "peer_home_menu_profile": "Profile",
+  "peer_home_bluetooth_permissions_ok": "Bluetooth permissions granted",
+  "peer_home_bluetooth_permissions_missing": "Bluetooth permissions not granted",
+  "peer_home_bluetooth_adapter_on": "Bluetooth is on",
+  "peer_home_bluetooth_adapter_off": "Bluetooth is off",
+  "peer_home_bluetooth_permissions_granted_dialog_title": "Tete Games is allowed to use Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_title": "Tete Games is not allowed to use Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_message": "To play games, allow Tete Games to use Bluetooth in the app permission settings.",
+  "peer_home_bluetooth_adapter_enabled_dialog_title": "Bluetooth is on",
+  "peer_home_bluetooth_adapter_disabled_dialog_title": "Bluetooth is off",
+  "peer_home_bluetooth_adapter_disabled_dialog_message": "To play games, turn on Bluetooth in the system control panel.",
+  "peer_home_drawer_edit_name": "Edit name",
+  "peer_home_drawer_disconnect_confirm_title": "Disconnect",
+  "peer_home_drawer_disconnect_confirm_message": "Are you sure you want to disconnect?",
+  "peer_dialog_yes": "Yes",
+  "peer_home_drawer_download": "How to download",
+  "peer_home_drawer_download_hint": "Scan the QR code to open the download page.",
+  "peer_home_drawer_copyright": "© {year} Tete Games",
+  "@peer_home_drawer_copyright": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "peer_home_drawer_version": "Version {version}",
+  "@peer_home_drawer_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "peer_home_title": "Welcome to tete games",
   "peer_nickname_dialog_title": "Choose a nickname",
   "peer_nickname_field_hint": "Enter a nickname",

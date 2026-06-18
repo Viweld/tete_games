@@ -28,6 +28,8 @@
   "peer_peer_card_waiting_invitation": "ожидает приглашения",
   "peer_client_waiting_hosts_title": "Ждут приглашения:",
   "peer_dialog_cancel": "Отмена",
+  "peer_dialog_ok": "Ок",
+  "peer_dialog_open_settings": "В настройки",
   "peer_dialog_error_title": "Ошибка",
   "peer_error_bluetooth_unavailable": "Bluetooth выключен или недоступен",
   "peer_disconnect_peer_left": "Соперник покинул игру",
@@ -42,6 +44,38 @@
   "peer_home_menu_connect": "Соединиться",
   "peer_home_menu_disconnect": "Отключиться",
   "peer_home_menu_profile": "Профиль",
+  "peer_home_bluetooth_permissions_ok": "Разрешения Bluetooth выданы",
+  "peer_home_bluetooth_permissions_missing": "Разрешения Bluetooth не выданы",
+  "peer_home_bluetooth_adapter_on": "Bluetooth включён",
+  "peer_home_bluetooth_adapter_off": "Bluetooth выключен",
+  "peer_home_bluetooth_permissions_granted_dialog_title": "Tete Games разрешено использовать Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_title": "Tete Games запрещено использовать Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_message": "Чтобы играть, разрешите Tete Games использовать Bluetooth в системных настройках разрешений приложения.",
+  "peer_home_bluetooth_adapter_enabled_dialog_title": "Bluetooth включён",
+  "peer_home_bluetooth_adapter_disabled_dialog_title": "Bluetooth выключен",
+  "peer_home_bluetooth_adapter_disabled_dialog_message": "Чтобы играть, включите Bluetooth в системной панели управления.",
+  "peer_home_drawer_edit_name": "Редактировать имя",
+  "peer_home_drawer_disconnect_confirm_title": "Разъединить",
+  "peer_home_drawer_disconnect_confirm_message": "Вы точно хотите разорвать связь?",
+  "peer_dialog_yes": "Да",
+  "peer_home_drawer_download": "Как скачать",
+  "peer_home_drawer_download_hint": "Отсканируйте QR-код, чтобы открыть страницу загрузки.",
+  "peer_home_drawer_copyright": "© {year} Tete Games",
+  "@peer_home_drawer_copyright": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "peer_home_drawer_version": "Версия {version}",
+  "@peer_home_drawer_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "peer_home_title": "Добро пожаловать в tete games",
   "peer_nickname_dialog_title": "Придумайте себе псевдоним",
   "peer_nickname_field_hint": "Введите псевдоним",

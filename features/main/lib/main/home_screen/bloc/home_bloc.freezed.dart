@@ -1225,15 +1225,13 @@ extension HomeEffectPatterns on HomeEffect {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ShowConnectionOverlayEffect value)?  showConnectionOverlay,TResult Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult Function( ShowProfileDialogEffect value)?  showProfileDialog,TResult Function( ShowToastEffect value)?  showToast,TResult Function( RequestNicknameForOverlayRoleEffect value)?  requestNicknameForOverlayRole,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult Function( ShowToastEffect value)?  showToast,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
-return showConnectionOverlay(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay(_that);case ShowProfileDialogEffect() when showProfileDialog != null:
-return showProfileDialog(_that);case ShowToastEffect() when showToast != null:
-return showToast(_that);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
-return requestNicknameForOverlayRole(_that);case _:
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay(_that);case ShowToastEffect() when showToast != null:
+return showToast(_that);case _:
   return orElse();
 
 }
@@ -1251,15 +1249,13 @@ return requestNicknameForOverlayRole(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ShowConnectionOverlayEffect value)  showConnectionOverlay,required TResult Function( CloseConnectionOverlayEffect value)  closeConnectionOverlay,required TResult Function( ShowProfileDialogEffect value)  showProfileDialog,required TResult Function( ShowToastEffect value)  showToast,required TResult Function( RequestNicknameForOverlayRoleEffect value)  requestNicknameForOverlayRole,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ShowNicknameDialogEffect value)  showNicknameDialog,required TResult Function( CloseConnectionOverlayEffect value)  closeConnectionOverlay,required TResult Function( ShowToastEffect value)  showToast,}){
 final _that = this;
 switch (_that) {
-case ShowConnectionOverlayEffect():
-return showConnectionOverlay(_that);case CloseConnectionOverlayEffect():
-return closeConnectionOverlay(_that);case ShowProfileDialogEffect():
-return showProfileDialog(_that);case ShowToastEffect():
-return showToast(_that);case RequestNicknameForOverlayRoleEffect():
-return requestNicknameForOverlayRole(_that);}
+case ShowNicknameDialogEffect():
+return showNicknameDialog(_that);case CloseConnectionOverlayEffect():
+return closeConnectionOverlay(_that);case ShowToastEffect():
+return showToast(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -1273,15 +1269,13 @@ return requestNicknameForOverlayRole(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ShowConnectionOverlayEffect value)?  showConnectionOverlay,TResult? Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult? Function( ShowProfileDialogEffect value)?  showProfileDialog,TResult? Function( ShowToastEffect value)?  showToast,TResult? Function( RequestNicknameForOverlayRoleEffect value)?  requestNicknameForOverlayRole,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult? Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult? Function( ShowToastEffect value)?  showToast,}){
 final _that = this;
 switch (_that) {
-case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
-return showConnectionOverlay(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay(_that);case ShowProfileDialogEffect() when showProfileDialog != null:
-return showProfileDialog(_that);case ShowToastEffect() when showToast != null:
-return showToast(_that);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
-return requestNicknameForOverlayRole(_that);case _:
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay(_that);case ShowToastEffect() when showToast != null:
+return showToast(_that);case _:
   return null;
 
 }
@@ -1298,14 +1292,12 @@ return requestNicknameForOverlayRole(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  showConnectionOverlay,TResult Function()?  closeConnectionOverlay,TResult Function()?  showProfileDialog,TResult Function( PeerToastKind kind)?  showToast,TResult Function()?  requestNicknameForOverlayRole,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( NicknameDialogContext context)?  showNicknameDialog,TResult Function()?  closeConnectionOverlay,TResult Function( PeerToastKind kind)?  showToast,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
-return showConnectionOverlay();case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay();case ShowProfileDialogEffect() when showProfileDialog != null:
-return showProfileDialog();case ShowToastEffect() when showToast != null:
-return showToast(_that.kind);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
-return requestNicknameForOverlayRole();case _:
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay();case ShowToastEffect() when showToast != null:
+return showToast(_that.kind);case _:
   return orElse();
 
 }
@@ -1323,14 +1315,12 @@ return requestNicknameForOverlayRole();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  showConnectionOverlay,required TResult Function()  closeConnectionOverlay,required TResult Function()  showProfileDialog,required TResult Function( PeerToastKind kind)  showToast,required TResult Function()  requestNicknameForOverlayRole,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( NicknameDialogContext context)  showNicknameDialog,required TResult Function()  closeConnectionOverlay,required TResult Function( PeerToastKind kind)  showToast,}) {final _that = this;
 switch (_that) {
-case ShowConnectionOverlayEffect():
-return showConnectionOverlay();case CloseConnectionOverlayEffect():
-return closeConnectionOverlay();case ShowProfileDialogEffect():
-return showProfileDialog();case ShowToastEffect():
-return showToast(_that.kind);case RequestNicknameForOverlayRoleEffect():
-return requestNicknameForOverlayRole();}
+case ShowNicknameDialogEffect():
+return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect():
+return closeConnectionOverlay();case ShowToastEffect():
+return showToast(_that.kind);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -1344,14 +1334,12 @@ return requestNicknameForOverlayRole();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  showConnectionOverlay,TResult? Function()?  closeConnectionOverlay,TResult? Function()?  showProfileDialog,TResult? Function( PeerToastKind kind)?  showToast,TResult? Function()?  requestNicknameForOverlayRole,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( NicknameDialogContext context)?  showNicknameDialog,TResult? Function()?  closeConnectionOverlay,TResult? Function( PeerToastKind kind)?  showToast,}) {final _that = this;
 switch (_that) {
-case ShowConnectionOverlayEffect() when showConnectionOverlay != null:
-return showConnectionOverlay();case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay();case ShowProfileDialogEffect() when showProfileDialog != null:
-return showProfileDialog();case ShowToastEffect() when showToast != null:
-return showToast(_that.kind);case RequestNicknameForOverlayRoleEffect() when requestNicknameForOverlayRole != null:
-return requestNicknameForOverlayRole();case _:
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay();case ShowToastEffect() when showToast != null:
+return showToast(_that.kind);case _:
   return null;
 
 }
@@ -1362,34 +1350,68 @@ return requestNicknameForOverlayRole();case _:
 /// @nodoc
 
 
-class ShowConnectionOverlayEffect implements HomeEffect {
-  const ShowConnectionOverlayEffect();
+class ShowNicknameDialogEffect implements HomeEffect {
+  const ShowNicknameDialogEffect({required this.context});
   
 
+ final  NicknameDialogContext context;
 
-
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ShowNicknameDialogEffectCopyWith<ShowNicknameDialogEffect> get copyWith => _$ShowNicknameDialogEffectCopyWithImpl<ShowNicknameDialogEffect>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowConnectionOverlayEffect);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowNicknameDialogEffect&&(identical(other.context, context) || other.context == context));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,context);
 
 @override
 String toString() {
-  return 'HomeEffect.showConnectionOverlay()';
+  return 'HomeEffect.showNicknameDialog(context: $context)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $ShowNicknameDialogEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
+  factory $ShowNicknameDialogEffectCopyWith(ShowNicknameDialogEffect value, $Res Function(ShowNicknameDialogEffect) _then) = _$ShowNicknameDialogEffectCopyWithImpl;
+@useResult
+$Res call({
+ NicknameDialogContext context
+});
 
 
+
+
+}
+/// @nodoc
+class _$ShowNicknameDialogEffectCopyWithImpl<$Res>
+    implements $ShowNicknameDialogEffectCopyWith<$Res> {
+  _$ShowNicknameDialogEffectCopyWithImpl(this._self, this._then);
+
+  final ShowNicknameDialogEffect _self;
+  final $Res Function(ShowNicknameDialogEffect) _then;
+
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? context = null,}) {
+  return _then(ShowNicknameDialogEffect(
+context: null == context ? _self.context : context // ignore: cast_nullable_to_non_nullable
+as NicknameDialogContext,
+  ));
+}
+
+
+}
 
 /// @nodoc
 
@@ -1415,38 +1437,6 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'HomeEffect.closeConnectionOverlay()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class ShowProfileDialogEffect implements HomeEffect {
-  const ShowProfileDialogEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowProfileDialogEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeEffect.showProfileDialog()';
 }
 
 
@@ -1520,37 +1510,5 @@ as PeerToastKind,
 
 
 }
-
-/// @nodoc
-
-
-class RequestNicknameForOverlayRoleEffect implements HomeEffect {
-  const RequestNicknameForOverlayRoleEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestNicknameForOverlayRoleEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeEffect.requestNicknameForOverlayRole()';
-}
-
-
-}
-
-
-
 
 // dart format on

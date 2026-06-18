@@ -11,7 +11,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     this._serverSessionRepository,
     this._clientSessionRepository,
     this._transportRepository,
-    this._playerProfileRepository,
+    this._profileRepository,
   ) {
     _emitInitialFrame();
     _connectionSubscription = _transportRepository.connectionState.listen(_onConnectionState);
@@ -19,10 +19,10 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     _disconnectSubscription = _transportRepository.disconnectReasons.listen(_onTransportDisconnect);
   }
 
-  final IPeerServerSessionRepository _serverSessionRepository;
-  final IPeerClientSessionRepository _clientSessionRepository;
-  final IPeerTransportRepository _transportRepository;
-  final IPlayerProfileRepository _playerProfileRepository;
+  final PeerServerSessionRepository _serverSessionRepository;
+  final PeerClientSessionRepository _clientSessionRepository;
+  final PeerTransportRepository _transportRepository;
+  final ProfileRepository _profileRepository;
 
   final StreamController<AppConnectionFrame> _framesController =
       StreamController<AppConnectionFrame>.broadcast();
@@ -228,7 +228,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   }
 
   Future<bool> _hasProfile() async {
-    final PlayerProfile? profile = await _playerProfileRepository.getCurrentPlayer();
+    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
     return profile != null;
   }
 

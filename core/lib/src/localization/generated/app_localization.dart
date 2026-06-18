@@ -261,6 +261,18 @@ abstract class AppLocalization {
   /// **'Отмена'**
   String get peer_dialog_cancel;
 
+  /// No description provided for @peer_dialog_ok.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ок'**
+  String get peer_dialog_ok;
+
+  /// No description provided for @peer_dialog_open_settings.
+  ///
+  /// In ru, this message translates to:
+  /// **'В настройки'**
+  String get peer_dialog_open_settings;
+
   /// No description provided for @peer_dialog_error_title.
   ///
   /// In ru, this message translates to:
@@ -344,6 +356,114 @@ abstract class AppLocalization {
   /// In ru, this message translates to:
   /// **'Профиль'**
   String get peer_home_menu_profile;
+
+  /// No description provided for @peer_home_bluetooth_permissions_ok.
+  ///
+  /// In ru, this message translates to:
+  /// **'Разрешения Bluetooth выданы'**
+  String get peer_home_bluetooth_permissions_ok;
+
+  /// No description provided for @peer_home_bluetooth_permissions_missing.
+  ///
+  /// In ru, this message translates to:
+  /// **'Разрешения Bluetooth не выданы'**
+  String get peer_home_bluetooth_permissions_missing;
+
+  /// No description provided for @peer_home_bluetooth_adapter_on.
+  ///
+  /// In ru, this message translates to:
+  /// **'Bluetooth включён'**
+  String get peer_home_bluetooth_adapter_on;
+
+  /// No description provided for @peer_home_bluetooth_adapter_off.
+  ///
+  /// In ru, this message translates to:
+  /// **'Bluetooth выключен'**
+  String get peer_home_bluetooth_adapter_off;
+
+  /// No description provided for @peer_home_bluetooth_permissions_granted_dialog_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Tete Games разрешено использовать Bluetooth'**
+  String get peer_home_bluetooth_permissions_granted_dialog_title;
+
+  /// No description provided for @peer_home_bluetooth_permissions_denied_dialog_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Tete Games запрещено использовать Bluetooth'**
+  String get peer_home_bluetooth_permissions_denied_dialog_title;
+
+  /// No description provided for @peer_home_bluetooth_permissions_denied_dialog_message.
+  ///
+  /// In ru, this message translates to:
+  /// **'Чтобы играть, разрешите Tete Games использовать Bluetooth в системных настройках разрешений приложения.'**
+  String get peer_home_bluetooth_permissions_denied_dialog_message;
+
+  /// No description provided for @peer_home_bluetooth_adapter_enabled_dialog_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Bluetooth включён'**
+  String get peer_home_bluetooth_adapter_enabled_dialog_title;
+
+  /// No description provided for @peer_home_bluetooth_adapter_disabled_dialog_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Bluetooth выключен'**
+  String get peer_home_bluetooth_adapter_disabled_dialog_title;
+
+  /// No description provided for @peer_home_bluetooth_adapter_disabled_dialog_message.
+  ///
+  /// In ru, this message translates to:
+  /// **'Чтобы играть, включите Bluetooth в системной панели управления.'**
+  String get peer_home_bluetooth_adapter_disabled_dialog_message;
+
+  /// No description provided for @peer_home_drawer_edit_name.
+  ///
+  /// In ru, this message translates to:
+  /// **'Редактировать имя'**
+  String get peer_home_drawer_edit_name;
+
+  /// No description provided for @peer_home_drawer_disconnect_confirm_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Разъединить'**
+  String get peer_home_drawer_disconnect_confirm_title;
+
+  /// No description provided for @peer_home_drawer_disconnect_confirm_message.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вы точно хотите разорвать связь?'**
+  String get peer_home_drawer_disconnect_confirm_message;
+
+  /// No description provided for @peer_dialog_yes.
+  ///
+  /// In ru, this message translates to:
+  /// **'Да'**
+  String get peer_dialog_yes;
+
+  /// No description provided for @peer_home_drawer_download.
+  ///
+  /// In ru, this message translates to:
+  /// **'Как скачать'**
+  String get peer_home_drawer_download;
+
+  /// No description provided for @peer_home_drawer_download_hint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Отсканируйте QR-код, чтобы открыть страницу загрузки.'**
+  String get peer_home_drawer_download_hint;
+
+  /// No description provided for @peer_home_drawer_copyright.
+  ///
+  /// In ru, this message translates to:
+  /// **'© {year} Tete Games'**
+  String peer_home_drawer_copyright(int year);
+
+  /// No description provided for @peer_home_drawer_version.
+  ///
+  /// In ru, this message translates to:
+  /// **'Версия {version}'**
+  String peer_home_drawer_version(String version);
 
   /// No description provided for @peer_home_title.
   ///

@@ -2,25 +2,20 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:main/main/home_screen/bloc/home_bloc.dart';
-import 'package:main/main/home_screen/widgets/home_app_bar/home_app_bar.dart';
-import 'package:main/main/home_screen/widgets/home_games_grid/home_games_grid.dart';
-import 'package:main/main/home_screen/widgets/peer_connection_overlay/peer_connection_overlay.dart';
+import 'package:main/main/home_screen/widgets/app_bar/app_bar.dart';
+import 'package:main/main/home_screen/widgets/connection_overlay/connection_overlay.dart';
+import 'package:main/main/home_screen/widgets/drawer/home_drawer.dart';
+import 'package:main/main/home_screen/widgets/games_content/games_content.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({
     super.key,
-    required this.profile,
-    required this.isConnected,
-    required this.remoteDisplayName,
     required this.isGamesEnabled,
     required this.isOverlayVisible,
     required this.overlay,
     required this.projection,
   });
 
-  final PlayerProfile? profile;
-  final bool isConnected;
-  final String? remoteDisplayName;
   final bool isGamesEnabled;
   final bool isOverlayVisible;
   final OverlayRenderViewState overlay;
@@ -33,19 +28,26 @@ class HomeContent extends StatelessWidget {
     return Stack(
       children: <Widget>[
         AppScaffold(
-          appBar: HomeAppBar(
-            isConnected: isConnected,
-            localDisplayName: profile?.displayName,
-            remoteDisplayName: remoteDisplayName,
-            onConnectTap: () => homeBloc.add(const HomeEvent.connectMenuTapped()),
-            onDisconnectTap: () => homeBloc.add(const HomeEvent.disconnectMenuTapped()),
-            onProfileTap: () => homeBloc.add(const HomeEvent.profileMenuTapped()),
+          appBar: const HomeAppBar(),
+          endDrawer: HomeDrawer(
+            onEditProfileTap: () {
+              Navigator.of(context).pop();
+              homeBloc.add(const HomeEvent.profileMenuTapped());
+            },
+            onConnectTap: () {
+              Navigator.of(context).pop();
+              homeBloc.add(const HomeEvent.connectMenuTapped());
+            },
+            onDisconnectTap: () {
+              Navigator.of(context).pop();
+              homeBloc.add(const HomeEvent.disconnectMenuTapped());
+            },
           ),
-          body: HomeGamesGrid(isEnabled: isGamesEnabled),
+          body: GamesContent(isEnabled: isGamesEnabled),
         ),
         if (isOverlayVisible)
           Positioned.fill(
-            child: PeerConnectionOverlay(
+            child: ConnectionOverlay(
               overlay: overlay,
               projection: projection,
               onClose: () => homeBloc.add(const HomeEvent.overlayDismissTapped()),

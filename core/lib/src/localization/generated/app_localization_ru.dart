@@ -94,6 +94,12 @@ class AppLocalizationRu extends AppLocalization {
   String get peer_dialog_cancel => 'Отмена';
 
   @override
+  String get peer_dialog_ok => 'Ок';
+
+  @override
+  String get peer_dialog_open_settings => 'В настройки';
+
+  @override
   String get peer_dialog_error_title => 'Ошибка';
 
   @override
@@ -134,6 +140,69 @@ class AppLocalizationRu extends AppLocalization {
 
   @override
   String get peer_home_menu_profile => 'Профиль';
+
+  @override
+  String get peer_home_bluetooth_permissions_ok => 'Разрешения Bluetooth выданы';
+
+  @override
+  String get peer_home_bluetooth_permissions_missing => 'Разрешения Bluetooth не выданы';
+
+  @override
+  String get peer_home_bluetooth_adapter_on => 'Bluetooth включён';
+
+  @override
+  String get peer_home_bluetooth_adapter_off => 'Bluetooth выключен';
+
+  @override
+  String get peer_home_bluetooth_permissions_granted_dialog_title =>
+      'Tete Games разрешено использовать Bluetooth';
+
+  @override
+  String get peer_home_bluetooth_permissions_denied_dialog_title =>
+      'Tete Games запрещено использовать Bluetooth';
+
+  @override
+  String get peer_home_bluetooth_permissions_denied_dialog_message =>
+      'Чтобы играть, разрешите Tete Games использовать Bluetooth в системных настройках разрешений приложения.';
+
+  @override
+  String get peer_home_bluetooth_adapter_enabled_dialog_title => 'Bluetooth включён';
+
+  @override
+  String get peer_home_bluetooth_adapter_disabled_dialog_title => 'Bluetooth выключен';
+
+  @override
+  String get peer_home_bluetooth_adapter_disabled_dialog_message =>
+      'Чтобы играть, включите Bluetooth в системной панели управления.';
+
+  @override
+  String get peer_home_drawer_edit_name => 'Редактировать имя';
+
+  @override
+  String get peer_home_drawer_disconnect_confirm_title => 'Разъединить';
+
+  @override
+  String get peer_home_drawer_disconnect_confirm_message => 'Вы точно хотите разорвать связь?';
+
+  @override
+  String get peer_dialog_yes => 'Да';
+
+  @override
+  String get peer_home_drawer_download => 'Как скачать';
+
+  @override
+  String get peer_home_drawer_download_hint =>
+      'Отсканируйте QR-код, чтобы открыть страницу загрузки.';
+
+  @override
+  String peer_home_drawer_copyright(int year) {
+    return '© $year Tete Games';
+  }
+
+  @override
+  String peer_home_drawer_version(String version) {
+    return 'Версия $version';
+  }
 
   @override
   String get peer_home_title => 'Добро пожаловать в tete games';

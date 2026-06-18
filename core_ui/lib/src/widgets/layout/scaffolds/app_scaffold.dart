@@ -11,6 +11,7 @@ class AppScaffold extends StatelessWidget {
   final String? errorText;
   final VoidCallback? onRefresh;
   final PreferredSizeWidget? appBar;
+  final Widget? endDrawer;
   final bool isLoading;
   final bool resizeToAvoidBottomInset;
 
@@ -27,6 +28,7 @@ class AppScaffold extends StatelessWidget {
     this.backgroundColor,
     this.pagePadding,
     this.appBar,
+    this.endDrawer,
     super.key,
   });
 
@@ -62,6 +64,7 @@ class AppScaffold extends StatelessWidget {
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         extendBody: true,
         appBar: appBar,
+        endDrawer: endDrawer,
         body: Stack(
           children: <Widget>[
             Padding(

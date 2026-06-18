@@ -6,21 +6,18 @@
 import 'dart:async' as _i687;
 
 import 'package:core/core.dart' as _i494;
+import 'package:data/src/bluetooth/bluetooth_status_service_impl.dart' as _i138;
 import 'package:data/src/di/firebase_module.dart' as _i650;
 import 'package:data/src/di/local_module.dart' as _i993;
 import 'package:data/src/peer/ble_peer_logger.dart' as _i561;
 import 'package:data/src/peer/di/ble_peer_module.dart' as _i68;
 import 'package:data/src/peer/peer_connection_service_impl.dart' as _i547;
 import 'package:data/src/peer/peer_lifecycle.dart' as _i29;
-import 'package:data/src/peer/repositories/ble_peer_client_session_repository.dart'
-    as _i846;
-import 'package:data/src/peer/repositories/ble_peer_server_session_repository.dart'
-    as _i98;
-import 'package:data/src/peer/repositories/ble_peer_transport_repository.dart'
-    as _i491;
-import 'package:data/src/peer/repositories/local_device_repository.dart' as _i5;
-import 'package:data/src/peer/repositories/player_profile_repository.dart'
-    as _i856;
+import 'package:data/src/peer/repositories/local_device_repository_impl.dart' as _i304;
+import 'package:data/src/peer/repositories/peer_client_session_repository_impl.dart' as _i569;
+import 'package:data/src/peer/repositories/peer_server_session_repository_impl.dart' as _i1055;
+import 'package:data/src/peer/repositories/peer_transport_repository_impl.dart' as _i683;
+import 'package:data/src/peer/repositories/profile_repository_impl.dart' as _i579;
 import 'package:data/src/providers/local/local_providers.dart' as _i37;
 import 'package:data/src/repositories/repositories.dart' as _i876;
 import 'package:domain/domain.dart' as _i494;
@@ -29,53 +26,59 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 class DataPackageModule extends _i526.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) async {
     final localeModule = _$LocaleModule();
     final firebasePackageModule = _$FirebasePackageModule();
     final blePeerModule = _$BlePeerModule();
-    await gh.factoryAsync<_i460.SharedPreferences>(
-      () => localeModule.prefs,
-      preResolve: true,
-    );
-    gh.lazySingleton<_i892.FirebaseMessaging>(
-        () => firebasePackageModule.firebaseMessaging());
+    await gh.factoryAsync<_i460.SharedPreferences>(() => localeModule.prefs, preResolve: true);
+    gh.lazySingleton<_i892.FirebaseMessaging>(() => firebasePackageModule.firebaseMessaging());
     gh.lazySingleton<_i561.BlePeerLogger>(() => blePeerModule.blePeerLogger());
-    gh.lazySingleton<_i494.PushEventsRepository>(
-        () => _i876.PushEventsRepositoryImpl());
-    gh.lazySingleton<_i494.ILocalDeviceRepository>(
-        () => _i5.LocalDeviceRepository(gh<_i494.AppConfig>()));
-    gh.lazySingleton<_i37.LocalDataProvider>(() => _i37.LocalDataProviderImpl(
-        sharedPreferences: gh<_i460.SharedPreferences>()));
+    gh.lazySingleton<_i494.PushEventsRepository>(() => _i876.PushEventsRepositoryImpl());
+    gh.lazySingleton<_i494.LocalDeviceRepository>(
+      () => _i304.LocalDeviceRepositoryImpl(gh<_i494.AppConfig>()),
+    );
+    gh.lazySingleton<_i494.BluetoothStatusService>(
+      () => _i138.BluetoothStatusServiceImpl(),
+      dispose: _i138.disposeBluetoothStatusService,
+    );
+    gh.lazySingleton<_i37.LocalDataProvider>(
+      () => _i37.LocalDataProviderImpl(sharedPreferences: gh<_i460.SharedPreferences>()),
+    );
     gh.lazySingleton<_i494.SettingsRepository>(
-        () => _i876.SettingsRepositoryImpl(gh<_i37.LocalDataProvider>()));
-    gh.lazySingleton<_i494.IPlayerProfileRepository>(
-        () => _i856.PlayerProfileRepository(gh<_i37.LocalDataProvider>()));
-    gh.lazySingleton<_i29.PeerLifecycle>(() => _i29.PeerLifecycle(
-          gh<_i494.AppConfig>(),
-          gh<_i561.BlePeerLogger>(),
-        ));
-    gh.lazySingleton<_i494.IPeerClientSessionRepository>(
-        () => _i846.BlePeerClientSessionRepository(
-              gh<_i29.PeerLifecycle>(),
-              gh<_i494.IPlayerProfileRepository>(),
-              gh<_i494.ILocalDeviceRepository>(),
-            ));
-    gh.lazySingleton<_i494.IPeerServerSessionRepository>(
-        () => _i98.BlePeerServerSessionRepository(
-              gh<_i29.PeerLifecycle>(),
-              gh<_i494.IPlayerProfileRepository>(),
-              gh<_i494.ILocalDeviceRepository>(),
-            ));
-    gh.lazySingleton<_i494.IPeerTransportRepository>(
-        () => _i491.BlePeerTransportRepository(gh<_i29.PeerLifecycle>()));
+      () => _i876.SettingsRepositoryImpl(gh<_i37.LocalDataProvider>()),
+    );
+    gh.lazySingleton<_i29.PeerLifecycle>(
+      () => _i29.PeerLifecycle(gh<_i494.AppConfig>(), gh<_i561.BlePeerLogger>()),
+    );
+    gh.lazySingleton<_i494.ProfileRepository>(
+      () => _i579.ProfileRepositoryImpl(gh<_i37.LocalDataProvider>()),
+      dispose: _i579.disposeProfileRepository,
+    );
+    gh.lazySingleton<_i494.PeerServerSessionRepository>(
+      () => _i1055.PeerServerSessionRepositoryImpl(
+        gh<_i29.PeerLifecycle>(),
+        gh<_i494.ProfileRepository>(),
+        gh<_i494.LocalDeviceRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i494.PeerTransportRepository>(
+      () => _i683.PeerTransportRepositoryImpl(gh<_i29.PeerLifecycle>()),
+    );
+    gh.lazySingleton<_i494.PeerClientSessionRepository>(
+      () => _i569.PeerClientSessionRepositoryImpl(
+        gh<_i29.PeerLifecycle>(),
+        gh<_i494.ProfileRepository>(),
+        gh<_i494.LocalDeviceRepository>(),
+      ),
+    );
     gh.lazySingleton<_i494.PeerConnectionService>(
       () => _i547.PeerConnectionServiceImpl(
-        gh<_i494.IPeerServerSessionRepository>(),
-        gh<_i494.IPeerClientSessionRepository>(),
-        gh<_i494.IPeerTransportRepository>(),
-        gh<_i494.IPlayerProfileRepository>(),
+        gh<_i494.PeerServerSessionRepository>(),
+        gh<_i494.PeerClientSessionRepository>(),
+        gh<_i494.PeerTransportRepository>(),
+        gh<_i494.ProfileRepository>(),
       ),
       dispose: (i) => i.dispose(),
     );

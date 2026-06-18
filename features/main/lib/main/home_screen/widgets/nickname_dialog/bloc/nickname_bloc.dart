@@ -11,7 +11,7 @@ enum NicknameValidationKind { empty, tooLong, wrongFormat }
 
 @injectable
 class NicknameBloc extends Bloc<NicknameEvent, NicknameState> {
-  NicknameBloc(this._playerProfileRepository) : super(const NicknameState()) {
+  NicknameBloc(this._profileRepository) : super(const NicknameState()) {
     on<NicknameEvent>(
       (NicknameEvent event, Emitter<NicknameState> emit) => event.map(
         nicknameChanged: (NicknameChanged event) => _onNicknameChanged(event, emit),
@@ -21,7 +21,7 @@ class NicknameBloc extends Bloc<NicknameEvent, NicknameState> {
     );
   }
 
-  final IPlayerProfileRepository _playerProfileRepository;
+  final ProfileRepository _profileRepository;
 
   void _onNicknameChanged(NicknameChanged event, Emitter<NicknameState> emit) {
     final String nickname = event.nickname.trim();
@@ -40,12 +40,13 @@ class NicknameBloc extends Bloc<NicknameEvent, NicknameState> {
     if (!state.isSaveEnabled) return;
 
     try {
+      final PlayerProfile? currentProfile = await _profileRepository.getCurrentPlayer();
       final PlayerProfile profile = PlayerProfile(
-        id: const Uuid().v4(),
+        id: currentProfile?.id ?? const Uuid().v4(),
         displayName: state.nickname,
       );
-      await _playerProfileRepository.savePlayer(profile);
-      await _playerProfileRepository.setFirstLaunchCompleted();
+      await _profileRepository.savePlayer(profile);
+      await _profileRepository.setFirstLaunchCompleted();
       emit(state.copyWith(effect: const NicknameEffect.saved()));
     } on Object {
       emit(state.copyWith(effect: const NicknameEffect.saveFailed()));

@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -8,7 +9,7 @@ part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this._peerConnectionService, this._playerProfileRepository) : super(const HomeState()) {
+  HomeBloc(this._peerConnectionService, this._profileRepository) : super(const HomeState()) {
     on<HomeEvent>(
       (HomeEvent event, Emitter<HomeState> emit) => event.map(
         init: (_) => _onInit(emit),
@@ -37,7 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   final PeerConnectionService _peerConnectionService;
-  final IPlayerProfileRepository _playerProfileRepository;
+  final ProfileRepository _profileRepository;
 
   late final StreamSubscription<AppConnectionFrame> _framesSubscription;
 
@@ -52,7 +53,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     add(HomeEvent.frameReceived(frame));
   }
 
-  Future<void> _onInit(Emitter<HomeState> emit) async {}
+  Future<void> _onInit(Emitter<HomeState> emit) async {
+    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
+    final bool isFirstLaunch = await _profileRepository.isFirstLaunch();
+
+    if (profile == null && isFirstLaunch) {
+      emit(
+        state.copyWith(
+          effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.firstLaunch),
+        ),
+      );
+    }
+  }
 
   Future<void> _onFrameReceived(AppConnectionFrame frame, Emitter<HomeState> emit) async {
     final bool shouldRunEffects = frame.frameId > state.lastHandledFrameId;
@@ -115,7 +127,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onConnectMenuTapped(Emitter<HomeState> emit) async {
     if (!await _hasProfile()) {
-      emit(state.copyWith(effect: const HomeEffect.showConnectionOverlay()));
+      emit(
+        state.copyWith(
+          effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.connect),
+        ),
+      );
       return;
     }
 
@@ -126,7 +142,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (!await _hasProfile()) {
       emit(
         state.copyWith(
-          effect: const HomeEffect.requestNicknameForOverlayRole(),
+          effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.overlayRole),
           pendingOverlayRole: HomePendingOverlayRole.host,
         ),
       );
@@ -140,7 +156,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (!await _hasProfile()) {
       emit(
         state.copyWith(
-          effect: const HomeEffect.requestNicknameForOverlayRole(),
+          effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.overlayRole),
           pendingOverlayRole: HomePendingOverlayRole.client,
         ),
       );
@@ -159,7 +175,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void _onProfileMenuTapped(Emitter<HomeState> emit) {
-    emit(state.copyWith(effect: const HomeEffect.showProfileDialog()));
+    emit(
+      state.copyWith(
+        effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.profileMenu),
+      ),
+    );
   }
 
   void _onDeviceHighlightChanged(String? deviceId, Emitter<HomeState> emit) {
@@ -228,7 +248,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<bool> _hasProfile() async {
-    final PlayerProfile? profile = await _playerProfileRepository.getCurrentPlayer();
+    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
     return profile != null;
   }
 }
