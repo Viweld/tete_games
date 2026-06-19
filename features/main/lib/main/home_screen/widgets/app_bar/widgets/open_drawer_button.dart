@@ -12,7 +12,6 @@ class OpenDrawerButton extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(shape: BoxShape.circle, color: colors.background.accentOrange),
       child: AppIcons.more2.call(
-        size: UserLabel.radius * 2,
         color: colors.icons.main,
         onTap: () => Scaffold.of(context).openEndDrawer(),
       ),

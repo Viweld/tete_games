@@ -83,7 +83,7 @@ class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
                 children: <Widget>[
                   DrawerTile(
                     leading: resolvedName.isEmpty
-                        ? AppIcons.avatarPlug.call(size: UserLabel.radius * 2)
+                        ? AppIcons.avatarPlug.call()
                         : UserLabel(label: resolvedName),
                     title: resolvedName.isNotEmpty ? resolvedName : 'Никнэйм',
                     subtitle: resolvedName.isNotEmpty ? null : 'Придумайте себе никнэйм',
@@ -91,7 +91,7 @@ class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
                     onTap: () => bloc.add(const HomeDrawerEvent.editProfileTapped()),
                   ),
                   DrawerTile(
-                    leading: AppIcons.btPermissionGranted.call(size: 32),
+                    leading: AppIcons.btPermissionGranted.call(),
                     title: 'Доступ к Bluetooth',
                     subtitle: state.arePermissionsGranted
                         ? localization.peer_home_bluetooth_permissions_ok
@@ -100,7 +100,7 @@ class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
                     onTap: () => bloc.add(const HomeDrawerEvent.permissionIconTapped()),
                   ),
                   DrawerTile(
-                    leading: AppIcons.btControllerEnabled.call(size: 32),
+                    leading: AppIcons.btControllerEnabled.call(),
                     title: 'Bluetooth адаптер',
                     subtitle: state.isAdapterEnabled
                         ? localization.peer_home_bluetooth_adapter_on

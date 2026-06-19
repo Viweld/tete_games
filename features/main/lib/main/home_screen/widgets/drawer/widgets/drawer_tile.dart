@@ -46,10 +46,7 @@ class DrawerTile extends StatelessWidget {
                   ],
                 ),
               ),
-              if (isReady)
-                AppIcons.checkboxChecked.call(size: 32)
-              else
-                AppIcons.checkboxEmpty.call(size: 32),
+              if (isReady) AppIcons.checkboxChecked.call() else AppIcons.checkboxEmpty.call(),
             ],
           ),
         ),

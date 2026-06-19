@@ -18,7 +18,7 @@ class Footer extends StatelessWidget {
         children: <Widget>[
           AppOutlinedButton(
             title: localization.peer_home_drawer_download,
-            prefix: AppIcons.qrScan.call(size: 16),
+            prefix: AppIcons.qrScan.call(),
             onTap: () => DownloadDialog.show(context),
           ),
           const SizedBox(height: 16),
