@@ -1,6 +1,5 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:main/main/home_screen/widgets/drawer/widgets/download_dialog.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -16,12 +15,6 @@ class Footer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          AppOutlinedButton(
-            title: localization.peer_home_drawer_download,
-            prefix: AppIcons.qrScan.call(),
-            onTap: () => DownloadDialog.show(context),
-          ),
-          const SizedBox(height: 16),
           Text(
             localization.peer_home_drawer_copyright(year),
             style: AppFonts.caption.copyWith(color: colors.text.secondary),

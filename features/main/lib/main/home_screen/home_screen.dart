@@ -2,9 +2,11 @@ import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 import 'package:main/main/home_screen/bloc/home_bloc.dart';
 import 'package:main/main/home_screen/home_content.dart';
+import 'package:main/main/home_screen/widgets/drawer/bloc/home_drawer_bloc.dart';
 import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog.dart';
 import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';
 import 'package:navigation/navigation.dart';
+import 'package:nested/nested.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -12,8 +14,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomeBloc>(
-      create: (_) => appLocator<HomeBloc>(),
+    return MultiBlocProvider(
+      providers: <SingleChildWidget>[
+        BlocProvider<HomeBloc>(create: (_) => appLocator<HomeBloc>()),
+        BlocProvider<HomeDrawerBloc>(create: (_) => appLocator<HomeDrawerBloc>()),
+      ],
       child: BlocListener<HomeBloc, HomeState>(
         listenWhen: (HomeState previous, HomeState current) => previous.effect != current.effect,
         listener: _handleHomeEffect,

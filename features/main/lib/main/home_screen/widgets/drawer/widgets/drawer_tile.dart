@@ -4,7 +4,7 @@ class DrawerTile extends StatelessWidget {
   final String title;
   final String? subtitle;
   final Widget? leading;
-  final bool isReady;
+  final bool? isChecked;
   final VoidCallback onTap;
 
   const DrawerTile({
@@ -12,7 +12,7 @@ class DrawerTile extends StatelessWidget {
     required this.title,
     this.subtitle,
     required this.leading,
-    required this.isReady,
+    this.isChecked,
     required this.onTap,
   });
 
@@ -26,7 +26,6 @@ class DrawerTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 12,
             children: <Widget>[
               ?leading,
@@ -34,10 +33,7 @@ class DrawerTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4),
-                      child: Text(title, style: AppFonts.b3.copyWith(color: colors.text.main)),
-                    ),
+                    Text(title, style: AppFonts.b3.copyWith(color: colors.text.main)),
                     if (subtitle != null)
                       Text(
                         subtitle!,
@@ -46,7 +42,8 @@ class DrawerTile extends StatelessWidget {
                   ],
                 ),
               ),
-              if (isReady) AppIcons.checkboxChecked.call() else AppIcons.checkboxEmpty.call(),
+              if (isChecked != null)
+                isChecked! ? AppIcons.checkboxChecked.call() : AppIcons.checkboxEmpty.call(),
             ],
           ),
         ),

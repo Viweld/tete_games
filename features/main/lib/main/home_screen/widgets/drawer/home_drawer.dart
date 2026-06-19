@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:main/main/home_screen/widgets/drawer/bloc/home_drawer_bloc.dart';
+import 'package:main/main/home_screen/widgets/drawer/widgets/download_dialog.dart';
 import 'package:main/main/home_screen/widgets/drawer/widgets/drawer_tile.dart';
 import 'package:main/main/home_screen/widgets/drawer/widgets/footer.dart';
 
@@ -26,14 +27,13 @@ class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    _bloc = appLocator<HomeDrawerBloc>();
+    _bloc = context.read<HomeDrawerBloc>();
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _bloc.close();
     super.dispose();
   }
 
@@ -74,38 +74,54 @@ class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
           final HomeDrawerBloc bloc = context.read<HomeDrawerBloc>();
           final String resolvedName = state.profile?.displayName ?? '';
           final bool isBluetoothReady = state.arePermissionsGranted && state.isAdapterEnabled;
+          final bool isConnectEnabled = resolvedName.isNotEmpty && isBluetoothReady;
 
           return Drawer(
             backgroundColor: colors.background.secondaryCard,
+            width: MediaQuery.sizeOf(context).width * 0.85,
             child: SafeArea(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  Center(
+                    child: Container(
+                      width: 160,
+                      margin: const EdgeInsets.only(top: 16, bottom: 12),
+                      decoration: const BoxDecoration(
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(color: Colors.white, blurRadius: 34, spreadRadius: 24),
+                        ],
+                      ),
+                      child: AppImages.appLogo.call(),
+                    ),
+                  ),
                   DrawerTile(
                     leading: resolvedName.isEmpty
                         ? AppIcons.avatarPlug.call()
                         : UserLabel(label: resolvedName),
-                    title: resolvedName.isNotEmpty ? resolvedName : 'Никнэйм',
-                    subtitle: resolvedName.isNotEmpty ? null : 'Придумайте себе никнэйм',
-                    isReady: resolvedName.isNotEmpty,
+                    title: resolvedName.isNotEmpty ? resolvedName : '',
+                    subtitle: resolvedName.isNotEmpty
+                        ? localization.peer_home_drawer_nickname_subtitle_filled
+                        : localization.peer_home_drawer_nickname_subtitle_empty,
+                    isChecked: resolvedName.isNotEmpty,
                     onTap: () => bloc.add(const HomeDrawerEvent.editProfileTapped()),
                   ),
                   DrawerTile(
                     leading: AppIcons.btPermissionGranted.call(),
-                    title: 'Доступ к Bluetooth',
+                    title: localization.peer_home_drawer_bluetooth_access_title,
                     subtitle: state.arePermissionsGranted
                         ? localization.peer_home_bluetooth_permissions_ok
                         : localization.peer_home_bluetooth_permissions_missing,
-                    isReady: state.arePermissionsGranted,
+                    isChecked: state.arePermissionsGranted,
                     onTap: () => bloc.add(const HomeDrawerEvent.permissionIconTapped()),
                   ),
                   DrawerTile(
                     leading: AppIcons.btControllerEnabled.call(),
-                    title: 'Bluetooth адаптер',
+                    title: localization.peer_home_drawer_bluetooth_adapter_title,
                     subtitle: state.isAdapterEnabled
                         ? localization.peer_home_bluetooth_adapter_on
                         : localization.peer_home_bluetooth_adapter_off,
-                    isReady: state.isAdapterEnabled,
+                    isChecked: state.isAdapterEnabled,
                     onTap: () => bloc.add(const HomeDrawerEvent.adapterIconTapped()),
                   ),
                   const SizedBox(height: 16),
@@ -123,12 +139,21 @@ class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: AppElevatedButton(
                         title: localization.peer_home_menu_connect,
-                        state: isBluetoothReady ? ElementState.enabled : ElementState.disabled,
+                        state: isConnectEnabled ? ElementState.enabled : ElementState.disabled,
                         onTap: widget.onConnectTap,
                       ),
                     ),
+                  const SizedBox(height: 16),
+                  const AppDivider(),
                   const Spacer(),
                   const AppDivider(),
+                  DrawerTile(
+                    title: localization.peer_home_drawer_download,
+                    leading: AppIcons.qrScan.call(),
+                    onTap: () => DownloadDialog.show(context),
+                  ),
+                  const AppDivider(),
+                  const SizedBox(height: 16),
                   const Footer(),
                 ],
               ),

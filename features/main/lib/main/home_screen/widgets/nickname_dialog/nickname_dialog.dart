@@ -6,13 +6,23 @@ class NicknameDialog extends StatelessWidget {
   const NicknameDialog._();
 
   static Future<bool?> show(BuildContext context) {
-    return showDialog<bool>(context: context, builder: (_) => const NicknameDialog._());
+    return showDialog<bool>(
+      context: context,
+      barrierColor: context.colors.barrierColor,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: context.colors.barrierBlurSigma,
+            sigmaY: context.colors.barrierBlurSigma,
+          ),
+          child: const NicknameDialog._(),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalization localization = context.localization;
-
     return BlocProvider<NicknameBloc>(
       create: (_) => appLocator<NicknameBloc>(),
       child: BlocConsumer<NicknameBloc, NicknameState>(
@@ -22,6 +32,8 @@ class NicknameDialog extends StatelessWidget {
           final NicknameEffect? effect = state.effect;
           if (effect == null) return;
 
+          final AppLocalization localization = context.localization;
+
           effect.when(
             saved: () => Navigator.of(context).pop(true),
             saveFailed: () => context.showErrorToast(localization.peer_nickname_save_failed),
@@ -30,35 +42,71 @@ class NicknameDialog extends StatelessWidget {
           context.read<NicknameBloc>().add(const NicknameEvent.effectHandled());
         },
         builder: (BuildContext context, NicknameState state) {
+          final AppLocalization localization = context.localization;
           final AppColorsTheme colors = context.colors;
+          final NicknameBloc bloc = context.read<NicknameBloc>();
 
-          return AlertDialog(
-            title: Text(
-              localization.peer_nickname_dialog_title,
-              style: AppFonts.h6.copyWith(color: colors.text.main),
-            ),
-            content: AppTextField(
-              initialText: state.nickname,
-              label: localization.peer_nickname_field_label,
-              hint: localization.peer_nickname_field_hint,
-              errorText: _validationMessage(localization, state.validationKind),
-              onChanged: (String value) =>
-                  context.read<NicknameBloc>().add(NicknameEvent.nicknameChanged(nickname: value)),
-            ),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Text(
-                  localization.peer_dialog_cancel,
-                  style: AppFonts.button.copyWith(color: colors.text.main),
+          return PopScope(
+            child: Dialog(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Center(
+                child: Container(
+                  width: double.infinity,
+                  constraints: const BoxConstraints(maxWidth: 340),
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: colors.background.secondaryCard,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: colors.dialogShadows,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              localization.peer_nickname_dialog_title,
+                              style: AppFonts.h3.copyWith(color: colors.text.main),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          InkWell(
+                            onTap: () => Navigator.of(context).pop(false),
+                            child: AppIcons.cross(color: colors.text.secondary),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      AppTextField(
+                        initialText: state.nickname,
+                        label: localization.peer_nickname_field_label,
+                        hint: localization.peer_nickname_field_hint,
+                        errorText: _validationMessage(localization, state.validationKind),
+                        onChanged: (String value) =>
+                            bloc.add(NicknameEvent.nicknameChanged(nickname: value)),
+                      ),
+                      const SizedBox(height: 24),
+                      AppOutlinedButton(
+                        title: localization.peer_dialog_cancel,
+                        onTap: () => Navigator.of(context).pop(false),
+                      ),
+                      const SizedBox(height: 12),
+                      AppElevatedButton(
+                        title: localization.peer_nickname_save_button,
+                        state: state.isSaveEnabled ? ElementState.enabled : ElementState.disabled,
+                        onTap: () => bloc.add(const NicknameEvent.saveTapped()),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              AppElevatedButton(
-                title: localization.peer_nickname_save_button,
-                state: state.isSaveEnabled ? ElementState.enabled : ElementState.disabled,
-                onTap: () => context.read<NicknameBloc>().add(const NicknameEvent.saveTapped()),
-              ),
-            ],
+            ),
           );
         },
       ),

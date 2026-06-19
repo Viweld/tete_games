@@ -179,6 +179,21 @@ class AppLocalizationEn extends AppLocalization {
   String get peer_home_drawer_edit_name => 'Edit name';
 
   @override
+  String get peer_home_drawer_nickname_title => 'Nickname';
+
+  @override
+  String get peer_home_drawer_nickname_subtitle_filled => 'Your nickname';
+
+  @override
+  String get peer_home_drawer_nickname_subtitle_empty => 'Choose a nickname';
+
+  @override
+  String get peer_home_drawer_bluetooth_access_title => 'Bluetooth access';
+
+  @override
+  String get peer_home_drawer_bluetooth_adapter_title => 'Bluetooth adapter';
+
+  @override
   String get peer_home_drawer_disconnect_confirm_title => 'Disconnect';
 
   @override

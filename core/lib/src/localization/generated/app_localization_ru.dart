@@ -179,6 +179,21 @@ class AppLocalizationRu extends AppLocalization {
   String get peer_home_drawer_edit_name => 'Редактировать имя';
 
   @override
+  String get peer_home_drawer_nickname_title => 'Никнэйм';
+
+  @override
+  String get peer_home_drawer_nickname_subtitle_filled => 'Ваш никнэйм';
+
+  @override
+  String get peer_home_drawer_nickname_subtitle_empty => 'Придумайте себе никнэйм';
+
+  @override
+  String get peer_home_drawer_bluetooth_access_title => 'Доступ к Bluetooth';
+
+  @override
+  String get peer_home_drawer_bluetooth_adapter_title => 'Bluetooth адаптер';
+
+  @override
   String get peer_home_drawer_disconnect_confirm_title => 'Разъединить';
 
   @override
@@ -260,31 +275,31 @@ class AppLocalizationRu extends AppLocalization {
   String get peer_server_waiting_title => 'Ожидание подключения...';
 
   @override
-  String get secret_mode_no => 'No';
+  String get secret_mode_no => 'Нет';
 
   @override
-  String get secret_mode_ok => 'OK';
+  String get secret_mode_ok => 'Ок';
 
   @override
-  String get secret_mode_password_hint => 'Password';
+  String get secret_mode_password_hint => 'Пароль';
 
   @override
   String get secret_mode_production_mode_title => 'Production mode';
 
   @override
-  String get secret_mode_return_to_production_message => 'Return to production mode?';
+  String get secret_mode_return_to_production_message => 'Вернуться в production mode?';
 
   @override
   String get secret_mode_test_api_title => 'Test API';
 
   @override
-  String get secret_mode_version_label => 'Version';
+  String get secret_mode_version_label => 'Версия';
 
   @override
-  String get secret_mode_wrong_password => 'Wrong password';
+  String get secret_mode_wrong_password => 'Неверный пароль';
 
   @override
-  String get secret_mode_yes => 'Yes';
+  String get secret_mode_yes => 'Да';
 
   @override
   String get something_went_wrong => 'Что-то пошло не так';

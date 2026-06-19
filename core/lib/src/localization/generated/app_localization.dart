@@ -423,6 +423,36 @@ abstract class AppLocalization {
   /// **'Редактировать имя'**
   String get peer_home_drawer_edit_name;
 
+  /// No description provided for @peer_home_drawer_nickname_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Никнэйм'**
+  String get peer_home_drawer_nickname_title;
+
+  /// No description provided for @peer_home_drawer_nickname_subtitle_filled.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ваш никнэйм'**
+  String get peer_home_drawer_nickname_subtitle_filled;
+
+  /// No description provided for @peer_home_drawer_nickname_subtitle_empty.
+  ///
+  /// In ru, this message translates to:
+  /// **'Придумайте себе никнэйм'**
+  String get peer_home_drawer_nickname_subtitle_empty;
+
+  /// No description provided for @peer_home_drawer_bluetooth_access_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Доступ к Bluetooth'**
+  String get peer_home_drawer_bluetooth_access_title;
+
+  /// No description provided for @peer_home_drawer_bluetooth_adapter_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Bluetooth адаптер'**
+  String get peer_home_drawer_bluetooth_adapter_title;
+
   /// No description provided for @peer_home_drawer_disconnect_confirm_title.
   ///
   /// In ru, this message translates to:
@@ -570,19 +600,19 @@ abstract class AppLocalization {
   /// No description provided for @secret_mode_no.
   ///
   /// In ru, this message translates to:
-  /// **'No'**
+  /// **'Нет'**
   String get secret_mode_no;
 
   /// No description provided for @secret_mode_ok.
   ///
   /// In ru, this message translates to:
-  /// **'OK'**
+  /// **'Ок'**
   String get secret_mode_ok;
 
   /// No description provided for @secret_mode_password_hint.
   ///
   /// In ru, this message translates to:
-  /// **'Password'**
+  /// **'Пароль'**
   String get secret_mode_password_hint;
 
   /// No description provided for @secret_mode_production_mode_title.
@@ -594,7 +624,7 @@ abstract class AppLocalization {
   /// No description provided for @secret_mode_return_to_production_message.
   ///
   /// In ru, this message translates to:
-  /// **'Return to production mode?'**
+  /// **'Вернуться в production mode?'**
   String get secret_mode_return_to_production_message;
 
   /// No description provided for @secret_mode_test_api_title.
@@ -606,19 +636,19 @@ abstract class AppLocalization {
   /// No description provided for @secret_mode_version_label.
   ///
   /// In ru, this message translates to:
-  /// **'Version'**
+  /// **'Версия'**
   String get secret_mode_version_label;
 
   /// No description provided for @secret_mode_wrong_password.
   ///
   /// In ru, this message translates to:
-  /// **'Wrong password'**
+  /// **'Неверный пароль'**
   String get secret_mode_wrong_password;
 
   /// No description provided for @secret_mode_yes.
   ///
   /// In ru, this message translates to:
-  /// **'Yes'**
+  /// **'Да'**
   String get secret_mode_yes;
 
   /// No description provided for @something_went_wrong.
