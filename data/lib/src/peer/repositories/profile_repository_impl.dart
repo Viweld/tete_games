@@ -6,9 +6,7 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ProfileRepository, dispose: disposeProfileRepository)
 final class ProfileRepositoryImpl implements ProfileRepository {
-  ProfileRepositoryImpl(this._localDataProvider) {
-    unawaited(_emitInitialProfile());
-  }
+  ProfileRepositoryImpl(this._localDataProvider);
 
   final LocalDataProvider _localDataProvider;
   final StreamController<PlayerProfile?> _profileController =
@@ -16,7 +14,7 @@ final class ProfileRepositoryImpl implements ProfileRepository {
 
   PlayerProfile? _cachedProfile;
   bool _isInitialized = false;
-  final Completer<void> _initializationCompleter = Completer<void>();
+  Future<void>? _initializeFuture;
 
   static const String _playerIdKey = 'peer_player_id';
   static const String _playerNameKey = 'peer_player_name';
@@ -26,8 +24,19 @@ final class ProfileRepositoryImpl implements ProfileRepository {
   Stream<PlayerProfile?> get profileStream => _profileController.stream;
 
   @override
+  PlayerProfile? get cachedProfile => _cachedProfile;
+
+  @override
+  Future<void> initialize() async {
+    if (_isInitialized) return;
+
+    _initializeFuture ??= _loadCachedProfile();
+    await _initializeFuture;
+  }
+
+  @override
   Future<PlayerProfile?> getCurrentPlayer() async {
-    await _ensureInitialized();
+    await initialize();
     return _cachedProfile;
   }
 
@@ -52,23 +61,12 @@ final class ProfileRepositoryImpl implements ProfileRepository {
     await _localDataProvider.setValue(key: _isFirstLaunchKey, value: false);
   }
 
-  Future<void> _emitInitialProfile() async {
-    try {
-      _cachedProfile = await _loadProfile();
-      _isInitialized = true;
-      if (!_profileController.isClosed) {
-        _profileController.add(_cachedProfile);
-      }
-    } finally {
-      if (!_initializationCompleter.isCompleted) {
-        _initializationCompleter.complete();
-      }
+  Future<void> _loadCachedProfile() async {
+    _cachedProfile = await _loadProfile();
+    _isInitialized = true;
+    if (!_profileController.isClosed) {
+      _profileController.add(_cachedProfile);
     }
-  }
-
-  Future<void> _ensureInitialized() async {
-    if (_isInitialized) return;
-    await _initializationCompleter.future;
   }
 
   Future<PlayerProfile?> _loadProfile() async {

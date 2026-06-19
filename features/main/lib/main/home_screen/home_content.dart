@@ -8,6 +8,11 @@ import 'package:main/main/home_screen/widgets/drawer/home_drawer.dart';
 import 'package:main/main/home_screen/widgets/games_content/games_content.dart';
 
 class HomeContent extends StatelessWidget {
+  final bool isGamesEnabled;
+  final bool isOverlayVisible;
+  final OverlayRenderViewState overlay;
+  final FrameProjectionInput projection;
+
   const HomeContent({
     super.key,
     required this.isGamesEnabled,
@@ -16,31 +21,23 @@ class HomeContent extends StatelessWidget {
     required this.projection,
   });
 
-  final bool isGamesEnabled;
-  final bool isOverlayVisible;
-  final OverlayRenderViewState overlay;
-  final FrameProjectionInput projection;
-
   @override
   Widget build(BuildContext context) {
-    final HomeBloc homeBloc = context.read<HomeBloc>();
+    final HomeBloc bloc = context.read<HomeBloc>();
 
     return Stack(
       children: <Widget>[
         AppScaffold(
           appBar: const HomeAppBar(),
           endDrawer: HomeDrawer(
-            onEditProfileTap: () {
-              Navigator.of(context).pop();
-              homeBloc.add(const HomeEvent.profileMenuTapped());
-            },
+            onEditProfileTap: () => bloc.add(const HomeEvent.profileMenuTapped()),
             onConnectTap: () {
               Navigator.of(context).pop();
-              homeBloc.add(const HomeEvent.connectMenuTapped());
+              bloc.add(const HomeEvent.connectMenuTapped());
             },
             onDisconnectTap: () {
               Navigator.of(context).pop();
-              homeBloc.add(const HomeEvent.disconnectMenuTapped());
+              bloc.add(const HomeEvent.disconnectMenuTapped());
             },
           ),
           body: GamesContent(isEnabled: isGamesEnabled),
@@ -50,14 +47,13 @@ class HomeContent extends StatelessWidget {
             child: ConnectionOverlay(
               overlay: overlay,
               projection: projection,
-              onClose: () => homeBloc.add(const HomeEvent.overlayDismissTapped()),
-              onHostTap: () => homeBloc.add(const HomeEvent.hostTapped()),
-              onClientTap: () => homeBloc.add(const HomeEvent.clientTapped()),
-              onDeviceTap: (String? deviceId) =>
-                  homeBloc.add(HomeEvent.deviceHighlightChanged(deviceId: deviceId)),
-              onInviteTap: () => homeBloc.add(const HomeEvent.inviteDeviceTapped()),
-              onAcceptTap: () => homeBloc.add(const HomeEvent.acceptInvitationTapped()),
-              onRejectTap: () => homeBloc.add(const HomeEvent.rejectInvitationTapped()),
+              onClose: () => bloc.add(const HomeEvent.overlayDismissTapped()),
+              onHostTap: () => bloc.add(const HomeEvent.hostTapped()),
+              onClientTap: () => bloc.add(const HomeEvent.clientTapped()),
+              onDeviceTap: (String? id) => bloc.add(HomeEvent.deviceHighlightChanged(id)),
+              onInviteTap: () => bloc.add(const HomeEvent.inviteDeviceTapped()),
+              onAcceptTap: () => bloc.add(const HomeEvent.acceptInvitationTapped()),
+              onRejectTap: () => bloc.add(const HomeEvent.rejectInvitationTapped()),
             ),
           ),
       ],

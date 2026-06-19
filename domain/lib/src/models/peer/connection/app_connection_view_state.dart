@@ -19,15 +19,15 @@ enum OverlayPhase {
 
 @immutable
 final class SharedConnectionViewState {
+  final bool isConnected;
+  final String? remoteDisplayName;
+  final String? remotePlayerId;
+
   const SharedConnectionViewState({
     this.isConnected = false,
     this.remoteDisplayName,
     this.remotePlayerId,
   });
-
-  final bool isConnected;
-  final String? remoteDisplayName;
-  final String? remotePlayerId;
 
   @override
   bool operator ==(Object other) {
@@ -44,9 +44,9 @@ final class SharedConnectionViewState {
 
 @immutable
 final class HomeRenderViewState {
-  const HomeRenderViewState({this.isGamesEnabled = false});
-
   final bool isGamesEnabled;
+
+  const HomeRenderViewState({this.isGamesEnabled = false});
 
   @override
   bool operator ==(Object other) {
@@ -60,6 +60,13 @@ final class HomeRenderViewState {
 
 @immutable
 final class OverlayRenderViewState {
+  final OverlayPhase phase;
+  final PeerRole? role;
+  final List<PeerDevice> devices;
+  final PeerEndpoint? pendingInvitation;
+  final bool isBusy;
+  final PeerSessionErrorKind? errorKind;
+
   const OverlayRenderViewState({
     this.phase = OverlayPhase.hidden,
     this.role,
@@ -68,13 +75,6 @@ final class OverlayRenderViewState {
     this.isBusy = false,
     this.errorKind,
   });
-
-  final OverlayPhase phase;
-  final PeerRole? role;
-  final List<PeerDevice> devices;
-  final PeerEndpoint? pendingInvitation;
-  final bool isBusy;
-  final PeerSessionErrorKind? errorKind;
 
   @override
   bool operator ==(Object other) {

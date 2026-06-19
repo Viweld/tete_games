@@ -3,24 +3,35 @@ import 'package:domain/domain.dart';
 import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';
 
 part 'home_event.dart';
+
 part 'home_state.dart';
+
 part 'home_effect.dart';
+
 part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this._peerConnectionService, this._profileRepository) : super(const HomeState()) {
+  final PeerConnectionService _peerConnectionService;
+  final ProfileRepository _profileRepository;
+
+  StreamSubscription<PlayerProfile?>? _profileSubscription;
+  StreamSubscription<AppConnectionFrame>? _framesSubscription;
+
+  HomeBloc(this._peerConnectionService, this._profileRepository)
+    : super(HomeState(profile: _profileRepository.cachedProfile)) {
     on<HomeEvent>(
       (HomeEvent event, Emitter<HomeState> emit) => event.map(
         init: (_) => _onInit(emit),
-        frameReceived: (_FrameReceived event) => _onFrameReceived(event.frame, emit),
+        profileChanged: (_ProfileChanged event) => _onProfileChanged(event, emit),
+        frameReceived: (_FrameReceived event) => _onFrameReceived(event, emit),
         connectMenuTapped: (_) => _onConnectMenuTapped(emit),
         hostTapped: (_) => _onHostTapped(emit),
         clientTapped: (_) => _onClientTapped(emit),
         disconnectMenuTapped: (_) => _onDisconnectMenuTapped(emit),
         profileMenuTapped: (_) => _onProfileMenuTapped(emit),
         deviceHighlightChanged: (_DeviceHighlightChanged event) =>
-            _onDeviceHighlightChanged(event.deviceId, emit),
+            _onDeviceHighlightChanged(event, emit),
         inviteDeviceTapped: (_) => _onInviteDeviceTapped(emit),
         acceptInvitationTapped: (_) => _onAcceptInvitationTapped(emit),
         rejectInvitationTapped: (_) => _onRejectInvitationTapped(emit),
@@ -33,18 +44,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       ),
     );
 
+    _profileSubscription = _profileRepository.profileStream.listen((PlayerProfile? profile) {
+      if (isClosed) return;
+      add(HomeEvent.profileChanged(profile: profile));
+    });
+
     _framesSubscription = _peerConnectionService.frames.listen(_onFrame);
     add(const HomeEvent.init());
   }
 
-  final PeerConnectionService _peerConnectionService;
-  final ProfileRepository _profileRepository;
-
-  late final StreamSubscription<AppConnectionFrame> _framesSubscription;
-
   @override
   Future<void> close() async {
-    await _framesSubscription.cancel();
+    await _profileSubscription?.cancel();
+    await _framesSubscription?.cancel();
     return super.close();
   }
 
@@ -54,10 +66,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onInit(Emitter<HomeState> emit) async {
-    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
+    emit(state.copyWith(profile: _profileRepository.cachedProfile));
+
     final bool isFirstLaunch = await _profileRepository.isFirstLaunch();
 
-    if (profile == null && isFirstLaunch) {
+    if (state.profile == null && isFirstLaunch) {
       emit(
         state.copyWith(
           effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.firstLaunch),
@@ -66,7 +79,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  Future<void> _onFrameReceived(AppConnectionFrame frame, Emitter<HomeState> emit) async {
+  void _onProfileChanged(_ProfileChanged event, Emitter<HomeState> emit) {
+    emit(state.copyWith(profile: event.profile));
+  }
+
+  Future<void> _onFrameReceived(_FrameReceived event, Emitter<HomeState> emit) async {
+    final AppConnectionFrame frame = event.frame;
     final bool shouldRunEffects = frame.frameId > state.lastHandledFrameId;
     final FrameProjectionInput projection = _validatedProjection(
       state.projection,
@@ -126,7 +144,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onConnectMenuTapped(Emitter<HomeState> emit) async {
-    if (!await _hasProfile()) {
+    if (!_hasProfile) {
       emit(
         state.copyWith(
           effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.connect),
@@ -139,7 +157,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onHostTapped(Emitter<HomeState> emit) async {
-    if (!await _hasProfile()) {
+    if (!_hasProfile) {
       emit(
         state.copyWith(
           effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.overlayRole),
@@ -153,7 +171,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onClientTapped(Emitter<HomeState> emit) async {
-    if (!await _hasProfile()) {
+    if (!_hasProfile) {
       emit(
         state.copyWith(
           effect: const HomeEffect.showNicknameDialog(context: NicknameDialogContext.overlayRole),
@@ -182,8 +200,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
   }
 
-  void _onDeviceHighlightChanged(String? deviceId, Emitter<HomeState> emit) {
-    emit(state.copyWith(projection: FrameProjectionInput(highlightedDeviceId: deviceId)));
+  void _onDeviceHighlightChanged(_DeviceHighlightChanged event, Emitter<HomeState> emit) {
+    emit(state.copyWith(projection: FrameProjectionInput(highlightedDeviceId: event.deviceId)));
   }
 
   Future<void> _onInviteDeviceTapped(Emitter<HomeState> emit) async {
@@ -247,8 +265,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     await _peerConnectionService.openRoleSelection(projection: state.projection);
   }
 
-  Future<bool> _hasProfile() async {
-    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
-    return profile != null;
-  }
+  bool get _hasProfile => state.profile != null;
 }

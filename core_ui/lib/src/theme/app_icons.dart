@@ -102,4 +102,13 @@ abstract final class AppIcons {
 
   static const String _btPermissionGrantedKey = '${_basePath}bt_permission_granted.svg';
   static const AppIcon btPermissionGranted = AppIcon.asset(_btPermissionGrantedKey);
+
+  static const String _avatarPlugKey = '${_basePath}avatar_plug.svg';
+  static const AppIcon avatarPlug = AppIcon.asset(_avatarPlugKey);
+
+  static const String _checkboxEmptyKey = '${_basePath}checkbox_empty.svg';
+  static const AppIcon checkboxEmpty = AppIcon.asset(_checkboxEmptyKey);
+
+  static const String _checkboxCheckedKey = '${_basePath}checkbox_checked.svg';
+  static const AppIcon checkboxChecked = AppIcon.asset(_checkboxCheckedKey);
 }

@@ -1,9 +1,14 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:main/main/home_screen/widgets/drawer/widgets/connection_section/connection_section.dart';
+import 'package:main/main/home_screen/widgets/drawer/bloc/home_drawer_bloc.dart';
+import 'package:main/main/home_screen/widgets/drawer/widgets/drawer_tile.dart';
 import 'package:main/main/home_screen/widgets/drawer/widgets/footer.dart';
-import 'package:main/main/home_screen/widgets/drawer/widgets/profile_section/profile_section.dart';
 
-class HomeDrawer extends StatelessWidget {
+class HomeDrawer extends StatefulWidget {
+  final VoidCallback onEditProfileTap;
+  final VoidCallback onConnectTap;
+  final VoidCallback onDisconnectTap;
+
   const HomeDrawer({
     super.key,
     required this.onEditProfileTap,
@@ -11,29 +16,197 @@ class HomeDrawer extends StatelessWidget {
     required this.onDisconnectTap,
   });
 
-  final VoidCallback onEditProfileTap;
-  final VoidCallback onConnectTap;
-  final VoidCallback onDisconnectTap;
+  @override
+  State<HomeDrawer> createState() => _HomeDrawerState();
+}
+
+class _HomeDrawerState extends State<HomeDrawer> with WidgetsBindingObserver {
+  late final HomeDrawerBloc _bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = appLocator<HomeDrawerBloc>();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _bloc.close();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _bloc.add(const HomeDrawerEvent.appResumed());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final AppColorsTheme colors = context.colors;
+    return BlocProvider<HomeDrawerBloc>.value(
+      value: _bloc,
+      child: BlocConsumer<HomeDrawerBloc, HomeDrawerState>(
+        listenWhen: (HomeDrawerState previous, HomeDrawerState current) =>
+            previous.effect != current.effect,
+        listener: (BuildContext context, HomeDrawerState state) async {
+          final HomeDrawerEffect? effect = state.effect;
+          if (effect == null) return;
 
-    return Drawer(
-      backgroundColor: colors.background.secondaryCard,
-      child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            ProfileSection(onEditProfileTap: onEditProfileTap),
-            const AppDivider(),
-            ConnectionSection(onConnectTap: onConnectTap, onDisconnectTap: onDisconnectTap),
-            const Spacer(),
-            const AppDivider(),
-            const Footer(),
-          ],
-        ),
+          final HomeDrawerBloc bloc = context.read<HomeDrawerBloc>();
+
+          await effect.when(
+            showPermissionsGrantedInfo: () => _showPermissionsGrantedInfo(context),
+            showPermissionsDeniedSettings: () => _showPermissionsDeniedSettings(context, bloc),
+            showAdapterEnabledInfo: () => _showAdapterEnabledInfo(context),
+            showAdapterDisabledInfo: () => _showAdapterDisabledInfo(context),
+            showDisconnectConfirmation: () => _showDisconnectConfirmation(context),
+            editProfileRequested: () async => widget.onEditProfileTap(),
+          );
+
+          bloc.add(const HomeDrawerEvent.effectHandled());
+        },
+        builder: (BuildContext context, HomeDrawerState state) {
+          final AppColorsTheme colors = context.colors;
+          final AppLocalization localization = context.localization;
+          final HomeDrawerBloc bloc = context.read<HomeDrawerBloc>();
+          final String resolvedName = state.profile?.displayName ?? '';
+          final bool isBluetoothReady = state.arePermissionsGranted && state.isAdapterEnabled;
+
+          return Drawer(
+            backgroundColor: colors.background.secondaryCard,
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  DrawerTile(
+                    leading: resolvedName.isEmpty
+                        ? AppIcons.avatarPlug.call(size: UserLabel.radius * 2)
+                        : UserLabel(label: resolvedName),
+                    title: resolvedName.isNotEmpty ? resolvedName : 'Никнэйм',
+                    subtitle: resolvedName.isNotEmpty ? null : 'Придумайте себе никнэйм',
+                    isReady: resolvedName.isNotEmpty,
+                    onTap: () => bloc.add(const HomeDrawerEvent.editProfileTapped()),
+                  ),
+                  DrawerTile(
+                    leading: AppIcons.btPermissionGranted.call(size: 32),
+                    title: 'Доступ к Bluetooth',
+                    subtitle: state.arePermissionsGranted
+                        ? localization.peer_home_bluetooth_permissions_ok
+                        : localization.peer_home_bluetooth_permissions_missing,
+                    isReady: state.arePermissionsGranted,
+                    onTap: () => bloc.add(const HomeDrawerEvent.permissionIconTapped()),
+                  ),
+                  DrawerTile(
+                    leading: AppIcons.btControllerEnabled.call(size: 32),
+                    title: 'Bluetooth адаптер',
+                    subtitle: state.isAdapterEnabled
+                        ? localization.peer_home_bluetooth_adapter_on
+                        : localization.peer_home_bluetooth_adapter_off,
+                    isReady: state.isAdapterEnabled,
+                    onTap: () => bloc.add(const HomeDrawerEvent.adapterIconTapped()),
+                  ),
+                  const SizedBox(height: 16),
+                  if (state.isConnected)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: AppElevatedButton(
+                        title: localization.peer_home_menu_disconnect,
+                        style: AppElevatedButtonStyle.red,
+                        onTap: () => bloc.add(const HomeDrawerEvent.disconnectTapped()),
+                      ),
+                    )
+                  else
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: AppElevatedButton(
+                        title: localization.peer_home_menu_connect,
+                        state: isBluetoothReady ? ElementState.enabled : ElementState.disabled,
+                        onTap: widget.onConnectTap,
+                      ),
+                    ),
+                  const Spacer(),
+                  const AppDivider(),
+                  const Footer(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
+  }
+
+  Future<void> _showPermissionsGrantedInfo(BuildContext context) {
+    final AppLocalization localization = context.localization;
+
+    return AppProposalDialog.show(
+      context,
+      title: localization.peer_home_bluetooth_permissions_granted_dialog_title,
+      message: '',
+      buttonText: localization.peer_dialog_ok,
+    );
+  }
+
+  Future<void> _showPermissionsDeniedSettings(BuildContext context, HomeDrawerBloc bloc) async {
+    final AppLocalization localization = context.localization;
+    final AppColorsTheme colors = context.colors;
+
+    final bool? openSettings = await AppAdviceDialog.show(
+      context,
+      title: localization.peer_home_bluetooth_permissions_denied_dialog_title,
+      outlinedButtonText: localization.peer_dialog_cancel,
+      accentButtonText: localization.peer_dialog_open_settings,
+      content: Text(
+        localization.peer_home_bluetooth_permissions_denied_dialog_message,
+        style: AppFonts.b2.copyWith(color: colors.text.main),
+      ),
+    );
+
+    if (!context.mounted && openSettings != true) return;
+    bloc.add(const HomeDrawerEvent.openAppSettingsRequested());
+  }
+
+  Future<void> _showAdapterEnabledInfo(BuildContext context) {
+    final AppLocalization localization = context.localization;
+
+    return AppProposalDialog.show(
+      context,
+      title: localization.peer_home_bluetooth_adapter_enabled_dialog_title,
+      message: '',
+      buttonText: localization.peer_dialog_ok,
+    );
+  }
+
+  Future<void> _showAdapterDisabledInfo(BuildContext context) {
+    final AppLocalization localization = context.localization;
+
+    return AppProposalDialog.show(
+      context,
+      title: localization.peer_home_bluetooth_adapter_disabled_dialog_title,
+      message: localization.peer_home_bluetooth_adapter_disabled_dialog_message,
+      buttonText: localization.peer_dialog_ok,
+    );
+  }
+
+  Future<void> _showDisconnectConfirmation(BuildContext context) async {
+    final AppLocalization localization = context.localization;
+
+    final bool? confirmed = await AppAdviceDialog.show(
+      context,
+      title: localization.peer_home_drawer_disconnect_confirm_title,
+      outlinedButtonText: localization.peer_dialog_cancel,
+      accentButtonText: localization.peer_dialog_yes,
+      content: Text(
+        localization.peer_home_drawer_disconnect_confirm_message,
+        style: AppFonts.b2.copyWith(color: context.colors.text.main),
+      ),
+    );
+
+    if (confirmed == true) {
+      widget.onDisconnectTap();
+    }
   }
 }

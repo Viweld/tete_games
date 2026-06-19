@@ -5,6 +5,7 @@ enum HomePendingOverlayRole { host, client }
 @freezed
 abstract class HomeState with _$HomeState {
   const factory HomeState({
+    PlayerProfile? profile,
     @Default(false) bool isConnected,
     String? remoteDisplayName,
     String? remotePlayerId,

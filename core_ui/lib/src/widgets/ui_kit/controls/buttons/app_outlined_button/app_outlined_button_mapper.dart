@@ -4,8 +4,11 @@ class AppOutlinedButtonMapper {
   static Color getBorderColor({
     required AppColorsTheme colors,
     required AppOutlinedButtonStyle style,
+    required ElementState state,
   }) {
     final AppOutlinedButtonTheme theme = colors.outlinedButton;
+
+    if (state == ElementState.disabled) return theme.borderDisabled.main;
 
     return switch (style) {
       AppOutlinedButtonStyle.primary => theme.borderDefault.main,

@@ -8,7 +8,7 @@ part 'splash_states.dart';
 
 @injectable
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc(this._settingsRepository, this._localeController)
+  SplashBloc(this._settingsRepository, this._localeController, this._profileRepository)
     : super(const SplashState.notInitialized()) {
     on<SplashEvent>(
       (SplashEvent event, Emitter<SplashState> emit) => event.map(
@@ -22,9 +22,11 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   final SettingsRepository _settingsRepository;
   final LocaleController _localeController;
+  final ProfileRepository _profileRepository;
 
   Future<void> _onInitialize(Emitter<SplashState> emit) async {
     await _prepareLanguage();
+    await _profileRepository.initialize();
 
     NativeSplashService.removeSplash();
 

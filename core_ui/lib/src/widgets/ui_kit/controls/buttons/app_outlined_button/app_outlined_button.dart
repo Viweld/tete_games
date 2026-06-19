@@ -38,7 +38,11 @@ class AppOutlinedButton extends StatelessWidget {
       state: state,
     );
 
-    final Color borderColor = AppOutlinedButtonMapper.getBorderColor(colors: colors, style: style);
+    final Color borderColor = AppOutlinedButtonMapper.getBorderColor(
+      colors: colors,
+      style: style,
+      state: state,
+    );
 
     final TextStyle textStyle = AppOutlinedButtonMapper.getTextStyle(
       size: size,

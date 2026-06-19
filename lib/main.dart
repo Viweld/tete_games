@@ -26,9 +26,7 @@ Future<void> main() async {
   runApp(
     ValueListenableBuilder<int>(
       valueListenable: appRestartGeneration,
-      builder: (BuildContext context, int _, Widget? child) {
-        return App(key: ValueKey<int>(appRestartGeneration.value));
-      },
+      builder: (_, _, _) => App(key: ValueKey<int>(appRestartGeneration.value)),
     ),
   );
 }
@@ -54,8 +52,7 @@ class App extends StatelessWidget {
           routerConfig: appRouter.config(
             navigatorObservers: () => <NavigatorObserver>[appRouter.routeObserver],
           ),
-          builder: (BuildContext context, Widget? child) =>
-              GlobalToastHost(child: child ?? const SizedBox.shrink()),
+          builder: (_, Widget? child) => GlobalToastHost(child: child ?? const SizedBox.shrink()),
         );
       },
     );
