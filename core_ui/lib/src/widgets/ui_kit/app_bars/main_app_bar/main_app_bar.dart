@@ -99,7 +99,7 @@ class _MainAppBarLeading extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppConfig config = appLocator<AppConfig>();
     final bool strip = _stripVisible(config);
-    final Widget logo = AppIcons.appBarLogo.call(size: 20);
+    final Widget logo = AppIcons.grid.call(size: 20);
     final AppColorsTheme colors = context.colors;
 
     final Widget logoCore;

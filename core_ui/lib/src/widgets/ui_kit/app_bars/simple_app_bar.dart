@@ -34,7 +34,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
                 mainAxisSize: MainAxisSize.min,
                 spacing: 8,
                 children: <Widget>[
-                  AppIcons.appBarChevronLeft.call(size: 24, color: colors.appBar.icon),
+                  Icon(Icons.arrow_back_ios_new_rounded, size: 24, color: colors.appBar.icon),
                   Text(
                     localization.core_back_button,
                     style: AppFonts.button.copyWith(color: colors.appBar.text),

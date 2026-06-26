@@ -3,7 +3,8 @@ import 'package:core_ui/core_ui.dart';
 class CircularButton extends StatelessWidget {
   final VoidCallback? onTap;
   final AppIcon icon;
-  final Color borderColor;
+  final double? iconSize;
+  final Color? borderColor;
   final Color? backgroundColor;
   final Color? iconColor;
   final double borderWidth;
@@ -13,7 +14,8 @@ class CircularButton extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.icon,
-    required this.borderColor,
+    this.iconSize,
+    this.borderColor,
     this.backgroundColor,
     this.iconColor,
     this.borderWidth = 3,
@@ -26,9 +28,10 @@ class CircularButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppColorsTheme colors = context.colors;
     final Color resolvedBackground = backgroundColor ?? colors.background.main;
-    final Color resolvedIconColor = iconColor ?? colors.icons.main;
     final CircleBorder shape = CircleBorder(
-      side: BorderSide(color: borderColor, width: borderWidth),
+      side: borderColor == null
+          ? BorderSide.none
+          : BorderSide(color: borderColor!, width: borderWidth),
     );
 
     return SizedBox.square(
@@ -41,11 +44,15 @@ class CircularButton extends StatelessWidget {
         child: Material(
           color: resolvedBackground,
           shape: shape,
+          shadowColor: Colors.black,
+          elevation: 10,
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             onTap: visible ? onTap : null,
             customBorder: shape,
-            child: Center(child: icon.call(size: 64, color: resolvedIconColor)),
+            child: Center(
+              child: icon.call(size: iconSize ?? size, color: iconColor),
+            ),
           ),
         ),
       ),

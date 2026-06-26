@@ -46,9 +46,7 @@ flutter:
 
   assets:
     - resources/icons/
-    - resources/icons/profile/
-    - resources/icons/nav_bar/
-    - resources/icons/app_bar/
+    - resources/icons/advertising/
     - resources/images/
 
   fonts:

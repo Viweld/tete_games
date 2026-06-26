@@ -16,16 +16,8 @@ class PhaseRoleSelection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          CircularButton(
-            borderColor: colors.borders.accentOrange,
-            icon: AppIcons.host,
-            onTap: onHostTap,
-          ),
-          CircularButton(
-            borderColor: colors.borders.accentOrange,
-            icon: AppIcons.seek,
-            onTap: onClientTap,
-          ),
+          CircularButton(icon: AppIcons.host, onTap: onHostTap),
+          CircularButton(icon: AppIcons.seek, onTap: onClientTap),
         ],
       ),
     );
