@@ -1,5 +1,6 @@
 export 'accordion/accordion.dart';
 export 'app_bars/app_bars.dart';
+export 'app_animation.dart';
 export 'app_icon.dart';
 export 'app_qr_code.dart';
 export 'app_retry.dart';
@@ -26,3 +27,4 @@ export 'texts/money_text/money_text_formatter.dart';
 const String kPackageName = 'core_ui';
 const String kIconsPath = 'resources/icons/';
 const String kImagesPath = 'resources/images/';
+const String kAnimationsPath = 'packages/core_ui/resources/animations/';

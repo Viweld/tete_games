@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 
 part 'splash_bloc.freezed.dart';
@@ -8,8 +9,12 @@ part 'splash_states.dart';
 
 @injectable
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc(this._settingsRepository, this._localeController, this._profileRepository)
-    : super(const SplashState.notInitialized()) {
+  SplashBloc(
+    this._settingsRepository,
+    this._localeController,
+    this._profileRepository,
+    this._appAnimations,
+  ) : super(const SplashState.notInitialized()) {
     on<SplashEvent>(
       (SplashEvent event, Emitter<SplashState> emit) => event.map(
         initialize: (_) => _onInitialize(emit),
@@ -23,10 +28,11 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   final SettingsRepository _settingsRepository;
   final LocaleController _localeController;
   final ProfileRepository _profileRepository;
+  final AppAnimations _appAnimations;
 
   Future<void> _onInitialize(Emitter<SplashState> emit) async {
     await _prepareLanguage();
-    await _profileRepository.initialize();
+    await Future.wait(<Future<void>>[_profileRepository.initialize(), _appAnimations.preload()]);
 
     NativeSplashService.removeSplash();
 

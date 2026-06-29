@@ -2,28 +2,12 @@ part of 'theme.dart';
 
 abstract final class AppIcons {
   static const String _basePath = kIconsPath;
-  static const String _advertisingPath = '${kIconsPath}advertising/';
 
   static const String _googleKey = '${_basePath}google.svg';
   static const AppIcon google = AppIcon.asset(_googleKey);
 
   static const String _appleKey = '${_basePath}apple.svg';
   static const AppIcon apple = AppIcon.asset(_appleKey);
-
-  static const String _adv01Key = '${_advertisingPath}adv_01.svg';
-  static const AppIcon adv01 = AppIcon.asset(_adv01Key);
-
-  static const String _adv02Key = '${_advertisingPath}adv_02.svg';
-  static const AppIcon adv02 = AppIcon.asset(_adv02Key);
-
-  static const String _adv03Key = '${_advertisingPath}adv_03.svg';
-  static const AppIcon adv03 = AppIcon.asset(_adv03Key);
-
-  static const String _adv04Key = '${_advertisingPath}adv_04.svg';
-  static const AppIcon adv04 = AppIcon.asset(_adv04Key);
-
-  static const String _adv05Key = '${_advertisingPath}adv_05.svg';
-  static const AppIcon adv05 = AppIcon.asset(_adv05Key);
 
   static const String _crossKey = '${_basePath}cross.svg';
   static const AppIcon cross = AppIcon.asset(_crossKey);

@@ -18,6 +18,8 @@ export 'colors/app_components_themes/app_text_button_theme.dart';
 export 'colors/app_components_themes/app_text_field_theme.dart';
 export 'colors/app_components_themes/app_text_theme.dart';
 export 'colors/app_components_themes/app_toast_theme.dart';
+export 'animation_assets.dart';
+export 'app_animations.dart';
 
 part 'app_dimens.dart';
 part 'app_fonts.dart';

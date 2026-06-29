@@ -34,6 +34,8 @@ dependencies:
   qr_flutter: ^4.1.0
   intl: ^0.20.2
   share_plus: ^13.1.0
+  lottie: ^3.4.0
+  injectable: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -46,8 +48,8 @@ flutter:
 
   assets:
     - resources/icons/
-    - resources/icons/advertising/
     - resources/images/
+    - resources/animations/
 
   fonts:
     - family: Manrope

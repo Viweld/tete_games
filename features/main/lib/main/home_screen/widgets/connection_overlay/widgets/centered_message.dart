@@ -18,7 +18,7 @@ class CenteredMessage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             if (showsLoadingIndicator)
-              AppSquareLoadingIndicator(color: colors.text.accent, size: 80),
+              const AppAdvertisingIndicator(),
             if (title != null) ...<Widget>[
               if (showsLoadingIndicator) const SizedBox(height: 24),
               Text(
