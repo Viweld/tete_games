@@ -17,7 +17,7 @@ dependencies:
     path: ../domain
 
   shared_preferences: ^2.5.3
-  ble_peer_session: ^0.4.2
+  ble_peer_session: ^0.4.3
   device_info_plus: ^13.1.0
   flutter_blue_plus: ^2.3.8
   permission_handler: ^12.0.3

@@ -77,10 +77,10 @@ packages:
     dependency: transitive
     description:
       name: ble_peer_session
-      sha256: "8475d86d67e3794cd44a86ffcb96959089e81d39779e8013660a30fb205d41da"
+      sha256: "4b604443e8a3d7049ad182b269d60e7068d1fb934f9e2db7bc27970144f76b3e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.2"
+    version: "0.4.3"
   bloc:
     dependency: transitive
     description:
