@@ -9,7 +9,7 @@ class PhaseError extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalization localization = context.localization;
 
-    return CenteredMessage(
+    return CenteredMessage.error(
       title: localization.peer_dialog_error_title,
       body: localization.peer_client_error_connection,
     );

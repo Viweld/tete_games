@@ -78,8 +78,8 @@ abstract final class AppIcons {
   static const String _qrScanKey = '${_basePath}qr_scan.svg';
   static const AppIcon qrScan = AppIcon.asset(_qrScanKey);
 
-  static const String _seekKey = '${_basePath}seek.svg';
-  static const AppIcon seek = AppIcon.asset(_seekKey);
+  static const String _discoverKey = '${_basePath}discover.svg';
+  static const AppIcon discover = AppIcon.asset(_discoverKey);
 
   static const String _settingsKey = '${_basePath}settings.svg';
   static const AppIcon settings = AppIcon.asset(_settingsKey);

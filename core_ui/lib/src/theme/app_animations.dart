@@ -9,7 +9,7 @@ final class AppAnimations {
 
   late final AppAnimation advertising = AppAnimation(this, AnimationAssets.advertising);
 
-  late final AppAnimation seeking = AppAnimation(this, AnimationAssets.seeking);
+  late final AppAnimation discovering = AppAnimation(this, AnimationAssets.discovering);
 
   Future<void> preload() async {
     await Future.wait<void>(AnimationAssets.all.map(_load));

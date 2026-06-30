@@ -24,7 +24,7 @@ class PhaseClientDiscovering extends StatelessWidget {
     final AppColorsTheme colors = context.colors;
 
     if (devices.isEmpty) {
-      return const CenteredMessage(showsLoadingIndicator: true);
+      return const CenteredMessage.discovering();
     }
 
     final bool hasSelection = highlightedDeviceId != null;

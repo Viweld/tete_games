@@ -22,14 +22,16 @@ class PhaseClientInviting extends StatelessWidget {
     final AppLocalization localization = context.localization;
 
     if (devices.isEmpty || invitedDeviceId == null) {
-      return CenteredMessage(
-        showsLoadingIndicator: !isRejected,
-        title: isRejected
-            ? localization.peer_client_invitation_rejected_title
-            : localization.peer_client_invitation_sent_title,
-        body: isRejected
-            ? localization.peer_client_invitation_rejected_body
-            : localization.peer_client_wait_confirmation,
+      if (isRejected) {
+        return CenteredMessage.error(
+          title: localization.peer_client_invitation_rejected_title,
+          body: localization.peer_client_invitation_rejected_body,
+        );
+      }
+
+      return CenteredMessage.discovering(
+        title: localization.peer_client_invitation_sent_title,
+        body: localization.peer_client_wait_confirmation,
       );
     }
 

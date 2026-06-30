@@ -7,8 +7,13 @@ part 'home_app_bar_bloc.freezed.dart';
 
 @injectable
 class HomeAppBarBloc extends Bloc<HomeAppBarEvent, HomeAppBarState> {
+  final ProfileRepository _profileRepository;
+  final PeerConnectionService _peerConnectionService;
+  StreamSubscription<PlayerProfile?>? _profileSubscription;
+  StreamSubscription<AppConnectionFrame>? _framesSubscription;
+
   HomeAppBarBloc(this._profileRepository, this._peerConnectionService)
-    : super(const HomeAppBarState()) {
+    : super(HomeAppBarState(localDisplayName: _profileRepository.cachedProfile?.displayName)) {
     on<HomeAppBarEvent>(
       (HomeAppBarEvent event, Emitter<HomeAppBarState> emit) => event.map(
         profileChanged: (HomeAppBarProfileChanged event) => _onProfileChanged(event, emit),
@@ -27,12 +32,6 @@ class HomeAppBarBloc extends Bloc<HomeAppBarEvent, HomeAppBarState> {
       add(HomeAppBarEvent.connectionFrameReceived(frame: frame));
     });
   }
-
-  final ProfileRepository _profileRepository;
-  final PeerConnectionService _peerConnectionService;
-
-  StreamSubscription<PlayerProfile?>? _profileSubscription;
-  StreamSubscription<AppConnectionFrame>? _framesSubscription;
 
   void _onProfileChanged(HomeAppBarProfileChanged event, Emitter<HomeAppBarState> emit) {
     emit(state.copyWith(localDisplayName: event.profile?.displayName));

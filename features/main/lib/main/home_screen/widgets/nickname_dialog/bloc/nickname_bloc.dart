@@ -11,6 +11,8 @@ enum NicknameValidationKind { empty, tooLong, wrongFormat }
 
 @injectable
 class NicknameBloc extends Bloc<NicknameEvent, NicknameState> {
+  final ProfileRepository _profileRepository;
+
   NicknameBloc(this._profileRepository) : super(const NicknameState()) {
     on<NicknameEvent>(
       (NicknameEvent event, Emitter<NicknameState> emit) => event.map(
@@ -20,8 +22,6 @@ class NicknameBloc extends Bloc<NicknameEvent, NicknameState> {
       ),
     );
   }
-
-  final ProfileRepository _profileRepository;
 
   void _onNicknameChanged(NicknameChanged event, Emitter<NicknameState> emit) {
     final String nickname = event.nickname.trim();

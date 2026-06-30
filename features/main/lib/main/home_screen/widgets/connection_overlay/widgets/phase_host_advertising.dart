@@ -6,6 +6,6 @@ class PhaseHostAdvertising extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CenteredMessage(showsLoadingIndicator: true);
+    return const CenteredMessage.advertising();
   }
 }

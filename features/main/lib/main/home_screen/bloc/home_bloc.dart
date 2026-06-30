@@ -14,7 +14,6 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final PeerConnectionService _peerConnectionService;
   final ProfileRepository _profileRepository;
-
   StreamSubscription<PlayerProfile?>? _profileSubscription;
   StreamSubscription<AppConnectionFrame>? _framesSubscription;
 

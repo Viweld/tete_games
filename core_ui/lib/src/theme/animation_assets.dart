@@ -4,7 +4,7 @@ abstract final class AnimationAssets {
 
   static const String advertising = '${basePath}advertising.json';
 
-  static const String seeking = '${basePath}seeking.json';
+  static const String discovering = '${basePath}discovering.json';
 
-  static const List<String> all = <String>[advertising, seeking];
+  static const List<String> all = <String>[advertising, discovering];
 }

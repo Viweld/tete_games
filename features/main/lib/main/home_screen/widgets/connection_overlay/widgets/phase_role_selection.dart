@@ -17,7 +17,7 @@ class PhaseRoleSelection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           CircularButton(icon: AppIcons.host, onTap: onHostTap),
-          CircularButton(icon: AppIcons.seek, onTap: onClientTap),
+          CircularButton(icon: AppIcons.discover, onTap: onClientTap),
         ],
       ),
     );

@@ -11,7 +11,6 @@ class HomeDrawerBloc extends Bloc<HomeDrawerEvent, HomeDrawerState> {
   final ProfileRepository _profileRepository;
   final BluetoothStatusService _bluetoothStatusService;
   final PeerConnectionService _peerConnectionService;
-
   StreamSubscription<PlayerProfile?>? _profileSubscription;
   StreamSubscription<BluetoothStatusSnapshot>? _statusSubscription;
   StreamSubscription<AppConnectionFrame>? _framesSubscription;
