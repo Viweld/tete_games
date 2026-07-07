@@ -1,0 +1,17 @@
+# Workspace dependency graph check configuration.
+# strict: false — transitional mode during feature-first migration.
+# Set strict: true after removing global domain/ and data/ packages.
+
+strict: false
+
+extra_pubspec_edges:
+  - from: shell
+    to: domain
+  - from: data
+    to: core
+  - from: data
+    to: domain
+  - from: infrastructure
+    to: domain
+  - from: navigation
+    to: shell

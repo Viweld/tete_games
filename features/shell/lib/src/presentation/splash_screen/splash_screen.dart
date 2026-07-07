@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:core/core.dart';
+import 'package:shell/src/presentation/splash_screen/bloc/splash_bloc.dart';
+import 'package:navigation_api/navigation_api.dart';
+
+@RoutePage()
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    FocusScope.of(context).unfocus();
+    final AppNavigator navigator = appLocator<AppNavigator>();
+
+    return BlocProvider<SplashBloc>(
+      lazy: false,
+      create: (_) => appLocator<SplashBloc>(),
+      child: BlocConsumer<SplashBloc, SplashState>(
+        listenWhen: (SplashState previous, SplashState current) =>
+            previous.effect != current.effect,
+        listener: (BuildContext context, SplashState state) {
+          final SplashEffect? effect = state.effect;
+          if (effect == null) return;
+
+          effect.when(navigateRoot: navigator.navigateRoot);
+
+          context.read<SplashBloc>().add(const SplashEvent.effectHandled());
+        },
+        builder: (_, _) => const SizedBox.shrink(),
+      ),
+    );
+  }
+}

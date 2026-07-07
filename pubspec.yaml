@@ -16,7 +16,7 @@ workspace:
   - navigation_api
   - navigation
   # fz:workspace-features
-  - features/main
+  - features/shell
 
 dependencies:
   flutter:
@@ -34,8 +34,8 @@ dependencies:
   navigation:
     path: ./navigation
   # fz:feature-deps
-  main:
-    path: ./features/main
+  shell:
+    path: ./features/shell
 
   get_it: ^9.2.1
   injectable: ^3.0.0

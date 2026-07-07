@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:main/main.dart';
+import 'package:shell/shell.dart';
 import 'package:navigation_api/navigation_api.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page|Screen|Popup|BottomSheet|Dialog|Drawer,Route')

@@ -3,7 +3,7 @@ import 'package:core_ui/src/di/configure_dependencies.module.dart';
 import 'package:data/src/di/configure_dependencies.module.dart';
 import 'package:domain/src/di/configure_dependencies.module.dart';
 import 'package:infrastructure/src/di/configure_dependencies.module.dart';
-import 'package:main/src/di/configure_dependencies.module.dart';
+import 'package:shell/src/di/configure_dependencies.module.dart';
 import 'package:navigation/navigation.dart';
 // fz:kit-imports
 
@@ -18,7 +18,7 @@ import 'app_di.config.dart';
     ExternalModule(DataPackageModule),
     ExternalModule(DomainPackageModule),
     // fz:external-modules
-    ExternalModule(MainPackageModule),
+    ExternalModule(ShellPackageModule),
   ],
 )
 Future<void> configureDependencies({required AppRuntimeMode runtimeMode}) async {

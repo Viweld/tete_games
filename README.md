@@ -45,7 +45,7 @@ data/                  BLE peer adapters, repository impl
 core_ui/               theme, ui_kit
 navigation_api/        AppNavigator port
 navigation/            AppRouter aggregator
-features/main/         splash, home, BLE UI
+features/shell/         splash, home, BLE UI
 ```
 
 ```mermaid
@@ -58,11 +58,11 @@ flowchart TD
   app --> core
   app --> domain
   navigation --> navigationApi["navigation_api"]
-  navigation --> main
-  main --> navigationApi
-  main --> core_ui
-  main --> core
-  main --> domain
+  navigation --> shell
+  shell --> navigationApi
+  shell --> core_ui
+  shell --> core
+  shell --> domain
   infrastructure --> core
   data --> core
   data --> domain
@@ -80,7 +80,7 @@ flowchart TD
 | `data/` | BLE peer layer, repository implementations |
 | `navigation_api/` | `AppNavigator` port |
 | `navigation/` | `AppRouter` (implements `AppNavigator`) |
-| `features/main/` | splash, home, games list, BLE connection dialogs |
+| `features/shell/` | splash, home, games list, BLE connection dialogs |
 
 ## Tech stack
 

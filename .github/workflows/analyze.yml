@@ -1,0 +1,43 @@
+name: Analyze
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  pull_request:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install FVM
+        run: dart pub global activate fvm
+
+      - name: Flutter version from FVM
+        run: |
+          fvm install
+          fvm flutter --version
+
+      - name: Pub get
+        run: fvm flutter pub get
+
+      - name: Workspace dependency graph
+        run: fvm dart run tool/check_workspace_graph.dart
+
+      - name: Analyze
+        run: fvm flutter analyze
+
+      - name: Test
+        run: |
+          if [ -d test ]; then
+            fvm flutter test
+          else
+            echo "No test/ directory — skipping tests"
+          fi

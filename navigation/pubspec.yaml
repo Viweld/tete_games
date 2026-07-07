@@ -14,8 +14,8 @@ dependencies:
 
   navigation_api:
     path: ../navigation_api
-  main:
-    path: ../features/main
+  shell:
+    path: ../features/shell
 
   auto_route: ^11.1.0
   injectable: ^3.0.0
