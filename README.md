@@ -50,29 +50,21 @@ features/shell/        splash, home, profile/settings, BLE UI
 
 ```mermaid
 flowchart TD
-  app["app (lib/)"] --> features
+  app["app (lib/)"] --> shell
   app --> navigation
   app --> infrastructure
-  app --> data
+  app --> peer
   app --> core_ui
   app --> core
-  app --> domain
   navigation --> navigationApi["navigation_api"]
-  app --> peer
-  app --> shell
   navigation --> shell
   shell --> navigationApi
   shell --> peer
   shell --> core_ui
   shell --> core
-  shell --> domain
-  peer --> domain
   peer --> core
   infrastructure --> peer
   infrastructure --> core
-  data --> core
-  data --> domain
-  core --> domain
 ```
 
 ## Workspace packages
