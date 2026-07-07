@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:domain/domain.dart';
+import 'package:shell/shell_domain.dart';
 
 part 'splash_bloc.freezed.dart';
 part 'splash_effect.dart';

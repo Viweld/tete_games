@@ -13,8 +13,6 @@ dependencies:
     sdk: flutter
   core:
     path: ../core
-  domain:
-    path: ../domain
   peer:
     path: ../platform/peer
 

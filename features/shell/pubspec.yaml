@@ -12,14 +12,15 @@ dependencies:
     sdk: flutter
   core:
     path: ../../core
-  domain:
-    path: ../../domain
   core_ui:
     path: ../../core_ui
   navigation_api:
     path: ../../navigation_api
   peer:
     path: ../../platform/peer
+  device_info_plus: ^13.1.0
+  flutter_blue_plus: ^2.3.8
+  permission_handler: ^12.0.3
   auto_route: ^11.1.0
   injectable: ^3.0.0
   nested: ^1.0.0

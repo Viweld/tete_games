@@ -10,8 +10,6 @@ environment:
 workspace:
   - core
   - core_ui
-  - data
-  - domain
   - infrastructure
   - navigation_api
   - navigation
@@ -26,10 +24,6 @@ dependencies:
     path: ./core
   core_ui:
     path: ./core_ui
-  data:
-    path: ./data
-  domain:
-    path: ./domain
   infrastructure:
     path: ./infrastructure
   navigation:

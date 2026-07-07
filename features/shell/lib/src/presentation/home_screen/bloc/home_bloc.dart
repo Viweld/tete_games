@@ -1,5 +1,5 @@
 import 'package:core/core.dart';
-import 'package:domain/domain.dart';
+import 'package:shell/shell_domain.dart';
 import 'package:peer/peer_connection.dart';
 import 'package:shell/src/domain/home_overlay_projection.dart';
 import 'package:shell/src/presentation/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';

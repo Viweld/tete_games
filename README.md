@@ -38,15 +38,14 @@ In the new codebase:
 
 ```text
 lib/di/app_di.dart     Composition Root
-domain/                peer models, repository contracts (BLE)
+domain/                profile, settings (removed — see shell)
 core/                  BLoC helpers, localization, technical ports
-infrastructure/        local storage, Firebase bootstrap, FCM
-data/                  BLE peer adapters, repository impl
+infrastructure/        local storage, Firebase, BLE transport, push
 core_ui/               theme, ui_kit
 navigation_api/        AppNavigator port
 navigation/            AppRouter aggregator
-platform/peer/           BLE FSM, frames, PeerConnectionService
-features/shell/         splash, home, BLE UI
+platform/peer/         BLE FSM, frames, PeerConnectionService
+features/shell/        splash, home, profile/settings, BLE UI
 ```
 
 ```mermaid
@@ -80,15 +79,13 @@ flowchart TD
 
 | Package | Purpose |
 |---------|---------|
-| `core/` | `appLocator`, BLoC helpers, localization, technical ports (`LocalDataProvider`) |
-| `infrastructure/` | SharedPreferences impl, Firebase bootstrap, `FirebasePushService` |
+| `core/` | `appLocator`, BLoC helpers, localization, technical ports |
+| `infrastructure/` | SharedPreferences, Firebase, BLE transport, push events |
 | `core_ui/` | theme (`AppTheme`, `AppColors`), `AppScaffold`, `ui_kit` |
-| `domain/` | peer models, settings/push repository interfaces |
-| `data/` | BLE peer layer, repository implementations |
+| `platform/peer/` | BLE connection FSM, frames, `PeerConnectionService` |
 | `navigation_api/` | `AppNavigator` port |
 | `navigation/` | `AppRouter` (implements `AppNavigator`) |
-| `platform/peer/` | BLE connection FSM, frames, `PeerConnectionService` |
-| `features/shell/` | splash, home, games list, BLE connection dialogs |
+| `features/shell/` | splash, home, profile/settings, games list, BLE connection UI |
 
 ## Tech stack
 

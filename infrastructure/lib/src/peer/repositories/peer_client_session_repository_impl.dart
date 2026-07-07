@@ -4,7 +4,6 @@ import 'package:ble_peer_session/ble_peer_session.dart' as pckg;
 import 'package:infrastructure/src/peer/mappers/peer_device_mapper.dart';
 import 'package:infrastructure/src/peer/mappers/peer_endpoint_mapper.dart';
 import 'package:infrastructure/src/peer/peer_lifecycle.dart';
-import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
 import 'package:peer/peer_connection.dart';
 
@@ -12,12 +11,12 @@ import 'package:peer/peer_connection.dart';
 final class PeerClientSessionRepositoryImpl implements PeerClientSessionRepository {
   PeerClientSessionRepositoryImpl(
     this._peerLifecycle,
-    this._profileRepository,
+    this._playerIdentitySource,
     this._localDeviceRepository,
   );
 
   final PeerLifecycle _peerLifecycle;
-  final ProfileRepository _profileRepository;
+  final PeerPlayerIdentitySource _playerIdentitySource;
   final LocalDeviceRepository _localDeviceRepository;
 
   pckg.PeerClient? _client;
@@ -99,7 +98,7 @@ final class PeerClientSessionRepositoryImpl implements PeerClientSessionReposito
   }
 
   Future<PeerEndpoint> _buildLocalEndpoint() async {
-    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
+    final PeerPlayerIdentity? profile = await _playerIdentitySource.getCurrentIdentity();
     if (profile == null) {
       throw StateError('Player profile is required before starting a peer session');
     }

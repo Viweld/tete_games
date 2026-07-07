@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer' as developer;
 
-import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
 import 'package:peer/peer_connection.dart';
 import 'package:peer/src/data/peer_discovery_device_registry.dart';
@@ -12,7 +11,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     this._serverSessionRepository,
     this._clientSessionRepository,
     this._transportRepository,
-    this._profileRepository,
+    this._playerIdentitySource,
   ) {
     _emitInitialFrame();
     _connectionSubscription = _transportRepository.connectionState.listen(_onConnectionState);
@@ -23,7 +22,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   final PeerServerSessionRepository _serverSessionRepository;
   final PeerClientSessionRepository _clientSessionRepository;
   final PeerTransportRepository _transportRepository;
-  final ProfileRepository _profileRepository;
+  final PeerPlayerIdentitySource _playerIdentitySource;
 
   final StreamController<AppConnectionFrame> _framesController =
       StreamController<AppConnectionFrame>.broadcast();
@@ -213,8 +212,8 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   }
 
   Future<bool> _hasProfile() async {
-    final PlayerProfile? profile = await _profileRepository.getCurrentPlayer();
-    return profile != null;
+    final PeerPlayerIdentity? identity = await _playerIdentitySource.getCurrentIdentity();
+    return identity != null;
   }
 
   String _newSessionId() {

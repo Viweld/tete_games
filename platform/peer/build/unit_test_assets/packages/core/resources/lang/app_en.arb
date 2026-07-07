@@ -1,0 +1,125 @@
+{
+  "@@locale": "en",
+  "citizenship_search_placeholder": "Search by country name",
+  "core_back_button": "Back",
+  "description_validator_overflow_message": "Description length should not exceed 300 characters",
+  "email_validator_invalid_message": "Invalid email format",
+  "email_validator_overflow_message": "Email should not exceed 50 characters",
+  "expandable_text_expand_label": "more",
+  "expandable_text_fold_label": "fold",
+  "name_validator_empty_message": "Cannot be empty",
+  "name_validator_invalid_message": "Invalid name format",
+  "name_validator_overflow_message": "Name should not exceed 30 characters",
+  "peer_client_devices_title": "Nearby devices",
+  "peer_client_error_connection": "Failed to connect to the device",
+  "peer_client_error_discovery": "Failed to start device discovery",
+  "peer_client_invitation_rejected_body": "The host declined your invitation",
+  "peer_client_invitation_rejected_button": "Close",
+  "peer_client_invitation_rejected_title": "Invitation declined",
+  "peer_client_invitation_sent_title": "Invitation sent",
+  "peer_client_invite_button": "Invite",
+  "peer_client_loading": "Loading...",
+  "peer_client_our_app_badge": "tete games app",
+  "peer_client_searching": "Searching...",
+  "peer_client_unknown_device": "Unknown device",
+  "peer_client_wait_confirmation": "Waiting for confirmation",
+  "peer_peer_card_connection_request": "connection request",
+  "peer_peer_card_request_sent": "request sent...",
+  "peer_peer_card_waiting_invitation": "waiting for invitation",
+  "peer_client_waiting_hosts_title": "Waiting for hosts:",
+  "peer_dialog_cancel": "Cancel",
+  "peer_dialog_ok": "OK",
+  "peer_dialog_open_settings": "Open settings",
+  "peer_dialog_error_title": "Error",
+  "peer_error_bluetooth_unavailable": "Bluetooth is turned off or unavailable",
+  "peer_disconnect_peer_left": "Opponent left the game",
+  "peer_disconnect_link_lost": "Connection lost",
+  "peer_disconnect_timeout": "No response from opponent",
+  "peer_games_list_stub": "Games list coming soon",
+  "peer_games_list_title": "Games",
+  "peer_home_mode_prompt": "Choose a connection mode",
+  "peer_home_retry_button": "Retry",
+  "peer_home_start_client_button": "Find and connect",
+  "peer_home_start_server_button": "Wait for a player",
+  "peer_home_menu_connect": "Connect",
+  "peer_home_menu_disconnect": "Disconnect",
+  "peer_home_menu_profile": "Profile",
+  "peer_home_bluetooth_permissions_ok": "Bluetooth permissions granted",
+  "peer_home_bluetooth_permissions_missing": "Bluetooth permissions not granted",
+  "peer_home_bluetooth_adapter_on": "Bluetooth is on",
+  "peer_home_bluetooth_adapter_off": "Bluetooth is off",
+  "peer_home_bluetooth_permissions_granted_dialog_title": "Tete Games is allowed to use Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_title": "Tete Games is not allowed to use Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_message": "To play games, allow Tete Games to use Bluetooth in the app permission settings.",
+  "peer_home_bluetooth_adapter_enabled_dialog_title": "Bluetooth is on",
+  "peer_home_bluetooth_adapter_disabled_dialog_title": "Bluetooth is off",
+  "peer_home_bluetooth_adapter_disabled_dialog_message": "To play games, turn on Bluetooth in the system control panel.",
+  "peer_home_drawer_edit_name": "Edit name",
+  "peer_home_drawer_nickname_title": "Nickname",
+  "peer_home_drawer_nickname_subtitle_filled": "Your nickname",
+  "peer_home_drawer_nickname_subtitle_empty": "Choose a nickname",
+  "peer_home_drawer_bluetooth_access_title": "Bluetooth access",
+  "peer_home_drawer_bluetooth_adapter_title": "Bluetooth adapter",
+  "peer_home_drawer_disconnect_confirm_title": "Disconnect",
+  "peer_home_drawer_disconnect_confirm_message": "Are you sure you want to disconnect?",
+  "peer_dialog_yes": "Yes",
+  "peer_home_drawer_download": "How to download",
+  "peer_home_drawer_download_hint": "Scan the QR code to open the download page.",
+  "peer_home_drawer_copyright": "© {year} Tete Games",
+  "@peer_home_drawer_copyright": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "peer_home_drawer_version": "Version {version}",
+  "@peer_home_drawer_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_home_title": "Welcome to tete games",
+  "peer_nickname_dialog_title": "Choose a nickname",
+  "peer_nickname_field_hint": "Enter a nickname",
+  "peer_nickname_field_label": "Nickname",
+  "peer_nickname_save_button": "Save",
+  "peer_nickname_save_failed": "Failed to save nickname",
+  "peer_nickname_validation_empty": "Nickname cannot be empty",
+  "peer_nickname_validation_too_long": "Nickname must be 20 characters or fewer",
+  "peer_nickname_validation_wrong_format": "Spaces are not allowed",
+  "peer_server_accept_button": "Accept",
+  "peer_server_invitation_device": "Invitation from device {deviceName}",
+  "@peer_server_invitation_device": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_server_invitation_player": "Player name: {playerName}",
+  "@peer_server_invitation_player": {
+    "placeholders": {
+      "playerName": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_server_invitation_prompt": "Make your decision",
+  "peer_server_invitation_title": "Invitation received",
+  "peer_server_reject_button": "Decline",
+  "peer_server_waiting_body": "Your device is visible to nearby players",
+  "peer_server_waiting_title": "Waiting for connection...",
+  "secret_mode_no": "No",
+  "secret_mode_ok": "OK",
+  "secret_mode_password_hint": "Password",
+  "secret_mode_production_mode_title": "Production mode",
+  "secret_mode_return_to_production_message": "Return to production mode?",
+  "secret_mode_test_api_title": "Test API",
+  "secret_mode_version_label": "Version",
+  "secret_mode_wrong_password": "Wrong password",
+  "secret_mode_yes": "Yes",
+  "something_went_wrong": "Something went wrong"
+}

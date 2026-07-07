@@ -1,0 +1,125 @@
+{
+  "@@locale": "ru",
+  "citizenship_search_placeholder": "Поиск по названию страны",
+  "core_back_button": "Назад",
+  "description_validator_overflow_message": "Длина описания не должна превышать 300 символов",
+  "email_validator_invalid_message": "Некорректный формат email",
+  "email_validator_overflow_message": "Email не должен превышать 50 символов",
+  "expandable_text_expand_label": "больше",
+  "expandable_text_fold_label": "свернуть",
+  "name_validator_empty_message": "Не может быть пустым",
+  "name_validator_invalid_message": "Некорректный формат имени",
+  "name_validator_overflow_message": "Имя не должно превышать 30 символов",
+  "peer_client_devices_title": "Найденные устройства",
+  "peer_client_error_connection": "Ошибка подключения",
+  "peer_client_error_discovery": "Ошибка запуска поиска",
+  "peer_client_invitation_rejected_body": "Соперник отклонил приглашение",
+  "peer_client_invitation_rejected_button": "Жаль...",
+  "peer_client_invitation_rejected_title": "Приглашение отклонено",
+  "peer_client_invitation_sent_title": "Приглашение отправлено",
+  "peer_client_invite_button": "Пригласить",
+  "peer_client_loading": "Загрузка...",
+  "peer_client_our_app_badge": "Приложение tete games",
+  "peer_client_searching": "Поиск...",
+  "peer_client_unknown_device": "Неизвестное устройство",
+  "peer_client_wait_confirmation": "Ждите подтверждения",
+  "peer_peer_card_connection_request": "запрос подключения",
+  "peer_peer_card_request_sent": "запрос отправлен...",
+  "peer_peer_card_waiting_invitation": "ожидает приглашения",
+  "peer_client_waiting_hosts_title": "Ждут приглашения:",
+  "peer_dialog_cancel": "Отмена",
+  "peer_dialog_ok": "Ок",
+  "peer_dialog_open_settings": "В настройки",
+  "peer_dialog_error_title": "Ошибка",
+  "peer_error_bluetooth_unavailable": "Bluetooth выключен или недоступен",
+  "peer_disconnect_peer_left": "Соперник покинул игру",
+  "peer_disconnect_link_lost": "Соединение потеряно",
+  "peer_disconnect_timeout": "Нет ответа от соперника",
+  "peer_games_list_stub": "Список игр скоро появится",
+  "peer_games_list_title": "Игры",
+  "peer_home_mode_prompt": "Выберите режим подключения",
+  "peer_home_retry_button": "Повторить",
+  "peer_home_start_client_button": "Найти и подключиться",
+  "peer_home_start_server_button": "Ожидать присоединения",
+  "peer_home_menu_connect": "Соединиться",
+  "peer_home_menu_disconnect": "Отключиться",
+  "peer_home_menu_profile": "Профиль",
+  "peer_home_bluetooth_permissions_ok": "Разрешения Bluetooth выданы",
+  "peer_home_bluetooth_permissions_missing": "Разрешения Bluetooth не выданы",
+  "peer_home_bluetooth_adapter_on": "Bluetooth включён",
+  "peer_home_bluetooth_adapter_off": "Bluetooth выключен",
+  "peer_home_bluetooth_permissions_granted_dialog_title": "Tete Games разрешено использовать Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_title": "Tete Games запрещено использовать Bluetooth",
+  "peer_home_bluetooth_permissions_denied_dialog_message": "Чтобы играть, разрешите Tete Games использовать Bluetooth в системных настройках разрешений приложения.",
+  "peer_home_bluetooth_adapter_enabled_dialog_title": "Bluetooth включён",
+  "peer_home_bluetooth_adapter_disabled_dialog_title": "Bluetooth выключен",
+  "peer_home_bluetooth_adapter_disabled_dialog_message": "Чтобы играть, включите Bluetooth в системной панели управления.",
+  "peer_home_drawer_edit_name": "Редактировать имя",
+  "peer_home_drawer_nickname_title": "Никнэйм",
+  "peer_home_drawer_nickname_subtitle_filled": "Ваш никнэйм",
+  "peer_home_drawer_nickname_subtitle_empty": "Придумайте себе никнэйм",
+  "peer_home_drawer_bluetooth_access_title": "Доступ к Bluetooth",
+  "peer_home_drawer_bluetooth_adapter_title": "Bluetooth адаптер",
+  "peer_home_drawer_disconnect_confirm_title": "Разъединить",
+  "peer_home_drawer_disconnect_confirm_message": "Вы точно хотите разорвать связь?",
+  "peer_dialog_yes": "Да",
+  "peer_home_drawer_download": "Как скачать",
+  "peer_home_drawer_download_hint": "Отсканируйте QR-код, чтобы открыть страницу загрузки.",
+  "peer_home_drawer_copyright": "© {year} Tete Games",
+  "@peer_home_drawer_copyright": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "peer_home_drawer_version": "Версия {version}",
+  "@peer_home_drawer_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_home_title": "Добро пожаловать в tete games",
+  "peer_nickname_dialog_title": "Придумайте себе псевдоним",
+  "peer_nickname_field_hint": "Введите псевдоним",
+  "peer_nickname_field_label": "Псевдоним",
+  "peer_nickname_save_button": "Сохранить",
+  "peer_nickname_save_failed": "Не удалось сохранить псевдоним",
+  "peer_nickname_validation_empty": "Псевдоним не должен быть пустым",
+  "peer_nickname_validation_too_long": "Псевдоним не должен быть длиннее 20 символов",
+  "peer_nickname_validation_wrong_format": "Не допускаются пробелы между символами",
+  "peer_server_accept_button": "Принять",
+  "peer_server_invitation_device": "Приглашение от устройства {deviceName}",
+  "@peer_server_invitation_device": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_server_invitation_player": "Имя пользователя: {playerName}",
+  "@peer_server_invitation_player": {
+    "placeholders": {
+      "playerName": {
+        "type": "String"
+      }
+    }
+  },
+  "peer_server_invitation_prompt": "Примите решение",
+  "peer_server_invitation_title": "Получено приглашение",
+  "peer_server_reject_button": "Отклонить",
+  "peer_server_waiting_body": "Ваше устройство видимо для других устройств",
+  "peer_server_waiting_title": "Ожидание подключения...",
+  "secret_mode_no": "Нет",
+  "secret_mode_ok": "Ок",
+  "secret_mode_password_hint": "Пароль",
+  "secret_mode_production_mode_title": "Production mode",
+  "secret_mode_return_to_production_message": "Вернуться в production mode?",
+  "secret_mode_test_api_title": "Test API",
+  "secret_mode_version_label": "Версия",
+  "secret_mode_wrong_password": "Неверный пароль",
+  "secret_mode_yes": "Да",
+  "something_went_wrong": "Что-то пошло не так"
+}

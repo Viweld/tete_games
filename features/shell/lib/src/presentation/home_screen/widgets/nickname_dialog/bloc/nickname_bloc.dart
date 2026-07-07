@@ -1,5 +1,5 @@
 import 'package:core/core.dart';
-import 'package:domain/domain.dart';
+import 'package:shell/shell_domain.dart';
 import 'package:uuid/uuid.dart';
 
 part 'nickname_event.dart';

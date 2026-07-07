@@ -10,8 +10,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:core_ui/src/di/configure_dependencies.module.dart' as _i339;
-import 'package:data/src/di/configure_dependencies.module.dart' as _i282;
-import 'package:domain/src/di/configure_dependencies.module.dart' as _i697;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:infrastructure/src/di/configure_dependencies.module.dart'
     as _i1041;
@@ -30,8 +28,6 @@ extension GetItInjectableX on _i174.GetIt {
     await _i1041.InfrastructurePackageModule().init(gh);
     await _i1058.NavigationPackageModule().init(gh);
     await _i339.CoreUiPackageModule().init(gh);
-    await _i282.DataPackageModule().init(gh);
-    await _i697.DomainPackageModule().init(gh);
     await _i793.PeerPackageModule().init(gh);
     await _i684.ShellPackageModule().init(gh);
     return this;

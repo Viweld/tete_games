@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:developer' as developer;
 import 'dart:io' show Platform;
 
-import 'package:domain/domain.dart';
+import 'package:core/core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:infrastructure/src/push/models/push_navigation_event.dart';
+import 'package:infrastructure/src/push/models/user_notification.dart';
+import 'package:infrastructure/src/push/repositories/push_events_repository.dart';
 import 'package:injectable/injectable.dart';
 
 /// FCM wrapper for foreground messages, token access, and deep-link navigation events.
@@ -15,12 +18,12 @@ class FirebasePushService {
 
   FirebasePushService({
     required PushEventsRepository eventsRepository,
-    required SettingsRepository settingsRepository,
+    required PushNotificationPreferences pushPreferences,
   }) : _eventsRepository = eventsRepository,
-       _settingsRepository = settingsRepository;
+       _pushPreferences = pushPreferences;
 
   final PushEventsRepository _eventsRepository;
-  final SettingsRepository _settingsRepository;
+  final PushNotificationPreferences _pushPreferences;
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
 
   final StreamController<String> _tokenController = StreamController<String>.broadcast();
@@ -121,7 +124,7 @@ class FirebasePushService {
   }
 
   Future<void> _onMessage(RemoteMessage message) async {
-    final bool isEnabled = await _settingsRepository.isPushNotificationsEnabled();
+    final bool isEnabled = await _pushPreferences.isPushNotificationsEnabled();
     if (!isEnabled) return;
 
     final Map<String, dynamic> data = message.data;

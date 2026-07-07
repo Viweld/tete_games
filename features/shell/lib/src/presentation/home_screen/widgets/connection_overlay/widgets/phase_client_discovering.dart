@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:domain/domain.dart';
+import 'package:shell/shell_domain.dart';
 import 'package:peer/peer_connection.dart';
 import 'package:shell/src/presentation/home_screen/widgets/connection_overlay/widgets/centered_message.dart';
 import 'package:shell/src/presentation/home_screen/widgets/connection_overlay/widgets/circular_button.dart';

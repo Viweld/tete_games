@@ -1,5 +1,5 @@
 import 'package:core/core.dart';
-import 'package:domain/domain.dart';
+import 'package:shell/shell_domain.dart';
 import 'package:peer/peer_connection.dart';
 
 part 'home_drawer_event.dart';
