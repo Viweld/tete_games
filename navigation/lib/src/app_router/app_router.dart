@@ -1,8 +1,9 @@
-import 'package:core/core.dart';
-import 'package:navigation/navigation.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:main/main.dart';
+import 'package:navigation_api/navigation_api.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page|Screen|Popup|BottomSheet|Dialog|Drawer,Route')
-class AppRouter extends RootStackRouter {
+class AppRouter extends RootStackRouter implements AppNavigator {
   final AutoRouteObserver routeObserver = AutoRouteObserver();
 
   @override
@@ -12,17 +13,23 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SplashRoute.page, initial: true),
   ];
 
+  @override
   Future<void> navigateBack([Object? result]) => maybePop(result);
 
-  Future<void> navigateRoot() => replaceAll(<PageRouteInfo<Object?>>[const HomeRoute()]);
+  @override
+  Future<void> navigateRoot() => replaceAll(<PageRouteInfo<Object?>>[HomeRoute()]);
 
-  // fz:navigate-methods
-  Future<void> navigateHome() => push(const HomeRoute());
+  @override
+  Future<void> navigateHome() => push(HomeRoute());
 
-  /// Stubs for `core_ui` MainAppBar until modules are connected via `fz add`.
+  @override
   Future<void> navigateSupport() async {}
 
+  @override
   Future<void> navigatePersonalData() async {}
 
+  @override
   Future<void> navigateNotifications() async {}
+
+  // fz:navigate-methods
 }

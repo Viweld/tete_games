@@ -1,6 +1,6 @@
 name: core
 publish_to: none
-description: Project core module
+description: Project core module — domain-agnostic shared kernel and technical ports.
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
@@ -11,31 +11,22 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  data:
-    path: ../data
-  domain:
-    path: ../domain
-  navigation:
-    path: ../navigation
 
+  async: ^2.13.0
   get_it: ^9.2.1
   flutter_bloc: ^9.1.1
   bloc_concurrency: ^0.3.0
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
-  permission_handler: ^12.0.1
   injectable: ^3.0.0
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
   flutter_dotenv: ^6.0.0
   collection: ^1.19.1
   url_launcher: ^6.3.2
   flutter_native_splash: ^2.4.8
   shared_preferences: ^2.5.3
-
-  firebase_core: ^4.10.0
-  firebase_messaging: ^16.3.0
-  firebase_crashlytics: ^5.2.3
-
   sealed_countries: ^3.2.0
   flutter_libphonenumber: ^2.7.0
 

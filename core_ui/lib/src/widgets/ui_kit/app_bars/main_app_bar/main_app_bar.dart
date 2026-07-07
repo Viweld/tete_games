@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:core_ui/src/widgets/ui_kit/app_bars/main_app_bar/widgets/secret_mode_dialogs.dart';
-import 'package:navigation/navigation.dart';
 
 export 'widgets/app_back_button.dart';
 

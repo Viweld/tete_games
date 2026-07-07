@@ -1,6 +1,6 @@
 name: navigation
 publish_to: none
-description: Project navigation module
+description: App router aggregator — depends on feature routes.
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
@@ -12,15 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  core:
-    path: ../core
-  core_ui:
-    path: ../core_ui
-  # fz:navigation-features
+  navigation_api:
+    path: ../navigation_api
   main:
     path: ../features/main
 
   auto_route: ^11.1.0
+  injectable: ^3.0.0
 
 dev_dependencies:
   auto_route_generator: ^10.5.0

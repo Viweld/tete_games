@@ -12,6 +12,8 @@ workspace:
   - core_ui
   - data
   - domain
+  - infrastructure
+  - navigation_api
   - navigation
   # fz:workspace-features
   - features/main
@@ -27,6 +29,8 @@ dependencies:
     path: ./data
   domain:
     path: ./domain
+  infrastructure:
+    path: ./infrastructure
   navigation:
     path: ./navigation
   # fz:feature-deps

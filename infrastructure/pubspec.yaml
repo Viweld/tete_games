@@ -1,6 +1,6 @@
-name: data
+name: infrastructure
 publish_to: none
-description: Project data module — BLE peer adapters and repositories.
+description: Frameworks and drivers — local storage, Firebase, push.
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
@@ -16,10 +16,10 @@ dependencies:
   domain:
     path: ../domain
 
-  ble_peer_session: ^0.4.3
-  device_info_plus: ^13.1.0
-  flutter_blue_plus: ^2.3.8
-  permission_handler: ^12.0.3
+  shared_preferences: ^2.5.3
+  firebase_core: ^4.10.0
+  firebase_messaging: ^16.3.0
+  firebase_crashlytics: ^5.2.3
   injectable: ^3.0.0
 
 dev_dependencies:

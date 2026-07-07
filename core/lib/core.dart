@@ -19,11 +19,13 @@ export 'package:json_annotation/json_annotation.dart';
 
 export 'src/config/app_config.dart';
 export 'src/constants/constants.dart';
-export 'src/di/app_di.dart';
+export 'src/di/app_restarter.dart';
+export 'src/di/locator.dart';
 export 'src/error_handling/error_handling.dart';
 export 'src/events/events.dart';
 export 'src/exceptions/exceptions.dart';
 export 'src/localization/localization.dart';
+export 'src/ports/ports.dart';
 export 'src/services/services.dart';
 export 'src/utils/utils.dart';
 export 'src/validators/validators.dart';

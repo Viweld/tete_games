@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:main/main/home_screen/bloc/home_bloc.dart';
 import 'package:main/main/home_screen/home_content.dart';
 import 'package:main/main/home_screen/widgets/drawer/bloc/home_drawer_bloc.dart';
 import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog.dart';
 import 'package:main/main/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';
-import 'package:navigation/navigation.dart';
+import 'package:navigation_api/navigation_api.dart';
 import 'package:nested/nested.dart';
 
 @RoutePage()

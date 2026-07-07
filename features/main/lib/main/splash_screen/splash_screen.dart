@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:core/core.dart';
 import 'package:main/main/splash_screen/bloc/splash_bloc.dart';
-import 'package:navigation/navigation.dart';
+import 'package:navigation_api/navigation_api.dart';
 
 @RoutePage()
 class SplashScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FocusScope.of(context).unfocus();
-    final AppRouter router = appLocator<AppRouter>();
+    final AppNavigator navigator = appLocator<AppNavigator>();
 
     return BlocProvider<SplashBloc>(
       lazy: false,
@@ -21,7 +22,7 @@ class SplashScreen extends StatelessWidget {
           final SplashEffect? effect = state.effect;
           if (effect == null) return;
 
-          effect.when(navigateRoot: router.navigateRoot);
+          effect.when(navigateRoot: navigator.navigateRoot);
 
           context.read<SplashBloc>().add(const SplashEvent.effectHandled());
         },

@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:navigation/navigation.dart';
+import 'package:navigation/src/app_router/app_router.dart';
 
 @module
 abstract class RegisterModule {
-  @singleton
-  AppRouter get appRouter => AppRouter();
+  @lazySingleton
+  AppRouter appRouter() => AppRouter();
 }

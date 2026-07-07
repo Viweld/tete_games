@@ -1,6 +1,9 @@
 import 'dart:developer';
 
+import 'package:app/di/app_di.dart';
 import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
+import 'package:infrastructure/infrastructure.dart';
 import 'package:navigation/navigation.dart';
 
 Future<void> main() async {

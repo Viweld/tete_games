@@ -1,5 +1,6 @@
-import 'package:navigation/navigation.dart';
+import 'package:navigation_api/navigation_api.dart';
 
+import 'main.gr.dart';
 export 'main.gr.dart';
 export 'main/home_screen/home_screen.dart';
 export 'main/splash_screen/splash_screen.dart';

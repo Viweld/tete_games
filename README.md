@@ -17,7 +17,7 @@ From the predecessor **ble_games** (BaTuGa), the following are ported or in prog
 
 In the new codebase:
 
-- **architecture** — feature packages in `features/`, layers `domain` / `data` / `core` / `navigation`;
+- **architecture** — acyclic package graph: `domain` → `core` / `data` / `infrastructure`; Composition Root in `lib/di/`; `navigation_api` port;
 - **state** — `flutter_bloc` + effect-based navigation and UI effects;
 - **DI** — `injectable` + `get_it` (`appLocator`);
 - **UI** — theme, colors, and components from `core_ui` (`AppScaffold`, `ui_kit`: buttons, inputs, `AppTextField`, etc.).
@@ -34,15 +34,52 @@ In the new codebase:
 | Games (tic-tac-toe, etc.) | planned |
 | `core_ui` travel widgets cleanup | planned |
 
+## Architecture
+
+```text
+lib/di/app_di.dart     Composition Root
+domain/                peer models, repository contracts (BLE)
+core/                  BLoC helpers, localization, technical ports
+infrastructure/        local storage, Firebase bootstrap, FCM
+data/                  BLE peer adapters, repository impl
+core_ui/               theme, ui_kit
+navigation_api/        AppNavigator port
+navigation/            AppRouter aggregator
+features/main/         splash, home, BLE UI
+```
+
+```mermaid
+flowchart TD
+  app["app (lib/)"] --> features
+  app --> navigation
+  app --> infrastructure
+  app --> data
+  app --> core_ui
+  app --> core
+  app --> domain
+  navigation --> navigationApi["navigation_api"]
+  navigation --> main
+  main --> navigationApi
+  main --> core_ui
+  main --> core
+  main --> domain
+  infrastructure --> core
+  data --> core
+  data --> domain
+  core --> domain
+```
+
 ## Workspace packages
 
 | Package | Purpose |
 |---------|---------|
-| `core/` | DI, BLoC helpers, localization, Firebase bootstrap, utilities |
+| `core/` | `appLocator`, BLoC helpers, localization, technical ports (`LocalDataProvider`) |
+| `infrastructure/` | SharedPreferences impl, Firebase bootstrap, `FirebasePushService` |
 | `core_ui/` | theme (`AppTheme`, `AppColors`), `AppScaffold`, `ui_kit` |
 | `domain/` | peer models, settings/push repository interfaces |
-| `data/` | BLE peer layer, local settings, FCM `FirebaseMessaging` DI |
-| `navigation/` | `AppRouter`, routes |
+| `data/` | BLE peer layer, repository implementations |
+| `navigation_api/` | `AppNavigator` port |
+| `navigation/` | `AppRouter` (implements `AppNavigator`) |
 | `features/main/` | splash, home, games list, BLE connection dialogs |
 
 ## Tech stack

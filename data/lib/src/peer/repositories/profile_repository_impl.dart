@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:data/src/providers/local/local_providers.dart';
+import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
 
