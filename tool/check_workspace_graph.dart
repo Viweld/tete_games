@@ -3,7 +3,7 @@
 // Run from repository root:
 //   fvm dart run tool/check_workspace_graph.dart
 //
-// See tool/workspace_graph_config.yaml and .cursor/rules/tete-package-dependencies.mdc.
+// See tool/workspace_graph_config.yaml.
 
 import 'dart:io';
 
@@ -28,8 +28,8 @@ void main() {
 
   issues.addAll(_checkPubspecGraph(workspace, config));
   issues.addAll(_checkImportGraph(workspace, config));
-  issues.addAll(_checkCrossPackageSrcImports(workspace, config));
-  issues.addAll(_checkBlePeerSessionScope(workspace, config));
+  issues.addAll(_checkCrossPackageSrcImports(workspace));
+  issues.addAll(_checkBlePeerSessionScope(workspace));
   issues.addAll(_checkCycles(workspace));
 
   final List<GraphIssue> errors = issues
@@ -102,7 +102,7 @@ final class _Package {
   final Set<String> pathDependencies;
 }
 
-enum _PackageCategory { app, kernel, infrastructure, platform, feature, navigation, legacy }
+enum _PackageCategory { app, kernel, infrastructure, platform, feature, navigation }
 
 final class _Workspace {
   _Workspace(this.root, this.packages);
@@ -130,7 +130,7 @@ final class _Workspace {
       packages[name] = _Package(
         name: name,
         root: Directory('${root.path}/$rel'),
-        category: _categoryForPath(rel, name),
+        category: _categoryForPath(rel),
         pathDependencies: _readPathDeps(pubspecPath),
       );
     }
@@ -139,7 +139,7 @@ final class _Workspace {
   }
 }
 
-_PackageCategory _categoryForPath(String rel, String name) {
+_PackageCategory _categoryForPath(String rel) {
   if (rel.startsWith('features/')) {
     return _PackageCategory.feature;
   }
@@ -151,9 +151,6 @@ _PackageCategory _categoryForPath(String rel, String name) {
   }
   if (rel == 'infrastructure') {
     return _PackageCategory.infrastructure;
-  }
-  if (rel == 'domain' || rel == 'data') {
-    return _PackageCategory.legacy;
   }
   return _PackageCategory.kernel;
 }
@@ -230,29 +227,17 @@ bool _isPubspecEdgeAllowed({required _Package from, required String to, required
       }
       return false;
     case _PackageCategory.infrastructure:
-      return to == 'core' || to == 'peer' || (to == 'domain' && !config.strict);
+      return to == 'core' || to == 'peer';
     case _PackageCategory.platform:
-      return to == 'core' || to == 'domain';
+      return to == 'core';
     case _PackageCategory.feature:
-      if (config.strict) {
-        return to == 'core' || to == 'core_ui' || to == 'navigation_api' || to == 'peer';
-      }
-      return to == 'core' ||
-          to == 'core_ui' ||
-          to == 'navigation_api' ||
-          to == 'domain' ||
-          to == 'peer';
+      return to == 'core' || to == 'core_ui' || to == 'navigation_api' || to == 'peer';
     case _PackageCategory.navigation:
       if (to == 'navigation_api' || to == 'core') {
         return true;
       }
       final _Package? target = _globalWorkspace?.packages[to];
       return target?.category == _PackageCategory.feature;
-    case _PackageCategory.legacy:
-      if (from.name == 'data') {
-        return to == 'core' || to == 'domain';
-      }
-      return false;
   }
 }
 
@@ -264,24 +249,11 @@ List<GraphIssue> _checkPubspecGraph(_Workspace workspace, _Config config) {
   for (final _Package pkg in workspace.packages.values) {
     for (final String dep in pkg.pathDependencies) {
       if (!_isPubspecEdgeAllowed(from: pkg, to: dep, config: config)) {
-        issues.add(
-          GraphIssue(
-            'pubspec: ${pkg.name} must not depend on $dep',
-            isWarning: !config.strict && _isTransitionalPubspec(pkg.name, dep),
-          ),
-        );
+        issues.add(GraphIssue('pubspec: ${pkg.name} must not depend on $dep'));
       }
     }
   }
   return issues;
-}
-
-bool _isTransitionalPubspec(String from, String to) {
-  return from == 'shell' && to == 'domain' ||
-      from == 'peer' && to == 'domain' ||
-      from == 'data' && (to == 'core' || to == 'domain') ||
-      from == 'infrastructure' && (to == 'domain' || to == 'peer') ||
-      from == 'navigation' && to == 'shell';
 }
 
 bool _isImportEdgeAllowed({required _Package from, required String to, required _Config config}) {
@@ -289,10 +261,6 @@ bool _isImportEdgeAllowed({required _Package from, required String to, required 
     return true;
   }
 
-  // Cross-package src/ is always forbidden (handled separately too).
-  if (to == 'data' && from.category == _PackageCategory.feature) {
-    return false;
-  }
   if (to == 'infrastructure' && from.category != _PackageCategory.app) {
     return false;
   }
@@ -349,11 +317,7 @@ List<GraphIssue> _checkImportGraph(_Workspace workspace, _Config config) {
         }
         if (!_isImportEdgeAllowed(from: pkg, to: target, config: config)) {
           issues.add(
-            GraphIssue(
-              'import: ${pkg.name} must not import package:$target/ (${file.path})',
-              isWarning:
-                  !config.strict && target == 'domain' && pkg.category == _PackageCategory.feature,
-            ),
+            GraphIssue('import: ${pkg.name} must not import package:$target/ (${file.path})'),
           );
         }
       }
@@ -362,7 +326,7 @@ List<GraphIssue> _checkImportGraph(_Workspace workspace, _Config config) {
   return issues;
 }
 
-List<GraphIssue> _checkCrossPackageSrcImports(_Workspace workspace, _Config config) {
+List<GraphIssue> _checkCrossPackageSrcImports(_Workspace workspace) {
   final List<GraphIssue> issues = <GraphIssue>[];
   final RegExp srcImportRe = RegExp(r"""^import 'package:([a-z_]+)/src/""");
 
@@ -393,12 +357,12 @@ List<GraphIssue> _checkCrossPackageSrcImports(_Workspace workspace, _Config conf
   return issues;
 }
 
-List<GraphIssue> _checkBlePeerSessionScope(_Workspace workspace, _Config config) {
+List<GraphIssue> _checkBlePeerSessionScope(_Workspace workspace) {
   final List<GraphIssue> issues = <GraphIssue>[];
-  final RegExp bleImport = RegExp(r"""^import 'package:ble_peer_session/""");
+  final RegExp bleImport = RegExp('^import \'package:ble_peer_session/');
 
   for (final _Package pkg in workspace.packages.values) {
-    if (pkg.name == 'infrastructure' || pkg.name == 'data') {
+    if (pkg.name == 'infrastructure') {
       continue;
     }
     for (final File file in _dartFiles(pkg.root)) {
@@ -408,31 +372,8 @@ List<GraphIssue> _checkBlePeerSessionScope(_Workspace workspace, _Config config)
       for (final String line in file.readAsLinesSync()) {
         if (bleImport.hasMatch(line)) {
           issues.add(
-            GraphIssue(
-              'ble_peer_session: only infrastructure/data may import it (${file.path})',
-              isWarning: pkg.category == _PackageCategory.legacy && !config.strict,
-            ),
+            GraphIssue('ble_peer_session: only infrastructure may import it (${file.path})'),
           );
-        }
-      }
-    }
-  }
-
-  if (!config.strict) {
-    for (final _Package pkg in workspace.packages.values) {
-      if (pkg.name != 'data') {
-        continue;
-      }
-      for (final File file in _dartFiles(pkg.root)) {
-        for (final String line in file.readAsLinesSync()) {
-          if (bleImport.hasMatch(line)) {
-            issues.add(
-              GraphIssue(
-                'ble_peer_session: legacy data/ usage — move to infrastructure/ (transitional)',
-                isWarning: true,
-              ),
-            );
-          }
         }
       }
     }
