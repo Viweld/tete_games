@@ -3,8 +3,8 @@ import 'dart:developer' as developer;
 
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shell/src/data/bluetooth/bluetooth_permissions_reader.dart';
 import 'package:shell/shell_domain.dart';
+import 'package:shell/src/data/bluetooth/bluetooth_permissions_reader.dart';
 
 @LazySingleton(as: BluetoothStatusService, dispose: disposeBluetoothStatusService)
 final class BluetoothStatusServiceImpl implements BluetoothStatusService {
@@ -117,5 +117,5 @@ final class BluetoothStatusServiceImpl implements BluetoothStatusService {
 }
 
 Future<void> disposeBluetoothStatusService(BluetoothStatusService service) async {
-  (service as BluetoothStatusServiceImpl).dispose();
+  await (service as BluetoothStatusServiceImpl).dispose();
 }

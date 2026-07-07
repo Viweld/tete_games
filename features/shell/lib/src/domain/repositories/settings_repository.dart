@@ -5,7 +5,9 @@ abstract interface class SettingsRepository implements PushNotificationPreferenc
 
   Future<void> saveLanguageCode(String languageCode);
 
+  @override
   Future<bool> isPushNotificationsEnabled();
 
+  @override
   Future<void> setPushNotificationsEnabled(bool enabled);
 }

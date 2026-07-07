@@ -1,6 +1,5 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:shell/shell.dart';
 import 'package:navigation_api/navigation_api.dart';
+import 'package:shell/shell.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page|Screen|Popup|BottomSheet|Dialog|Drawer,Route')
 class AppRouter extends RootStackRouter implements AppNavigator {
@@ -17,19 +16,10 @@ class AppRouter extends RootStackRouter implements AppNavigator {
   Future<void> navigateBack([Object? result]) => maybePop(result);
 
   @override
-  Future<void> navigateRoot() => replaceAll(<PageRouteInfo<Object?>>[HomeRoute()]);
+  Future<void> navigateRoot() => replaceAll(<PageRouteInfo<Object?>>[const HomeRoute()]);
 
   @override
-  Future<void> navigateHome() => push(HomeRoute());
-
-  @override
-  Future<void> navigateSupport() async {}
-
-  @override
-  Future<void> navigatePersonalData() async {}
-
-  @override
-  Future<void> navigateNotifications() async {}
+  Future<void> navigateHome() => push(const HomeRoute());
 
   // fz:navigate-methods
 }

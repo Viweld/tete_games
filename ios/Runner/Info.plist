@@ -53,27 +53,8 @@
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
-		<key>CFBundleURLTypes</key>
-		<array>
-			<dict>
-				<key>CFBundleTypeRole</key>
-				<string>Editor</string>
-				<key>CFBundleURLSchemes</key>
-				<array>
-					<string>$(GOOGLE_REVERSED_CLIENT_ID)</string>
-				</array>
-			</dict>
-		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
-		<key>NSCameraUsageDescription</key>
-		<string>We need camera access to let you take and upload photos for your profile and documents.</string>
-		<key>NSPhotoLibraryUsageDescription</key>
-		<string>We need photo library access to let you select and upload photos for your profile and documents.</string>
-		<key>NSPhotoLibraryAddUsageDescription</key>
-		<string>We need permission to save photos to your library when you download or export images.</string>
-		<key>NSCalendarsUsageDescription</key>
-		<string>Calendar access lets you add or view events related to your bookings and visits when you use those features.</string>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>

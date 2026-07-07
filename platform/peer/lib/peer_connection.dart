@@ -1,3 +1,4 @@
+export 'src/di/configure_dependencies.module.dart';
 export 'src/domain/models/peer/connection/connection_models.dart';
 export 'src/domain/models/peer/peer_models.dart';
 export 'src/domain/ports/peer_player_identity_source.dart';
@@ -9,4 +10,3 @@ export 'src/domain/repositories/peer_transport_repository.dart';
 export 'src/domain/services/peer/peer_connection_project.dart';
 export 'src/domain/services/peer/peer_connection_reduce.dart';
 export 'src/domain/services/peer/peer_ui_event_tier.dart';
-export 'src/di/configure_dependencies.module.dart';

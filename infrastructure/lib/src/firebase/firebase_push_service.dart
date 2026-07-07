@@ -1,13 +1,10 @@
-import 'dart:async';
 import 'dart:developer' as developer;
-import 'dart:io' show Platform;
 
 import 'package:core/core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:infrastructure/src/push/models/push_navigation_event.dart';
 import 'package:infrastructure/src/push/models/user_notification.dart';
 import 'package:infrastructure/src/push/repositories/push_events_repository.dart';
-import 'package:injectable/injectable.dart';
 
 /// FCM wrapper for foreground messages, token access, and deep-link navigation events.
 /// Backend token registration and Crashlytics wiring are added when push goes live.

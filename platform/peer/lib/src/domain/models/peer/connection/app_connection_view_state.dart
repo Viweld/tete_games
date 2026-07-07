@@ -1,9 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:peer/src/domain/models/peer/connection/peer_session_close.dart';
 import 'package:peer/src/domain/models/peer/connection/peer_session_core_phase.dart';
 import 'package:peer/src/domain/models/peer/peer_device.dart';
 import 'package:peer/src/domain/models/peer/peer_endpoint.dart';
 import 'package:peer/src/domain/models/peer/peer_role.dart';
-import 'package:flutter/foundation.dart';
 
 @immutable
 enum OverlayPhase {

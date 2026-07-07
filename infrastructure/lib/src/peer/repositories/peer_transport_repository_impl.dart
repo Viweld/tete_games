@@ -3,8 +3,8 @@ import 'package:infrastructure/src/peer/mappers/peer_connection_state_mapper.dar
 import 'package:infrastructure/src/peer/mappers/peer_disconnect_reason_mapper.dart';
 import 'package:infrastructure/src/peer/mappers/peer_session_message_mapper.dart';
 import 'package:infrastructure/src/peer/peer_lifecycle.dart';
-import 'package:peer/peer_connection.dart';
 import 'package:injectable/injectable.dart';
+import 'package:peer/peer_connection.dart';
 
 @LazySingleton(as: PeerTransportRepository)
 final class PeerTransportRepositoryImpl implements PeerTransportRepository {

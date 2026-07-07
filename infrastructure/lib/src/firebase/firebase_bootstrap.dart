@@ -1,9 +1,9 @@
 import 'dart:developer' as developer;
 
-import 'package:infrastructure/src/firebase/firebase_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
+import 'package:infrastructure/src/firebase/firebase_config.dart';
 
 /// Initializes Firebase Core and Crashlytics. Call from main() before runApp().
 abstract final class FirebaseBootstrap {

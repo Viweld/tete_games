@@ -1,10 +1,10 @@
 import 'package:core/core.dart';
-import 'package:shell/shell_domain.dart';
 import 'package:peer/peer_connection.dart';
+import 'package:shell/shell_domain.dart';
 
+part 'home_app_bar_bloc.freezed.dart';
 part 'home_app_bar_event.dart';
 part 'home_app_bar_state.dart';
-part 'home_app_bar_bloc.freezed.dart';
 
 @injectable
 class HomeAppBarBloc extends Bloc<HomeAppBarEvent, HomeAppBarState> {

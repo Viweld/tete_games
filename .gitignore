@@ -18,15 +18,9 @@ mason-lock.json
 # Flutter DevTools
 **/devtools_options.yaml
 
-# Static analysis
-analysis_options.yaml
-
 # Localization maintenance scripts
 core/resources/lang/scan_ru.dart
 core/resources/lang/translate_arb.dart
-
-# Tests
-**/test/
 
 # IDE
 .vscode/

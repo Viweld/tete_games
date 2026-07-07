@@ -1,5 +1,5 @@
-import 'package:peer/src/domain/models/peer/connection/peer_toast_kind.dart';
 import 'package:flutter/foundation.dart';
+import 'package:peer/src/domain/models/peer/connection/peer_toast_kind.dart';
 
 @immutable
 enum PeerUiEventTier { critical, soft }

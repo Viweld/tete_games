@@ -1,8 +1,8 @@
 import 'package:navigation_api/navigation_api.dart';
 
-import 'shell_router.gr.dart';
+import 'package:shell/src/presentation/shell_router.gr.dart';
 
-/// Codegen anchor for route classes. App route tree lives in [AppRouter].
+/// Codegen anchor for route classes. App route tree lives in navigation AppRouter.
 @AutoRouterConfig(replaceInRouteName: 'Page|Screen|Popup|BottomSheet|Dialog|Drawer,Route')
 class ShellRouter extends RootStackRouter {
   @override

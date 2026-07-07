@@ -9,35 +9,7 @@ class AppLocalizationRu extends AppLocalization {
   AppLocalizationRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get citizenship_search_placeholder => 'Поиск по названию страны';
-
-  @override
   String get core_back_button => 'Назад';
-
-  @override
-  String get description_validator_overflow_message =>
-      'Длина описания не должна превышать 300 символов';
-
-  @override
-  String get email_validator_invalid_message => 'Некорректный формат email';
-
-  @override
-  String get email_validator_overflow_message => 'Email не должен превышать 50 символов';
-
-  @override
-  String get expandable_text_expand_label => 'больше';
-
-  @override
-  String get expandable_text_fold_label => 'свернуть';
-
-  @override
-  String get name_validator_empty_message => 'Не может быть пустым';
-
-  @override
-  String get name_validator_invalid_message => 'Некорректный формат имени';
-
-  @override
-  String get name_validator_overflow_message => 'Имя не должно превышать 30 символов';
 
   @override
   String get peer_client_devices_title => 'Найденные устройства';
@@ -273,33 +245,6 @@ class AppLocalizationRu extends AppLocalization {
 
   @override
   String get peer_server_waiting_title => 'Ожидание подключения...';
-
-  @override
-  String get secret_mode_no => 'Нет';
-
-  @override
-  String get secret_mode_ok => 'Ок';
-
-  @override
-  String get secret_mode_password_hint => 'Пароль';
-
-  @override
-  String get secret_mode_production_mode_title => 'Production mode';
-
-  @override
-  String get secret_mode_return_to_production_message => 'Вернуться в production mode?';
-
-  @override
-  String get secret_mode_test_api_title => 'Test API';
-
-  @override
-  String get secret_mode_version_label => 'Версия';
-
-  @override
-  String get secret_mode_wrong_password => 'Неверный пароль';
-
-  @override
-  String get secret_mode_yes => 'Да';
 
   @override
   String get something_went_wrong => 'Что-то пошло не так';

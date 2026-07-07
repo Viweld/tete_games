@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:core/core.dart';
-import 'package:injectable/injectable.dart';
 import 'package:shell/shell_domain.dart';
 
 @LazySingleton(as: ProfileRepository, dispose: disposeProfileRepository)

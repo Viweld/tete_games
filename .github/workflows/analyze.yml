@@ -31,13 +31,18 @@ jobs:
       - name: Workspace dependency graph
         run: fvm dart run tool/check_workspace_graph.dart
 
-      - name: Analyze
-        run: fvm flutter analyze
+      - name: Analyze workspace packages
+        run: |
+          fvm dart analyze \
+            lib \
+            core/lib \
+            core_ui/lib \
+            infrastructure/lib \
+            navigation_api/lib \
+            navigation/lib \
+            platform/peer/lib \
+            features/shell/lib \
+            tool
 
       - name: Test
-        run: |
-          if [ -d test ]; then
-            fvm flutter test
-          else
-            echo "No test/ directory — skipping tests"
-          fi
+        run: fvm flutter test platform/peer/test

@@ -32,7 +32,7 @@
 | Splash / Home / список игр | готово |
 | Firebase bootstrap (FCM + Crashlytics hooks) | готово (нативная конфигурация + Dart init) |
 | Игры (`features/game_*`) | в планах |
-| `core_ui` travel widgets cleanup | в планах |
+| `core_ui` skeleton widgets cleanup | готово |
 
 ## Архитектура
 
@@ -191,10 +191,6 @@ fvm flutter pub get
 fvm dart run build_runner build --delete-conflicting-outputs
 fvm flutter run
 ```
-
-## Env
-
-Скопируйте `.env.example` → `.env` при необходимости. Для BLE backend URL не нужен.
 
 ## Сборка
 

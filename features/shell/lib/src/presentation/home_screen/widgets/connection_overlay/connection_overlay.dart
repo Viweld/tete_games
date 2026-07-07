@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:core_ui/core_ui.dart';
 import 'package:peer/peer_connection.dart';
-import 'package:shell/src/domain/home_overlay_projection.dart';
+import 'package:shell/src/presentation/home_screen/models/home_overlay_projection.dart';
 import 'package:shell/src/presentation/home_screen/widgets/connection_overlay/widgets/phase_client_discovering.dart';
 import 'package:shell/src/presentation/home_screen/widgets/connection_overlay/widgets/phase_client_inviting.dart';
 import 'package:shell/src/presentation/home_screen/widgets/connection_overlay/widgets/phase_error.dart';

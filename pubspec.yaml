@@ -36,7 +36,6 @@ dependencies:
 
   get_it: ^9.2.1
   injectable: ^3.0.0
-  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
@@ -74,4 +73,3 @@ flutter:
   assets:
     - assets/app_logo.png
     - assets/app_icon.png
-    - .env

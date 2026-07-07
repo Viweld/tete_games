@@ -93,65 +93,11 @@ abstract class AppLocalization {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('ru'), Locale('en')];
 
-  /// No description provided for @citizenship_search_placeholder.
-  ///
-  /// In ru, this message translates to:
-  /// **'Поиск по названию страны'**
-  String get citizenship_search_placeholder;
-
   /// No description provided for @core_back_button.
   ///
   /// In ru, this message translates to:
   /// **'Назад'**
   String get core_back_button;
-
-  /// No description provided for @description_validator_overflow_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Длина описания не должна превышать 300 символов'**
-  String get description_validator_overflow_message;
-
-  /// No description provided for @email_validator_invalid_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Некорректный формат email'**
-  String get email_validator_invalid_message;
-
-  /// No description provided for @email_validator_overflow_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Email не должен превышать 50 символов'**
-  String get email_validator_overflow_message;
-
-  /// No description provided for @expandable_text_expand_label.
-  ///
-  /// In ru, this message translates to:
-  /// **'больше'**
-  String get expandable_text_expand_label;
-
-  /// No description provided for @expandable_text_fold_label.
-  ///
-  /// In ru, this message translates to:
-  /// **'свернуть'**
-  String get expandable_text_fold_label;
-
-  /// No description provided for @name_validator_empty_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Не может быть пустым'**
-  String get name_validator_empty_message;
-
-  /// No description provided for @name_validator_invalid_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Некорректный формат имени'**
-  String get name_validator_invalid_message;
-
-  /// No description provided for @name_validator_overflow_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Имя не должно превышать 30 символов'**
-  String get name_validator_overflow_message;
 
   /// No description provided for @peer_client_devices_title.
   ///
@@ -596,60 +542,6 @@ abstract class AppLocalization {
   /// In ru, this message translates to:
   /// **'Ожидание подключения...'**
   String get peer_server_waiting_title;
-
-  /// No description provided for @secret_mode_no.
-  ///
-  /// In ru, this message translates to:
-  /// **'Нет'**
-  String get secret_mode_no;
-
-  /// No description provided for @secret_mode_ok.
-  ///
-  /// In ru, this message translates to:
-  /// **'Ок'**
-  String get secret_mode_ok;
-
-  /// No description provided for @secret_mode_password_hint.
-  ///
-  /// In ru, this message translates to:
-  /// **'Пароль'**
-  String get secret_mode_password_hint;
-
-  /// No description provided for @secret_mode_production_mode_title.
-  ///
-  /// In ru, this message translates to:
-  /// **'Production mode'**
-  String get secret_mode_production_mode_title;
-
-  /// No description provided for @secret_mode_return_to_production_message.
-  ///
-  /// In ru, this message translates to:
-  /// **'Вернуться в production mode?'**
-  String get secret_mode_return_to_production_message;
-
-  /// No description provided for @secret_mode_test_api_title.
-  ///
-  /// In ru, this message translates to:
-  /// **'Test API'**
-  String get secret_mode_test_api_title;
-
-  /// No description provided for @secret_mode_version_label.
-  ///
-  /// In ru, this message translates to:
-  /// **'Версия'**
-  String get secret_mode_version_label;
-
-  /// No description provided for @secret_mode_wrong_password.
-  ///
-  /// In ru, this message translates to:
-  /// **'Неверный пароль'**
-  String get secret_mode_wrong_password;
-
-  /// No description provided for @secret_mode_yes.
-  ///
-  /// In ru, this message translates to:
-  /// **'Да'**
-  String get secret_mode_yes;
 
   /// No description provided for @something_went_wrong.
   ///

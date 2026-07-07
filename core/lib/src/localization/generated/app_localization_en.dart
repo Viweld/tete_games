@@ -9,35 +9,7 @@ class AppLocalizationEn extends AppLocalization {
   AppLocalizationEn([String locale = 'en']) : super(locale);
 
   @override
-  String get citizenship_search_placeholder => 'Search by country name';
-
-  @override
   String get core_back_button => 'Back';
-
-  @override
-  String get description_validator_overflow_message =>
-      'Description length should not exceed 300 characters';
-
-  @override
-  String get email_validator_invalid_message => 'Invalid email format';
-
-  @override
-  String get email_validator_overflow_message => 'Email should not exceed 50 characters';
-
-  @override
-  String get expandable_text_expand_label => 'more';
-
-  @override
-  String get expandable_text_fold_label => 'fold';
-
-  @override
-  String get name_validator_empty_message => 'Cannot be empty';
-
-  @override
-  String get name_validator_invalid_message => 'Invalid name format';
-
-  @override
-  String get name_validator_overflow_message => 'Name should not exceed 30 characters';
 
   @override
   String get peer_client_devices_title => 'Nearby devices';
@@ -272,33 +244,6 @@ class AppLocalizationEn extends AppLocalization {
 
   @override
   String get peer_server_waiting_title => 'Waiting for connection...';
-
-  @override
-  String get secret_mode_no => 'No';
-
-  @override
-  String get secret_mode_ok => 'OK';
-
-  @override
-  String get secret_mode_password_hint => 'Password';
-
-  @override
-  String get secret_mode_production_mode_title => 'Production mode';
-
-  @override
-  String get secret_mode_return_to_production_message => 'Return to production mode?';
-
-  @override
-  String get secret_mode_test_api_title => 'Test API';
-
-  @override
-  String get secret_mode_version_label => 'Version';
-
-  @override
-  String get secret_mode_wrong_password => 'Wrong password';
-
-  @override
-  String get secret_mode_yes => 'Yes';
 
   @override
   String get something_went_wrong => 'Something went wrong';

@@ -21,8 +21,8 @@ void main() {
     exit(2);
   }
 
-  final _Config config = _Config.load('${root.path}/tool/workspace_graph_config.yaml');
-  final _Workspace workspace = _Workspace.load(root);
+  final _Config config = _Config.fromFile('${root.path}/tool/workspace_graph_config.yaml');
+  final _Workspace workspace = _Workspace.fromDirectory(root);
 
   final List<GraphIssue> issues = <GraphIssue>[];
 
@@ -63,7 +63,7 @@ final class _Config {
   final bool strict;
   final Set<(String, String)> extraPubspecEdges;
 
-  static _Config load(String path) {
+  factory _Config.fromFile(String path) {
     bool strict = false;
     final Set<(String, String)> extra = <(String, String)>{};
     final File file = File(path);
@@ -110,7 +110,7 @@ final class _Workspace {
   final Directory root;
   final Map<String, _Package> packages;
 
-  static _Workspace load(Directory root) {
+  factory _Workspace.fromDirectory(Directory root) {
     final Map<String, _Package> packages = <String, _Package>{};
 
     packages['app'] = _Package(
@@ -193,10 +193,10 @@ Set<String> _readPathDeps(String pubspecPath) {
       continue;
     }
     if (inDeps) {
-      if (RegExp(r'^[a-z]').hasMatch(line)) {
+      if (RegExp('^[a-z]').hasMatch(line)) {
         break;
       }
-      final RegExpMatch? nameMatch = RegExp(r'^  ([a-z_][a-z0-9_]*)').firstMatch(line);
+      final RegExpMatch? nameMatch = RegExp('^  ([a-z_][a-z0-9_]*)').firstMatch(line);
       if (nameMatch != null) {
         pending = nameMatch.group(1);
       }
@@ -285,7 +285,7 @@ bool _isImportEdgeAllowed({required _Package from, required String to, required 
 List<GraphIssue> _checkImportGraph(_Workspace workspace, _Config config) {
   _globalWorkspace = workspace;
   final List<GraphIssue> issues = <GraphIssue>[];
-  final RegExp importRe = RegExp(r"""^import 'package:([a-z_]+)/""");
+  final RegExp importRe = RegExp("""^import 'package:([a-z_]+)/""");
 
   for (final _Package pkg in workspace.packages.values) {
     if (!pkg.root.existsSync()) {
@@ -328,7 +328,7 @@ List<GraphIssue> _checkImportGraph(_Workspace workspace, _Config config) {
 
 List<GraphIssue> _checkCrossPackageSrcImports(_Workspace workspace) {
   final List<GraphIssue> issues = <GraphIssue>[];
-  final RegExp srcImportRe = RegExp(r"""^import 'package:([a-z_]+)/src/""");
+  final RegExp srcImportRe = RegExp("""^import 'package:([a-z_]+)/src/""");
 
   for (final _Package pkg in workspace.packages.values) {
     for (final File file in _dartFiles(pkg.root)) {
@@ -359,7 +359,7 @@ List<GraphIssue> _checkCrossPackageSrcImports(_Workspace workspace) {
 
 List<GraphIssue> _checkBlePeerSessionScope(_Workspace workspace) {
   final List<GraphIssue> issues = <GraphIssue>[];
-  final RegExp bleImport = RegExp('^import \'package:ble_peer_session/');
+  final RegExp bleImport = RegExp("^import 'package:ble_peer_session/");
 
   for (final _Package pkg in workspace.packages.values) {
     if (pkg.name == 'infrastructure') {
@@ -411,9 +411,7 @@ List<GraphIssue> _checkCycles(_Workspace workspace) {
     return false;
   }
 
-  for (final String node in graph.keys) {
-    dfs(node);
-  }
+  graph.keys.forEach(dfs);
   return issues;
 }
 

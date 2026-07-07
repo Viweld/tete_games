@@ -1,5 +1,5 @@
-import 'package:peer/src/domain/models/peer/peer_device.dart';
 import 'package:flutter/foundation.dart';
+import 'package:peer/src/domain/models/peer/peer_device.dart';
 
 @immutable
 final class PeerDiscoveryDeviceRegistry {

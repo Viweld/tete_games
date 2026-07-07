@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:core/core.dart';
-import 'package:shell/src/presentation/splash_screen/bloc/splash_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:navigation_api/navigation_api.dart';
+import 'package:shell/src/presentation/splash_screen/bloc/splash_bloc.dart';
 
 @RoutePage()
 class SplashScreen extends StatelessWidget {

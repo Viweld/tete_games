@@ -51,8 +51,6 @@ abstract class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
 
   AppToastTheme get toast;
 
-  AppOrderStatusLabelTheme get orderStatus;
-
   @override
   ThemeExtension<AppColorsTheme> copyWith() => this;
 
@@ -351,29 +349,5 @@ class LightColorTheme extends AppColorsTheme {
     error: AppColors.toastError,
     info: AppColors.toastInfo,
     neutral: AppColors.toastNeutral,
-  );
-
-  @override
-  AppOrderStatusLabelTheme get orderStatus => const AppOrderStatusLabelTheme(
-    draft: AppColors.actNeutral,
-    waitingPayment: AppColors.actWarning,
-    paymentError: AppColors.actWarning,
-    cancelRequested: AppColors.actWarning,
-    waitingProcessing: AppColors.actInfo,
-    processing: AppColors.actInfo,
-    waitingPartner: AppColors.actInfo,
-    partnerConfirmed: AppColors.actInfo,
-    inProgress: AppColors.actInfo,
-    preFlight: AppColors.actInfo,
-    inFlight: AppColors.actInfo,
-    postFlight: AppColors.actInfo,
-    paid: AppColors.actSuccess,
-    completed: AppColors.actSuccess,
-    partnerRejected: AppColors.actError,
-    cancelled: AppColors.actError,
-    refundError: AppColors.actError,
-    refundProcessing: AppColors.actAccent,
-    refunded: AppColors.addAccent,
-    fallback: AppColors.actNeutral,
   );
 }

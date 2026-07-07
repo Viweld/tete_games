@@ -1,13 +1,13 @@
+// fz:kit-imports
+
+import 'package:app/di/app_di.config.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/src/di/configure_dependencies.module.dart';
 import 'package:infrastructure/src/di/configure_dependencies.module.dart';
-import 'package:peer/src/di/configure_dependencies.module.dart';
-import 'package:shell/src/di/configure_dependencies.module.dart';
-import 'package:shell/shell_domain.dart';
 import 'package:navigation/navigation.dart';
-// fz:kit-imports
-
-import 'app_di.config.dart';
+import 'package:peer/src/di/configure_dependencies.module.dart';
+import 'package:shell/shell_domain.dart';
+import 'package:shell/src/di/configure_dependencies.module.dart';
 
 @InjectableInit(
   preferRelativeImports: true,
@@ -30,10 +30,6 @@ Future<void> configureDependencies({required AppRuntimeMode runtimeMode}) async 
   appLocator.registerLazySingleton<AppToastBus>(AppToastBus.new);
   appLocator.registerLazySingleton<AppToastMessenger>(
     () => AppToastMessenger(appLocator<AppToastBus>()),
-  );
-  appLocator.registerLazySingleton<ErrorHandlingPolicy>(() => const ErrorHandlingPolicy());
-  appLocator.registerLazySingleton<BlocErrorHandler>(
-    () => BlocErrorHandler(appLocator<AppToastBus>(), appLocator<ErrorHandlingPolicy>()),
   );
 
   registerAppRestarter(() async {

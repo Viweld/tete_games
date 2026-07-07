@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:peer/src/domain/models/peer/connection/peer_toast_kind.dart';
 import 'package:peer/src/domain/models/peer/connection/peer_ui_event.dart';
 import 'package:peer/src/domain/services/peer/peer_connection_reduce.dart';
-import 'package:flutter/foundation.dart';
 
 @immutable
 typedef TieredEvents = ({List<PeerUiEvent> criticalEvents, List<PeerUiEvent> softEvents});

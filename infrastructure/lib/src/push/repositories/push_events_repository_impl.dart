@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:injectable/injectable.dart';
 import 'package:infrastructure/src/push/models/push_navigation_event.dart';
 import 'package:infrastructure/src/push/models/user_notification.dart';
 import 'package:infrastructure/src/push/repositories/push_events_repository.dart';
+import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: PushEventsRepository)
 final class PushEventsRepositoryImpl implements PushEventsRepository {

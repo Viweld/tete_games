@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:peer/src/domain/models/peer/connection/peer_disconnect_reason.dart';
 import 'package:peer/src/domain/models/peer/connection/peer_session_close.dart';
 import 'package:peer/src/domain/models/peer/peer_device.dart';
 import 'package:peer/src/domain/models/peer/peer_endpoint.dart';
-import 'package:flutter/foundation.dart';
 
 @immutable
 sealed class PeerSessionCommand {

@@ -1,11 +1,11 @@
 import 'package:core/core.dart';
-import 'package:shell/shell_domain.dart';
 import 'package:peer/peer_connection.dart';
+import 'package:shell/shell_domain.dart';
 
+part 'home_drawer_bloc.freezed.dart';
+part 'home_drawer_effect.dart';
 part 'home_drawer_event.dart';
 part 'home_drawer_state.dart';
-part 'home_drawer_effect.dart';
-part 'home_drawer_bloc.freezed.dart';
 
 @injectable
 class HomeDrawerBloc extends Bloc<HomeDrawerEvent, HomeDrawerState> {

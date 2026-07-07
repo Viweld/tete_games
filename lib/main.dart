@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:app/di/app_di.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
@@ -12,13 +10,6 @@ Future<void> main() async {
   await ScreenService.setPreferredOrientation();
 
   NativeSplashService.preserveSplash(widgetsBinding);
-
-  try {
-    await dotenv.load();
-  } on Object catch (error) {
-    log('Could not load .env: $error');
-    rethrow;
-  }
 
   await FirebaseBootstrap.initialize();
 

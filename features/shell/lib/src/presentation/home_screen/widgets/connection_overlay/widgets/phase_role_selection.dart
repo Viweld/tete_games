@@ -9,8 +9,6 @@ class PhaseRoleSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppColorsTheme colors = context.colors;
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 100),
       child: Row(

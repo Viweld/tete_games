@@ -1,8 +1,8 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:peer/peer_connection.dart';
-import 'package:shell/src/domain/home_overlay_projection.dart';
 import 'package:shell/src/presentation/home_screen/bloc/home_bloc.dart';
+import 'package:shell/src/presentation/home_screen/models/home_overlay_projection.dart';
 import 'package:shell/src/presentation/home_screen/widgets/app_bar/app_bar.dart';
 import 'package:shell/src/presentation/home_screen/widgets/connection_overlay/connection_overlay.dart';
 import 'package:shell/src/presentation/home_screen/widgets/drawer/home_drawer.dart';

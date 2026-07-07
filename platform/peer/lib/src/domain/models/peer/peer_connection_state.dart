@@ -1,5 +1,5 @@
-import 'package:peer/src/domain/models/peer/peer_endpoint.dart';
 import 'package:flutter/foundation.dart';
+import 'package:peer/src/domain/models/peer/peer_endpoint.dart';
 
 @immutable
 sealed class PeerConnectionState {
