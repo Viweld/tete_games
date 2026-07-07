@@ -948,7 +948,7 @@ String toString() {
 /// @nodoc
 mixin _$HomeState {
 
- PlayerProfile? get profile; bool get isConnected; String? get remoteDisplayName; String? get remotePlayerId; OverlayRenderViewState get overlay; bool get isGamesEnabled; FrameProjectionInput get projection; int get lastHandledFrameId; bool get isOverlayVisible; HomePendingOverlayRole? get pendingOverlayRole; HomeEffect? get effect;
+ PlayerProfile? get profile; bool get isConnected; String? get remoteDisplayName; String? get remotePlayerId; OverlayRenderViewState get overlay; bool get isGamesEnabled; HomeOverlayProjection get projection; int get lastHandledFrameId; bool get isOverlayVisible; HomePendingOverlayRole? get pendingOverlayRole; HomeEffect? get effect;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -979,7 +979,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- PlayerProfile? profile, bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomePendingOverlayRole? pendingOverlayRole, HomeEffect? effect
+ PlayerProfile? profile, bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, HomeOverlayProjection projection, int lastHandledFrameId, bool isOverlayVisible, HomePendingOverlayRole? pendingOverlayRole, HomeEffect? effect
 });
 
 
@@ -1005,7 +1005,7 @@ as String?,remotePlayerId: freezed == remotePlayerId ? _self.remotePlayerId : re
 as String?,overlay: null == overlay ? _self.overlay : overlay // ignore: cast_nullable_to_non_nullable
 as OverlayRenderViewState,isGamesEnabled: null == isGamesEnabled ? _self.isGamesEnabled : isGamesEnabled // ignore: cast_nullable_to_non_nullable
 as bool,projection: null == projection ? _self.projection : projection // ignore: cast_nullable_to_non_nullable
-as FrameProjectionInput,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
+as HomeOverlayProjection,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
 as int,isOverlayVisible: null == isOverlayVisible ? _self.isOverlayVisible : isOverlayVisible // ignore: cast_nullable_to_non_nullable
 as bool,pendingOverlayRole: freezed == pendingOverlayRole ? _self.pendingOverlayRole : pendingOverlayRole // ignore: cast_nullable_to_non_nullable
 as HomePendingOverlayRole?,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable
@@ -1106,7 +1106,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PlayerProfile? profile,  bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PlayerProfile? profile,  bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  HomeOverlayProjection projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
 return $default(_that.profile,_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.pendingOverlayRole,_that.effect);case _:
@@ -1127,7 +1127,7 @@ return $default(_that.profile,_that.isConnected,_that.remoteDisplayName,_that.re
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PlayerProfile? profile,  bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PlayerProfile? profile,  bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  HomeOverlayProjection projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
 return $default(_that.profile,_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.pendingOverlayRole,_that.effect);case _:
@@ -1147,7 +1147,7 @@ return $default(_that.profile,_that.isConnected,_that.remoteDisplayName,_that.re
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PlayerProfile? profile,  bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  FrameProjectionInput projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PlayerProfile? profile,  bool isConnected,  String? remoteDisplayName,  String? remotePlayerId,  OverlayRenderViewState overlay,  bool isGamesEnabled,  HomeOverlayProjection projection,  int lastHandledFrameId,  bool isOverlayVisible,  HomePendingOverlayRole? pendingOverlayRole,  HomeEffect? effect)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
 return $default(_that.profile,_that.isConnected,_that.remoteDisplayName,_that.remotePlayerId,_that.overlay,_that.isGamesEnabled,_that.projection,_that.lastHandledFrameId,_that.isOverlayVisible,_that.pendingOverlayRole,_that.effect);case _:
@@ -1162,7 +1162,7 @@ return $default(_that.profile,_that.isConnected,_that.remoteDisplayName,_that.re
 
 
 class _HomeState implements HomeState {
-  const _HomeState({this.profile, this.isConnected = false, this.remoteDisplayName, this.remotePlayerId, this.overlay = const OverlayRenderViewState(), this.isGamesEnabled = false, this.projection = const FrameProjectionInput(), this.lastHandledFrameId = 0, this.isOverlayVisible = false, this.pendingOverlayRole, this.effect});
+  const _HomeState({this.profile, this.isConnected = false, this.remoteDisplayName, this.remotePlayerId, this.overlay = const OverlayRenderViewState(), this.isGamesEnabled = false, this.projection = const HomeOverlayProjection(), this.lastHandledFrameId = 0, this.isOverlayVisible = false, this.pendingOverlayRole, this.effect});
   
 
 @override final  PlayerProfile? profile;
@@ -1171,7 +1171,7 @@ class _HomeState implements HomeState {
 @override final  String? remotePlayerId;
 @override@JsonKey() final  OverlayRenderViewState overlay;
 @override@JsonKey() final  bool isGamesEnabled;
-@override@JsonKey() final  FrameProjectionInput projection;
+@override@JsonKey() final  HomeOverlayProjection projection;
 @override@JsonKey() final  int lastHandledFrameId;
 @override@JsonKey() final  bool isOverlayVisible;
 @override final  HomePendingOverlayRole? pendingOverlayRole;
@@ -1207,7 +1207,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- PlayerProfile? profile, bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, FrameProjectionInput projection, int lastHandledFrameId, bool isOverlayVisible, HomePendingOverlayRole? pendingOverlayRole, HomeEffect? effect
+ PlayerProfile? profile, bool isConnected, String? remoteDisplayName, String? remotePlayerId, OverlayRenderViewState overlay, bool isGamesEnabled, HomeOverlayProjection projection, int lastHandledFrameId, bool isOverlayVisible, HomePendingOverlayRole? pendingOverlayRole, HomeEffect? effect
 });
 
 
@@ -1233,7 +1233,7 @@ as String?,remotePlayerId: freezed == remotePlayerId ? _self.remotePlayerId : re
 as String?,overlay: null == overlay ? _self.overlay : overlay // ignore: cast_nullable_to_non_nullable
 as OverlayRenderViewState,isGamesEnabled: null == isGamesEnabled ? _self.isGamesEnabled : isGamesEnabled // ignore: cast_nullable_to_non_nullable
 as bool,projection: null == projection ? _self.projection : projection // ignore: cast_nullable_to_non_nullable
-as FrameProjectionInput,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
+as HomeOverlayProjection,lastHandledFrameId: null == lastHandledFrameId ? _self.lastHandledFrameId : lastHandledFrameId // ignore: cast_nullable_to_non_nullable
 as int,isOverlayVisible: null == isOverlayVisible ? _self.isOverlayVisible : isOverlayVisible // ignore: cast_nullable_to_non_nullable
 as bool,pendingOverlayRole: freezed == pendingOverlayRole ? _self.pendingOverlayRole : pendingOverlayRole // ignore: cast_nullable_to_non_nullable
 as HomePendingOverlayRole?,effect: freezed == effect ? _self.effect : effect // ignore: cast_nullable_to_non_nullable

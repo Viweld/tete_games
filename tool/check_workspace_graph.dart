@@ -32,10 +32,12 @@ void main() {
   issues.addAll(_checkBlePeerSessionScope(workspace, config));
   issues.addAll(_checkCycles(workspace));
 
-  final List<GraphIssue> errors =
-      issues.where((GraphIssue i) => !i.isWarning || config.strict).toList();
-  final List<GraphIssue> warnings =
-      issues.where((GraphIssue i) => i.isWarning && !config.strict).toList();
+  final List<GraphIssue> errors = issues
+      .where((GraphIssue i) => !i.isWarning || config.strict)
+      .toList();
+  final List<GraphIssue> warnings = issues
+      .where((GraphIssue i) => i.isWarning && !config.strict)
+      .toList();
 
   for (final GraphIssue w in warnings) {
     stdout.writeln('WARN: ${w.message}');
@@ -210,11 +212,7 @@ Set<String> _readPathDeps(String pubspecPath) {
   return deps;
 }
 
-bool _isPubspecEdgeAllowed({
-  required _Package from,
-  required String to,
-  required _Config config,
-}) {
+bool _isPubspecEdgeAllowed({required _Package from, required String to, required _Config config}) {
   if (from.name == to) {
     return false;
   }
@@ -232,15 +230,12 @@ bool _isPubspecEdgeAllowed({
       }
       return false;
     case _PackageCategory.infrastructure:
-      return to == 'core' || (to == 'domain' && !config.strict);
+      return to == 'core' || to == 'peer' || (to == 'domain' && !config.strict);
     case _PackageCategory.platform:
-      return to == 'core';
+      return to == 'core' || to == 'domain';
     case _PackageCategory.feature:
       if (config.strict) {
-        return to == 'core' ||
-            to == 'core_ui' ||
-            to == 'navigation_api' ||
-            to == 'peer';
+        return to == 'core' || to == 'core_ui' || to == 'navigation_api' || to == 'peer';
       }
       return to == 'core' ||
           to == 'core_ui' ||
@@ -283,16 +278,13 @@ List<GraphIssue> _checkPubspecGraph(_Workspace workspace, _Config config) {
 
 bool _isTransitionalPubspec(String from, String to) {
   return from == 'shell' && to == 'domain' ||
+      from == 'peer' && to == 'domain' ||
       from == 'data' && (to == 'core' || to == 'domain') ||
-      from == 'infrastructure' && to == 'domain' ||
+      from == 'infrastructure' && (to == 'domain' || to == 'peer') ||
       from == 'navigation' && to == 'shell';
 }
 
-bool _isImportEdgeAllowed({
-  required _Package from,
-  required String to,
-  required _Config config,
-}) {
+bool _isImportEdgeAllowed({required _Package from, required String to, required _Config config}) {
   if (from.name == to) {
     return true;
   }
@@ -308,10 +300,14 @@ bool _isImportEdgeAllowed({
       _globalWorkspace!.packages[to]?.category == _PackageCategory.feature) {
     return false;
   }
-  if (from.category == _PackageCategory.infrastructure &&
-      (_globalWorkspace!.packages[to]?.category == _PackageCategory.feature ||
-          _globalWorkspace!.packages[to]?.category == _PackageCategory.platform)) {
-    return false;
+  if (from.category == _PackageCategory.infrastructure) {
+    if (to == 'peer') {
+      return true;
+    }
+    if (_globalWorkspace!.packages[to]?.category == _PackageCategory.feature ||
+        _globalWorkspace!.packages[to]?.category == _PackageCategory.platform) {
+      return false;
+    }
   }
 
   return _isPubspecEdgeAllowed(from: from, to: to, config: config) ||
@@ -355,7 +351,8 @@ List<GraphIssue> _checkImportGraph(_Workspace workspace, _Config config) {
           issues.add(
             GraphIssue(
               'import: ${pkg.name} must not import package:$target/ (${file.path})',
-              isWarning: !config.strict && target == 'domain' && pkg.category == _PackageCategory.feature,
+              isWarning:
+                  !config.strict && target == 'domain' && pkg.category == _PackageCategory.feature,
             ),
           );
         }
@@ -388,9 +385,7 @@ List<GraphIssue> _checkCrossPackageSrcImports(_Workspace workspace, _Config conf
           continue;
         }
         issues.add(
-          GraphIssue(
-            'src import: ${pkg.name} must not import package:$target/src/ (${file.path})',
-          ),
+          GraphIssue('src import: ${pkg.name} must not import package:$target/src/ (${file.path})'),
         );
       }
     }

@@ -1,5 +1,7 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:peer/peer_connection.dart';
+import 'package:shell/src/domain/home_overlay_projection.dart';
 import 'package:shell/src/presentation/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';
 
 part 'home_event.dart';
@@ -85,7 +87,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Future<void> _onFrameReceived(_FrameReceived event, Emitter<HomeState> emit) async {
     final AppConnectionFrame frame = event.frame;
     final bool shouldRunEffects = frame.frameId > state.lastHandledFrameId;
-    final FrameProjectionInput projection = _validatedProjection(
+    final HomeOverlayProjection projection = _validatedProjection(
       state.projection,
       frame.state.overlay.devices,
     );
@@ -96,7 +98,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         remoteDisplayName: frame.state.shared.remoteDisplayName,
         remotePlayerId: frame.state.shared.remotePlayerId,
         overlay: frame.state.overlay,
-        isGamesEnabled: frame.state.home.isGamesEnabled,
+        isGamesEnabled: frame.state.shared.isConnected,
         projection: projection,
         lastHandledFrameId: shouldRunEffects ? frame.frameId : state.lastHandledFrameId,
       ),
@@ -110,8 +112,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  FrameProjectionInput _validatedProjection(
-    FrameProjectionInput projection,
+  HomeOverlayProjection _validatedProjection(
+    HomeOverlayProjection projection,
     List<PeerDevice> devices,
   ) {
     final String? highlightedId = projection.highlightedDeviceId;
@@ -166,7 +168,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       return;
     }
 
-    await _peerConnectionService.startHostSession(projection: state.projection);
+    await _peerConnectionService.startHostSession();
   }
 
   Future<void> _onClientTapped(Emitter<HomeState> emit) async {
@@ -180,14 +182,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       return;
     }
 
-    await _peerConnectionService.startClientSession(projection: state.projection);
+    await _peerConnectionService.startClientSession();
   }
 
   Future<void> _onDisconnectMenuTapped(Emitter<HomeState> emit) async {
     await _peerConnectionService.closeSession(
       origin: PeerSessionCloseOrigin.user,
       reason: PeerSessionCloseReason.userDisconnect,
-      projection: state.projection,
     );
   }
 
@@ -200,22 +201,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void _onDeviceHighlightChanged(_DeviceHighlightChanged event, Emitter<HomeState> emit) {
-    emit(state.copyWith(projection: FrameProjectionInput(highlightedDeviceId: event.deviceId)));
+    emit(state.copyWith(projection: HomeOverlayProjection(highlightedDeviceId: event.deviceId)));
   }
 
   Future<void> _onInviteDeviceTapped(Emitter<HomeState> emit) async {
     final String? deviceId = state.projection.highlightedDeviceId;
     if (deviceId == null) return;
 
-    await _peerConnectionService.inviteDevice(deviceId: deviceId, projection: state.projection);
+    await _peerConnectionService.inviteDevice(deviceId: deviceId);
   }
 
   Future<void> _onAcceptInvitationTapped(Emitter<HomeState> emit) async {
-    await _peerConnectionService.acceptInvitation(projection: state.projection);
+    await _peerConnectionService.acceptInvitation();
   }
 
   Future<void> _onRejectInvitationTapped(Emitter<HomeState> emit) async {
-    await _peerConnectionService.rejectInvitation(projection: state.projection);
+    await _peerConnectionService.rejectInvitation();
   }
 
   Future<void> _onOverlayOpened(Emitter<HomeState> emit) async {
@@ -223,19 +224,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onOverlayDismissTapped(Emitter<HomeState> emit) async {
-    final FrameProjectionInput projection = state.projection;
-
-    emit(state.copyWith(isOverlayVisible: false, projection: const FrameProjectionInput()));
+    emit(state.copyWith(isOverlayVisible: false, projection: const HomeOverlayProjection()));
 
     await _peerConnectionService.closeSession(
       origin: PeerSessionCloseOrigin.user,
       reason: PeerSessionCloseReason.userDismissedOverlay,
-      projection: projection,
     );
   }
 
   void _onOverlayClosed(Emitter<HomeState> emit) {
-    emit(state.copyWith(isOverlayVisible: false, projection: const FrameProjectionInput()));
+    emit(state.copyWith(isOverlayVisible: false, projection: const HomeOverlayProjection()));
   }
 
   Future<void> _onOverlayRoleNicknameConfirmed(Emitter<HomeState> emit) async {
@@ -245,9 +243,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     switch (pendingRole) {
       case HomePendingOverlayRole.host:
-        await _peerConnectionService.startHostSession(projection: state.projection);
+        await _peerConnectionService.startHostSession();
       case HomePendingOverlayRole.client:
-        await _peerConnectionService.startClientSession(projection: state.projection);
+        await _peerConnectionService.startClientSession();
     }
   }
 
@@ -261,7 +259,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _openConnectionOverlay(Emitter<HomeState> emit) async {
     emit(state.copyWith(isOverlayVisible: true));
-    await _peerConnectionService.openRoleSelection(projection: state.projection);
+    await _peerConnectionService.openRoleSelection();
   }
 
   bool get _hasProfile => state.profile != null;

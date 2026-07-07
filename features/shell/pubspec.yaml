@@ -18,6 +18,8 @@ dependencies:
     path: ../../core_ui
   navigation_api:
     path: ../../navigation_api
+  peer:
+    path: ../../platform/peer
   auto_route: ^11.1.0
   injectable: ^3.0.0
   nested: ^1.0.0

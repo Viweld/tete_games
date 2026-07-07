@@ -45,6 +45,7 @@ data/                  BLE peer adapters, repository impl
 core_ui/               theme, ui_kit
 navigation_api/        AppNavigator port
 navigation/            AppRouter aggregator
+platform/peer/           BLE FSM, frames, PeerConnectionService
 features/shell/         splash, home, BLE UI
 ```
 
@@ -58,11 +59,17 @@ flowchart TD
   app --> core
   app --> domain
   navigation --> navigationApi["navigation_api"]
+  app --> peer
+  app --> shell
   navigation --> shell
   shell --> navigationApi
+  shell --> peer
   shell --> core_ui
   shell --> core
   shell --> domain
+  peer --> domain
+  peer --> core
+  infrastructure --> peer
   infrastructure --> core
   data --> core
   data --> domain
@@ -80,6 +87,7 @@ flowchart TD
 | `data/` | BLE peer layer, repository implementations |
 | `navigation_api/` | `AppNavigator` port |
 | `navigation/` | `AppRouter` (implements `AppNavigator`) |
+| `platform/peer/` | BLE connection FSM, frames, `PeerConnectionService` |
 | `features/shell/` | splash, home, games list, BLE connection dialogs |
 
 ## Tech stack

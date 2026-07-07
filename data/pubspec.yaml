@@ -1,6 +1,6 @@
 name: data
 publish_to: none
-description: Project data module — BLE peer adapters and repositories.
+description: Project data module — profile and settings repositories.
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
@@ -15,11 +15,6 @@ dependencies:
     path: ../core
   domain:
     path: ../domain
-
-  ble_peer_session: ^0.4.3
-  device_info_plus: ^13.1.0
-  flutter_blue_plus: ^2.3.8
-  permission_handler: ^12.0.3
   injectable: ^3.0.0
 
 dev_dependencies:

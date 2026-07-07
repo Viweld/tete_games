@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:peer/peer_connection.dart';
 
 part 'home_app_bar_event.dart';
 part 'home_app_bar_state.dart';

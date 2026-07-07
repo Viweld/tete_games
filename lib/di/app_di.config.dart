@@ -17,6 +17,7 @@ import 'package:infrastructure/src/di/configure_dependencies.module.dart'
     as _i1041;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:navigation/navigation.dart' as _i1058;
+import 'package:peer/src/di/configure_dependencies.module.dart' as _i793;
 import 'package:shell/src/di/configure_dependencies.module.dart' as _i684;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -31,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
     await _i339.CoreUiPackageModule().init(gh);
     await _i282.DataPackageModule().init(gh);
     await _i697.DomainPackageModule().init(gh);
+    await _i793.PeerPackageModule().init(gh);
     await _i684.ShellPackageModule().init(gh);
     return this;
   }

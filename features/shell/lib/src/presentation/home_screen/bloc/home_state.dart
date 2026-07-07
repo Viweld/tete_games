@@ -11,7 +11,7 @@ abstract class HomeState with _$HomeState {
     String? remotePlayerId,
     @Default(OverlayRenderViewState()) OverlayRenderViewState overlay,
     @Default(false) bool isGamesEnabled,
-    @Default(FrameProjectionInput()) FrameProjectionInput projection,
+    @Default(HomeOverlayProjection()) HomeOverlayProjection projection,
     @Default(0) int lastHandledFrameId,
     @Default(false) bool isOverlayVisible,
     HomePendingOverlayRole? pendingOverlayRole,

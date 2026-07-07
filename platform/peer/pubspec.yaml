@@ -1,0 +1,24 @@
+name: peer
+publish_to: none
+description: BLE peer connection platform — FSM, frames, session orchestration.
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+  flutter: '>=3.38.0 <4.0.0'
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../../core
+  domain:
+    path: ../../domain
+  injectable: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.7.1
+  injectable_generator: ^3.0.2

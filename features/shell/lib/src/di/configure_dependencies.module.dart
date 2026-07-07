@@ -9,6 +9,7 @@ import 'package:core/core.dart' as _i494;
 import 'package:core_ui/core_ui.dart' as _i728;
 import 'package:domain/domain.dart' as _i494;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:peer/peer_connection.dart' as _i124;
 import 'package:shell/src/presentation/home_screen/bloc/home_bloc.dart'
     as _i410;
 import 'package:shell/src/presentation/home_screen/widgets/app_bar/bloc/home_app_bar_bloc.dart'
@@ -24,10 +25,9 @@ class ShellPackageModule extends _i526.MicroPackageModule {
 // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
-    gh.factory<_i141.HomeDrawerBloc>(() => _i141.HomeDrawerBloc(
+    gh.factory<_i410.HomeBloc>(() => _i410.HomeBloc(
+          gh<_i124.PeerConnectionService>(),
           gh<_i494.ProfileRepository>(),
-          gh<_i494.BluetoothStatusService>(),
-          gh<_i494.PeerConnectionService>(),
         ));
     gh.factory<_i459.SplashBloc>(() => _i459.SplashBloc(
           gh<_i494.SettingsRepository>(),
@@ -35,15 +35,16 @@ class ShellPackageModule extends _i526.MicroPackageModule {
           gh<_i494.ProfileRepository>(),
           gh<_i728.AppAnimations>(),
         ));
-    gh.factory<_i923.NicknameBloc>(
-        () => _i923.NicknameBloc(gh<_i494.ProfileRepository>()));
-    gh.factory<_i410.HomeBloc>(() => _i410.HomeBloc(
-          gh<_i494.PeerConnectionService>(),
-          gh<_i494.ProfileRepository>(),
-        ));
     gh.factory<_i937.HomeAppBarBloc>(() => _i937.HomeAppBarBloc(
           gh<_i494.ProfileRepository>(),
-          gh<_i494.PeerConnectionService>(),
+          gh<_i124.PeerConnectionService>(),
+        ));
+    gh.factory<_i923.NicknameBloc>(
+        () => _i923.NicknameBloc(gh<_i494.ProfileRepository>()));
+    gh.factory<_i141.HomeDrawerBloc>(() => _i141.HomeDrawerBloc(
+          gh<_i494.ProfileRepository>(),
+          gh<_i494.BluetoothStatusService>(),
+          gh<_i124.PeerConnectionService>(),
         ));
   }
 }

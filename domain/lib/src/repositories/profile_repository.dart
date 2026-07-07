@@ -1,4 +1,4 @@
-import 'package:domain/src/models/peer/peer_models.dart';
+import 'package:domain/src/models/peer/player_profile.dart';
 
 abstract interface class ProfileRepository {
   /// Broadcast stream of the current player profile; emits after every change.

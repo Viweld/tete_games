@@ -16,6 +16,7 @@ workspace:
   - navigation_api
   - navigation
   # fz:workspace-features
+  - platform/peer
   - features/shell
 
 dependencies:
@@ -33,6 +34,8 @@ dependencies:
     path: ./infrastructure
   navigation:
     path: ./navigation
+  peer:
+    path: ./platform/peer
   # fz:feature-deps
   shell:
     path: ./features/shell
