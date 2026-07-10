@@ -12,6 +12,336 @@ part of 'home_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
+mixin _$HomeEffect {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEffect()';
+}
+
+
+}
+
+/// @nodoc
+class $HomeEffectCopyWith<$Res>  {
+$HomeEffectCopyWith(HomeEffect _, $Res Function(HomeEffect) __);
+}
+
+
+/// Adds pattern-matching-related methods to [HomeEffect].
+extension HomeEffectPatterns on HomeEffect {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult Function( ShowToastEffect value)?  showToast,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay(_that);case ShowToastEffect() when showToast != null:
+return showToast(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ShowNicknameDialogEffect value)  showNicknameDialog,required TResult Function( CloseConnectionOverlayEffect value)  closeConnectionOverlay,required TResult Function( ShowToastEffect value)  showToast,}){
+final _that = this;
+switch (_that) {
+case ShowNicknameDialogEffect():
+return showNicknameDialog(_that);case CloseConnectionOverlayEffect():
+return closeConnectionOverlay(_that);case ShowToastEffect():
+return showToast(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult? Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult? Function( ShowToastEffect value)?  showToast,}){
+final _that = this;
+switch (_that) {
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay(_that);case ShowToastEffect() when showToast != null:
+return showToast(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( NicknameDialogContext context)?  showNicknameDialog,TResult Function()?  closeConnectionOverlay,TResult Function( PeerToastKind kind)?  showToast,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay();case ShowToastEffect() when showToast != null:
+return showToast(_that.kind);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( NicknameDialogContext context)  showNicknameDialog,required TResult Function()  closeConnectionOverlay,required TResult Function( PeerToastKind kind)  showToast,}) {final _that = this;
+switch (_that) {
+case ShowNicknameDialogEffect():
+return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect():
+return closeConnectionOverlay();case ShowToastEffect():
+return showToast(_that.kind);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( NicknameDialogContext context)?  showNicknameDialog,TResult? Function()?  closeConnectionOverlay,TResult? Function( PeerToastKind kind)?  showToast,}) {final _that = this;
+switch (_that) {
+case ShowNicknameDialogEffect() when showNicknameDialog != null:
+return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
+return closeConnectionOverlay();case ShowToastEffect() when showToast != null:
+return showToast(_that.kind);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ShowNicknameDialogEffect implements HomeEffect {
+  const ShowNicknameDialogEffect({required this.context});
+  
+
+ final  NicknameDialogContext context;
+
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ShowNicknameDialogEffectCopyWith<ShowNicknameDialogEffect> get copyWith => _$ShowNicknameDialogEffectCopyWithImpl<ShowNicknameDialogEffect>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowNicknameDialogEffect&&(identical(other.context, context) || other.context == context));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,context);
+
+@override
+String toString() {
+  return 'HomeEffect.showNicknameDialog(context: $context)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ShowNicknameDialogEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
+  factory $ShowNicknameDialogEffectCopyWith(ShowNicknameDialogEffect value, $Res Function(ShowNicknameDialogEffect) _then) = _$ShowNicknameDialogEffectCopyWithImpl;
+@useResult
+$Res call({
+ NicknameDialogContext context
+});
+
+
+
+
+}
+/// @nodoc
+class _$ShowNicknameDialogEffectCopyWithImpl<$Res>
+    implements $ShowNicknameDialogEffectCopyWith<$Res> {
+  _$ShowNicknameDialogEffectCopyWithImpl(this._self, this._then);
+
+  final ShowNicknameDialogEffect _self;
+  final $Res Function(ShowNicknameDialogEffect) _then;
+
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? context = null,}) {
+  return _then(ShowNicknameDialogEffect(
+context: null == context ? _self.context : context // ignore: cast_nullable_to_non_nullable
+as NicknameDialogContext,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CloseConnectionOverlayEffect implements HomeEffect {
+  const CloseConnectionOverlayEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CloseConnectionOverlayEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEffect.closeConnectionOverlay()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ShowToastEffect implements HomeEffect {
+  const ShowToastEffect({required this.kind});
+  
+
+ final  PeerToastKind kind;
+
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ShowToastEffectCopyWith<ShowToastEffect> get copyWith => _$ShowToastEffectCopyWithImpl<ShowToastEffect>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowToastEffect&&(identical(other.kind, kind) || other.kind == kind));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,kind);
+
+@override
+String toString() {
+  return 'HomeEffect.showToast(kind: $kind)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ShowToastEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
+  factory $ShowToastEffectCopyWith(ShowToastEffect value, $Res Function(ShowToastEffect) _then) = _$ShowToastEffectCopyWithImpl;
+@useResult
+$Res call({
+ PeerToastKind kind
+});
+
+
+
+
+}
+/// @nodoc
+class _$ShowToastEffectCopyWithImpl<$Res>
+    implements $ShowToastEffectCopyWith<$Res> {
+  _$ShowToastEffectCopyWithImpl(this._self, this._then);
+
+  final ShowToastEffect _self;
+  final $Res Function(ShowToastEffect) _then;
+
+/// Create a copy of HomeEffect
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? kind = null,}) {
+  return _then(ShowToastEffect(
+kind: null == kind ? _self.kind : kind // ignore: cast_nullable_to_non_nullable
+as PeerToastKind,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$HomeEvent {
 
 
@@ -55,7 +385,7 @@ extension HomeEventPatterns on HomeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _ProfileChanged value)?  profileChanged,TResult Function( _FrameReceived value)?  frameReceived,TResult Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult Function( _HostTapped value)?  hostTapped,TResult Function( _ClientTapped value)?  clientTapped,TResult Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult Function( _OverlayOpened value)?  overlayOpened,TResult Function( _OverlayClosed value)?  overlayClosed,TResult Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult Function( _OverlayRoleNicknameConfirmed value)?  overlayRoleNicknameConfirmed,TResult Function( _OverlayRoleNicknameCancelled value)?  overlayRoleNicknameCancelled,TResult Function( _EffectHandled value)?  effectHandled,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _ProfileChanged value)?  profileChanged,TResult Function( _FrameReceived value)?  frameReceived,TResult Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult Function( _HostTapped value)?  hostTapped,TResult Function( _ClientTapped value)?  clientTapped,TResult Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult Function( _OverlayOpened value)?  overlayOpened,TResult Function( _OverlayClosed value)?  overlayClosed,TResult Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult Function( _OverlayRoleNicknameConfirmed value)?  overlayRoleNicknameConfirmed,TResult Function( _OverlayRoleNicknameCancelled value)?  overlayRoleNicknameCancelled,TResult Function( _RetryConnectionTapped value)?  retryConnectionTapped,TResult Function( _AppResumed value)?  appResumed,TResult Function( _EffectHandled value)?  effectHandled,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
@@ -75,7 +405,9 @@ return overlayOpened(_that);case _OverlayClosed() when overlayClosed != null:
 return overlayClosed(_that);case _OverlayDismissTapped() when overlayDismissTapped != null:
 return overlayDismissTapped(_that);case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
 return overlayRoleNicknameConfirmed(_that);case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
-return overlayRoleNicknameCancelled(_that);case _EffectHandled() when effectHandled != null:
+return overlayRoleNicknameCancelled(_that);case _RetryConnectionTapped() when retryConnectionTapped != null:
+return retryConnectionTapped(_that);case _AppResumed() when appResumed != null:
+return appResumed(_that);case _EffectHandled() when effectHandled != null:
 return effectHandled(_that);case _:
   return orElse();
 
@@ -94,7 +426,7 @@ return effectHandled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _ProfileChanged value)  profileChanged,required TResult Function( _FrameReceived value)  frameReceived,required TResult Function( _ConnectMenuTapped value)  connectMenuTapped,required TResult Function( _HostTapped value)  hostTapped,required TResult Function( _ClientTapped value)  clientTapped,required TResult Function( _DisconnectMenuTapped value)  disconnectMenuTapped,required TResult Function( _ProfileMenuTapped value)  profileMenuTapped,required TResult Function( _DeviceHighlightChanged value)  deviceHighlightChanged,required TResult Function( _InviteDeviceTapped value)  inviteDeviceTapped,required TResult Function( _AcceptInvitationTapped value)  acceptInvitationTapped,required TResult Function( _RejectInvitationTapped value)  rejectInvitationTapped,required TResult Function( _OverlayOpened value)  overlayOpened,required TResult Function( _OverlayClosed value)  overlayClosed,required TResult Function( _OverlayDismissTapped value)  overlayDismissTapped,required TResult Function( _OverlayRoleNicknameConfirmed value)  overlayRoleNicknameConfirmed,required TResult Function( _OverlayRoleNicknameCancelled value)  overlayRoleNicknameCancelled,required TResult Function( _EffectHandled value)  effectHandled,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _ProfileChanged value)  profileChanged,required TResult Function( _FrameReceived value)  frameReceived,required TResult Function( _ConnectMenuTapped value)  connectMenuTapped,required TResult Function( _HostTapped value)  hostTapped,required TResult Function( _ClientTapped value)  clientTapped,required TResult Function( _DisconnectMenuTapped value)  disconnectMenuTapped,required TResult Function( _ProfileMenuTapped value)  profileMenuTapped,required TResult Function( _DeviceHighlightChanged value)  deviceHighlightChanged,required TResult Function( _InviteDeviceTapped value)  inviteDeviceTapped,required TResult Function( _AcceptInvitationTapped value)  acceptInvitationTapped,required TResult Function( _RejectInvitationTapped value)  rejectInvitationTapped,required TResult Function( _OverlayOpened value)  overlayOpened,required TResult Function( _OverlayClosed value)  overlayClosed,required TResult Function( _OverlayDismissTapped value)  overlayDismissTapped,required TResult Function( _OverlayRoleNicknameConfirmed value)  overlayRoleNicknameConfirmed,required TResult Function( _OverlayRoleNicknameCancelled value)  overlayRoleNicknameCancelled,required TResult Function( _RetryConnectionTapped value)  retryConnectionTapped,required TResult Function( _AppResumed value)  appResumed,required TResult Function( _EffectHandled value)  effectHandled,}){
 final _that = this;
 switch (_that) {
 case _Init():
@@ -114,7 +446,9 @@ return overlayOpened(_that);case _OverlayClosed():
 return overlayClosed(_that);case _OverlayDismissTapped():
 return overlayDismissTapped(_that);case _OverlayRoleNicknameConfirmed():
 return overlayRoleNicknameConfirmed(_that);case _OverlayRoleNicknameCancelled():
-return overlayRoleNicknameCancelled(_that);case _EffectHandled():
+return overlayRoleNicknameCancelled(_that);case _RetryConnectionTapped():
+return retryConnectionTapped(_that);case _AppResumed():
+return appResumed(_that);case _EffectHandled():
 return effectHandled(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -129,7 +463,7 @@ return effectHandled(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _ProfileChanged value)?  profileChanged,TResult? Function( _FrameReceived value)?  frameReceived,TResult? Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult? Function( _HostTapped value)?  hostTapped,TResult? Function( _ClientTapped value)?  clientTapped,TResult? Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult? Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult? Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult? Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult? Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult? Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult? Function( _OverlayOpened value)?  overlayOpened,TResult? Function( _OverlayClosed value)?  overlayClosed,TResult? Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult? Function( _OverlayRoleNicknameConfirmed value)?  overlayRoleNicknameConfirmed,TResult? Function( _OverlayRoleNicknameCancelled value)?  overlayRoleNicknameCancelled,TResult? Function( _EffectHandled value)?  effectHandled,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _ProfileChanged value)?  profileChanged,TResult? Function( _FrameReceived value)?  frameReceived,TResult? Function( _ConnectMenuTapped value)?  connectMenuTapped,TResult? Function( _HostTapped value)?  hostTapped,TResult? Function( _ClientTapped value)?  clientTapped,TResult? Function( _DisconnectMenuTapped value)?  disconnectMenuTapped,TResult? Function( _ProfileMenuTapped value)?  profileMenuTapped,TResult? Function( _DeviceHighlightChanged value)?  deviceHighlightChanged,TResult? Function( _InviteDeviceTapped value)?  inviteDeviceTapped,TResult? Function( _AcceptInvitationTapped value)?  acceptInvitationTapped,TResult? Function( _RejectInvitationTapped value)?  rejectInvitationTapped,TResult? Function( _OverlayOpened value)?  overlayOpened,TResult? Function( _OverlayClosed value)?  overlayClosed,TResult? Function( _OverlayDismissTapped value)?  overlayDismissTapped,TResult? Function( _OverlayRoleNicknameConfirmed value)?  overlayRoleNicknameConfirmed,TResult? Function( _OverlayRoleNicknameCancelled value)?  overlayRoleNicknameCancelled,TResult? Function( _RetryConnectionTapped value)?  retryConnectionTapped,TResult? Function( _AppResumed value)?  appResumed,TResult? Function( _EffectHandled value)?  effectHandled,}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
@@ -149,7 +483,9 @@ return overlayOpened(_that);case _OverlayClosed() when overlayClosed != null:
 return overlayClosed(_that);case _OverlayDismissTapped() when overlayDismissTapped != null:
 return overlayDismissTapped(_that);case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
 return overlayRoleNicknameConfirmed(_that);case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
-return overlayRoleNicknameCancelled(_that);case _EffectHandled() when effectHandled != null:
+return overlayRoleNicknameCancelled(_that);case _RetryConnectionTapped() when retryConnectionTapped != null:
+return retryConnectionTapped(_that);case _AppResumed() when appResumed != null:
+return appResumed(_that);case _EffectHandled() when effectHandled != null:
 return effectHandled(_that);case _:
   return null;
 
@@ -167,7 +503,7 @@ return effectHandled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( PlayerProfile? profile)?  profileChanged,TResult Function( AppConnectionFrame frame)?  frameReceived,TResult Function()?  connectMenuTapped,TResult Function()?  hostTapped,TResult Function()?  clientTapped,TResult Function()?  disconnectMenuTapped,TResult Function()?  profileMenuTapped,TResult Function( String? deviceId)?  deviceHighlightChanged,TResult Function()?  inviteDeviceTapped,TResult Function()?  acceptInvitationTapped,TResult Function()?  rejectInvitationTapped,TResult Function()?  overlayOpened,TResult Function()?  overlayClosed,TResult Function()?  overlayDismissTapped,TResult Function()?  overlayRoleNicknameConfirmed,TResult Function()?  overlayRoleNicknameCancelled,TResult Function()?  effectHandled,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( PlayerProfile? profile)?  profileChanged,TResult Function( AppConnectionFrame frame)?  frameReceived,TResult Function()?  connectMenuTapped,TResult Function()?  hostTapped,TResult Function()?  clientTapped,TResult Function()?  disconnectMenuTapped,TResult Function()?  profileMenuTapped,TResult Function( String? deviceId)?  deviceHighlightChanged,TResult Function()?  inviteDeviceTapped,TResult Function()?  acceptInvitationTapped,TResult Function()?  rejectInvitationTapped,TResult Function()?  overlayOpened,TResult Function()?  overlayClosed,TResult Function()?  overlayDismissTapped,TResult Function()?  overlayRoleNicknameConfirmed,TResult Function()?  overlayRoleNicknameCancelled,TResult Function()?  retryConnectionTapped,TResult Function()?  appResumed,TResult Function()?  effectHandled,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _ProfileChanged() when profileChanged != null:
@@ -186,7 +522,9 @@ return overlayOpened();case _OverlayClosed() when overlayClosed != null:
 return overlayClosed();case _OverlayDismissTapped() when overlayDismissTapped != null:
 return overlayDismissTapped();case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
 return overlayRoleNicknameConfirmed();case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
-return overlayRoleNicknameCancelled();case _EffectHandled() when effectHandled != null:
+return overlayRoleNicknameCancelled();case _RetryConnectionTapped() when retryConnectionTapped != null:
+return retryConnectionTapped();case _AppResumed() when appResumed != null:
+return appResumed();case _EffectHandled() when effectHandled != null:
 return effectHandled();case _:
   return orElse();
 
@@ -205,7 +543,7 @@ return effectHandled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( PlayerProfile? profile)  profileChanged,required TResult Function( AppConnectionFrame frame)  frameReceived,required TResult Function()  connectMenuTapped,required TResult Function()  hostTapped,required TResult Function()  clientTapped,required TResult Function()  disconnectMenuTapped,required TResult Function()  profileMenuTapped,required TResult Function( String? deviceId)  deviceHighlightChanged,required TResult Function()  inviteDeviceTapped,required TResult Function()  acceptInvitationTapped,required TResult Function()  rejectInvitationTapped,required TResult Function()  overlayOpened,required TResult Function()  overlayClosed,required TResult Function()  overlayDismissTapped,required TResult Function()  overlayRoleNicknameConfirmed,required TResult Function()  overlayRoleNicknameCancelled,required TResult Function()  effectHandled,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( PlayerProfile? profile)  profileChanged,required TResult Function( AppConnectionFrame frame)  frameReceived,required TResult Function()  connectMenuTapped,required TResult Function()  hostTapped,required TResult Function()  clientTapped,required TResult Function()  disconnectMenuTapped,required TResult Function()  profileMenuTapped,required TResult Function( String? deviceId)  deviceHighlightChanged,required TResult Function()  inviteDeviceTapped,required TResult Function()  acceptInvitationTapped,required TResult Function()  rejectInvitationTapped,required TResult Function()  overlayOpened,required TResult Function()  overlayClosed,required TResult Function()  overlayDismissTapped,required TResult Function()  overlayRoleNicknameConfirmed,required TResult Function()  overlayRoleNicknameCancelled,required TResult Function()  retryConnectionTapped,required TResult Function()  appResumed,required TResult Function()  effectHandled,}) {final _that = this;
 switch (_that) {
 case _Init():
 return init();case _ProfileChanged():
@@ -224,7 +562,9 @@ return overlayOpened();case _OverlayClosed():
 return overlayClosed();case _OverlayDismissTapped():
 return overlayDismissTapped();case _OverlayRoleNicknameConfirmed():
 return overlayRoleNicknameConfirmed();case _OverlayRoleNicknameCancelled():
-return overlayRoleNicknameCancelled();case _EffectHandled():
+return overlayRoleNicknameCancelled();case _RetryConnectionTapped():
+return retryConnectionTapped();case _AppResumed():
+return appResumed();case _EffectHandled():
 return effectHandled();}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -239,7 +579,7 @@ return effectHandled();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( PlayerProfile? profile)?  profileChanged,TResult? Function( AppConnectionFrame frame)?  frameReceived,TResult? Function()?  connectMenuTapped,TResult? Function()?  hostTapped,TResult? Function()?  clientTapped,TResult? Function()?  disconnectMenuTapped,TResult? Function()?  profileMenuTapped,TResult? Function( String? deviceId)?  deviceHighlightChanged,TResult? Function()?  inviteDeviceTapped,TResult? Function()?  acceptInvitationTapped,TResult? Function()?  rejectInvitationTapped,TResult? Function()?  overlayOpened,TResult? Function()?  overlayClosed,TResult? Function()?  overlayDismissTapped,TResult? Function()?  overlayRoleNicknameConfirmed,TResult? Function()?  overlayRoleNicknameCancelled,TResult? Function()?  effectHandled,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( PlayerProfile? profile)?  profileChanged,TResult? Function( AppConnectionFrame frame)?  frameReceived,TResult? Function()?  connectMenuTapped,TResult? Function()?  hostTapped,TResult? Function()?  clientTapped,TResult? Function()?  disconnectMenuTapped,TResult? Function()?  profileMenuTapped,TResult? Function( String? deviceId)?  deviceHighlightChanged,TResult? Function()?  inviteDeviceTapped,TResult? Function()?  acceptInvitationTapped,TResult? Function()?  rejectInvitationTapped,TResult? Function()?  overlayOpened,TResult? Function()?  overlayClosed,TResult? Function()?  overlayDismissTapped,TResult? Function()?  overlayRoleNicknameConfirmed,TResult? Function()?  overlayRoleNicknameCancelled,TResult? Function()?  retryConnectionTapped,TResult? Function()?  appResumed,TResult? Function()?  effectHandled,}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _ProfileChanged() when profileChanged != null:
@@ -258,7 +598,9 @@ return overlayOpened();case _OverlayClosed() when overlayClosed != null:
 return overlayClosed();case _OverlayDismissTapped() when overlayDismissTapped != null:
 return overlayDismissTapped();case _OverlayRoleNicknameConfirmed() when overlayRoleNicknameConfirmed != null:
 return overlayRoleNicknameConfirmed();case _OverlayRoleNicknameCancelled() when overlayRoleNicknameCancelled != null:
-return overlayRoleNicknameCancelled();case _EffectHandled() when effectHandled != null:
+return overlayRoleNicknameCancelled();case _RetryConnectionTapped() when retryConnectionTapped != null:
+return retryConnectionTapped();case _AppResumed() when appResumed != null:
+return appResumed();case _EffectHandled() when effectHandled != null:
 return effectHandled();case _:
   return null;
 
@@ -916,6 +1258,70 @@ String toString() {
 /// @nodoc
 
 
+class _RetryConnectionTapped implements HomeEvent {
+  const _RetryConnectionTapped();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RetryConnectionTapped);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.retryConnectionTapped()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _AppResumed implements HomeEvent {
+  const _AppResumed();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppResumed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.appResumed()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
 class _EffectHandled implements HomeEvent {
   const _EffectHandled();
   
@@ -1254,336 +1660,6 @@ $HomeEffectCopyWith<$Res>? get effect {
     return _then(_self.copyWith(effect: value));
   });
 }
-}
-
-/// @nodoc
-mixin _$HomeEffect {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeEffect()';
-}
-
-
-}
-
-/// @nodoc
-class $HomeEffectCopyWith<$Res>  {
-$HomeEffectCopyWith(HomeEffect _, $Res Function(HomeEffect) __);
-}
-
-
-/// Adds pattern-matching-related methods to [HomeEffect].
-extension HomeEffectPatterns on HomeEffect {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult Function( ShowToastEffect value)?  showToast,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay(_that);case ShowToastEffect() when showToast != null:
-return showToast(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ShowNicknameDialogEffect value)  showNicknameDialog,required TResult Function( CloseConnectionOverlayEffect value)  closeConnectionOverlay,required TResult Function( ShowToastEffect value)  showToast,}){
-final _that = this;
-switch (_that) {
-case ShowNicknameDialogEffect():
-return showNicknameDialog(_that);case CloseConnectionOverlayEffect():
-return closeConnectionOverlay(_that);case ShowToastEffect():
-return showToast(_that);}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ShowNicknameDialogEffect value)?  showNicknameDialog,TResult? Function( CloseConnectionOverlayEffect value)?  closeConnectionOverlay,TResult? Function( ShowToastEffect value)?  showToast,}){
-final _that = this;
-switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay(_that);case ShowToastEffect() when showToast != null:
-return showToast(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( NicknameDialogContext context)?  showNicknameDialog,TResult Function()?  closeConnectionOverlay,TResult Function( PeerToastKind kind)?  showToast,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay();case ShowToastEffect() when showToast != null:
-return showToast(_that.kind);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( NicknameDialogContext context)  showNicknameDialog,required TResult Function()  closeConnectionOverlay,required TResult Function( PeerToastKind kind)  showToast,}) {final _that = this;
-switch (_that) {
-case ShowNicknameDialogEffect():
-return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect():
-return closeConnectionOverlay();case ShowToastEffect():
-return showToast(_that.kind);}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( NicknameDialogContext context)?  showNicknameDialog,TResult? Function()?  closeConnectionOverlay,TResult? Function( PeerToastKind kind)?  showToast,}) {final _that = this;
-switch (_that) {
-case ShowNicknameDialogEffect() when showNicknameDialog != null:
-return showNicknameDialog(_that.context);case CloseConnectionOverlayEffect() when closeConnectionOverlay != null:
-return closeConnectionOverlay();case ShowToastEffect() when showToast != null:
-return showToast(_that.kind);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-
-class ShowNicknameDialogEffect implements HomeEffect {
-  const ShowNicknameDialogEffect({required this.context});
-  
-
- final  NicknameDialogContext context;
-
-/// Create a copy of HomeEffect
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ShowNicknameDialogEffectCopyWith<ShowNicknameDialogEffect> get copyWith => _$ShowNicknameDialogEffectCopyWithImpl<ShowNicknameDialogEffect>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowNicknameDialogEffect&&(identical(other.context, context) || other.context == context));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,context);
-
-@override
-String toString() {
-  return 'HomeEffect.showNicknameDialog(context: $context)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $ShowNicknameDialogEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
-  factory $ShowNicknameDialogEffectCopyWith(ShowNicknameDialogEffect value, $Res Function(ShowNicknameDialogEffect) _then) = _$ShowNicknameDialogEffectCopyWithImpl;
-@useResult
-$Res call({
- NicknameDialogContext context
-});
-
-
-
-
-}
-/// @nodoc
-class _$ShowNicknameDialogEffectCopyWithImpl<$Res>
-    implements $ShowNicknameDialogEffectCopyWith<$Res> {
-  _$ShowNicknameDialogEffectCopyWithImpl(this._self, this._then);
-
-  final ShowNicknameDialogEffect _self;
-  final $Res Function(ShowNicknameDialogEffect) _then;
-
-/// Create a copy of HomeEffect
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? context = null,}) {
-  return _then(ShowNicknameDialogEffect(
-context: null == context ? _self.context : context // ignore: cast_nullable_to_non_nullable
-as NicknameDialogContext,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class CloseConnectionOverlayEffect implements HomeEffect {
-  const CloseConnectionOverlayEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CloseConnectionOverlayEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeEffect.closeConnectionOverlay()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class ShowToastEffect implements HomeEffect {
-  const ShowToastEffect({required this.kind});
-  
-
- final  PeerToastKind kind;
-
-/// Create a copy of HomeEffect
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ShowToastEffectCopyWith<ShowToastEffect> get copyWith => _$ShowToastEffectCopyWithImpl<ShowToastEffect>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowToastEffect&&(identical(other.kind, kind) || other.kind == kind));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,kind);
-
-@override
-String toString() {
-  return 'HomeEffect.showToast(kind: $kind)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $ShowToastEffectCopyWith<$Res> implements $HomeEffectCopyWith<$Res> {
-  factory $ShowToastEffectCopyWith(ShowToastEffect value, $Res Function(ShowToastEffect) _then) = _$ShowToastEffectCopyWithImpl;
-@useResult
-$Res call({
- PeerToastKind kind
-});
-
-
-
-
-}
-/// @nodoc
-class _$ShowToastEffectCopyWithImpl<$Res>
-    implements $ShowToastEffectCopyWith<$Res> {
-  _$ShowToastEffectCopyWithImpl(this._self, this._then);
-
-  final ShowToastEffect _self;
-  final $Res Function(ShowToastEffect) _then;
-
-/// Create a copy of HomeEffect
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? kind = null,}) {
-  return _then(ShowToastEffect(
-kind: null == kind ? _self.kind : kind // ignore: cast_nullable_to_non_nullable
-as PeerToastKind,
-  ));
-}
-
-
 }
 
 // dart format on

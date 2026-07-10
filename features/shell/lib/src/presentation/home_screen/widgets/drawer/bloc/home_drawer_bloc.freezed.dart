@@ -12,6 +12,382 @@ part of 'home_drawer_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
+mixin _$HomeDrawerEffect {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect()';
+}
+
+
+}
+
+/// @nodoc
+class $HomeDrawerEffectCopyWith<$Res>  {
+$HomeDrawerEffectCopyWith(HomeDrawerEffect _, $Res Function(HomeDrawerEffect) __);
+}
+
+
+/// Adds pattern-matching-related methods to [HomeDrawerEffect].
+extension HomeDrawerEffectPatterns on HomeDrawerEffect {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( HomeDrawerShowPermissionsGrantedInfoEffect value)?  showPermissionsGrantedInfo,TResult Function( HomeDrawerShowPermissionsDeniedSettingsEffect value)?  showPermissionsDeniedSettings,TResult Function( HomeDrawerShowAdapterEnabledInfoEffect value)?  showAdapterEnabledInfo,TResult Function( HomeDrawerShowAdapterDisabledInfoEffect value)?  showAdapterDisabledInfo,TResult Function( HomeDrawerShowDisconnectConfirmationEffect value)?  showDisconnectConfirmation,TResult Function( HomeDrawerEditProfileRequestedEffect value)?  editProfileRequested,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
+return showPermissionsGrantedInfo(_that);case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
+return showPermissionsDeniedSettings(_that);case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
+return showAdapterEnabledInfo(_that);case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
+return showAdapterDisabledInfo(_that);case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
+return showDisconnectConfirmation(_that);case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
+return editProfileRequested(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( HomeDrawerShowPermissionsGrantedInfoEffect value)  showPermissionsGrantedInfo,required TResult Function( HomeDrawerShowPermissionsDeniedSettingsEffect value)  showPermissionsDeniedSettings,required TResult Function( HomeDrawerShowAdapterEnabledInfoEffect value)  showAdapterEnabledInfo,required TResult Function( HomeDrawerShowAdapterDisabledInfoEffect value)  showAdapterDisabledInfo,required TResult Function( HomeDrawerShowDisconnectConfirmationEffect value)  showDisconnectConfirmation,required TResult Function( HomeDrawerEditProfileRequestedEffect value)  editProfileRequested,}){
+final _that = this;
+switch (_that) {
+case HomeDrawerShowPermissionsGrantedInfoEffect():
+return showPermissionsGrantedInfo(_that);case HomeDrawerShowPermissionsDeniedSettingsEffect():
+return showPermissionsDeniedSettings(_that);case HomeDrawerShowAdapterEnabledInfoEffect():
+return showAdapterEnabledInfo(_that);case HomeDrawerShowAdapterDisabledInfoEffect():
+return showAdapterDisabledInfo(_that);case HomeDrawerShowDisconnectConfirmationEffect():
+return showDisconnectConfirmation(_that);case HomeDrawerEditProfileRequestedEffect():
+return editProfileRequested(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( HomeDrawerShowPermissionsGrantedInfoEffect value)?  showPermissionsGrantedInfo,TResult? Function( HomeDrawerShowPermissionsDeniedSettingsEffect value)?  showPermissionsDeniedSettings,TResult? Function( HomeDrawerShowAdapterEnabledInfoEffect value)?  showAdapterEnabledInfo,TResult? Function( HomeDrawerShowAdapterDisabledInfoEffect value)?  showAdapterDisabledInfo,TResult? Function( HomeDrawerShowDisconnectConfirmationEffect value)?  showDisconnectConfirmation,TResult? Function( HomeDrawerEditProfileRequestedEffect value)?  editProfileRequested,}){
+final _that = this;
+switch (_that) {
+case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
+return showPermissionsGrantedInfo(_that);case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
+return showPermissionsDeniedSettings(_that);case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
+return showAdapterEnabledInfo(_that);case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
+return showAdapterDisabledInfo(_that);case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
+return showDisconnectConfirmation(_that);case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
+return editProfileRequested(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  showPermissionsGrantedInfo,TResult Function()?  showPermissionsDeniedSettings,TResult Function()?  showAdapterEnabledInfo,TResult Function()?  showAdapterDisabledInfo,TResult Function()?  showDisconnectConfirmation,TResult Function()?  editProfileRequested,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
+return showPermissionsGrantedInfo();case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
+return showPermissionsDeniedSettings();case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
+return showAdapterEnabledInfo();case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
+return showAdapterDisabledInfo();case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
+return showDisconnectConfirmation();case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
+return editProfileRequested();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  showPermissionsGrantedInfo,required TResult Function()  showPermissionsDeniedSettings,required TResult Function()  showAdapterEnabledInfo,required TResult Function()  showAdapterDisabledInfo,required TResult Function()  showDisconnectConfirmation,required TResult Function()  editProfileRequested,}) {final _that = this;
+switch (_that) {
+case HomeDrawerShowPermissionsGrantedInfoEffect():
+return showPermissionsGrantedInfo();case HomeDrawerShowPermissionsDeniedSettingsEffect():
+return showPermissionsDeniedSettings();case HomeDrawerShowAdapterEnabledInfoEffect():
+return showAdapterEnabledInfo();case HomeDrawerShowAdapterDisabledInfoEffect():
+return showAdapterDisabledInfo();case HomeDrawerShowDisconnectConfirmationEffect():
+return showDisconnectConfirmation();case HomeDrawerEditProfileRequestedEffect():
+return editProfileRequested();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  showPermissionsGrantedInfo,TResult? Function()?  showPermissionsDeniedSettings,TResult? Function()?  showAdapterEnabledInfo,TResult? Function()?  showAdapterDisabledInfo,TResult? Function()?  showDisconnectConfirmation,TResult? Function()?  editProfileRequested,}) {final _that = this;
+switch (_that) {
+case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
+return showPermissionsGrantedInfo();case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
+return showPermissionsDeniedSettings();case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
+return showAdapterEnabledInfo();case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
+return showAdapterDisabledInfo();case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
+return showDisconnectConfirmation();case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
+return editProfileRequested();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class HomeDrawerShowPermissionsGrantedInfoEffect implements HomeDrawerEffect {
+  const HomeDrawerShowPermissionsGrantedInfoEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowPermissionsGrantedInfoEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect.showPermissionsGrantedInfo()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class HomeDrawerShowPermissionsDeniedSettingsEffect implements HomeDrawerEffect {
+  const HomeDrawerShowPermissionsDeniedSettingsEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowPermissionsDeniedSettingsEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect.showPermissionsDeniedSettings()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class HomeDrawerShowAdapterEnabledInfoEffect implements HomeDrawerEffect {
+  const HomeDrawerShowAdapterEnabledInfoEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowAdapterEnabledInfoEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect.showAdapterEnabledInfo()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class HomeDrawerShowAdapterDisabledInfoEffect implements HomeDrawerEffect {
+  const HomeDrawerShowAdapterDisabledInfoEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowAdapterDisabledInfoEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect.showAdapterDisabledInfo()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class HomeDrawerShowDisconnectConfirmationEffect implements HomeDrawerEffect {
+  const HomeDrawerShowDisconnectConfirmationEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowDisconnectConfirmationEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect.showDisconnectConfirmation()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class HomeDrawerEditProfileRequestedEffect implements HomeDrawerEffect {
+  const HomeDrawerEditProfileRequestedEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerEditProfileRequestedEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeDrawerEffect.editProfileRequested()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$HomeDrawerEvent {
 
 
@@ -973,381 +1349,5 @@ $HomeDrawerEffectCopyWith<$Res>? get effect {
   });
 }
 }
-
-/// @nodoc
-mixin _$HomeDrawerEffect {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect()';
-}
-
-
-}
-
-/// @nodoc
-class $HomeDrawerEffectCopyWith<$Res>  {
-$HomeDrawerEffectCopyWith(HomeDrawerEffect _, $Res Function(HomeDrawerEffect) __);
-}
-
-
-/// Adds pattern-matching-related methods to [HomeDrawerEffect].
-extension HomeDrawerEffectPatterns on HomeDrawerEffect {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( HomeDrawerShowPermissionsGrantedInfoEffect value)?  showPermissionsGrantedInfo,TResult Function( HomeDrawerShowPermissionsDeniedSettingsEffect value)?  showPermissionsDeniedSettings,TResult Function( HomeDrawerShowAdapterEnabledInfoEffect value)?  showAdapterEnabledInfo,TResult Function( HomeDrawerShowAdapterDisabledInfoEffect value)?  showAdapterDisabledInfo,TResult Function( HomeDrawerShowDisconnectConfirmationEffect value)?  showDisconnectConfirmation,TResult Function( HomeDrawerEditProfileRequestedEffect value)?  editProfileRequested,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
-return showPermissionsGrantedInfo(_that);case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
-return showPermissionsDeniedSettings(_that);case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
-return showAdapterEnabledInfo(_that);case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
-return showAdapterDisabledInfo(_that);case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
-return showDisconnectConfirmation(_that);case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
-return editProfileRequested(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( HomeDrawerShowPermissionsGrantedInfoEffect value)  showPermissionsGrantedInfo,required TResult Function( HomeDrawerShowPermissionsDeniedSettingsEffect value)  showPermissionsDeniedSettings,required TResult Function( HomeDrawerShowAdapterEnabledInfoEffect value)  showAdapterEnabledInfo,required TResult Function( HomeDrawerShowAdapterDisabledInfoEffect value)  showAdapterDisabledInfo,required TResult Function( HomeDrawerShowDisconnectConfirmationEffect value)  showDisconnectConfirmation,required TResult Function( HomeDrawerEditProfileRequestedEffect value)  editProfileRequested,}){
-final _that = this;
-switch (_that) {
-case HomeDrawerShowPermissionsGrantedInfoEffect():
-return showPermissionsGrantedInfo(_that);case HomeDrawerShowPermissionsDeniedSettingsEffect():
-return showPermissionsDeniedSettings(_that);case HomeDrawerShowAdapterEnabledInfoEffect():
-return showAdapterEnabledInfo(_that);case HomeDrawerShowAdapterDisabledInfoEffect():
-return showAdapterDisabledInfo(_that);case HomeDrawerShowDisconnectConfirmationEffect():
-return showDisconnectConfirmation(_that);case HomeDrawerEditProfileRequestedEffect():
-return editProfileRequested(_that);}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( HomeDrawerShowPermissionsGrantedInfoEffect value)?  showPermissionsGrantedInfo,TResult? Function( HomeDrawerShowPermissionsDeniedSettingsEffect value)?  showPermissionsDeniedSettings,TResult? Function( HomeDrawerShowAdapterEnabledInfoEffect value)?  showAdapterEnabledInfo,TResult? Function( HomeDrawerShowAdapterDisabledInfoEffect value)?  showAdapterDisabledInfo,TResult? Function( HomeDrawerShowDisconnectConfirmationEffect value)?  showDisconnectConfirmation,TResult? Function( HomeDrawerEditProfileRequestedEffect value)?  editProfileRequested,}){
-final _that = this;
-switch (_that) {
-case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
-return showPermissionsGrantedInfo(_that);case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
-return showPermissionsDeniedSettings(_that);case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
-return showAdapterEnabledInfo(_that);case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
-return showAdapterDisabledInfo(_that);case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
-return showDisconnectConfirmation(_that);case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
-return editProfileRequested(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  showPermissionsGrantedInfo,TResult Function()?  showPermissionsDeniedSettings,TResult Function()?  showAdapterEnabledInfo,TResult Function()?  showAdapterDisabledInfo,TResult Function()?  showDisconnectConfirmation,TResult Function()?  editProfileRequested,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
-return showPermissionsGrantedInfo();case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
-return showPermissionsDeniedSettings();case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
-return showAdapterEnabledInfo();case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
-return showAdapterDisabledInfo();case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
-return showDisconnectConfirmation();case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
-return editProfileRequested();case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  showPermissionsGrantedInfo,required TResult Function()  showPermissionsDeniedSettings,required TResult Function()  showAdapterEnabledInfo,required TResult Function()  showAdapterDisabledInfo,required TResult Function()  showDisconnectConfirmation,required TResult Function()  editProfileRequested,}) {final _that = this;
-switch (_that) {
-case HomeDrawerShowPermissionsGrantedInfoEffect():
-return showPermissionsGrantedInfo();case HomeDrawerShowPermissionsDeniedSettingsEffect():
-return showPermissionsDeniedSettings();case HomeDrawerShowAdapterEnabledInfoEffect():
-return showAdapterEnabledInfo();case HomeDrawerShowAdapterDisabledInfoEffect():
-return showAdapterDisabledInfo();case HomeDrawerShowDisconnectConfirmationEffect():
-return showDisconnectConfirmation();case HomeDrawerEditProfileRequestedEffect():
-return editProfileRequested();}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  showPermissionsGrantedInfo,TResult? Function()?  showPermissionsDeniedSettings,TResult? Function()?  showAdapterEnabledInfo,TResult? Function()?  showAdapterDisabledInfo,TResult? Function()?  showDisconnectConfirmation,TResult? Function()?  editProfileRequested,}) {final _that = this;
-switch (_that) {
-case HomeDrawerShowPermissionsGrantedInfoEffect() when showPermissionsGrantedInfo != null:
-return showPermissionsGrantedInfo();case HomeDrawerShowPermissionsDeniedSettingsEffect() when showPermissionsDeniedSettings != null:
-return showPermissionsDeniedSettings();case HomeDrawerShowAdapterEnabledInfoEffect() when showAdapterEnabledInfo != null:
-return showAdapterEnabledInfo();case HomeDrawerShowAdapterDisabledInfoEffect() when showAdapterDisabledInfo != null:
-return showAdapterDisabledInfo();case HomeDrawerShowDisconnectConfirmationEffect() when showDisconnectConfirmation != null:
-return showDisconnectConfirmation();case HomeDrawerEditProfileRequestedEffect() when editProfileRequested != null:
-return editProfileRequested();case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-
-class HomeDrawerShowPermissionsGrantedInfoEffect implements HomeDrawerEffect {
-  const HomeDrawerShowPermissionsGrantedInfoEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowPermissionsGrantedInfoEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect.showPermissionsGrantedInfo()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class HomeDrawerShowPermissionsDeniedSettingsEffect implements HomeDrawerEffect {
-  const HomeDrawerShowPermissionsDeniedSettingsEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowPermissionsDeniedSettingsEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect.showPermissionsDeniedSettings()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class HomeDrawerShowAdapterEnabledInfoEffect implements HomeDrawerEffect {
-  const HomeDrawerShowAdapterEnabledInfoEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowAdapterEnabledInfoEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect.showAdapterEnabledInfo()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class HomeDrawerShowAdapterDisabledInfoEffect implements HomeDrawerEffect {
-  const HomeDrawerShowAdapterDisabledInfoEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowAdapterDisabledInfoEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect.showAdapterDisabledInfo()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class HomeDrawerShowDisconnectConfirmationEffect implements HomeDrawerEffect {
-  const HomeDrawerShowDisconnectConfirmationEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerShowDisconnectConfirmationEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect.showDisconnectConfirmation()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class HomeDrawerEditProfileRequestedEffect implements HomeDrawerEffect {
-  const HomeDrawerEditProfileRequestedEffect();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDrawerEditProfileRequestedEffect);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'HomeDrawerEffect.editProfileRequested()';
-}
-
-
-}
-
-
-
 
 // dart format on

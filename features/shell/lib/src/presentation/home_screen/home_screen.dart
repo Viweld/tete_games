@@ -9,6 +9,7 @@ import 'package:shell/src/presentation/home_screen/home_content.dart';
 import 'package:shell/src/presentation/home_screen/widgets/drawer/bloc/home_drawer_bloc.dart';
 import 'package:shell/src/presentation/home_screen/widgets/nickname_dialog/nickname_dialog.dart';
 import 'package:shell/src/presentation/home_screen/widgets/nickname_dialog/nickname_dialog_context.dart';
+import 'package:shell/src/presentation/home_screen/widgets/peer_session_lifecycle_binder.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -21,18 +22,20 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<HomeBloc>(create: (_) => appLocator<HomeBloc>()),
         BlocProvider<HomeDrawerBloc>(create: (_) => appLocator<HomeDrawerBloc>()),
       ],
-      child: BlocListener<HomeBloc, HomeState>(
-        listenWhen: (HomeState previous, HomeState current) => previous.effect != current.effect,
-        listener: _handleHomeEffect,
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (BuildContext context, HomeState homeState) {
-            return HomeContent(
-              isGamesEnabled: homeState.isGamesEnabled,
-              isOverlayVisible: homeState.isOverlayVisible,
-              overlay: homeState.overlay,
-              projection: homeState.projection,
-            );
-          },
+      child: PeerSessionLifecycleBinder(
+        child: BlocListener<HomeBloc, HomeState>(
+          listenWhen: (HomeState previous, HomeState current) => previous.effect != current.effect,
+          listener: _handleHomeEffect,
+          child: BlocBuilder<HomeBloc, HomeState>(
+            builder: (BuildContext context, HomeState homeState) {
+              return HomeContent(
+                isGamesEnabled: homeState.isGamesEnabled,
+                isOverlayVisible: homeState.isOverlayVisible,
+                overlay: homeState.overlay,
+                projection: homeState.projection,
+              );
+            },
+          ),
         ),
       ),
     );

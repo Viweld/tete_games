@@ -38,6 +38,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         overlayDismissTapped: (_) => _onOverlayDismissTapped(emit),
         overlayRoleNicknameConfirmed: (_) => _onOverlayRoleNicknameConfirmed(emit),
         overlayRoleNicknameCancelled: (_) => _onOverlayRoleNicknameCancelled(emit),
+        retryConnectionTapped: (_) => _onRetryConnectionTapped(emit),
+        appResumed: (_) => _onAppResumed(emit),
         effectHandled: (_) => _onEffectHandled(emit),
       ),
     );
@@ -248,6 +250,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   void _onOverlayRoleNicknameCancelled(Emitter<HomeState> emit) {
     emit(state.copyWith(pendingOverlayRole: null));
+  }
+
+  Future<void> _onRetryConnectionTapped(Emitter<HomeState> emit) async {
+    await _peerConnectionService.retryLastSession();
+  }
+
+  Future<void> _onAppResumed(Emitter<HomeState> emit) async {
+    await _peerConnectionService.onAppResumed();
   }
 
   void _onEffectHandled(Emitter<HomeState> emit) {

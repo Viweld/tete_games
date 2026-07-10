@@ -12,6 +12,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
     this._clientSessionRepository,
     this._transportRepository,
     this._playerIdentitySource,
+    this._bleSessionGuard,
   ) {
     _emitInitialFrame();
     _connectionSubscription = _transportRepository.connectionState.listen(_onConnectionState);
@@ -23,6 +24,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   final PeerClientSessionRepository _clientSessionRepository;
   final PeerTransportRepository _transportRepository;
   final PeerPlayerIdentitySource _playerIdentitySource;
+  final PeerBleSessionGuard _bleSessionGuard;
 
   final StreamController<AppConnectionFrame> _framesController =
       StreamController<AppConnectionFrame>.broadcast();
@@ -50,23 +52,87 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   }
 
   @override
+  Future<void> retryLastSession() {
+    return _enqueue(() async {
+      if (!await _hasProfile()) return;
+
+      final PeerRole? role = _snapshot.role;
+      if (role == null) {
+        await _dispatch(const CmdOpenRoleSelection());
+        return;
+      }
+
+      await _tearDownBle();
+
+      switch (role) {
+        case PeerRole.server:
+          await _startHostSessionInternal();
+        case PeerRole.client:
+          await _startClientSessionInternal();
+      }
+    });
+  }
+
+  @override
+  Future<void> onAppResumed() {
+    return _enqueue(() async {
+      if (_snapshot.phase == PeerSessionCorePhase.clientDiscovering ||
+          _snapshot.phase == PeerSessionCorePhase.clientInviting) {
+        try {
+          await _clientSessionRepository.refreshDiscovery();
+        } on Object catch (error, stackTrace) {
+          developer.log(
+            'refreshDiscovery on resume failed',
+            name: 'peer.session',
+            error: error,
+            stackTrace: stackTrace,
+          );
+        }
+      }
+    });
+  }
+
+  Future<void> _startHostSessionInternal() async {
+    final String sessionId = _newSessionId();
+    await _releaseClientRole();
+    await _dispatch(CmdStartHostSession(sessionId: sessionId));
+    try {
+      await _serverSessionRepository.startAdvertising();
+    } on Object catch (error, stackTrace) {
+      developer.log(
+        'startAdvertising failed',
+        name: 'peer.session',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      await _dispatch(const CmdBleError(errorKind: PeerSessionErrorKind.bluetoothUnavailable));
+    }
+  }
+
+  Future<void> _startClientSessionInternal() async {
+    final String sessionId = _newSessionId();
+    await _releaseServerRole();
+    _discoveryRegistry.clear(_discoveredDevicesStore);
+    await _dispatch(CmdStartClientSession(sessionId: sessionId));
+    try {
+      await _clientSessionRepository.startDiscovery();
+      await _startDiscoverySubscription();
+    } on Object catch (error, stackTrace) {
+      developer.log(
+        'startDiscovery failed',
+        name: 'peer.session',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      await _dispatch(const CmdBleError(errorKind: PeerSessionErrorKind.discoveryFailed));
+    }
+  }
+
+  @override
   Future<void> startHostSession() {
     return _enqueue(() async {
       if (!await _hasProfile()) return;
-      final String sessionId = _newSessionId();
-      await _releaseClientRole();
-      await _dispatch(CmdStartHostSession(sessionId: sessionId));
-      try {
-        await _serverSessionRepository.startAdvertising();
-      } on Object catch (error, stackTrace) {
-        developer.log(
-          'startAdvertising failed',
-          name: 'peer.session',
-          error: error,
-          stackTrace: stackTrace,
-        );
-        await _dispatch(const CmdBleError(errorKind: PeerSessionErrorKind.bluetoothUnavailable));
-      }
+      await _startHostSessionInternal();
     });
   }
 
@@ -74,22 +140,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   Future<void> startClientSession() {
     return _enqueue(() async {
       if (!await _hasProfile()) return;
-      final String sessionId = _newSessionId();
-      await _releaseServerRole();
-      _discoveryRegistry.clear(_discoveredDevicesStore);
-      await _dispatch(CmdStartClientSession(sessionId: sessionId));
-      try {
-        await _clientSessionRepository.startDiscovery();
-        await _startDiscoverySubscription();
-      } on Object catch (error, stackTrace) {
-        developer.log(
-          'startDiscovery failed',
-          name: 'peer.session',
-          error: error,
-          stackTrace: stackTrace,
-        );
-        await _dispatch(const CmdBleError(errorKind: PeerSessionErrorKind.discoveryFailed));
-      }
+      await _startClientSessionInternal();
     });
   }
 
@@ -260,6 +311,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
 
   void _onConnectionState(PeerConnectionState state) {
     if (state is PeerConnected) {
+      unawaited(_bleSessionGuard.activate());
       unawaited(
         _enqueue(() => _dispatch(CmdTransportConnected(remoteEndpoint: state.remoteEndpoint))),
       );
@@ -267,6 +319,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   }
 
   void _onTransportDisconnect(PeerDisconnectReason reason) {
+    unawaited(_bleSessionGuard.deactivate());
     unawaited(
       _enqueue(() async {
         if (_snapshot.phase != PeerSessionCorePhase.connected) return;
@@ -316,6 +369,7 @@ final class PeerConnectionServiceImpl implements PeerConnectionService {
   }
 
   Future<void> _tearDownBle() async {
+    await _bleSessionGuard.deactivate();
     await _discoverySubscription?.cancel();
     _discoverySubscription = null;
     _discoveryRegistry.clear(_discoveredDevicesStore);

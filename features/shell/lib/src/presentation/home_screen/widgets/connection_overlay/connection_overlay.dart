@@ -20,6 +20,7 @@ class ConnectionOverlay extends StatelessWidget {
   final VoidCallback onInviteTap;
   final VoidCallback onAcceptTap;
   final VoidCallback onRejectTap;
+  final VoidCallback onRetryTap;
 
   const ConnectionOverlay({
     super.key,
@@ -32,6 +33,7 @@ class ConnectionOverlay extends StatelessWidget {
     required this.onInviteTap,
     required this.onAcceptTap,
     required this.onRejectTap,
+    required this.onRetryTap,
   });
 
   @override
@@ -87,7 +89,7 @@ class ConnectionOverlay extends StatelessWidget {
                   invitedDeviceId: projection.highlightedDeviceId,
                   isRejected: true,
                 ),
-                OverlayPhase.error => const PhaseError(),
+                OverlayPhase.error => PhaseError(onRetryTap: onRetryTap),
                 OverlayPhase.hidden => const SizedBox.shrink(),
               },
             ),

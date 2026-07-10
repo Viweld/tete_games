@@ -17,12 +17,7 @@ Future<void> main() async {
 
   await configureDependencies(runtimeMode: runtimeMode);
 
-  runApp(
-    ValueListenableBuilder<int>(
-      valueListenable: appRestartGeneration,
-      builder: (_, _, _) => App(key: ValueKey<int>(appRestartGeneration.value)),
-    ),
-  );
+  runApp(const App());
 }
 
 class App extends StatelessWidget {

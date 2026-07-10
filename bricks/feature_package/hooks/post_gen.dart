@@ -6,37 +6,34 @@ Future<void> run(HookContext context) async {
   final String featureName = _snakeCase('${context.vars['feature_name']}');
   final String pascalName = _pascalCase(featureName);
 
-  final List<({String file, String marker, String insert})> patches = <({
-    String file,
-    String marker,
-    String insert,
-  })>[
-    (
-      file: 'pubspec.yaml',
-      marker: '# fz:workspace-features',
-      insert: '  - features/$featureName',
-    ),
-    (
-      file: 'pubspec.yaml',
-      marker: '# fz:feature-deps',
-      insert: '  $featureName:\n    path: ./features/$featureName',
-    ),
-    (
-      file: 'navigation/pubspec.yaml',
-      marker: '# fz:navigation-features',
-      insert: '  $featureName:\n    path: ../features/$featureName',
-    ),
-    (
-      file: 'lib/di/app_di.dart',
-      marker: '// fz:kit-imports',
-      insert: "import 'package:$featureName/$featureName.dart';",
-    ),
-    (
-      file: 'lib/di/app_di.dart',
-      marker: '// fz:external-modules',
-      insert: '    ExternalModule(${pascalName}PackageModule),',
-    ),
-  ];
+  final List<({String file, String marker, String insert})> patches =
+      <({String file, String marker, String insert})>[
+        (
+          file: 'pubspec.yaml',
+          marker: '# fz:workspace-features',
+          insert: '  - features/$featureName',
+        ),
+        (
+          file: 'pubspec.yaml',
+          marker: '# fz:feature-deps',
+          insert: '  $featureName:\n    path: ./features/$featureName',
+        ),
+        (
+          file: 'navigation/pubspec.yaml',
+          marker: '# fz:navigation-features',
+          insert: '  $featureName:\n    path: ../features/$featureName',
+        ),
+        (
+          file: 'lib/di/app_di.dart',
+          marker: '// fz:kit-imports',
+          insert: "import 'package:$featureName/$featureName.dart';",
+        ),
+        (
+          file: 'lib/di/app_di.dart',
+          marker: '// fz:external-modules',
+          insert: '    ExternalModule(${pascalName}PackageModule),',
+        ),
+      ];
 
   for (final ({String file, String marker, String insert}) patch in patches) {
     _insertAfterMarker(
@@ -48,11 +45,10 @@ Future<void> run(HookContext context) async {
   }
 
   final Progress pubGet = context.logger.progress('fvm flutter pub get');
-  final ProcessResult pubGetResult = await Process.run(
-    'sh',
-    <String>['-c', 'fvm flutter pub get'],
-    workingDirectory: Directory.current.path,
-  );
+  final ProcessResult pubGetResult = await Process.run('sh', <String>[
+    '-c',
+    'fvm flutter pub get',
+  ], workingDirectory: Directory.current.path);
   if (pubGetResult.exitCode != 0) {
     pubGet.fail('pub get failed');
     stderr.write(pubGetResult.stderr);
@@ -62,11 +58,10 @@ Future<void> run(HookContext context) async {
 
   final Progress buildRunner = context.logger.progress('build_runner (feature + app)');
   for (final String pkg in <String>['features/$featureName', '.']) {
-    final ProcessResult result = await Process.run(
-      'sh',
-      <String>['-c', 'fvm dart run build_runner build --delete-conflicting-outputs'],
-      workingDirectory: pkg,
-    );
+    final ProcessResult result = await Process.run('sh', <String>[
+      '-c',
+      'fvm dart run build_runner build --delete-conflicting-outputs',
+    ], workingDirectory: pkg);
     if (result.exitCode != 0) {
       buildRunner.fail('build_runner failed in $pkg');
       stdout.write(result.stdout);

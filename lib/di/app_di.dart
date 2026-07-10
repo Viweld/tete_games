@@ -30,12 +30,6 @@ Future<void> configureDependencies({required AppRuntimeMode runtimeMode}) async 
     () => AppToastMessenger(appLocator<AppToastBus>()),
   );
 
-  registerAppRestarter(() async {
-    await appLocator.reset();
-    final AppRuntimeMode mode = await AppRuntimeModeStorage.read();
-    await configureDependencies(runtimeMode: mode);
-  });
-
   await appLocator.init();
 
   if (!appLocator.isRegistered<AppNavigator>()) {

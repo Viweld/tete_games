@@ -19,5 +19,7 @@ sealed class HomeEvent with _$HomeEvent {
   const factory HomeEvent.overlayDismissTapped() = _OverlayDismissTapped;
   const factory HomeEvent.overlayRoleNicknameConfirmed() = _OverlayRoleNicknameConfirmed;
   const factory HomeEvent.overlayRoleNicknameCancelled() = _OverlayRoleNicknameCancelled;
+  const factory HomeEvent.retryConnectionTapped() = _RetryConnectionTapped;
+  const factory HomeEvent.appResumed() = _AppResumed;
   const factory HomeEvent.effectHandled() = _EffectHandled;
 }

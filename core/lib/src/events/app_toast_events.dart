@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-// enum ToastType { error, success, warning, info }
-
 @immutable
 sealed class AppToastEvent {
   const AppToastEvent._([this.message]);

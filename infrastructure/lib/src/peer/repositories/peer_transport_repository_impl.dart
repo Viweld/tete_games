@@ -1,8 +1,10 @@
-import 'package:ble_peer_session/ble_peer_session.dart' as pckg;
+import 'package:ble_peer_session/ble_peer_session.dart'
+    show PeerDisconnectInfo, PeerMessage, PeerMessageTypes;
+import 'package:infrastructure/src/peer/ble_peer_session_port.dart';
 import 'package:infrastructure/src/peer/mappers/peer_connection_state_mapper.dart';
 import 'package:infrastructure/src/peer/mappers/peer_disconnect_reason_mapper.dart';
 import 'package:infrastructure/src/peer/mappers/peer_session_message_mapper.dart';
-import 'package:infrastructure/src/peer/peer_lifecycle.dart';
+import 'package:infrastructure/src/peer/peer_lifecycle_port.dart';
 import 'package:injectable/injectable.dart';
 import 'package:peer/peer_connection.dart';
 
@@ -10,23 +12,23 @@ import 'package:peer/peer_connection.dart';
 final class PeerTransportRepositoryImpl implements PeerTransportRepository {
   PeerTransportRepositoryImpl(this._peerLifecycle);
 
-  final PeerLifecycle _peerLifecycle;
+  final PeerLifecyclePort _peerLifecycle;
 
   @override
   Stream<PeerConnectionState> get connectionState => _peerLifecycle.peerGenerations.asyncExpand(
-    (pckg.Peer peer) => peer.connectionStream.map(PeerConnectionStateMapper.toDomain),
+    (BlePeerSessionPort peer) => peer.connectionStream.map(PeerConnectionStateMapper.toDomain),
   );
 
   @override
   Stream<PeerSessionMessage> get sessionMessages => _peerLifecycle.peerGenerations.asyncExpand(
-    (pckg.Peer peer) => peer.messagesStream
-        .where((pckg.PeerMessage message) => pckg.PeerMessageTypes.isSessionType(message.type))
+    (BlePeerSessionPort peer) => peer.messagesStream
+        .where((PeerMessage message) => PeerMessageTypes.isSessionType(message.type))
         .map(PeerSessionMessageMapper.toDomain),
   );
 
   @override
   Stream<PeerDisconnectReason> get disconnectReasons => _peerLifecycle.peerGenerations.asyncExpand(
-    (pckg.Peer peer) => peer.disconnectStream.map((pckg.PeerDisconnectInfo info) {
+    (BlePeerSessionPort peer) => peer.disconnectStream.map((PeerDisconnectInfo info) {
       return PeerDisconnectReasonMapper.toDomain(info.reason);
     }),
   );

@@ -19,6 +19,7 @@ class PeerPackageModule extends _i526.MicroPackageModule {
         gh<_i124.PeerClientSessionRepository>(),
         gh<_i124.PeerTransportRepository>(),
         gh<_i124.PeerPlayerIdentitySource>(),
+        gh<_i124.PeerBleSessionGuard>(),
       ),
       dispose: (i) => i.dispose(),
     );

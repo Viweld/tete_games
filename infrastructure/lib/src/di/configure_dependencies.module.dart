@@ -7,8 +7,10 @@ import 'dart:async' as _i687;
 
 import 'package:core/core.dart' as _i494;
 import 'package:infrastructure/src/peer/ble_peer_logger.dart' as _i275;
+import 'package:infrastructure/src/peer/ble_peer_session_guard_impl.dart' as _i251;
 import 'package:infrastructure/src/peer/di/ble_peer_module.dart' as _i213;
 import 'package:infrastructure/src/peer/peer_lifecycle.dart' as _i988;
+import 'package:infrastructure/src/peer/peer_lifecycle_port.dart' as _i39;
 import 'package:infrastructure/src/peer/repositories/local_device_repository_impl.dart' as _i592;
 import 'package:infrastructure/src/peer/repositories/peer_client_session_repository_impl.dart'
     as _i921;
@@ -34,28 +36,29 @@ class InfrastructurePackageModule extends _i526.MicroPackageModule {
     gh.lazySingleton<_i124.LocalDeviceRepository>(
       () => _i592.LocalDeviceRepositoryImpl(gh<_i494.AppConfig>()),
     );
+    gh.lazySingleton<_i124.PeerBleSessionGuard>(() => _i251.BlePeerSessionGuardImpl());
     gh.lazySingleton<_i494.LocalDataProvider>(
       () => _i586.LocalDataProviderImpl(sharedPreferences: gh<_i460.SharedPreferences>()),
     );
-    gh.lazySingleton<_i988.PeerLifecycle>(
+    gh.lazySingleton<_i39.PeerLifecyclePort>(
       () => _i988.PeerLifecycle(gh<_i494.AppConfig>(), gh<_i275.BlePeerLogger>()),
+    );
+    gh.lazySingleton<_i124.PeerClientSessionRepository>(
+      () => _i921.PeerClientSessionRepositoryImpl(
+        gh<_i39.PeerLifecyclePort>(),
+        gh<_i124.PeerPlayerIdentitySource>(),
+        gh<_i124.LocalDeviceRepository>(),
+      ),
     );
     gh.lazySingleton<_i124.PeerServerSessionRepository>(
       () => _i483.PeerServerSessionRepositoryImpl(
-        gh<_i988.PeerLifecycle>(),
+        gh<_i39.PeerLifecyclePort>(),
         gh<_i124.PeerPlayerIdentitySource>(),
         gh<_i124.LocalDeviceRepository>(),
       ),
     );
     gh.lazySingleton<_i124.PeerTransportRepository>(
-      () => _i525.PeerTransportRepositoryImpl(gh<_i988.PeerLifecycle>()),
-    );
-    gh.lazySingleton<_i124.PeerClientSessionRepository>(
-      () => _i921.PeerClientSessionRepositoryImpl(
-        gh<_i988.PeerLifecycle>(),
-        gh<_i124.PeerPlayerIdentitySource>(),
-        gh<_i124.LocalDeviceRepository>(),
-      ),
+      () => _i525.PeerTransportRepositoryImpl(gh<_i39.PeerLifecyclePort>()),
     );
   }
 }

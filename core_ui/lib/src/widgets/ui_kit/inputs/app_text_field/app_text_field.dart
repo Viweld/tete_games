@@ -431,11 +431,6 @@ class _AppTextFieldState extends State<AppTextField> {
     _focusNode.removeListener(_handleFocusChange);
     _focusNode.dispose();
     _controller.removeListener(_handleTextChange);
-    // _controller.dispose(); // Usually we don't dispose controller if passed from outside?
-    // Wait, in initState we create it: _controller = TextEditingController(text: widget.initialText);
-    // But widget.initialText implies we create it.
-    // However, if the parent passed a controller? The widget definition does NOT accept a controller.
-    // So we OWN the controller. We should dispose it.
     _controller.dispose();
     _removeOverlay();
     super.dispose();

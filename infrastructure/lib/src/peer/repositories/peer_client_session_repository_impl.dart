@@ -3,7 +3,7 @@ import 'dart:developer' as developer;
 import 'package:ble_peer_session/ble_peer_session.dart' as pckg;
 import 'package:infrastructure/src/peer/mappers/peer_device_mapper.dart';
 import 'package:infrastructure/src/peer/mappers/peer_endpoint_mapper.dart';
-import 'package:infrastructure/src/peer/peer_lifecycle.dart';
+import 'package:infrastructure/src/peer/peer_lifecycle_port.dart';
 import 'package:injectable/injectable.dart';
 import 'package:peer/peer_connection.dart';
 
@@ -15,7 +15,7 @@ final class PeerClientSessionRepositoryImpl implements PeerClientSessionReposito
     this._localDeviceRepository,
   );
 
-  final PeerLifecycle _peerLifecycle;
+  final PeerLifecyclePort _peerLifecycle;
   final PeerPlayerIdentitySource _playerIdentitySource;
   final LocalDeviceRepository _localDeviceRepository;
 

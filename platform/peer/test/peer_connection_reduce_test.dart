@@ -154,5 +154,250 @@ void main() {
         ),
       );
     });
+
+    test('CmdStartClientSession starts client discovery', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot();
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdStartClientSession(sessionId: 'client-session'),
+      );
+
+      expect(result.next.sessionId, 'client-session');
+      expect(result.next.phase, PeerSessionCorePhase.clientDiscovering);
+      expect(result.next.role, PeerRole.client);
+    });
+
+    test('CmdAcceptInvitation resumes host advertising from invitation decision', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.hostInvitationDecision,
+        role: PeerRole.server,
+        pendingInvitation: remoteEndpoint,
+      );
+
+      final ReduceResult result = reduce(prev: prev, command: const CmdAcceptInvitation());
+
+      expect(result.next.phase, PeerSessionCorePhase.hostAdvertising);
+      expect(result.next.pendingInvitation, isNull);
+    });
+
+    test('CmdAcceptInvitation is ignored outside invitation decision', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.hostAdvertising,
+        role: PeerRole.server,
+      );
+
+      final ReduceResult result = reduce(prev: prev, command: const CmdAcceptInvitation());
+
+      expect(result.next, prev);
+    });
+
+    test('CmdRejectInvitation resumes host advertising from invitation decision', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.hostInvitationDecision,
+        role: PeerRole.server,
+        pendingInvitation: remoteEndpoint,
+      );
+
+      final ReduceResult result = reduce(prev: prev, command: const CmdRejectInvitation());
+
+      expect(result.next.phase, PeerSessionCorePhase.hostAdvertising);
+      expect(result.next.pendingInvitation, isNull);
+    });
+
+    test('CmdInvitationReceived moves host to invitation decision', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.hostAdvertising,
+        role: PeerRole.server,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdInvitationReceived(remoteEndpoint: remoteEndpoint),
+      );
+
+      expect(result.next.phase, PeerSessionCorePhase.hostInvitationDecision);
+      expect(result.next.pendingInvitation, remoteEndpoint);
+    });
+
+    test('CmdInvitationReceived is ignored outside host advertising', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.clientDiscovering,
+        role: PeerRole.client,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdInvitationReceived(remoteEndpoint: remoteEndpoint),
+      );
+
+      expect(result.next, prev);
+    });
+
+    test('CmdInvitationRejected returns client to discovering with toast', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.clientInviting,
+        role: PeerRole.client,
+        invitedDeviceId: 'device-1',
+      );
+
+      final ReduceResult result = reduce(prev: prev, command: const CmdInvitationRejected());
+
+      expect(result.next.phase, PeerSessionCorePhase.clientDiscovering);
+      expect(result.next.invitedDeviceId, isNull);
+      expect(
+        result.rawEvents,
+        contains(
+          isA<RawShowToastEvent>().having(
+            (RawShowToastEvent event) => event.kind,
+            'kind',
+            PeerToastKind.invitationRejected,
+          ),
+        ),
+      );
+    });
+
+    test('CmdDiscoveryUpdated replaces discovered devices in client phases', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.clientDiscovering,
+        role: PeerRole.client,
+      );
+      const List<PeerDevice> devices = <PeerDevice>[device];
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdDiscoveryUpdated(devices: devices),
+      );
+
+      expect(result.next.discoveredDevices, devices);
+    });
+
+    test('CmdDiscoveryUpdated is ignored outside client discovery phases', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.hostAdvertising,
+        role: PeerRole.server,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdDiscoveryUpdated(devices: <PeerDevice>[device]),
+      );
+
+      expect(result.next, prev);
+    });
+
+    test('CmdCloseSession resets snapshot when not connected overlay dismiss', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        sessionId: 'session-1',
+        phase: PeerSessionCorePhase.clientDiscovering,
+        role: PeerRole.client,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdCloseSession(
+          origin: PeerSessionCloseOrigin.user,
+          reason: PeerSessionCloseReason.userDisconnect,
+        ),
+      );
+
+      expect(result.next, const PeerSessionSnapshot());
+      expect(result.rawEvents, contains(isA<RawCloseOverlayEvent>()));
+    });
+
+    test('CmdTransportDisconnected ignores disconnect outside connected phase', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.clientDiscovering,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdTransportDisconnected(reason: PeerDisconnectReason.linkLost),
+      );
+
+      expect(result.next, prev);
+      expect(result.rawEvents, isEmpty);
+    });
+
+    test('CmdTransportDisconnected emits peer disconnect toast', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.connected,
+        remoteEndpoint: remoteEndpoint,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdTransportDisconnected(reason: PeerDisconnectReason.peerDisconnect),
+      );
+
+      expect(result.next, const PeerSessionSnapshot());
+      expect(
+        result.rawEvents,
+        containsAll(<Matcher>[
+          isA<RawShowToastEvent>().having(
+            (RawShowToastEvent event) => event.kind,
+            'kind',
+            PeerToastKind.peerDisconnected,
+          ),
+          isA<RawCloseOverlayEvent>(),
+        ]),
+      );
+    });
+
+    test('CmdTransportDisconnected omits toast for user disconnect', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.connected,
+        remoteEndpoint: remoteEndpoint,
+      );
+
+      final ReduceResult result = reduce(
+        prev: prev,
+        command: const CmdTransportDisconnected(reason: PeerDisconnectReason.userDisconnect),
+      );
+
+      expect(result.next, const PeerSessionSnapshot());
+      expect(result.rawEvents, <RawPeerUiEvent>[const RawCloseOverlayEvent()]);
+    });
+
+    test('CmdInvitationAccepted is a no-op', () {
+      const PeerSessionSnapshot prev = PeerSessionSnapshot(
+        phase: PeerSessionCorePhase.hostInvitationDecision,
+        role: PeerRole.server,
+        pendingInvitation: remoteEndpoint,
+      );
+
+      final ReduceResult result = reduce(prev: prev, command: const CmdInvitationAccepted());
+
+      expect(result.next, prev);
+      expect(result.rawEvents, isEmpty);
+    });
+
+    test('CmdBleError maps every error kind to toast', () {
+      const Map<PeerSessionErrorKind, PeerToastKind> expected =
+          <PeerSessionErrorKind, PeerToastKind>{
+            PeerSessionErrorKind.bluetoothUnavailable: PeerToastKind.bluetoothUnavailable,
+            PeerSessionErrorKind.discoveryFailed: PeerToastKind.discoveryFailed,
+            PeerSessionErrorKind.connectionFailed: PeerToastKind.connectionFailed,
+            PeerSessionErrorKind.generic: PeerToastKind.genericError,
+          };
+
+      for (final MapEntry<PeerSessionErrorKind, PeerToastKind> entry in expected.entries) {
+        final ReduceResult result = reduce(
+          prev: const PeerSessionSnapshot(phase: PeerSessionCorePhase.clientDiscovering),
+          command: CmdBleError(errorKind: entry.key),
+        );
+
+        expect(
+          result.rawEvents,
+          contains(
+            isA<RawShowToastEvent>().having(
+              (RawShowToastEvent event) => event.kind,
+              'kind',
+              entry.value,
+            ),
+          ),
+        );
+      }
+    });
   });
 }

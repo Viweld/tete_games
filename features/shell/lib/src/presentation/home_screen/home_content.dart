@@ -55,6 +55,7 @@ class HomeContent extends StatelessWidget {
               onInviteTap: () => bloc.add(const HomeEvent.inviteDeviceTapped()),
               onAcceptTap: () => bloc.add(const HomeEvent.acceptInvitationTapped()),
               onRejectTap: () => bloc.add(const HomeEvent.rejectInvitationTapped()),
+              onRetryTap: () => bloc.add(const HomeEvent.retryConnectionTapped()),
             ),
           ),
       ],

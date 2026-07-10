@@ -27,12 +27,12 @@ class ShellPackageModule extends _i526.MicroPackageModule {
   // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
+    gh.lazySingleton<_i573.SettingsRepository>(
+      () => _i597.SettingsRepositoryImpl(gh<_i494.LocalDataProvider>()),
+    );
     gh.lazySingleton<_i573.ProfileRepository>(
       () => _i295.ProfileRepositoryImpl(gh<_i494.LocalDataProvider>()),
       dispose: _i295.disposeProfileRepository,
-    );
-    gh.lazySingleton<_i573.SettingsRepository>(
-      () => _i597.SettingsRepositoryImpl(gh<_i494.LocalDataProvider>()),
     );
     gh.factory<_i459.SplashBloc>(
       () => _i459.SplashBloc(

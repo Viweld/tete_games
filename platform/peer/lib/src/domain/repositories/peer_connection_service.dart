@@ -20,5 +20,9 @@ abstract interface class PeerConnectionService {
     required PeerSessionCloseReason reason,
   });
 
+  Future<void> retryLastSession();
+
+  Future<void> onAppResumed();
+
   Future<void> dispose();
 }

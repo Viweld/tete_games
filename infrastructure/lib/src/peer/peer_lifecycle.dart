@@ -3,10 +3,12 @@ import 'dart:developer' as developer;
 import 'package:ble_peer_session/ble_peer_session.dart';
 import 'package:core/core.dart';
 import 'package:infrastructure/src/peer/ble_peer_logger.dart';
+import 'package:infrastructure/src/peer/ble_peer_session_port.dart';
+import 'package:infrastructure/src/peer/peer_lifecycle_port.dart';
 
 /// Owns the [Peer] instance and recreates it after [reset] to fully release BLE links.
-@lazySingleton
-final class PeerLifecycle {
+@LazySingleton(as: PeerLifecyclePort)
+final class PeerLifecycle implements PeerLifecyclePort {
   PeerLifecycle(this._appConfig, this._logger);
 
   static const Duration _stackSettleDelay = Duration(milliseconds: 600);
@@ -15,22 +17,27 @@ final class PeerLifecycle {
   final BlePeerLogger _logger;
 
   Peer? _peer;
-  final StreamController<Peer> _peerController = StreamController<Peer>.broadcast();
+  final StreamController<BlePeerSessionPort> _peerController =
+      StreamController<BlePeerSessionPort>.broadcast();
 
-  /// Active peer for an in-flight BLE session. Created lazily on first role start.
-  Future<Peer> requirePeer() async {
+  @override
+  Future<BlePeerSessionPort> requirePeer() async {
     final Peer? existingPeer = _peer;
-    if (existingPeer != null) return existingPeer;
+    if (existingPeer != null) {
+      return BlePeerSessionAdapter(existingPeer);
+    }
 
     final Peer createdPeer = _createPeer();
     _peer = createdPeer;
-    _peerController.add(createdPeer);
-    return createdPeer;
+    final BlePeerSessionAdapter adapter = BlePeerSessionAdapter(createdPeer);
+    _peerController.add(adapter);
+    return adapter;
   }
 
-  /// Re-emits whenever a fresh [Peer] is created for stream re-binding.
-  Stream<Peer> get peerGenerations => _peerController.stream;
+  @override
+  Stream<BlePeerSessionPort> get peerGenerations => _peerController.stream;
 
+  @override
   Future<void> reset() async {
     final Peer? activePeer = _peer;
     _peer = null;

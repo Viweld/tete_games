@@ -33,11 +33,10 @@ Future<void> run(HookContext context) async {
 
   final Progress buildRunner = context.logger.progress('build_runner');
   for (final String pkg in <String>['features/$featureName', 'navigation', '.']) {
-    final ProcessResult result = await Process.run(
-      'sh',
-      <String>['-c', 'fvm dart run build_runner build --delete-conflicting-outputs'],
-      workingDirectory: pkg,
-    );
+    final ProcessResult result = await Process.run('sh', <String>[
+      '-c',
+      'fvm dart run build_runner build --delete-conflicting-outputs',
+    ], workingDirectory: pkg);
     if (result.exitCode != 0) {
       buildRunner.fail('build_runner failed in $pkg');
       stderr.write(result.stderr);

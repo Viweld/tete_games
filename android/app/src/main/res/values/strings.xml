@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ble_peer_foreground_title">tete game</string>
+    <string name="ble_peer_foreground_body">Bluetooth peer session is active</string>
+    <string name="ble_peer_foreground_channel_name">Peer connection</string>
+    <string name="ble_peer_foreground_channel_description">Keeps Bluetooth peer sessions active</string>
+</resources>

@@ -1,6 +1,7 @@
 export 'src/di/configure_dependencies.module.dart';
 export 'src/domain/models/peer/connection/connection_models.dart';
 export 'src/domain/models/peer/peer_models.dart';
+export 'src/domain/ports/peer_ble_session_guard.dart';
 export 'src/domain/ports/peer_player_identity_source.dart';
 export 'src/domain/repositories/local_device_repository.dart';
 export 'src/domain/repositories/peer_client_session_repository.dart';
