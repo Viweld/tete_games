@@ -6,6 +6,7 @@ formatter:
 analyzer:
   exclude:
     - "docs/**"
+    - "bricks/**"
     - "build/**"
     - "**/build/**"
     - "**/*.g.dart"

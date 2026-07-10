@@ -1,5 +1,5 @@
 name: app
-description: tete games — offline BLE multiplayer games (Flutterozavr workspace)
+description: tete games — offline BLE multiplayer games
 publish_to: none
 version: 0.1.0+1
 
@@ -13,7 +13,7 @@ workspace:
   - infrastructure
   - navigation_api
   - navigation
-  # fz:workspace-features
+  # workspace:features
   - platform/peer
   - features/shell
 
@@ -30,7 +30,7 @@ dependencies:
     path: ./navigation
   peer:
     path: ./platform/peer
-  # fz:feature-deps
+  # workspace:feature-deps
   shell:
     path: ./features/shell
 

@@ -3,54 +3,130 @@
 ![tete games logo](assets/logo.png)
 
 Мобильное приложение для офлайн-игр на двоих по Bluetooth Low Energy (BLE).  
-**tete games** — переосмысление [ble_games](https://github.com/Viweld/ble_games) на базе [Flutterozavr](https://github.com/Viweld/flutterozavr): Clean Architecture, multi-package workspace и общая дизайн-система в `core_ui`.
+Два устройства находят друг друга, устанавливают соединение и обмениваются игровыми сообщениями — без интернета.
 
 ## О проекте
 
-Два устройства находят друг друга по BLE, устанавливают соединение и обмениваются игровыми сообщениями — без интернета. Поддерживаются пары Android↔Android, iOS↔iOS и Android↔iOS.
+Поддерживаются пары Android↔Android, iOS↔iOS и Android↔iOS.
 
-Из предшественника **ble_games** (BaTuGa) уже перенесено или в работе:
+Текущее состояние:
 
 - BLE-транспорт (`ble_peer_session`): роли host/client, discovery, flow подключения;
 - app shell: splash, home (host/client), заглушка списка игр;
 - игровая логика и кодеки peer-сообщений — в планах (крестики-нолики и др.).
 
-В новой кодовой базе:
+Стек приложения:
 
-- **архитектура** — ациклический граф пакетов: `core` / `core_ui` / `infrastructure` / `platform/peer` / `features/*`; Composition Root в `lib/di/`; порт навигации `navigation_api`;
+- **архитектура** — Lean Hexagonal Feature Architecture (LHFA); канон — `.kb/architecture/`;
 - **состояние** — `flutter_bloc` + effect-based навигация и UI-эффекты;
-- **DI** — `injectable` + `get_it` (`appLocator`);
-- **UI** — тема, цвета и компоненты из `core_ui` (`AppScaffold`, `ui_kit`: кнопки, инпуты, `AppTextField` и т.д.).
+- **DI** — `injectable` + `get_it` (`appLocator`); Composition Root — `lib/di/app_di.dart`;
+- **UI** — тема, цвета и компоненты из `core_ui` (`AppScaffold`, `ui_kit`).
 
 ## Статус
 
 | Область | Статус |
 |---------|--------|
 | Workspace & DI | готово |
-| Тема и ui_kit (`core_ui`) | готово (используется подмножество) |
+| Тема и ui_kit (`core_ui`) | готово |
 | BLE-транспорт (`infrastructure/peer`, `ble_peer_session`) | готово |
 | Splash / Home / список игр | готово |
-| Firebase bootstrap (FCM + Crashlytics hooks) | готово (нативная конфигурация + Dart init) |
+| Firebase bootstrap (Crashlytics) | готово (нативная конфигурация + Dart init) |
 | Игры (`features/game_*`) | в планах |
-| `core_ui` skeleton widgets cleanup | готово |
+| Stress test (2–3 независимые игры) | в планах |
 
 ## Архитектура
 
-Проект разделён на **ядро**, **платформу**, **инфраструктуру**, **навигацию** и **feature-пакеты**. Каждая игра — отдельный пакет в `features/<game_name>/`; shell не содержит логику конкретных игр.
+Канон: [`.kb/architecture/`](.kb/architecture/README.md). Кратко — **Lean Hexagonal Feature Architecture**: ownership вокруг feature, межфичевое — через StatePort/EventPort, не через import.
+
+### Структура workspace
 
 ```text
 lib/di/app_di.dart          Composition Root (единственное место сборки графа DI)
+.kb/architecture/           Архитектурный канон (README, ADR, anti-patterns)
 core/                       BLoC-хелперы, локализация, технические порты
 core_ui/                    тема, ui_kit
 navigation_api/             порт AppNavigator
 navigation/                 AppRouter — агрегатор маршрутов shell + игр
-infrastructure/             SharedPreferences, Firebase, BLE transport, push
+infrastructure/             SharedPreferences, Firebase Crashlytics, BLE wire transport
 platform/peer/              BLE FSM, frames, PeerConnectionService
 features/shell/             splash, home, profile/settings, BLE overlay UI
 features/<game_name>/       отдельная игра (domain + presentation + DI)
 ```
 
-### Текущий граф зависимостей
+### Продукт и транспорт
+
+| Слой | Содержание |
+|------|------------|
+| **Продукт** | Offline peer-to-peer игры на двух устройствах (shell + `features/game_*`) |
+| **Capability** | `platform/peer` — соединение, FSM, frames; не знает о правилах игр |
+| **Транспорт** | BLE wire в `infrastructure/lib/src/peer/` (`ble_peer_session`, mappers) |
+
+Архитектура описана transport-агностично; BLE — контекст продукта, не определение архитектуры.
+
+### Conceptual ownership
+
+```mermaid
+flowchart TB
+  subgraph product ["Product (features)"]
+    shell["shell — app chrome, overlay"]
+    game1["game_* — правила, экраны"]
+  end
+
+  subgraph capability ["Capability (platform/peer)"]
+    peer["PeerConnectionService, reduce(), frames"]
+  end
+
+  subgraph transport ["Transport (infrastructure)"]
+    ble["ble_peer_session, mappers"]
+  end
+
+  subgraph kernel ["Kernel"]
+    core
+    core_ui
+    nav["navigation_api + navigation"]
+  end
+
+  shell --> peer
+  game1 --> peer
+  ble --> peer
+  shell --> core
+  shell --> core_ui
+  game1 --> core
+  game1 --> core_ui
+  shell --> nav
+  game1 --> nav
+```
+
+Feature владеет своими данными (Repository). Межфичевое — StatePort/EventPort у consumer; wiring — `lib/di/*_port_adapters.dart`.
+
+```mermaid
+flowchart TB
+  Feature["Feature"]
+  OwnsData["owns data"]
+  Repository
+  Exposes["exposes via adapters"]
+  Ports["Ports"]
+  UsedBy["used by other features"]
+  Feature --> OwnsData --> Repository --> Exposes --> Ports --> UsedBy
+```
+
+### Жизненный цикл данных
+
+**Чтение:**
+
+```text
+Transport → Transport Model → Repository → Domain → BLoC → Widget
+```
+
+**Запись:**
+
+```text
+Widget → BLoC → Repository → Transport Model → Transport
+```
+
+Маппинг Transport Model → Domain **только** в Repository.
+
+### Граф зависимостей (текущий)
 
 ```mermaid
 flowchart TD
@@ -77,8 +153,6 @@ flowchart TD
 ```
 
 ### Расширение: игровые feature-пакеты
-
-Новые игры подключаются как независимые пакеты. Shell показывает карточки на Home и открывает маршрут игры через `AppRouter`; BLE-overlay остаётся на Home и **не** дублируется в играх.
 
 ```mermaid
 flowchart TD
@@ -142,23 +216,27 @@ flowchart TD
   class game1,game2 planned
 ```
 
-Сплошные стрелки — существующие зависимости. Пунктир — планируемые (`game_1`, `game_2` — условные имена; первая реальная игра может называться, например, `tictactoe`).
+Пунктир — планируемые игры. Сплошные стрелки — существующие зависимости.
 
 ### Правила для игровых пакетов
 
 | Разрешено | Запрещено |
 |-----------|-----------|
 | `core`, `core_ui`, `navigation_api` | `infrastructure`, корневой `app` |
-| `platform/peer` (barrel `peer_connection.dart`, позже `peer_game.dart`) | импорт UI shell или других игр |
+| `platform/peer` (barrel `peer_connection`, `peer_game`) | import других `features/*` |
 | свой `domain` + `presentation` + injectable DI | прямой импорт `ble_peer_session` |
-| регистрация маршрутов в `AppRouter` (`// fz:routes`) | зависимость `peer` → игра (platform не знает о features) |
+| регистрация маршрутов в `AppRouter` | зависимость `peer` → игра |
 
 Типичный flow добавления игры:
 
 1. `mason make feature_package --feature_name game_1` → `features/game_1/`.
-2. Экран игры + BLoC; обмен ходами через `PeerConnectionService` / контракты `peer_game.dart`.
-3. Подключить пакет в workspace (`pubspec.yaml`), `navigation`, DI (`// fz:external-modules`).
-4. Добавить `AutoRoute` в `AppRouter` и пункт в grid на Home (shell знает только id/маршрут, не логику игры).
+2. Экран игры + BLoC; обмен ходами через `PeerConnectionService` / `peer_game.dart`.
+3. Подключить пакет в workspace (`pubspec.yaml`), `navigation`, DI (`lib/di/app_di.dart`).
+4. Добавить `AutoRoute` в `AppRouter` и пункт в grid на Home.
+
+### Anti-patterns
+
+См. [`.kb/architecture/09-anti-patterns.md`](.kb/architecture/09-anti-patterns.md): feature→feature, AppEventBus, SDK в feature, platform→game logic.
 
 Граф зависимостей проверяется в CI: `fvm dart run tool/check_workspace_graph.dart` (`strict: true`).
 
@@ -167,7 +245,7 @@ flowchart TD
 | Пакет | Назначение |
 |-------|------------|
 | `core/` | `appLocator`, BLoC-хелперы, локализация, технические порты |
-| `infrastructure/` | SharedPreferences, Firebase, BLE transport (`ble_peer_session`), push |
+| `infrastructure/` | SharedPreferences, Firebase Crashlytics, BLE transport (`ble_peer_session`) |
 | `core_ui/` | тема (`AppTheme`, `AppColors`), `AppScaffold`, `ui_kit` |
 | `platform/peer/` | BLE connection FSM, frames, `PeerConnectionService` |
 | `navigation_api/` | порт `AppNavigator` |
@@ -181,7 +259,7 @@ flowchart TD
 - Bluetooth Low Energy (BLE) через `ble_peer_session`
 - `flutter_bloc` + `bloc_concurrency`
 - `freezed`, `injectable`, `auto_route`
-- `firebase_core`, `firebase_messaging`, `firebase_crashlytics`
+- `firebase_core`, `firebase_crashlytics`
 - FVM для фиксации версии SDK
 
 ## Быстрый старт

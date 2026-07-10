@@ -1,0 +1,17 @@
+name: screen_bloc
+description: Screen + Content + BLoC + Effect inside an existing feature package.
+version: 0.1.0
+
+environment:
+  mason: ^0.1.2
+
+vars:
+  feature_name:
+    type: string
+    description: Existing feature package name (snake_case)
+    prompt: Feature name (snake_case)?
+  screen_name:
+    type: string
+    description: Screen name (snake_case, e.g. list, details)
+    default: list
+    prompt: Screen name (snake_case)?

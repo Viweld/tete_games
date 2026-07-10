@@ -7,7 +7,7 @@ class AppRouter extends RootStackRouter implements AppNavigator {
 
   @override
   List<AutoRoute> get routes => <AutoRoute>[
-    // fz:routes
+    // workspace:routes
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: SplashRoute.page, initial: true),
   ];
@@ -21,5 +21,5 @@ class AppRouter extends RootStackRouter implements AppNavigator {
   @override
   Future<void> navigateHome() => push(const HomeRoute());
 
-  // fz:navigate-methods
+  // workspace:navigate-methods
 }

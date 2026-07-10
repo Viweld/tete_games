@@ -1,0 +1,13 @@
+name: feature_package
+description: Create a new feature package in features/ and wire workspace, navigation, DI.
+version: 0.1.0
+
+environment:
+  mason: ^0.1.2
+
+vars:
+  feature_name:
+    type: string
+    description: Feature name in snake_case (e.g. orders, user_profile)
+    default: my_feature
+    prompt: Feature name (snake_case)?

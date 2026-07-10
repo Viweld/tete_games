@@ -23,6 +23,5 @@ export 'src/di/locator.dart';
 export 'src/events/events.dart';
 export 'src/localization/localization.dart';
 export 'src/ports/local_data_provider.dart';
-export 'src/ports/push_notification_preferences.dart';
 export 'src/services/services.dart';
 export 'src/utils/utils.dart';
