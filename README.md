@@ -1,6 +1,6 @@
 # tete games
 
-![tete games logo](assets/logo.png)
+![tete games logo](assets/app_logo.png)
 
 Мобильное приложение для офлайн-игр на двоих по Bluetooth Low Energy (BLE).  
 Два устройства находят друг друга, устанавливают соединение и обмениваются игровыми сообщениями — без интернета.
